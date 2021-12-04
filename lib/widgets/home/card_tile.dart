@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:morning_brief/controllers/ingredient_controller.dart';
+import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 
-import 'detail_bottom_sheet.dart';
+import 'menu_detail_bottom_sheet.dart';
 
 class CardTile extends StatelessWidget {
-  CardTile({Key? key, required this.menu}) : super(key: key);
+  CardTile({Key? key, required this.menu, required this.ingredients})
+      : super(key: key);
   final MenuModel menu;
-
+  final List<IngredientModel>? ingredients;
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
-    var theme = Theme.of(context);
 
     return InkWell(
       onTap: () => {

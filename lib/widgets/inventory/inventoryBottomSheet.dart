@@ -8,7 +8,8 @@ import 'package:morning_brief/models/userInventory_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
-class InventoryBottomSheet extends GetWidget<IngredientController> {
+// ignore: must_be_immutable
+class InventoryBottomSheet extends StatelessWidget {
   RxList<UserInventory> _userInventory = RxList();
   IngredientController ingController =
       Get.put<IngredientController>(IngredientController());

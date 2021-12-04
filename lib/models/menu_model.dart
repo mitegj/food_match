@@ -2,11 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MenuModel {
   late String menuName;
-  late double kcal;
+  late int kcal;
   late double difficulty;
   late DateTime lastTimeEaten;
   late double preparationTime;
   late List<String> allergies;
+  late List<String> steps;
 
   MenuModel(
       {required this.menuName,
@@ -14,7 +15,8 @@ class MenuModel {
       required this.difficulty,
       required this.lastTimeEaten,
       required this.preparationTime,
-      required this.allergies});
+      required this.allergies,
+      required this.steps});
 
   Map<String, dynamic> toMap() {
     return {
@@ -24,6 +26,7 @@ class MenuModel {
       "lastTimeEaten": lastTimeEaten,
       "preparationTime": preparationTime,
       "allergies": allergies,
+      "steps": steps,
     };
   }
 
@@ -35,6 +38,7 @@ class MenuModel {
       lastTimeEaten: parsedJson['lastTimeEaten'],
       preparationTime: parsedJson['preparationTime'],
       allergies: parsedJson['allergies'],
+      steps: parsedJson['steps'],
     );
   }
 
@@ -49,6 +53,7 @@ class MenuModel {
     preparationTime = documentSnapshot["preparationTime"] ?? 0.0;
 
     allergies = documentSnapshot["allergies"].cast<String>() ?? [];
+    steps = documentSnapshot["steps"].cast<String>() ?? [];
   }
 }
 
@@ -60,5 +65,6 @@ extension MenuExtensions on QueryDocumentSnapshot {
         lastTimeEaten: this['lastTimeEaten'],
         preparationTime: this['preparationTime'],
         allergies: this['allergies'],
+        steps: this['steps'],
       );
 }

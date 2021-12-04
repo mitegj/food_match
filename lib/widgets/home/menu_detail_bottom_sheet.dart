@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 
 class DetailBottomSheet extends StatelessWidget {
-  DetailBottomSheet({Key? key, required this.menu}) : super(key: key);
+  DetailBottomSheet({Key? key, required this.menu, required this.ingredients})
+      : super(key: key);
   final MenuModel menu;
+  final List<IngredientModel>? ingredients;
 
   @override
   Widget build(BuildContext context) {
@@ -103,49 +106,19 @@ class DetailBottomSheet extends StatelessWidget {
                         color: UIColors.black,
                         fontSize: 20,
                         fontWeight: FontWeight.w500)),
-
-                /*Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: UIcolors.grey.withOpacity(0.3),
-                      ),
-                      child: Column(
-                        children: [
-                          Text("Ingrediente 1",
-                              style: GoogleFonts.poppins(
-                                  color: UIcolors.black,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300)),
-                          Divider(
-                            color: UIcolors.white,
-                          ),
-                          Text("Ingrediente 1",
-                              style: GoogleFonts.poppins(
-                                  color: UIcolors.black,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300)),
-                          Divider(
-                            color: UIcolors.white,
-                          ),
-                          Text("Ingrediente 1",
-                              style: GoogleFonts.poppins(
-                                  color: UIcolors.black,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300)),
-                          Divider(
-                            color: UIcolors.white,
-                          ),
-                          Text("Ingrediente 1",
-                              style: GoogleFonts.poppins(
-                                  color: UIcolors.black,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300)),
-                        ],
-                      ),
-                    ),*/
                 SizedBox(
                   height: 30,
+                ),
+                Text(
+                  "Ingredienti",
+                  style: GoogleFonts.poppins(
+                      color: UIColors.lightBlack,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
+                  textAlign: TextAlign.left,
+                ),
+                SizedBox(
+                  height: 20,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -196,55 +169,43 @@ class DetailBottomSheet extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 30,
                     ),
-                    IntrinsicHeight(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          VerticalDivider(
-                            width: 50,
-                            thickness: 5,
-                            color: UIColors.lightRed,
-                          ),
-                          Expanded(
-                            child: Text(
-                                "Lorem Ipsum is simply sdvdknkkvnfknvf fvnksvksnvk dsvdsd sdsd dc dcds",
-                                textAlign: TextAlign.start,
-                                overflow: TextOverflow.visible,
-                                style: GoogleFonts.poppins(
-                                    color: UIColors.black,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w300)),
-                          ),
-                        ],
-                      ),
+                    Text(
+                      "Procedimento",
+                      style: GoogleFonts.poppins(
+                          color: UIColors.lightBlack,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500),
                     ),
                     SizedBox(
                       height: 20,
                     ),
-                    IntrinsicHeight(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          VerticalDivider(
-                            width: 50,
-                            thickness: 5,
-                            color: UIColors.lightRed,
+                    for (var item in menu.steps)
+                      IntrinsicHeight(
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              VerticalDivider(
+                                width: 50,
+                                thickness: 5,
+                                color: UIColors.lightBlack,
+                              ),
+                              Expanded(
+                                child: Text(item,
+                                    textAlign: TextAlign.start,
+                                    overflow: TextOverflow.visible,
+                                    style: GoogleFonts.poppins(
+                                        color: UIColors.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w300)),
+                              ),
+                            ],
                           ),
-                          Expanded(
-                            child: Text(
-                                "Lorem Ipsum is dfdfffffdf simply ddjdk sdvdknkkvnfknvf fvnksvksnvk dsvdsd sdsd dc dcds",
-                                textAlign: TextAlign.start,
-                                overflow: TextOverflow.visible,
-                                style: GoogleFonts.poppins(
-                                    color: UIColors.black,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w300)),
-                          ),
-                        ],
+                        ),
                       ),
-                    )
                   ],
                 ),
                 Container(
@@ -255,6 +216,7 @@ class DetailBottomSheet extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
                         padding: const EdgeInsets.all(10),
