@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "800036989609",
+    "project_id": "morningbrief-2442a",
+    "storage_bucket": "morningbrief-2442a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:800036989609:android:d02faa00a5754c170e97b8",
+        "android_client_info": {
+          "package_name": "com.example.morning_brief"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "800036989609-e03ftq0dcvcn4fhg2vn98jkcv98sa17k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.morning_brief",
+            "certificate_hash": "cd086b585defcdaf5f36781a261f84162bd66f01"
+          }
+        },
+        {
+          "client_id": "800036989609-h1bl1sh7p92l8l6p98gfm4dtl14ttcn5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOnJzZayB0TM5IFlQPCnU7ziTml3jXrtY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "800036989609-h1bl1sh7p92l8l6p98gfm4dtl14ttcn5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "800036989609-fumc2pc86o0kbd5tb7m8h3kkgi2gn8fi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.morningBrief"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
