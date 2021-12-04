@@ -8,6 +8,7 @@ class MenuModel {
   late double preparationTime;
   late List<String> allergies;
   late List<String> steps;
+  late List<String> ingredients;
 
   MenuModel(
       {required this.menuName,
