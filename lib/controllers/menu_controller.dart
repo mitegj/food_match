@@ -24,6 +24,7 @@ class MenuController extends GetxController {
       Get.snackbar(
         "Error creating Account",
         e.toString(),
+        colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
       );
       return false;
@@ -48,6 +49,7 @@ class MenuController extends GetxController {
       Get.snackbar(
         "Error saving menu",
         e.toString(),
+        colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
       );
       return false;

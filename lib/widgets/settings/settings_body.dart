@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
 import 'package:morning_brief/screens/allergies.dart';
 import 'package:morning_brief/utils/UIColors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsBody extends StatelessWidget {
   @override
@@ -93,7 +94,20 @@ class SettingsBody extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.center,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        final url = Uri.encodeFull(
+                            'mailto:beyondx.team@gmail.com?subject=Feedback&body=');
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          Get.snackbar(
+                            "Errore durante l'apertura dell'app Mail",
+                            'Impossibile eseguire $url',
+                            colorText: Colors.white,
+                            snackPosition: SnackPosition.BOTTOM,
+                          );
+                        }
+                      },
                       child: Text(
                         'Help and assistence',
                         style: GoogleFonts.poppins(

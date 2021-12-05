@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:morning_brief/controllers/user_controller.dart';
@@ -37,6 +38,7 @@ class AuthController extends GetxController {
       Get.snackbar(
         "Error creating Account",
         e.toString(),
+        colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
       );
       return false;
@@ -83,6 +85,7 @@ class AuthController extends GetxController {
       Get.snackbar(
         "Error signing in",
         e.toString(),
+        colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
       );
     }
@@ -99,6 +102,7 @@ class AuthController extends GetxController {
       Get.snackbar(
         "Error signing out",
         e.toString(),
+        colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
       );
     }

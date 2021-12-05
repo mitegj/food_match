@@ -104,3 +104,5 @@ lib/generated_plugin_registrant.dart
 
 # End of https://www.toptal.com/developers/gitignore/api/dart,cocoapods,flutter
 .DS_Store
+ios/Podfile.lock
+ios/Podfile.lock

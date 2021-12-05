@@ -33,6 +33,8 @@ dependencies:
   firebase_core: ^1.6.0
   google_sign_in: ^5.1.0
   cloud_firestore: ^2.5.1
+
+  url_launcher: ^6.0.17
   
   
 

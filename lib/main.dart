@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:morning_brief/controllers/bindings/authBind.dart';
-import 'package:morning_brief/screens/onboarding.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/utils/root.dart';
 
