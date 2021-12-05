@@ -58,10 +58,10 @@ class InventoryBottomSheet extends StatelessWidget {
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
           ),
-          color: UIColors.white),
+          color: UIColors.detailBlack),
       child: Column(children: [
         Flexible(
-          flex: 1,
+          flex: 2,
           child: Container(
               alignment: Alignment.center,
               child: Column(
@@ -69,15 +69,23 @@ class InventoryBottomSheet extends StatelessWidget {
                   Text(
                     'Inventario cucina',
                     style: GoogleFonts.poppins(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    padding: const EdgeInsets.only(
+                        left: 20, right: 20, top: 20, bottom: 20),
                     child: TextField(
+                      autofocus: false,
                       decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        focusedBorder: UnderlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        enabledBorder: UnderlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
                         prefixIcon: Icon(Icons.search),
                       ),
                       onChanged: (text) {
@@ -89,7 +97,7 @@ class InventoryBottomSheet extends StatelessWidget {
               )),
         ),
         Expanded(
-            flex: 5,
+            flex: 6,
             child: Container(
               margin: const EdgeInsets.only(
                   left: 20, right: 20, top: 0, bottom: 13),
@@ -123,7 +131,7 @@ class InventoryBottomSheet extends StatelessWidget {
                                                       .toString()
                                                       .toLowerCase(),
                                                   style: GoogleFonts.poppins(
-                                                      color: UIColors.black,
+                                                      color: UIColors.white,
                                                       fontSize: 20,
                                                       fontWeight:
                                                           FontWeight.w400),
@@ -134,7 +142,13 @@ class InventoryBottomSheet extends StatelessWidget {
                                           Row(
                                             children: <Widget>[
                                               Checkbox(
-                                                checkColor: Colors.black,
+                                                side: BorderSide(
+                                                  color: Colors.white,
+                                                  width: 1.5,
+                                                ),
+                                                checkColor: UIColors.pink,
+                                                focusColor: UIColors.pink,
+                                                activeColor: UIColors.pink,
                                                 value: getStock(ingCtrl, index),
                                                 onChanged: (bool? value) {
                                                   updateStock(
