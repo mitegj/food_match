@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/models/ingredient_model.dart';
-import 'package:morning_brief/models/menu_ingredients_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 
@@ -10,6 +11,7 @@ class DetailBottomSheet extends StatelessWidget {
       : super(key: key);
   final MenuModel menu;
   final List<IngredientModel>? ingredients;
+  MenuController _menuController = Get.put(MenuController());
 
   String getIngredientName(String id) {
     return ingredients!.where((el) => el.id == id).single.listName;
@@ -115,17 +117,18 @@ class DetailBottomSheet extends StatelessWidget {
                             fontWeight: FontWeight.w500)),
                   ],
                 ),
-
                 SizedBox(
                   height: 30,
                 ),
                 Row(
                   children: [
-                    Text(menu.note.toString(),
+                    Text(
+                      menu.note.toString(),
                       style: GoogleFonts.poppins(
                           color: UIColors.pink,
                           fontSize: 15,
-                          fontWeight: FontWeight.bold),),
+                          fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
                 Row(
@@ -152,7 +155,6 @@ class DetailBottomSheet extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-
                               Expanded(
                                 child: Text(
                                     item!.qty.toString() +
@@ -211,7 +213,11 @@ class DetailBottomSheet extends StatelessWidget {
                   ],
                 ),
                 InkWell(
-                  onTap: (){},
+                  onTap: () {
+                    print("piatto ");
+                    _menuController.updateSavedMenu(menu.id);
+                    Navigator.pop(context);
+                  },
                   child: Container(
                     padding: const EdgeInsets.all(20),
                     margin: const EdgeInsets.only(top: 20),

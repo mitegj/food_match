@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:morning_brief/models/menu_ingredients_model.dart';
 
 class MenuModel {
+  late String id;
   late String menuName;
   late int kcal;
   late double difficulty;
@@ -12,7 +13,8 @@ class MenuModel {
   late String note;
 
   MenuModel(
-      {required this.menuName,
+      {required this.id,
+      required this.menuName,
       required this.kcal,
       required this.difficulty,
       required this.preparationTime,
@@ -23,6 +25,7 @@ class MenuModel {
 
   Map<String, dynamic> toMap() {
     return {
+      "id": id,
       "menuName": menuName,
       "kcal": kcal,
       "difficulty,": difficulty,
@@ -36,6 +39,7 @@ class MenuModel {
 
   factory MenuModel.fromJson(Map<String, dynamic> parsedJson) {
     return MenuModel(
+      id: parsedJson["id"],
       menuName: parsedJson['menuName'],
       kcal: parsedJson['kcal'],
       difficulty: parsedJson['difficulty'],
@@ -50,6 +54,7 @@ class MenuModel {
   MenuModel.fromDocumentSnapshot(
     DocumentSnapshot documentSnapshot,
   ) {
+    id = documentSnapshot.id;
     menuName = documentSnapshot["menuName"] ?? "";
     kcal = documentSnapshot["kcal"] ?? 0.0;
     difficulty = documentSnapshot["difficulty"] ?? 0.0;
@@ -74,6 +79,7 @@ class MenuModel {
 
 extension MenuExtensions on QueryDocumentSnapshot {
   MenuModel get touser => MenuModel(
+        id: this.id,
         menuName: this['menuName'],
         kcal: this['kcal'],
         difficulty: this['difficulty'],

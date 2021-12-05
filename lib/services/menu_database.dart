@@ -54,4 +54,25 @@ class DatabaseMenu {
       // popup errore
     }
   }
+
+  Future<bool> updateCookedMenu(String menuId) async {
+    String uid = FirebaseAuth.instance.currentUser!.uid.toString();
+
+    try {
+      List<String> menus = [];
+      menus.add(menuId);
+      await FirebaseFirestore.instance
+          .collection("users")
+          .doc(uid)
+          .collection("cookedMenu")
+          .doc(menuId)
+          .set({"id": menuId, "cookedTime": DateTime.now()});
+
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+      // popup errore
+    }
+  }
 }
