@@ -106,21 +106,38 @@ class DetailBottomSheet extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                Text(menu.menuName.toString(),
-                    style: GoogleFonts.poppins(
-                        color: UIColors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500)),
+                Row(
+                  children: [
+                    Text(menu.menuName.toString(),
+                        style: GoogleFonts.poppins(
+                            color: UIColors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500)),
+                  ],
+                ),
+
                 SizedBox(
                   height: 30,
                 ),
-                Text(
-                  "Ingredienti",
-                  style: GoogleFonts.poppins(
-                      color: UIColors.lightBlack,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500),
-                  textAlign: TextAlign.left,
+                Row(
+                  children: [
+                    Text(menu.note.toString(),
+                      style: GoogleFonts.poppins(
+                          color: UIColors.pink,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold),),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "Ingredienti",
+                      style: GoogleFonts.poppins(
+                          color: UIColors.lightBlack,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 20,
@@ -135,11 +152,7 @@ class DetailBottomSheet extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              VerticalDivider(
-                                width: 50,
-                                thickness: 5,
-                                color: UIColors.lightBlack,
-                              ),
+
                               Expanded(
                                 child: Text(
                                     item!.qty.toString() +
@@ -197,39 +210,39 @@ class DetailBottomSheet extends StatelessWidget {
                       ),
                   ],
                 ),
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  margin: const EdgeInsets.only(top: 20),
-                  decoration: BoxDecoration(
-                    color: UIColors.lightGreen,
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color: UIColors.black),
-                        child: Icon(
-                          Icons.check,
-                          size: 20,
-                          color: UIColors.white,
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Piatto cucinato',
-                            style: GoogleFonts.poppins(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 18),
+                InkWell(
+                  onTap: (){},
+                  child: Container(
+                    padding: const EdgeInsets.all(20),
+                    margin: const EdgeInsets.only(top: 20),
+                    decoration: BoxDecoration(
+                      color: UIColors.lightGreen,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          child: Icon(
+                            Icons.check,
+                            size: 25,
+                            color: UIColors.black,
                           ),
                         ),
-                      )
-                    ],
+                        Expanded(
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              'Piatto cucinato',
+                              style: GoogleFonts.poppins(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 18),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 )
               ],

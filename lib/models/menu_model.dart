@@ -9,6 +9,7 @@ class MenuModel {
   late List<String> allergies;
   late List<String> steps;
   late List<MenuIngredientModel?> ingredients;
+  late String note;
 
   MenuModel(
       {required this.menuName,
@@ -17,7 +18,8 @@ class MenuModel {
       required this.preparationTime,
       required this.allergies,
       required this.steps,
-      required this.ingredients});
+      required this.ingredients,
+      required this.note});
 
   Map<String, dynamic> toMap() {
     return {
@@ -28,6 +30,7 @@ class MenuModel {
       "allergies": allergies,
       "steps": steps,
       "ingredients": ingredients,
+      "note": note
     };
   }
 
@@ -40,6 +43,7 @@ class MenuModel {
       allergies: parsedJson['allergies'],
       steps: parsedJson['steps'],
       ingredients: parsedJson['ingredients'],
+      note: parsedJson['note']
     );
   }
 
@@ -61,6 +65,8 @@ class MenuModel {
           id: item["id"], qty: item["qty"], unit: item["unit"]);
     }));
 
+    note = documentSnapshot["note"] ?? "";
+
     //ingredients =
     //  documentSnapshot["ingredients"].cast<MenuIngredientModel>() ?? [];
   }
@@ -75,5 +81,6 @@ extension MenuExtensions on QueryDocumentSnapshot {
         allergies: this['allergies'],
         steps: this['steps'],
         ingredients: this['ingredients'],
+        note: this['note'],
       );
 }
