@@ -6,6 +6,7 @@ import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 
+// ignore: must_be_immutable
 class DetailBottomSheet extends StatelessWidget {
   DetailBottomSheet({Key? key, required this.menu, required this.ingredients})
       : super(key: key);
@@ -33,7 +34,7 @@ class DetailBottomSheet extends StatelessWidget {
       child: Column(children: [
         Container(
             width: 60,
-            child: Divider(height: 5, color: Colors.white, thickness: 3)),
+            child: Divider(height: 5, color: Colors.white, thickness: 4)),
         SizedBox(
           height: 30,
         ),
@@ -204,7 +205,7 @@ class DetailBottomSheet extends StatelessWidget {
                             children: [
                               VerticalDivider(
                                 width: 30,
-                                thickness: 5,
+                                thickness: 4,
                                 color: UIColors.pink,
                               ),
                               Expanded(
