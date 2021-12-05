@@ -29,8 +29,14 @@ class DetailBottomSheet extends StatelessWidget {
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
           ),
-          color: UIColors.white),
+          color: UIColors.detailBlack),
       child: Column(children: [
+        Container(
+            width: 60,
+            child: Divider(height: 5, color: Colors.white, thickness: 3)),
+        SizedBox(
+          height: 30,
+        ),
         Expanded(
             child: ListView(
           children: [
@@ -46,14 +52,14 @@ class DetailBottomSheet extends StatelessWidget {
                           children: [
                             Text(menu.kcal.toString(),
                                 style: GoogleFonts.poppins(
-                                    color: UIColors.black,
+                                    color: UIColors.pink,
                                     fontSize: 16,
-                                    fontWeight: FontWeight.w300)),
+                                    fontWeight: FontWeight.bold)),
                             Text('kcal',
                                 style: GoogleFonts.poppins(
-                                    color: UIColors.black,
+                                    color: UIColors.white,
                                     fontSize: 16,
-                                    fontWeight: FontWeight.w300))
+                                    fontWeight: FontWeight.normal))
                           ],
                         ),
                         Column(
@@ -61,14 +67,14 @@ class DetailBottomSheet extends StatelessWidget {
                           children: [
                             Text(menu.difficulty.toString(),
                                 style: GoogleFonts.poppins(
-                                    color: UIColors.black,
+                                    color: UIColors.pink,
                                     fontSize: 16,
-                                    fontWeight: FontWeight.w300)),
+                                    fontWeight: FontWeight.bold)),
                             Text('livello',
                                 style: GoogleFonts.poppins(
-                                    color: UIColors.black,
+                                    color: UIColors.white,
                                     fontSize: 16,
-                                    fontWeight: FontWeight.w300))
+                                    fontWeight: FontWeight.normal))
                           ],
                         ),
                         Column(
@@ -76,14 +82,14 @@ class DetailBottomSheet extends StatelessWidget {
                           children: [
                             Text(menu.preparationTime.toString(),
                                 style: GoogleFonts.poppins(
-                                    color: UIColors.black,
+                                    color: UIColors.pink,
                                     fontSize: 16,
-                                    fontWeight: FontWeight.w300)),
+                                    fontWeight: FontWeight.bold)),
                             Text('ore',
                                 style: GoogleFonts.poppins(
-                                    color: UIColors.black,
+                                    color: UIColors.white,
                                     fontSize: 16,
-                                    fontWeight: FontWeight.w300))
+                                    fontWeight: FontWeight.normal))
                           ],
                         )
                       ],
@@ -95,7 +101,7 @@ class DetailBottomSheet extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: UIColors.bluelight,
+                      color: UIColors.white,
                     ),
                     child: Image.network(
                       'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
@@ -108,15 +114,15 @@ class DetailBottomSheet extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                Row(
+                /*Row(
                   children: [
                     Text(menu.menuName.toString(),
                         style: GoogleFonts.poppins(
                             color: UIColors.black,
                             fontSize: 20,
-                            fontWeight: FontWeight.w500)),
+                            fontWeight: FontWeight.bold)),
                   ],
-                ),
+                ),*/
                 SizedBox(
                   height: 30,
                 ),
@@ -136,7 +142,7 @@ class DetailBottomSheet extends StatelessWidget {
                     Text(
                       "Ingredienti",
                       style: GoogleFonts.poppins(
-                          color: UIColors.lightBlack,
+                          color: UIColors.white,
                           fontSize: 25,
                           fontWeight: FontWeight.bold),
                     ),
@@ -164,7 +170,7 @@ class DetailBottomSheet extends StatelessWidget {
                                     textAlign: TextAlign.start,
                                     overflow: TextOverflow.visible,
                                     style: GoogleFonts.poppins(
-                                        color: UIColors.black,
+                                        color: UIColors.white,
                                         fontSize: 16,
                                         fontWeight: FontWeight.w300)),
                               ),
@@ -175,15 +181,19 @@ class DetailBottomSheet extends StatelessWidget {
                     SizedBox(
                       height: 30,
                     ),
-                    Text(
-                      "Procedimento",
-                      style: GoogleFonts.poppins(
-                          color: UIColors.lightBlack,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500),
+                    Row(
+                      children: [
+                        Text(
+                          "Procedimento",
+                          style: GoogleFonts.poppins(
+                              color: UIColors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     for (var item in menu.steps)
                       IntrinsicHeight(
@@ -193,16 +203,16 @@ class DetailBottomSheet extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               VerticalDivider(
-                                width: 50,
+                                width: 30,
                                 thickness: 5,
-                                color: UIColors.lightBlack,
+                                color: UIColors.pink,
                               ),
                               Expanded(
                                 child: Text(item,
                                     textAlign: TextAlign.start,
                                     overflow: TextOverflow.visible,
                                     style: GoogleFonts.poppins(
-                                        color: UIColors.black,
+                                        color: UIColors.white,
                                         fontSize: 16,
                                         fontWeight: FontWeight.w300)),
                               ),
@@ -222,7 +232,7 @@ class DetailBottomSheet extends StatelessWidget {
                     padding: const EdgeInsets.all(20),
                     margin: const EdgeInsets.only(top: 20),
                     decoration: BoxDecoration(
-                      color: UIColors.lightGreen,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Row(
