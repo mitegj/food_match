@@ -18,7 +18,12 @@ class CardTile extends StatelessWidget {
 
     return InkWell(
       onTap: () => {
-        Get.bottomSheet(DetailBottomSheet(menu: menu), isScrollControlled: true)
+        Get.bottomSheet(
+            DetailBottomSheet(
+              menu: menu,
+              ingredients: ingredients,
+            ),
+            isScrollControlled: true)
       },
       child: Column(
         children: [

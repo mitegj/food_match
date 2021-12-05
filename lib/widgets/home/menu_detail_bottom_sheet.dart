@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/models/ingredient_model.dart';
+import 'package:morning_brief/models/menu_ingredients_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 
@@ -9,6 +10,10 @@ class DetailBottomSheet extends StatelessWidget {
       : super(key: key);
   final MenuModel menu;
   final List<IngredientModel>? ingredients;
+
+  String getIngredientName(String id) {
+    return ingredients!.where((el) => el.id == id).single.listName;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -123,51 +128,35 @@ class DetailBottomSheet extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    IntrinsicHeight(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          VerticalDivider(
-                            width: 50,
-                            thickness: 5,
-                            color: UIColors.orange,
+                    for (var item in menu.ingredients)
+                      IntrinsicHeight(
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              VerticalDivider(
+                                width: 50,
+                                thickness: 5,
+                                color: UIColors.lightBlack,
+                              ),
+                              Expanded(
+                                child: Text(
+                                    item!.qty.toString() +
+                                        item.unit +
+                                        " " +
+                                        getIngredientName(item.id.toString()),
+                                    textAlign: TextAlign.start,
+                                    overflow: TextOverflow.visible,
+                                    style: GoogleFonts.poppins(
+                                        color: UIColors.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w300)),
+                              ),
+                            ],
                           ),
-                          Expanded(
-                            child: Text("Ingredienti 1 25 grammi",
-                                textAlign: TextAlign.start,
-                                overflow: TextOverflow.visible,
-                                style: GoogleFonts.poppins(
-                                    color: UIColors.black,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w300)),
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    IntrinsicHeight(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          VerticalDivider(
-                            width: 50,
-                            thickness: 5,
-                            color: UIColors.orange,
-                          ),
-                          Expanded(
-                            child: Text("Ingredienti 2 40 grammi",
-                                textAlign: TextAlign.start,
-                                overflow: TextOverflow.visible,
-                                style: GoogleFonts.poppins(
-                                    color: UIColors.black,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w300)),
-                          ),
-                        ],
-                      ),
-                    ),
                     SizedBox(
                       height: 30,
                     ),
