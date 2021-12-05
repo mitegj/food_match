@@ -23,7 +23,7 @@ class SettingsBody extends StatelessWidget {
             margin: const EdgeInsets.all(20),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: UIColors.lightBlack.withOpacity(0.5)),
+                color: UIColors.detailBlack),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
