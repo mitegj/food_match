@@ -149,7 +149,7 @@ class SettingsBody extends StatelessWidget {
             width: mediaQuery.size.width * 1,
             margin: const EdgeInsets.only(left: 20, right: 20),
             decoration: BoxDecoration(
-                color: UIColors.lightBlack.withOpacity(0.5),
+                color: UIColors.detailBlack,
                 borderRadius: BorderRadius.circular(20)),
             child: TextButton(
               onPressed: () {

@@ -19,12 +19,12 @@ class ArrowHeader extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Container(
               decoration: BoxDecoration(
-                  color: UIColors.lightBlack.withOpacity(0.5),
+                  color: UIColors.detailBlack,
                   borderRadius: BorderRadius.circular(15)),
               child: IconButton(
                 icon: Icon(
                   Icons.arrow_back_ios_rounded,
-                  color: UIColors.black,
+                  color: UIColors.white,
                 ),
                 onPressed: () {
                   Get.back();
