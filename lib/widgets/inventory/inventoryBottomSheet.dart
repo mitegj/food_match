@@ -51,53 +51,54 @@ class InventoryBottomSheet extends StatelessWidget {
     var mediaQuery = MediaQuery.of(context);
 
     return Container(
-      height: mediaQuery.size.height * 0.85,
+      height: mediaQuery.size.height * 0.845,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
           ),
-          color: UIColors.detailBlack),
+          color: UIColors.blue),
       child: Column(children: [
         Flexible(
           flex: 2,
-          child: Container(
-              alignment: Alignment.center,
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    'Inventario cucina',
-                    style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 20, right: 20, top: 20, bottom: 20),
-                    child: TextField(
-                      autofocus: false,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        focusedBorder: UnderlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        enabledBorder: UnderlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        prefixIcon: Icon(Icons.search),
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 20,
+              right: 20,
+            ),
+            child: Container(
+                alignment: Alignment.center,
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                        width: 60,
+                        child: Divider(
+                            height: 5, color: UIColors.black, thickness: 4)),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20, bottom: 20),
+                      child: TextField(
+                        autofocus: false,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: UIColors.bluelight,
+                          focusedBorder: UnderlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          enabledBorder: UnderlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          prefixIcon: Icon(Icons.search),
+                        ),
+                        onChanged: (text) {
+                          ingController.filterIngredients(text);
+                        },
                       ),
-                      onChanged: (text) {
-                        ingController.filterIngredients(text);
-                      },
                     ),
-                  ),
-                ],
-              )),
+                  ],
+                )),
+          ),
         ),
         Expanded(
-            flex: 6,
+            flex: 8,
             child: Container(
               margin: const EdgeInsets.only(
                   left: 20, right: 20, top: 0, bottom: 13),

@@ -23,7 +23,7 @@ class DetailBottomSheet extends StatelessWidget {
     var mediaQuery = MediaQuery.of(context);
 
     return Container(
-      height: mediaQuery.size.height * 0.85,
+      height: mediaQuery.size.height * 0.845,
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
@@ -34,7 +34,7 @@ class DetailBottomSheet extends StatelessWidget {
       child: Column(children: [
         Container(
             width: 60,
-            child: Divider(height: 5, color: Colors.white, thickness: 4)),
+            child: Divider(height: 5, color: UIColors.black, thickness: 4)),
         SizedBox(
           height: 30,
         ),

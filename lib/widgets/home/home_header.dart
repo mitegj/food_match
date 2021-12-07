@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/screens/settings_screen.dart';
 import 'package:morning_brief/utils/UIColors.dart';
+import 'package:morning_brief/widgets/inventory.dart';
 import 'package:morning_brief/widgets/inventory/inventoryBottomSheet.dart';
+import 'package:morning_brief/widgets/inventory/inventory_page.dart';
 
 class HomeHeader extends StatelessWidget {
   @override
@@ -36,7 +38,7 @@ class HomeHeader extends StatelessWidget {
               ),
             ],
           ),
-          InkWell(
+          /*InkWell(
             onTap: () => {Get.to(() => SettingsScreen())},
             child: CircleAvatar(
               backgroundColor: UIColors.white,
@@ -46,7 +48,7 @@ class HomeHeader extends StatelessWidget {
               ),
             ),
           ),
-          /*InkWell(
+          InkWell(
             onTap: () => onSettingsTapped(context),
             child: CircleAvatar(
               backgroundColor: UIcolors.white,
@@ -56,7 +58,7 @@ class HomeHeader extends StatelessWidget {
               ),
             ),
           ),*/
-          InkWell(
+          /*InkWell(
             onTap: () => {
               Get.bottomSheet(InventoryBottomSheet(), isScrollControlled: true)
             },
@@ -65,6 +67,42 @@ class HomeHeader extends StatelessWidget {
               child: Icon(
                 Icons.add_outlined,
                 color: UIColors.black,
+              ),
+            ),
+          ),*/
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: UIColors.detailBlack,
+                  borderRadius: BorderRadius.circular(15)),
+              child: IconButton(
+                icon: Icon(
+                  Icons.account_circle,
+                  color: UIColors.white,
+                ),
+                onPressed: () {
+                  Get.to(() => SettingsScreen());
+                },
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: UIColors.detailBlack,
+                  borderRadius: BorderRadius.circular(15)),
+              child: IconButton(
+                icon: Icon(
+                  Icons.add_outlined,
+                  color: UIColors.white,
+                ),
+                onPressed: () {
+                  /*Get.bottomSheet(InventoryBottomSheet(),
+                      isScrollControlled: true);*/
+                  Get.to(() => InventoryScreen());
+                },
               ),
             ),
           ),
