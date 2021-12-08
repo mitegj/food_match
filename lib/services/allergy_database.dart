@@ -3,14 +3,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:morning_brief/models/allergy_model.dart';
 import 'package:morning_brief/models/user_model.dart';
+import 'package:morning_brief/utils/conf.dart';
 
 class DatabaseAllergy {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final Conf conf = new Conf();
 
   Stream<List<AllergyModel>> allergiesStream() {
     return _firestore
-        .collection(
-            "allergies") // firebase non consente di usare le regex nei filtri quindi bisogna creare questo array denominato 'filters' con tutti i valori possibili per filtrarlo (alla creazione di una nuova location prendere nome e fare split)
+        .collection(conf
+            .allergyCollection) // firebase non consente di usare le regex nei filtri quindi bisogna creare questo array denominato 'filters' con tutti i valori possibili per filtrarlo (alla creazione di una nuova location prendere nome e fare split)
         .snapshots()
         .map((QuerySnapshot query) {
       List<AllergyModel> retVal = [];
@@ -25,7 +27,7 @@ class DatabaseAllergy {
     String uid = FirebaseAuth.instance.currentUser!.uid.toString();
 
     return _firestore
-        .collection("users")
+        .collection(conf.userCollection)
         .where('id', isEqualTo: uid)
         .snapshots()
         .map((QuerySnapshot query) {
@@ -41,7 +43,7 @@ class DatabaseAllergy {
     String uid = FirebaseAuth.instance.currentUser!.uid.toString();
 
     var result = await FirebaseFirestore.instance
-        .collection('users')
+        .collection(conf.userCollection)
         .where('id', isEqualTo: uid)
         .get();
 
@@ -60,7 +62,7 @@ class DatabaseAllergy {
 
     try {
       await FirebaseFirestore.instance
-          .collection("users")
+          .collection(conf.userCollection)
           .doc(uid)
           .update({"allergies": getAllergiesId(isChecked)});
       return true;

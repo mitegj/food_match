@@ -10,12 +10,13 @@ import 'package:morning_brief/models/user_model.dart';
 import 'package:morning_brief/screens/allergies.dart';
 import 'package:morning_brief/screens/onboarding.dart';
 import 'package:morning_brief/services/user_database.dart';
+import 'package:morning_brief/utils/conf.dart';
 import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AuthController extends GetxController {
   final RemoteConfig remoteConfig = RemoteConfig.instance;
-
+  final Conf conf = new Conf();
   final GoogleSignIn googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final Rxn<User> _firebaseUser = Rxn<User>();
@@ -145,11 +146,9 @@ class AuthController extends GetxController {
 
                   try {
                     if (Platform.isAndroid) {
-                      launch("https://play.google.com/store/apps/details?id=" +
-                          "appPackageName");
+                      launch(conf.appPlayStoreLink);
                     } else if (Platform.isIOS) {
-                      launch(
-                          "https://apps.apple.com/it/app/tiktok-video-live-e-musica/id835599320"); // Sostituire id e nome app
+                      launch(conf.appAppStroreLink);
                     }
                   } catch (e) {}
                 },
