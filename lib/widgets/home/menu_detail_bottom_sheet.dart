@@ -6,17 +6,11 @@ import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 
-// ignore: must_be_immutable
-class DetailBottomSheet extends StatelessWidget {
+class DetailBottomSheet extends GetWidget<MenuController> {
   DetailBottomSheet({Key? key, required this.menu, required this.ingredients})
       : super(key: key);
   final MenuModel menu;
   final List<IngredientModel>? ingredients;
-  MenuController _menuController = Get.put(MenuController());
-
-  String getIngredientName(String id) {
-    return ingredients!.where((el) => el.id == id).single.listName;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -167,7 +161,8 @@ class DetailBottomSheet extends StatelessWidget {
                                     item!.qty.toString() +
                                         item.unit +
                                         " " +
-                                        getIngredientName(item.id.toString()),
+                                        controller.getIngredientName(
+                                            item.id.toString(), ingredients),
                                     textAlign: TextAlign.start,
                                     overflow: TextOverflow.visible,
                                     style: GoogleFonts.poppins(
@@ -225,8 +220,7 @@ class DetailBottomSheet extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    print("piatto ");
-                    _menuController.updateSavedMenu(menu.id);
+                    controller.updateSavedMenu(menu.id);
                     Navigator.pop(context);
                   },
                   child: Container(

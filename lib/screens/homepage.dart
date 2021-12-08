@@ -4,15 +4,16 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
-import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/widgets/home/card_tile.dart';
 import 'package:morning_brief/widgets/home/home_header.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 class HomePage extends GetWidget<IngredientController> {
   HomePage({Key? key}) : super(key: key);
-  IngredientController ingController =
+
+  IngredientController _ingController =
       Get.put<IngredientController>(IngredientController());
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -33,7 +34,7 @@ class HomePage extends GetWidget<IngredientController> {
                     itemBuilder: (_, index) {
                       return Obx(() => CardTile(
                           menu: menuController.menus![index],
-                          ingredients: ingController.ingredients));
+                          ingredients: _ingController.ingredients));
                     },
                   )),
                 ])),

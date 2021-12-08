@@ -11,10 +11,8 @@ import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 // ignore: must_be_immutable
-class InventoryScreen extends StatelessWidget {
+class InventoryScreen extends GetWidget<IngredientController> {
   RxList<UserInventory> _userInventory = RxList();
-  IngredientController ingController =
-      Get.put<IngredientController>(IngredientController());
 
   updateStock(state, index, stocked) {
     UserInventory inv =
@@ -85,7 +83,7 @@ class InventoryScreen extends StatelessWidget {
                   prefixIcon: Icon(Icons.search),
                 ),
                 onChanged: (text) {
-                  ingController.filterIngredients(text);
+                  controller.filterIngredients(text);
                 },
               ),
             ),

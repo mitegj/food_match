@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:morning_brief/widgets/onBoarding/bottom_options.dart';
 import 'package:morning_brief/widgets/onBoarding/preview/previewPageA.dart';
 import 'package:morning_brief/widgets/onBoarding/preview/previewPageB.dart';
@@ -35,7 +34,7 @@ class _PreviewPageState extends State<PreviewPage> {
                     onPageChanged: (value) {
                       setState(() {
                         _activepage = value;
-                        print('Active Page: '+ _activepage.toString());
+                        print('Active Page: ' + _activepage.toString());
                       });
                     },
                     children: _pages),

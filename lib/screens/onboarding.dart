@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:morning_brief/controllers/auth_controller.dart';
 import 'package:morning_brief/screens/preview.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/onBoarding/authButtons/apple_login.dart';
 import 'package:morning_brief/widgets/onBoarding/authButtons/google_login.dart';
 
-class OnBoardingPage extends GetWidget<AuthController> {
+class OnBoardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);

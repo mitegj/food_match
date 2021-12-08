@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -7,8 +10,12 @@ import 'package:morning_brief/models/user_model.dart';
 import 'package:morning_brief/screens/allergies.dart';
 import 'package:morning_brief/screens/onboarding.dart';
 import 'package:morning_brief/services/user_database.dart';
+import 'package:package_info/package_info.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AuthController extends GetxController {
+  final RemoteConfig remoteConfig = RemoteConfig.instance;
+
   final GoogleSignIn googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final Rxn<User> _firebaseUser = Rxn<User>();
@@ -106,5 +113,68 @@ class AuthController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
     }
+  }
+
+  Future<void> checkUpdates() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+    //await remoteConfig.fetch();
+    await remoteConfig.fetchAndActivate();
+
+    final String latestBuildNumber =
+        removeLastDigit(remoteConfig.getString("version"));
+
+    final String currentBuildNumber = removeLastDigit(packageInfo.version);
+
+    int latestVersion = getExtendedVersionNumber(latestBuildNumber);
+    int currentVersion = getExtendedVersionNumber(currentBuildNumber);
+
+    if (currentVersion < latestVersion) {
+      Get.defaultDialog(
+          title: '',
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text("è presente una nuova versione, aggiorna l'app stronzo"),
+              SizedBox(
+                height: 30.0,
+              ),
+              RaisedButton(
+                onPressed: () {
+                  // TODO: verificare una volta in fase di test se funzionano
+
+                  try {
+                    if (Platform.isAndroid) {
+                      launch("https://play.google.com/store/apps/details?id=" +
+                          "appPackageName");
+                    } else if (Platform.isIOS) {
+                      launch(
+                          "https://apps.apple.com/it/app/tiktok-video-live-e-musica/id835599320"); // Sostituire id e nome app
+                    }
+                  } catch (e) {}
+                },
+                child: Text(
+                  'OK',
+                  style: TextStyle(color: Colors.white, fontSize: 16.0),
+                ),
+                color: Colors.redAccent,
+              )
+            ],
+          ),
+          radius: 10.0);
+    }
+  }
+
+  String removeLastDigit(String version) {
+    List<String> l = version.split('.');
+    l.removeLast();
+
+    return l.join('.');
+  }
+
+  int getExtendedVersionNumber(String version) {
+    List versionCells = version.split('.');
+    versionCells = versionCells.map((i) => int.parse(i)).toList();
+    return versionCells[0] * 10000 + versionCells[1] * 100; // versionCells[2]
   }
 }

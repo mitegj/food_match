@@ -56,4 +56,8 @@ class MenuController extends GetxController {
     }
     return false;
   }
+
+  String getIngredientName(String id, ingredients) {
+    return ingredients!.where((el) => el.id == id).single.listName;
+  }
 }

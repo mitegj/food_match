@@ -6,62 +6,11 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/allergy_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:morning_brief/models/allergyChecked_model.dart';
-import 'package:morning_brief/screens/homepage.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 class AllergiesScreen extends GetWidget<AllergyController> {
   AllergiesScreen({Key? key}) : super(key: key);
-
-  RxList<AllergyChecked> _isChecked = RxList();
-
-  //RxList<String> allergies = RxList();
-  bool isValueUpdated = false;
-
-  setAllergies(allergyController) {
-    if (isValueUpdated) {
-      allergyController
-          .updateAllergies(_isChecked)
-          .then((value) => Get.off(() => HomePage()));
-    } else {
-      Get.off(() => HomePage());
-    }
-  }
-
-  getAllergyName(allergyController, index) {
-    return allergyController.allergies![index].name.toString();
-  }
-
-  getCheckValue(allergyController, index) {
-    return _isChecked
-        .where((el) => el.id == allergyController.allergies![index].id)
-        .single
-        .checked;
-  }
-
-  setCheckState(state, index, newValue) {
-    _isChecked
-        .where((el) => el.id == state.allergies[index].id)
-        .single
-        .checked = newValue!;
-
-    _isChecked.refresh();
-
-    if (!isValueUpdated) {
-      isValueUpdated = true;
-    }
-  }
-
-  setAllergiesCheck(state, index) {
-    if (_isChecked.where((el) => el.id == state.allergies[index].id).isEmpty) {
-      _isChecked.add(AllergyChecked(
-          id: state.allergies[index].id,
-          checked: state.userAllergies != null
-              ? state.userAllergies.contains(state.allergies[index].id)
-              : false));
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,8 +19,8 @@ class AllergiesScreen extends GetWidget<AllergyController> {
 
     return Obx(() => GetX<AllergyController>(
         init: Get.put<AllergyController>(AllergyController()),
-        builder: (AllergyController allergyController) {
-          if (allergyController.allergies != null) {
+        builder: (controller) {
+          if (controller.allergies != null) {
             return Scaffold(
                 backgroundColor: theme.backgroundColor,
                 resizeToAvoidBottomInset: true,
@@ -121,7 +70,7 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                             0,
                                         itemBuilder: (_, index) {
                                           //return Text(allergyController.allergies![index].name);
-                                          setAllergiesCheck(
+                                          controller.setAllergiesCheck(
                                               allergyController, index);
                                           return Obx(
                                             () => Container(
@@ -136,17 +85,17 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                                 checkColor: UIColors.green,
                                                 activeColor: UIColors.green,
                                                 title: Text(
-                                                  getAllergyName(
+                                                  controller.getAllergyName(
                                                       allergyController, index),
                                                   style: GoogleFonts.poppins(
                                                       color: Colors.white,
                                                       fontWeight:
                                                           FontWeight.normal),
                                                 ),
-                                                value: getCheckValue(
+                                                value: controller.getCheckValue(
                                                     allergyController, index),
                                                 onChanged: (newValue) {
-                                                  setCheckState(
+                                                  controller.setCheckState(
                                                       allergyController,
                                                       index,
                                                       newValue);
@@ -169,7 +118,7 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                       ),
                       InkWell(
                         onTap: () {
-                          setAllergies(allergyController);
+                          controller.setAllergies(controller);
                         },
                         child: Container(
                           width: mediaQuery.size.height * 1,

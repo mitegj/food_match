@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
 import 'package:morning_brief/controllers/user_controller.dart';
-import 'package:morning_brief/screens/allergies.dart';
-
 import 'package:morning_brief/screens/homepage.dart';
 import 'package:morning_brief/screens/onboarding.dart';
 
@@ -15,7 +13,8 @@ class Root extends GetWidget<AuthController> {
         Get.put<UserController>(UserController());
       },
       builder: (_) {
-        if (Get.find<AuthController>().user?.uid != null) {
+        controller.checkUpdates();
+        if (controller.user?.uid != null) {
           return HomePage();
           /*return RaisedButton(
             child: Text("Log out"),

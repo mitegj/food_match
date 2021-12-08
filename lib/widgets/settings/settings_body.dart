@@ -1,12 +1,13 @@
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:morning_brief/controllers/auth_controller.dart';
+import 'package:morning_brief/controllers/setting_controller.dart';
 import 'package:morning_brief/screens/allergies.dart';
 import 'package:morning_brief/utils/UIColors.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-class SettingsBody extends StatelessWidget {
+class SettingsBody extends GetWidget<SettingController> {
+  SettingController _settingController =
+      Get.put<SettingController>(SettingController());
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -94,19 +95,8 @@ class SettingsBody extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.center,
                     child: TextButton(
-                      onPressed: () async {
-                        final url = Uri.encodeFull(
-                            'mailto:beyondx.team@gmail.com?subject=Feedback&body=');
-                        if (await canLaunch(url)) {
-                          await launch(url);
-                        } else {
-                          Get.snackbar(
-                            "Errore durante l'apertura dell'app Mail",
-                            'Impossibile eseguire $url',
-                            colorText: Colors.white,
-                            snackPosition: SnackPosition.BOTTOM,
-                          );
-                        }
+                      onPressed: () {
+                        _settingController.openEmailFeedback();
                       },
                       child: Text(
                         'Help and assistence',
@@ -154,7 +144,7 @@ class SettingsBody extends StatelessWidget {
             child: TextButton(
               onPressed: () {
                 // TODO: Logout da google
-                AuthController().logoutGoogle();
+                _settingController.logout();
               },
               child: Text(
                 'Disconetti account',
@@ -187,14 +177,14 @@ class SettingsBody extends StatelessWidget {
           flex: 1,
           child: Container(
             alignment: Alignment.center,
-            child: Text(
-              (' 0.0.1').toLowerCase(),
-              style: GoogleFonts.poppins(
-                color: theme.secondaryHeaderColor,
-                fontSize: 14,
-                fontWeight: FontWeight.w300,
-              ),
-            ),
+            child: Obx(() => Text(
+                  _settingController.appCurrentVersion.value,
+                  style: GoogleFonts.poppins(
+                    color: theme.secondaryHeaderColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w300,
+                  ),
+                )),
           ),
         ),
       ],

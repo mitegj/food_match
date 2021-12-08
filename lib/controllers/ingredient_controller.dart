@@ -4,6 +4,8 @@ import 'package:morning_brief/models/userInventory_model.dart';
 import 'package:morning_brief/services/ingredient_databse.dart';
 import 'package:morning_brief/services/menu_database.dart';
 
+import 'menu_controller.dart';
+
 class IngredientController extends GetxController {
   Rxn<IngredientModel> ingredient = Rxn<IngredientModel>();
   Rxn<List<IngredientModel>> ingredientList =
@@ -16,6 +18,15 @@ class IngredientController extends GetxController {
       Rxn<List<UserInventory>>().obs();
   List<UserInventory>? get userIngredients => userIngredientList.value.obs();
 
+  @override
+  void onInit() {
+    super.onInit();
+    ingredientList.bindStream(DatabaseIngredient().ingredientStream());
+
+    userIngredientList.bindStream(DatabaseMenu().userInventoryStream());
+    ingSearch.bindStream(DatabaseIngredient().ingredientStream());
+  }
+
   void filterIngredients(String src) {
     ingSearch.clear();
     if (ingredients != null)
@@ -25,12 +36,35 @@ class IngredientController extends GetxController {
           });
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-    ingredientList.bindStream(DatabaseIngredient().ingredientStream());
+  updateStock(state, index, stocked, _userInventory) {
+    UserInventory inv =
+        _userInventory.where((el) => el.id == state.ingSearch[index].id).single;
 
-    userIngredientList.bindStream(DatabaseMenu().userInventoryStream());
-    ingSearch.bindStream(DatabaseIngredient().ingredientStream());
+    bool stock = stocked ? inv.stock = true : inv.stock = false;
+
+    MenuController().updateStockCtrl(inv.id, stock);
+    _userInventory.refresh();
+  }
+
+  setUserInventoryCheck(state, index, _userInventory) {
+    if (_userInventory
+        .where((el) => el.id == state.ingSearch[index].id)
+        .isEmpty) {
+      _userInventory.add(UserInventory(
+          id: state.ingSearch[index].id,
+          stock:
+              state.userIngredients != null ? getStock(state, index) : false));
+    }
+  }
+
+  bool getStock(state, index) {
+    bool stock = false;
+    for (var element in state.userIngredients) {
+      if (element.id == state.ingSearch[index].id) {
+        stock = element.stock;
+      }
+    }
+
+    return stock;
   }
 }
