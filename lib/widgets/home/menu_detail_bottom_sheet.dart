@@ -5,6 +5,7 @@ import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
+import 'package:morning_brief/widgets/global_input/step_circle.dart';
 
 class DetailBottomSheet extends GetWidget<MenuController> {
   DetailBottomSheet({Key? key, required this.menu, required this.ingredients})
@@ -37,61 +38,6 @@ class DetailBottomSheet extends GetWidget<MenuController> {
           children: [
             Column(
               children: [
-                Container(
-                    alignment: Alignment.center,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(menu.kcal.toString(),
-                                style: GoogleFonts.poppins(
-                                    color: UIColors.pink,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold)),
-                            Text('kcal',
-                                style: GoogleFonts.poppins(
-                                    color: UIColors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.normal))
-                          ],
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(menu.difficulty.toString(),
-                                style: GoogleFonts.poppins(
-                                    color: UIColors.pink,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold)),
-                            Text('livello',
-                                style: GoogleFonts.poppins(
-                                    color: UIColors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.normal))
-                          ],
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(menu.preparationTime.toString(),
-                                style: GoogleFonts.poppins(
-                                    color: UIColors.pink,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold)),
-                            Text('ore',
-                                style: GoogleFonts.poppins(
-                                    color: UIColors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.normal))
-                          ],
-                        )
-                      ],
-                    )),
-                SizedBox(
-                  height: 30,
-                ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20.0),
                   child: Container(
@@ -107,7 +53,7 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 40,
                 ),
                 /*Row(
                   children: [
@@ -118,13 +64,10 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                             fontWeight: FontWeight.bold)),
                   ],
                 ),*/
-                SizedBox(
-                  height: 30,
-                ),
                 Row(
                   children: [
                     Text(
-                      menu.note.toString(),
+                      "Tipologia piatto",
                       style: GoogleFonts.poppins(
                           color: UIColors.pink,
                           fontSize: 15,
@@ -134,22 +77,134 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                 ),
                 Row(
                   children: [
-                    Text(
-                      "Ingredienti",
-                      style: GoogleFonts.poppins(
-                          color: UIColors.white,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold),
+                    Expanded(
+                      child: Text(
+                        menu.menuName.toString(),
+                        overflow: TextOverflow.visible,
+                        style: GoogleFonts.poppins(
+                            color: UIColors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ],
                 ),
+                /*Padding(
+                  padding: const EdgeInsets.only(
+                      top: 10.0, bottom: 10.0, right: 20.0, left: 20.0),
+                  child: Container(
+                      alignment: Alignment.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(menu.kcal.toString(),
+                                  style: GoogleFonts.poppins(
+                                      color: Colors.white.withOpacity(0.8),
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.normal)),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                menu.difficulty.toString(),
+                                style: GoogleFonts.poppins(
+                                    color: Colors.white.withOpacity(0.8),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.normal),
+                              )
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(menu.preparationTime.toString(),
+                                  style: GoogleFonts.poppins(
+                                      color: Colors.white.withOpacity(0.8),
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.normal)),
+                            ],
+                          )
+                        ],
+                      )),
+                ),*/
                 SizedBox(
                   height: 20,
+                ),
+                Container(
+                  width: mediaQuery.size.width,
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                      color: UIColors.black,
+                      borderRadius: new BorderRadius.only(
+                          topLeft: const Radius.circular(15.0),
+                          topRight: const Radius.circular(15.0))),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.fastfood_rounded, color: Colors.white),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: Text("Lista ingredienti",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20)),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  width: mediaQuery.size.width,
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                      color: UIColors.black,
+                      borderRadius: new BorderRadius.only(
+                          bottomLeft: const Radius.circular(15.0),
+                          bottomRight: const Radius.circular(15.0))),
+                  child: Column(
+                    children: [
+                      Column(
+                        children: [
+                          for (var item in menu.ingredients)
+                            IntrinsicHeight(
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 20),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                        controller.getIngredientName(
+                                            item!.id.toString(), ingredients),
+                                        style: GoogleFonts.poppins(
+                                            color: UIColors.white,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w300)),
+                                    Text(item.qty.toString() + item.unit + " ",
+                                        overflow: TextOverflow.visible,
+                                        style: GoogleFonts.poppins(
+                                            color: UIColors.white,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w300)),
+                                  ],
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    for (var item in menu.ingredients)
+                    /*for (var item in menu.ingredients)
                       IntrinsicHeight(
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 20),
@@ -173,18 +228,32 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                             ],
                           ),
                         ),
-                      ),
+                      ),*/
                     SizedBox(
                       height: 30,
                     ),
                     Row(
                       children: [
                         Text(
-                          "Procedimento",
+                          "Per 4 porzioni",
                           style: GoogleFonts.poppins(
-                              color: UIColors.white,
-                              fontSize: 25,
+                              color: UIColors.pink,
+                              fontSize: 15,
                               fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            "Procedimento",
+                            overflow: TextOverflow.visible,
+                            style: GoogleFonts.poppins(
+                                color: UIColors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ],
                     ),
@@ -192,29 +261,22 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                       height: 10,
                     ),
                     for (var item in menu.steps)
-                      IntrinsicHeight(
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              VerticalDivider(
-                                width: 30,
-                                thickness: 4,
-                                color: UIColors.pink,
-                              ),
-                              Expanded(
-                                child: Text(
-                                    menu.steps.indexOf(item).toString() + item,
-                                    textAlign: TextAlign.start,
-                                    overflow: TextOverflow.visible,
-                                    style: GoogleFonts.poppins(
-                                        color: UIColors.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w300)),
-                              ),
-                            ],
-                          ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            StepCircle(indice: menu.steps.indexOf(item) + 1),
+                            Expanded(
+                              child: Text(item,
+                                  textAlign: TextAlign.start,
+                                  overflow: TextOverflow.visible,
+                                  style: GoogleFonts.poppins(
+                                      color: UIColors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w300)),
+                            ),
+                          ],
                         ),
                       ),
                   ],
@@ -236,7 +298,7 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                       children: [
                         Container(
                           child: Icon(
-                            Icons.check,
+                            Icons.done_all_outlined,
                             size: 25,
                             color: UIColors.black,
                           ),

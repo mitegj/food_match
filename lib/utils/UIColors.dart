@@ -85,4 +85,8 @@ class UIColors {
   static Color get detailBlack {
     return Color(0xFF12161C);
   }
+
+  static Color get particularBlack {
+    return Color(0xF191D22);
+  }
 }
