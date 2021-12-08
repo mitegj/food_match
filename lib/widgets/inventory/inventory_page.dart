@@ -49,38 +49,44 @@ class InventoryScreen extends GetWidget<IngredientController> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-
+    var mediaQuery = MediaQuery.of(context);
     return Scaffold(
       backgroundColor: theme.backgroundColor,
       resizeToAvoidBottomInset: true,
+      //resizeToAvoidBottomPadding: false,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Flexible(flex: 1, child: ArrowHeader()),
-            Flexible(
-              flex: 2,
-              child: Padding(
-                padding: EdgeInsets.only(left: 20, right: 20),
-                child: Text("Il tuo inventario in cucina",
-                    style: GoogleFonts.poppins(
-                        color: UIColors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.w700)),
+            if (mediaQuery.viewInsets.bottom == 0)
+              Flexible(flex: 1, child: ArrowHeader()),
+            if (mediaQuery.viewInsets.bottom == 0)
+              Flexible(
+                flex: 2,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                  child: Text("Gestisci il tuo inventario personale",
+                      style: GoogleFonts.poppins(
+                          color: UIColors.white,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w700)),
+                ),
               ),
-            ),
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: TextField(
                 autofocus: false,
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: UIColors.bluelight,
+                  fillColor: UIColors.white,
                   focusedBorder: UnderlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
                   enabledBorder: UnderlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  prefixIcon: Icon(Icons.search),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: UIColors.detailBlack,
+                  ),
                 ),
                 onChanged: (text) {
                   controller.filterIngredients(text);

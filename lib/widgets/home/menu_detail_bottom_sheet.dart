@@ -15,9 +15,9 @@ class DetailBottomSheet extends GetWidget<MenuController> {
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
-
+    int index = 0;
     return Container(
-      height: mediaQuery.size.height * 0.845,
+      height: mediaQuery.size.height * 0.85,
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
@@ -204,7 +204,8 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                                 color: UIColors.pink,
                               ),
                               Expanded(
-                                child: Text(item,
+                                child: Text(
+                                    menu.steps.indexOf(item).toString() + item,
                                     textAlign: TextAlign.start,
                                     overflow: TextOverflow.visible,
                                     style: GoogleFonts.poppins(
