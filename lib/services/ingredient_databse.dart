@@ -1,12 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:morning_brief/models/ingredient_model.dart';
+import 'package:morning_brief/utils/conf.dart';
 
 class DatabaseIngredient {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final Conf conf = new Conf();
 
   Stream<List<IngredientModel>> ingredientStream() {
     return _firestore
-        .collection("inventoryList")
+        .collection(conf.inventoryLisrCollection)
         .snapshots()
         .map((QuerySnapshot query) {
       List<IngredientModel> retVal = [];
