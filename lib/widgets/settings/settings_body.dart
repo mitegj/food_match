@@ -38,7 +38,7 @@ class SettingsBody extends GetWidget<SettingController> {
                         'Dati personali',
                         style: GoogleFonts.poppins(
                           color: UIColors.white,
-                          fontSize: 16,
+                          fontSize: 15,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -60,7 +60,7 @@ class SettingsBody extends GetWidget<SettingController> {
                         'Allergie',
                         style: GoogleFonts.poppins(
                           color: UIColors.white,
-                          fontSize: 16,
+                          fontSize: 15,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -80,7 +80,7 @@ class SettingsBody extends GetWidget<SettingController> {
                         'Support us with 5 star',
                         style: GoogleFonts.poppins(
                           color: UIColors.white,
-                          fontSize: 16,
+                          fontSize: 15,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -102,7 +102,7 @@ class SettingsBody extends GetWidget<SettingController> {
                         'Help and assistence',
                         style: GoogleFonts.poppins(
                           color: UIColors.white,
-                          fontSize: 16,
+                          fontSize: 15,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -122,7 +122,7 @@ class SettingsBody extends GetWidget<SettingController> {
                         'Privacy policy',
                         style: GoogleFonts.poppins(
                           color: UIColors.white,
-                          fontSize: 16,
+                          fontSize: 15,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -150,7 +150,7 @@ class SettingsBody extends GetWidget<SettingController> {
                 'Disconetti account',
                 style: GoogleFonts.poppins(
                   color: Colors.white,
-                  fontSize: 16,
+                  fontSize: 15,
                   fontWeight: FontWeight.w400,
                 ),
               ),
@@ -167,7 +167,7 @@ class SettingsBody extends GetWidget<SettingController> {
                   'Cancella account',
                   style: GoogleFonts.poppins(
                     color: theme.secondaryHeaderColor,
-                    fontSize: 15,
+                    fontSize: 14,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -181,7 +181,7 @@ class SettingsBody extends GetWidget<SettingController> {
                   _settingController.appCurrentVersion.value,
                   style: GoogleFonts.poppins(
                     color: theme.secondaryHeaderColor,
-                    fontSize: 14,
+                    fontSize: 13,
                     fontWeight: FontWeight.w300,
                   ),
                 )),

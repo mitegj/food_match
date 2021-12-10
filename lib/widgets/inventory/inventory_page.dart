@@ -62,7 +62,7 @@ class InventoryScreen extends GetWidget<IngredientController> {
               Flexible(flex: 1, child: ArrowHeader()),
             if (mediaQuery.viewInsets.bottom == 0)
               Flexible(
-                flex: 2,
+                flex: 1,
                 child: Padding(
                   padding: EdgeInsets.only(left: 20, right: 20),
                   child: Text("Gestisci il tuo inventario personale",
@@ -72,29 +72,32 @@ class InventoryScreen extends GetWidget<IngredientController> {
                           fontWeight: FontWeight.w700)),
                 ),
               ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: TextField(
-                autofocus: false,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: UIColors.white,
-                  focusedBorder: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  enabledBorder: UnderlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: UIColors.detailBlack,
+            Flexible(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: TextField(
+                  autofocus: false,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: UIColors.white,
+                    focusedBorder: UnderlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    enabledBorder: UnderlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: UIColors.detailBlack,
+                    ),
                   ),
+                  onChanged: (text) {
+                    controller.filterIngredients(text);
+                  },
                 ),
-                onChanged: (text) {
-                  controller.filterIngredients(text);
-                },
               ),
             ),
             Flexible(
-              flex: 5,
+              flex: 4,
               child: Container(
                 padding: const EdgeInsets.only(
                     top: 0, bottom: 0, left: 20, right: 20),

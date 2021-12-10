@@ -6,6 +6,7 @@ import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/widgets/home/card_tile.dart';
 import 'package:morning_brief/widgets/home/home_header.dart';
+import 'package:morning_brief/widgets/home/menu_tile.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 class HomePage extends GetWidget<IngredientController> {
@@ -37,7 +38,7 @@ class HomePage extends GetWidget<IngredientController> {
                           child: ListView.builder(
                         itemCount: menuController.menus?.length ?? 0,
                         itemBuilder: (_, index) {
-                          return Obx(() => CardTile(
+                          return Obx(() => MenuTile(
                               menu: menuController.menus![index],
                               ingredients: _ingController.ingredients));
                         },
