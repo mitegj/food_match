@@ -11,7 +11,6 @@ import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 class AllergiesScreen extends GetWidget<AllergyController> {
   AllergiesScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
@@ -110,7 +109,7 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                       )),
                                     ]);
                                   } else {
-                                    return const Text("Loading data...");
+                                    return LoadingWidget();
                                   }
                                 },
                               )),

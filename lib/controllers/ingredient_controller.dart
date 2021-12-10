@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/userInventory_model.dart';
+import 'package:morning_brief/services/allergy_database.dart';
 import 'package:morning_brief/services/ingredient_databse.dart';
 import 'package:morning_brief/services/menu_database.dart';
 
@@ -18,6 +19,9 @@ class IngredientController extends GetxController {
       Rxn<List<UserInventory>>().obs();
   List<UserInventory>? get userIngredients => userIngredientList.value.obs();
 
+  Rxn<List<String>> userAllergyList = Rxn<List<String>>().obs();
+  List<String>? get userAllergies => userAllergyList.value.obs();
+
   @override
   void onInit() {
     super.onInit();
@@ -25,6 +29,8 @@ class IngredientController extends GetxController {
 
     userIngredientList.bindStream(DatabaseMenu().userInventoryStream());
     ingSearch.bindStream(DatabaseIngredient().ingredientStream());
+
+    userAllergyList.bindStream(DatabaseAllergy().userAllergiesStream());
   }
 
   void filterIngredients(String src) {

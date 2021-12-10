@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/services/menu_database.dart';
 
@@ -7,11 +8,16 @@ class MenuController extends GetxController {
   Rxn<MenuModel> menu = Rxn<MenuModel>();
   Rxn<List<MenuModel>> menuList = Rxn<List<MenuModel>>().obs();
   List<MenuModel>? get menus => menuList.value.obs();
+  IngredientController? _ingController;
+
+  MenuController();
+  MenuController.fromCtrl(IngredientController ingController)
+      : _ingController = ingController;
 
   @override
   void onInit() {
     super.onInit();
-    menuList.bindStream(DatabaseMenu().menuStream());
+    menuList.bindStream(DatabaseMenu().menuStream(_ingController, 30));
   }
 
   Future<bool> updateStockCtrl(String uid, bool stock) async {

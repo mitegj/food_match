@@ -17,32 +17,41 @@ class HomePage extends GetWidget<IngredientController> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-
-    return Obx(() => GetX<MenuController>(
-          init: Get.put<MenuController>(MenuController()),
-          builder: (MenuController menuController) {
-            if (menuController.menus != null) {
-              return Scaffold(
-                backgroundColor: theme.backgroundColor,
-                resizeToAvoidBottomInset: true,
-                body: SafeArea(
-                    child: Column(children: [
-                  HomeHeader(),
-                  Expanded(
-                      child: ListView.builder(
-                    itemCount: menuController.menus?.length ?? 0,
-                    itemBuilder: (_, index) {
-                      return Obx(() => CardTile(
-                          menu: menuController.menus![index],
-                          ingredients: _ingController.ingredients));
-                    },
-                  )),
-                ])),
-              );
-            } else {
-              return LoadingWidget();
-            }
-          },
-        ));
+    return Obx(() => GetX<IngredientController>(
+        init: Get.put<IngredientController>(IngredientController()),
+        builder: (IngredientController ingController) {
+          if (ingController.userAllergies != null &&
+              ingController.ingredients != null) {
+            return GetX<MenuController>(
+              init: Get.put<MenuController>(
+                  MenuController.fromCtrl(ingController)),
+              builder: (MenuController menuController) {
+                if (menuController.menus != null) {
+                  return Scaffold(
+                    backgroundColor: theme.backgroundColor,
+                    resizeToAvoidBottomInset: true,
+                    body: SafeArea(
+                        child: Column(children: [
+                      HomeHeader(),
+                      Expanded(
+                          child: ListView.builder(
+                        itemCount: menuController.menus?.length ?? 0,
+                        itemBuilder: (_, index) {
+                          return Obx(() => CardTile(
+                              menu: menuController.menus![index],
+                              ingredients: _ingController.ingredients));
+                        },
+                      )),
+                    ])),
+                  );
+                } else {
+                  return LoadingWidget();
+                }
+              },
+            );
+          } else {
+            return LoadingWidget();
+          }
+        }));
   }
 }
