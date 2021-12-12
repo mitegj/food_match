@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,81 +19,75 @@ class MenuTile extends StatelessWidget {
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
     return InkWell(
-      onTap: () => {
-        Get.bottomSheet(
-            DetailBottomSheet(
-              menu: menu,
-              ingredients: ingredients,
-            ),
-            isScrollControlled: true)
-      },
-      child: Container(
-          width: mediaQuery.size.width * 1,
-          padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 40),
-          margin:
-              const EdgeInsets.only(bottom: 20, top: 0, left: 20, right: 20),
-          decoration: BoxDecoration(
-              color: UIColors.detailBlack,
-              borderRadius: BorderRadius.circular(50)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                height: mediaQuery.size.width * 0.7,
-                decoration: BoxDecoration(
-                    color: UIColors.orange,
-                    borderRadius: BorderRadius.circular(50)),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(50.0),
-                  child: Image.network(
-                    'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-                    fit: BoxFit.cover,
-                    height: mediaQuery.size.height * 1,
-                    width: mediaQuery.size.width * 1,
+        onTap: () => {
+              Get.bottomSheet(
+                  DetailBottomSheet(
+                    menu: menu,
+                    ingredients: ingredients,
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      menu.menuName.toString(),
-                      style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                      overflow: TextOverflow.visible,
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  Text(
-                    describeEnum(DishType.values[menu.dishType]),
-                    style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 16),
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  Text(
-                    "- " + menu.preparationTime.toString() + " minutes",
-                    style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 16),
-                  )
-                ],
-              )
-            ],
-          )),
-    );
+                  isScrollControlled: true)
+            },
+        child: Row(
+          children: [
+            Container(
+                height: mediaQuery.size.height * 0.15,
+                width: mediaQuery.size.width * 0.30,
+                margin: EdgeInsets.only(top: 20, bottom: 0, left: 10, right: 0),
+                decoration: BoxDecoration(
+                  color: UIColors.violet,
+                )),
+            Container(
+                height: mediaQuery.size.height * 0.15,
+                width: mediaQuery.size.width * 0.62,
+                margin:
+                    EdgeInsets.only(top: 20, bottom: 0, left: 10, right: 10),
+                decoration: BoxDecoration(color: UIColors.detailBlack),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        children: [
+                          Text(
+                            "Tempo stimato",
+                            style: TextStyle(
+                                color: UIColors.pink,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            menu.menuName.toString(),
+                            style: TextStyle(
+                                color: UIColors.white,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "Descrizione bla bla bla bla",
+                            style: TextStyle(
+                                color: UIColors.white.withOpacity(0.8)),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 38),
+                      Row(
+                        children: [
+                          Text("Calorie",
+                              style: TextStyle(
+                                  color: Colors.white.withOpacity(0.5))),
+                        ],
+                      )
+                    ],
+                  ),
+                )),
+          ],
+        ));
   }
 }
