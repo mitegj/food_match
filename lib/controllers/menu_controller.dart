@@ -8,15 +8,25 @@ class MenuController extends GetxController {
   Rxn<MenuModel> menu = Rxn<MenuModel>();
   Rxn<List<MenuModel>> menuList = Rxn<List<MenuModel>>().obs();
   List<MenuModel>? get menus => menuList.value.obs();
+  set menus(List<MenuModel>? value) {
+    menus?.clear();
+  }
+
   IngredientController? _ingController;
 
   MenuController();
   MenuController.fromCtrl(IngredientController ingController)
-      : _ingController = ingController;
+      : _ingController = ingController {
+    this.onInit();
+  }
 
   @override
   void onInit() {
     super.onInit();
+    getMenuList();
+  }
+
+  getMenuList() {
     menuList.bindStream(DatabaseMenu().menuStream(_ingController, 30));
   }
 

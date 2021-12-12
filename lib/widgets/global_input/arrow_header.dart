@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:morning_brief/screens/homepage.dart';
 
 import 'package:morning_brief/utils/UIColors.dart';
 
@@ -27,7 +28,7 @@ class ArrowHeader extends StatelessWidget {
                   color: UIColors.white,
                 ),
                 onPressed: () {
-                  Get.back();
+                  Get.offAll(() => HomePage());
                 },
               ),
             ),

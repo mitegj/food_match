@@ -101,7 +101,7 @@ class HomeHeader extends StatelessWidget {
                 onPressed: () {
                   /*Get.bottomSheet(InventoryBottomSheet(),
                       isScrollControlled: true);*/
-                  Get.to(() => InventoryScreen());
+                  Get.offAll(() => InventoryScreen());
                 },
               ),
             ),

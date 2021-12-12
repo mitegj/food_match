@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
-import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_ingredients_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/models/userInventory_model.dart';
@@ -18,7 +17,7 @@ class DatabaseMenu {
         isUserAllergic = true;
     });
 
-    print("allergic: " + isUserAllergic.toString());
+    //print("allergic: " + isUserAllergic.toString());
     return isUserAllergic;
   }
 
@@ -26,16 +25,17 @@ class DatabaseMenu {
       MenuModel menu, IngredientController? _ingController) {
     bool hasUserIngredients = false;
     List<String> userIngredients = getUserIngredientsList(_ingController);
-    menu.ingredients.forEach((MenuIngredientModel? ing) {
+
+    for (MenuIngredientModel? ing in menu.ingredients) {
       if (userIngredients.contains(ing?.id)) {
         hasUserIngredients = true;
       } else {
         hasUserIngredients = false;
-        return;
+        break;
       }
-    });
+    }
 
-    print("ingredients: " + hasUserIngredients.toString());
+    //print("ingredients: " + hasUserIngredients.toString());
     return hasUserIngredients;
   }
 
@@ -76,6 +76,7 @@ class DatabaseMenu {
     return _firestore
         .collection(conf.userCollection)
         .doc(uid)
+        // prendere solamente quelli a true?
         .collection(conf.inventoryCollection)
         .snapshots()
         .map((QuerySnapshot query) {
