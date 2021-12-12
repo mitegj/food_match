@@ -50,10 +50,10 @@ class DatabaseMenu {
   }
 
   Stream<List<MenuModel>> menuStream(
-      IngredientController? _ingController, int limit) {
+      IngredientController? _ingController, List<int> filters, int limit) {
     return _firestore
         .collection(conf.menuCollection)
-        //.where("allergies", arrayContainsAny: _ingController?.userAllergies)
+        .where("dishType", whereIn: filters)
         .limit(limit)
         .snapshots()
         .map((QuerySnapshot query) {

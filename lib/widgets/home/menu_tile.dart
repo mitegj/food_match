@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
@@ -63,6 +65,17 @@ class MenuTile extends StatelessWidget {
                           fontSize: 18),
                       overflow: TextOverflow.visible,
                     ),
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  Text(
+                    describeEnum(DishType.values[menu.dishType]),
+                    style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 16),
                   )
                 ],
               ),

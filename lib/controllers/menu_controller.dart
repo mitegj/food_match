@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
+import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/services/menu_database.dart';
 
@@ -17,17 +18,32 @@ class MenuController extends GetxController {
   MenuController();
   MenuController.fromCtrl(IngredientController ingController)
       : _ingController = ingController {
-    this.onInit();
+    // this.onInit();
   }
 
   @override
   void onInit() {
     super.onInit();
-    getMenuList();
+    // getMenuList();
   }
 
-  getMenuList() {
-    menuList.bindStream(DatabaseMenu().menuStream(_ingController, 30));
+  List<int> getAllFilters() {
+    // se i filtri sono vuoti li aggiungo tutti
+    List<int> fl = [];
+
+    DishType.values.forEach((el) {
+      fl.add(el.index);
+    });
+
+    return fl;
+  }
+
+  getMenuList(List<int> filters) {
+    print(filters);
+    if (filters.length == 0) {
+      filters = getAllFilters();
+    }
+    menuList.bindStream(DatabaseMenu().menuStream(_ingController, filters, 30));
   }
 
   Future<bool> updateStockCtrl(String uid, bool stock) async {

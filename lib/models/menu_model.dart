@@ -11,6 +11,8 @@ class MenuModel {
   late List<String> steps;
   late List<MenuIngredientModel?> ingredients;
   late String note;
+  late String desc;
+  late int dishType;
 
   MenuModel(
       {required this.id,
@@ -21,7 +23,9 @@ class MenuModel {
       required this.allergies,
       required this.steps,
       required this.ingredients,
-      required this.note});
+      required this.note,
+      required this.desc,
+      required this.dishType});
 
   Map<String, dynamic> toMap() {
     return {
@@ -33,22 +37,25 @@ class MenuModel {
       "allergies": allergies,
       "steps": steps,
       "ingredients": ingredients,
-      "note": note
+      "note": note,
+      "desc": desc,
+      "dishType": dishType
     };
   }
 
   factory MenuModel.fromJson(Map<String, dynamic> parsedJson) {
     return MenuModel(
-      id: parsedJson["id"],
-      menuName: parsedJson['menuName'],
-      kcal: parsedJson['kcal'],
-      difficulty: parsedJson['difficulty'],
-      preparationTime: parsedJson['preparationTime'],
-      allergies: parsedJson['allergies'],
-      steps: parsedJson['steps'],
-      ingredients: parsedJson['ingredients'],
-      note: parsedJson['note']
-    );
+        id: parsedJson["id"],
+        menuName: parsedJson['menuName'],
+        kcal: parsedJson['kcal'],
+        difficulty: parsedJson['difficulty'],
+        preparationTime: parsedJson['preparationTime'],
+        allergies: parsedJson['allergies'],
+        steps: parsedJson['steps'],
+        ingredients: parsedJson['ingredients'],
+        note: parsedJson['note'],
+        desc: parsedJson['desc'],
+        dishType: parsedJson['dishType']);
   }
 
   MenuModel.fromDocumentSnapshot(
@@ -72,6 +79,9 @@ class MenuModel {
 
     note = documentSnapshot["note"] ?? "";
 
+    desc = documentSnapshot["desc"] ?? "";
+    dishType = documentSnapshot["dishType"] ?? 0;
+
     //ingredients =
     //  documentSnapshot["ingredients"].cast<MenuIngredientModel>() ?? [];
   }
@@ -88,5 +98,7 @@ extension MenuExtensions on QueryDocumentSnapshot {
         steps: this['steps'],
         ingredients: this['ingredients'],
         note: this['note'],
+        desc: this['desc'],
+        dishType: this['dishType'],
       );
 }

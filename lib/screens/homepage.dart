@@ -1,10 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/widgets/home/empty_menu.dart';
+import 'package:morning_brief/widgets/home/filters_header.dart';
 import 'package:morning_brief/widgets/home/home_header.dart';
 import 'package:morning_brief/widgets/home/menu_tile.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
@@ -22,7 +23,7 @@ class HomePage extends GetWidget<IngredientController> {
     MenuController _menuController =
         Get.put<MenuController>(MenuController.fromCtrl(ingController));
     _menuController.menus = [];
-    _menuController.getMenuList();
+    _menuController.getMenuList(_menuController.getAllFilters());
 
     return Obx(() => (ingController.userAllergies != null &&
             ingController.ingredients != null)
@@ -33,6 +34,7 @@ class HomePage extends GetWidget<IngredientController> {
                 body: SafeArea(
                     child: Column(children: [
                   HomeHeader(),
+                  FilterHeader(),
                   Expanded(
                       child: _menuController.menus?.length == 0
                           ? EmptyMenu()

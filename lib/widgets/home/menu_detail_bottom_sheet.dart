@@ -55,15 +55,6 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                 SizedBox(
                   height: 40,
                 ),
-                /*Row(
-                  children: [
-                    Text(menu.menuName.toString(),
-                        style: GoogleFonts.poppins(
-                            color: UIColors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold)),
-                  ],
-                ),*/
                 Row(
                   children: [
                     Text(
@@ -89,49 +80,6 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                     ),
                   ],
                 ),
-                /*Padding(
-                  padding: const EdgeInsets.only(
-                      top: 10.0, bottom: 10.0, right: 20.0, left: 20.0),
-                  child: Container(
-                      alignment: Alignment.center,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(menu.kcal.toString(),
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.white.withOpacity(0.8),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.normal)),
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                menu.difficulty.toString(),
-                                style: GoogleFonts.poppins(
-                                    color: Colors.white.withOpacity(0.8),
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.normal),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(menu.preparationTime.toString(),
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.white.withOpacity(0.8),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.normal)),
-                            ],
-                          )
-                        ],
-                      )),
-                ),*/
                 SizedBox(
                   height: 20,
                 ),

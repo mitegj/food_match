@@ -37,38 +37,6 @@ class HomeHeader extends StatelessWidget {
               ),
             ],
           ),
-          /*InkWell(
-            onTap: () => {Get.to(() => SettingsScreen())},
-            child: CircleAvatar(
-              backgroundColor: UIColors.white,
-              child: Icon(
-                Icons.account_circle,
-                color: UIColors.black,
-              ),
-            ),
-          ),
-          InkWell(
-            onTap: () => onSettingsTapped(context),
-            child: CircleAvatar(
-              backgroundColor: UIcolors.white,
-              child: Icon(
-                Icons.calendar_today,
-                color: UIcolors.black,
-              ),
-            ),
-          ),*/
-          /*InkWell(
-            onTap: () => {
-              Get.bottomSheet(InventoryBottomSheet(), isScrollControlled: true)
-            },
-            child: CircleAvatar(
-              backgroundColor: UIColors.white,
-              child: Icon(
-                Icons.add_outlined,
-                color: UIColors.black,
-              ),
-            ),
-          ),*/
           Align(
             alignment: Alignment.centerLeft,
             child: Container(
