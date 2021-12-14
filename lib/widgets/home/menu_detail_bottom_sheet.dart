@@ -231,7 +231,7 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                 ),
                 InkWell(
                   onTap: () {
-                    controller.updateSavedMenu(menu.id);
+                    controller.checkBeforeSaveMenu(menu);
                     Navigator.pop(context);
                   },
                   child: Container(

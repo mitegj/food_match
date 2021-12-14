@@ -4,6 +4,7 @@ import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/services/menu_database.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MenuController extends GetxController {
   Rxn<MenuModel> menu = Rxn<MenuModel>();
@@ -46,11 +47,11 @@ class MenuController extends GetxController {
     menuList.bindStream(DatabaseMenu().menuStream(_ingController, filters, 30));
   }
 
-  Future<bool> updateStockCtrl(String uid, bool stock) async {
+  Future<void> updateStockCtrl(String uid, bool stock) async {
     try {
       if (await DatabaseMenu().updateInventory(uid, stock)) {
         //Get.back();
-        return true;
+
       }
     } catch (e) {
       Get.snackbar(
@@ -59,12 +60,10 @@ class MenuController extends GetxController {
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
       );
-      return false;
     }
-    return false;
   }
 
-  Future<bool> updateSavedMenu(String menuId) async {
+  Future<void> updateSavedMenu(String menuId) async {
     try {
       if (await DatabaseMenu().updateCookedMenu(menuId)) {
         //Get.back();
@@ -74,8 +73,6 @@ class MenuController extends GetxController {
           colorText: Colors.white,
           snackPosition: SnackPosition.BOTTOM,
         );
-
-        return true;
       }
     } catch (e) {
       Get.snackbar(
@@ -84,9 +81,31 @@ class MenuController extends GetxController {
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
       );
-      return false;
     }
-    return false;
+  }
+
+  checkBeforeSaveMenu(MenuModel menu) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String lastTimeCookedS = (prefs.getString('lastTimeCooked') ?? "");
+
+    DateTime lastTimeCooked = DateTime.parse(lastTimeCookedS);
+    double? lastCookingTime = prefs.getDouble('lastCookingTime');
+
+    if (DateTime.now().difference(lastTimeCooked).inMinutes <
+        lastCookingTime!) {
+      Get.snackbar(
+        "Ulala",
+        "ulala il cuoco piu veloce del west",
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } else {
+      updateSavedMenu(menu.id).then(
+        (_) => prefs.setDouble("lastCookingTime", menu.preparationTime).then(
+            (_) =>
+                prefs.setString('lastTimeCooked', DateTime.now().toString())),
+      );
+    }
   }
 
   String getIngredientName(String id, ingredients) {
