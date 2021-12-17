@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:morning_brief/controllers/auth_controller2.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 
 class AppleLogin extends StatelessWidget {
@@ -12,10 +14,12 @@ class AppleLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _authController = Get.find<AuthControllerDue>();
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: GestureDetector(
         //onTap: () => signInWithGoogle(context),
+        onTap: () => _authController.signInWithGoogle(),
         child: Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(

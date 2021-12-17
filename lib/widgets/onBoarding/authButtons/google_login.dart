@@ -2,21 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
+import 'package:morning_brief/controllers/auth_controller2.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 
 class GoogleLogin extends GetWidget<AuthController> {
-  /*Future<void> signInWithGoogle(BuildContext context) async {
-    await Authentification().signInWithGoogle(context).then((value) => {
-          startUserInventoryList(),
-        });
-  }*/
-
   @override
   Widget build(BuildContext context) {
+    final _authController = Get.find<AuthControllerDue>();
     return Padding(
       padding: const EdgeInsets.only(right: 15.0, left: 15.0, bottom: 0.0),
       child: GestureDetector(
-        onTap: () => {controller.login()} /*signInWithGoogle(context)*/,
+        onTap: () => _authController.signInWithGoogle(),
         child: Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(

@@ -29,12 +29,12 @@ dependencies:
 
   get: ^4.3.8
 
-  firebase_auth: ^3.1.0
+  firebase_auth: ^3.3.4
   firebase_core: ^1.6.0
-  google_sign_in: ^5.1.0
-  cloud_firestore: ^2.5.1
+  google_sign_in: ^5.2.1
+  cloud_firestore: ^3.1.5
 
-  url_launcher: ^6.0.10
+  url_launcher: ^6.0.17
   package_info: ^2.0.2
   firebase_remote_config: ^0.11.0+2
   shared_preferences: ^2.0.11

@@ -25,11 +25,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
-        accentColor: UIColors.white, // Da sistemare
         backgroundColor: UIColors.black,
         primarySwatch: Colors.blue,
         appBarTheme: AppBarTheme(
-          backwardsCompatibility: false, // Da sistemare
           systemOverlayStyle: SystemUiOverlayStyle.light, // 2
         ),
       ),
