@@ -80,6 +80,13 @@ class HomePage extends GetWidget<IngredientController> {
                                     ingredients: ingController.ingredients));
                               },
                             )),
+                  InkWell(
+                      onTap: () => {
+                            _menuController.limit += 1,
+                            _menuController
+                                .getMenuList(FilterHeader.listFilters)
+                          },
+                      child: Text("Carica altri elementi"))
                 ])),
               )
             : LoadingWidget()

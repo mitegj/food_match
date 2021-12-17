@@ -7,11 +7,12 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:morning_brief/controllers/user_controller.dart';
 import 'package:morning_brief/models/user_model.dart';
-import 'package:morning_brief/screens/allergies.dart';
 import 'package:morning_brief/screens/contract.dart';
+import 'package:morning_brief/screens/homepage.dart';
 import 'package:morning_brief/screens/onboarding.dart';
 import 'package:morning_brief/services/user_database.dart';
 import 'package:morning_brief/utils/conf.dart';
+import 'package:morning_brief/widgets/onBoarding/authButtons/google_login.dart';
 import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -19,14 +20,27 @@ class AuthController extends GetxController {
   final RemoteConfig remoteConfig = RemoteConfig.instance;
   final Conf conf = new Conf();
   final GoogleSignIn googleSignIn = GoogleSignIn();
+  var googleSignInAccount = Rx<GoogleSignInAccount?>(null);
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final Rxn<User> _firebaseUser = Rxn<User>();
-  User? get user => _firebaseUser.value;
+  late Rx<User?> _user;
+  static AuthController instance = Get.find();
 
   @override
-  onInit() {
-    super.onInit();
-    _firebaseUser.bindStream(_auth.authStateChanges());
+  void onReady() {
+    super.onReady();
+    _user = Rx<User?>(_auth.currentUser);
+    _user.bindStream(_auth.userChanges());
+
+    ever(_user, _initialScreen);
+  }
+
+  _initialScreen(User? user) {
+    if (user == null) {
+      print("login page");
+      Get.offAll(() => OnBoardingPage());
+    } else {
+      Get.offAll(() => HomePage());
+    }
   }
 
   Future<bool> createUser(String uid) async {
@@ -55,12 +69,11 @@ class AuthController extends GetxController {
     return false;
   }
 
-  void login() async {
+  void googleLogin() async {
     try {
-      final GoogleSignInAccount? googleSignInAccount =
-          await googleSignIn.signIn();
+      googleSignInAccount.value = await googleSignIn.signIn();
       final GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount!.authentication;
+          await googleSignInAccount.value!.authentication;
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleSignInAuthentication.accessToken,
         idToken: googleSignInAuthentication.idToken,
@@ -88,6 +101,7 @@ class AuthController extends GetxController {
               });
         }
       }
+      update();
       //Get.toNamed('/homeView'); // navigate to your wanted page
       return;
     } catch (e) {
@@ -102,11 +116,9 @@ class AuthController extends GetxController {
 
   Future<void> logoutGoogle() async {
     try {
-      await googleSignIn.signOut();
+      await googleSignIn.disconnect();
 
-      await _auth.signOut().then((value) => Get.offAll(OnBoardingPage()));
-
-      Get.find<UserController>().clear();
+      await _auth.signOut();
     } catch (e) {
       Get.snackbar(
         "Error signing out",

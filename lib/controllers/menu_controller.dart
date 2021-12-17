@@ -10,6 +10,7 @@ class MenuController extends GetxController {
   Rxn<MenuModel> menu = Rxn<MenuModel>();
   Rxn<List<MenuModel>> menuList = Rxn<List<MenuModel>>().obs();
   List<MenuModel>? get menus => menuList.value.obs();
+  int limit = 30;
   set menus(List<MenuModel>? value) {
     menus?.clear();
   }
@@ -18,9 +19,7 @@ class MenuController extends GetxController {
 
   MenuController();
   MenuController.fromCtrl(IngredientController ingController)
-      : _ingController = ingController {
-    // this.onInit();
-  }
+      : _ingController = ingController;
 
   @override
   void onInit() {
@@ -44,7 +43,8 @@ class MenuController extends GetxController {
     if (filters.length == 0) {
       filters = getAllFilters();
     }
-    menuList.bindStream(DatabaseMenu().menuStream(_ingController, filters, 30));
+    menuList
+        .bindStream(DatabaseMenu().menuStream(_ingController, filters, limit));
   }
 
   Future<void> updateStockCtrl(String uid, bool stock) async {

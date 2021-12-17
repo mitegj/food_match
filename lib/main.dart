@@ -2,13 +2,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:morning_brief/controllers/auth_controller.dart';
 import 'package:morning_brief/controllers/bindings/authBind.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/utils/root.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
   runApp(const MyApp());
 }
 

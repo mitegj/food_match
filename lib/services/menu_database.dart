@@ -17,7 +17,6 @@ class DatabaseMenu {
         isUserAllergic = true;
     });
 
-    //print("allergic: " + isUserAllergic.toString());
     return isUserAllergic;
   }
 
@@ -34,8 +33,6 @@ class DatabaseMenu {
         break;
       }
     }
-
-    //print("ingredients: " + hasUserIngredients.toString());
     return hasUserIngredients;
   }
 

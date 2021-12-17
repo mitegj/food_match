@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:morning_brief/controllers/auth_controller2.dart';
+import 'package:morning_brief/controllers/auth_controller.dart';
 import 'package:morning_brief/controllers/setting_controller.dart';
 import 'package:morning_brief/screens/allergies.dart';
 import 'package:morning_brief/utils/UIColors.dart';
@@ -9,8 +9,7 @@ import 'package:morning_brief/utils/UIColors.dart';
 class SettingsBody extends GetWidget<SettingController> {
   SettingController _settingController =
       Get.put<SettingController>(SettingController());
-  AuthControllerDue _authController =
-      Get.put<AuthControllerDue>(AuthControllerDue());
+  AuthController _authController = Get.put<AuthController>(AuthController());
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -147,7 +146,7 @@ class SettingsBody extends GetWidget<SettingController> {
             child: TextButton(
               onPressed: () {
                 // TODO: Logout da google
-                _authController.signout();
+                _authController.logoutGoogle();
               },
               child: Text(
                 'Disconetti account',
