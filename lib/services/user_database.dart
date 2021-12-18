@@ -7,6 +7,20 @@ class UserDatabase {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final Conf conf = new Conf();
 
+  Future<void> saveUserLastLogin() async {
+    String uid = FirebaseAuth.instance.currentUser!.uid.toString();
+
+    try {
+      await FirebaseFirestore.instance
+          .collection(conf.userCollection)
+          .doc(uid)
+          .update({"lastLogin": new DateTime.now()});
+    } catch (e) {
+      print(e);
+      // popup errore
+    }
+  }
+
   Future<bool> createNewUser(UserModel user) async {
     try {
       await _firestore.collection(conf.userCollection).doc(user.id).set({

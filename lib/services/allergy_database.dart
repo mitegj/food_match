@@ -35,7 +35,7 @@ class DatabaseAllergy {
       for (var element in query.docs) {
         retVal.add(UserModel.fromDocumentSnapshot(element));
       }
-      return retVal[0].allergies;
+      return retVal.length > 0 ? retVal[0].allergies : [];
     });
   }
 

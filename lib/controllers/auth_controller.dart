@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,6 @@ import 'package:morning_brief/screens/homepage.dart';
 import 'package:morning_brief/screens/onboarding.dart';
 import 'package:morning_brief/services/user_database.dart';
 import 'package:morning_brief/utils/conf.dart';
-import 'package:morning_brief/widgets/onBoarding/authButtons/google_login.dart';
 import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -24,6 +24,8 @@ class AuthController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late Rx<User?> _user;
   static AuthController instance = Get.find();
+  bool isNewUser = false;
+  late UserCredential authResult;
 
   @override
   void onReady() {
@@ -39,34 +41,9 @@ class AuthController extends GetxController {
       print("login page");
       Get.offAll(() => OnBoardingPage());
     } else {
+      UserDatabase().saveUserLastLogin();
       Get.offAll(() => HomePage());
     }
-  }
-
-  Future<bool> createUser(String uid) async {
-    try {
-      UserModel _user = UserModel(
-          id: uid,
-          allergies: [],
-          dinnerTime: 0,
-          lastShop: DateTime.now(),
-          name: '');
-
-      if (await UserDatabase().createNewUser(_user)) {
-        Get.find<UserController>().user = _user;
-        Get.back();
-        return true;
-      }
-    } catch (e) {
-      Get.snackbar(
-        "Error creating Account",
-        e.toString(),
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-      );
-      return false;
-    }
-    return false;
   }
 
   void googleLogin() async {
@@ -79,8 +56,7 @@ class AuthController extends GetxController {
         idToken: googleSignInAuthentication.idToken,
       );
 
-      final UserCredential authResult =
-          await _auth.signInWithCredential(credential);
+      authResult = await _auth.signInWithCredential(credential);
 
       final User? user = authResult.user;
       assert(!user!.isAnonymous);
@@ -90,15 +66,10 @@ class AuthController extends GetxController {
       if (authResult.additionalUserInfo!.isNewUser) {
         // se utente non esiste quando fa login lo creo con solo l'id
         if (user != null) {
-          Future<bool> done = createUser(user.uid.toString());
-          done.then((value) => {
-                if (!value)
-                  {
-                    print("something went wrong, user not created")
-                  } // TODO: popup che segnali che non è andato
-                else
-                  {Get.off(() => ContractScreen())}
-              });
+          createUser(user.uid.toString())
+              .then((value) => {Get.off(() => ContractScreen())});
+        } else {
+          print("errore");
         }
       }
       update();
@@ -107,6 +78,26 @@ class AuthController extends GetxController {
     } catch (e) {
       Get.snackbar(
         "Error signing in",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
+
+  Future<void> createUser(String uid) async {
+    try {
+      UserModel _user = UserModel(
+          id: uid,
+          allergies: [],
+          dinnerTime: 0,
+          lastShop: DateTime.now(),
+          name: '');
+
+      await UserDatabase().createNewUser(_user);
+    } catch (e) {
+      Get.snackbar(
+        "Error creating Account",
         e.toString(),
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
