@@ -11,7 +11,7 @@ class ArrowHeader extends StatelessWidget {
     var mediaQuery = MediaQuery.of(context);
     return Container(
       height: mediaQuery.size.height,
-      padding: const EdgeInsets.all(3),
+      padding: const EdgeInsets.all(0),
       color: theme.backgroundColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

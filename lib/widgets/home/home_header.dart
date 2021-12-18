@@ -38,61 +38,66 @@ class HomeHeader extends StatelessWidget {
               ),
             ],
           ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              decoration: BoxDecoration(
-                  color: UIColors.detailBlack,
-                  borderRadius: BorderRadius.circular(15)),
-              child: IconButton(
-                icon: Icon(
-                  Icons.account_circle,
-                  color: UIColors.white,
+          Row(
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: UIColors.detailBlack,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.account_circle,
+                      color: UIColors.white,
+                    ),
+                    onPressed: () {
+                      Get.to(() => SettingsScreen());
+                      //Get.to(() => StatsPage());
+                    },
+                  ),
                 ),
-                onPressed: () {
-                  Get.to(() => SettingsScreen());
-                  //Get.to(() => StatsPage());
-                },
               ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              decoration: BoxDecoration(
-                  color: UIColors.detailBlack,
-                  borderRadius: BorderRadius.circular(15)),
-              child: IconButton(
-                icon: Icon(
-                  Icons.filter_alt_outlined,
-                  color: UIColors.white,
-                ),
-                onPressed: () {
-                  Get.to(() => FiltersPage());
-                  //Get.to(() => StatsPage());
-                },
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              decoration: BoxDecoration(
-                  color: UIColors.detailBlack,
-                  borderRadius: BorderRadius.circular(15)),
-              child: IconButton(
-                icon: Icon(
-                  Icons.add_outlined,
-                  color: UIColors.white,
-                ),
-                onPressed: () {
-                  /*Get.bottomSheet(InventoryBottomSheet(),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: UIColors.detailBlack,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.filter_alt_outlined,
+                      color: UIColors.white,
+                    ),
+                    onPressed: () {
+                      /*Get.bottomSheet(InventoryBottomSheet(),
                       isScrollControlled: true);*/
-                  Get.offAll(() => InventoryScreen());
-                },
+                      Get.to(() => FiltersPage());
+                    },
+                  ),
+                ),
               ),
-            ),
-          ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: UIColors.detailBlack,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.add_outlined,
+                      color: UIColors.white,
+                    ),
+                    onPressed: () {
+                      /*Get.bottomSheet(InventoryBottomSheet(),
+                      isScrollControlled: true);*/
+                      Get.offAll(() => InventoryScreen());
+                    },
+                  ),
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );

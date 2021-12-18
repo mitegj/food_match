@@ -25,7 +25,7 @@ class EmptyMenu extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                    "Try adding some of those basic products by clicking the following shortcut button! ",
+                    "Try adding some of those basic products by clicking the following shortcut button!",
                     overflow: TextOverflow.visible,
                     style: GoogleFonts.poppins(
                         color: UIColors.grey,
