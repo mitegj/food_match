@@ -18,72 +18,69 @@ class HomeBody extends GetWidget<IngredientController> {
     MenuController _menuController =
         Get.put<MenuController>(MenuController.fromCtrl(ingController));
     _menuController.menus = [];
-    _menuController.getMenuList(_menuController.getAllFilters());
+    _menuController.getMenuList(FilterHeader.listFilters);
 
     return Container(
-      height: mediaQuery.size.height * 0.7,
-      child: ListView(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child: Container(
-              height: 60,
-              child: Center(
-                child: Column(
-                  children: [
-                    Text(
-                      'Le nostre proposte',
-                      style: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white),
-                    ),
-                    Text(
-                      'Scorri per visualizzare altre ricette',
-                      style: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Obx(() => (ingController.userAllergies != null &&
-                  ingController.ingredients != null)
-              ? (_menuController.menus != null)
-                  ? ListView.builder(
-                      physics: ScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: _menuController.menus?.length ?? 0,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                            height: 200,
-                            child: _menuController.menus?.length == 0
-                                ? EmptyMenu()
-                                : Obx(() => MenuTile(
+        height: mediaQuery.size.height * 0.7,
+        child: Obx(() => (ingController.userAllergies != null &&
+                ingController.ingredients != null)
+            ? (_menuController.menus != null &&
+                    _menuController.menus?.length == 0)
+                ? EmptyMenu()
+                : ListView(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Container(
+                          height: 60,
+                          child: Center(
+                              child: Column(
+                            children: [
+                              Text(
+                                'Le nostre proposte',
+                                style: GoogleFonts.poppins(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.white),
+                              ),
+                              Text(
+                                'Scorri per visualizzare altre ricette',
+                                style: GoogleFonts.poppins(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.white),
+                              ),
+                            ],
+                          )),
+                        ),
+                      ),
+                      ListView.builder(
+                          physics: ScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: _menuController.menus?.length ?? 0,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Container(
+                                height: 200,
+                                child: Obx(() => MenuTile(
                                       ingredients: ingController.ingredients,
                                       menu: _menuController.menus![index],
                                     )));
-                      })
-                  : LoadingWidget()
-              : LoadingWidget()),
-          Container(
-            height: 40,
-            color: Colors.deepOrange,
-            child: Center(
-              child: Text(
-                'Carica altri elementi',
-                style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+                          }),
+                      Container(
+                        height: 40,
+                        color: Colors.deepOrange,
+                        child: Center(
+                          child: Text(
+                            'Carica altri elementi',
+                            style: GoogleFonts.poppins(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+            : LoadingWidget()));
   }
 }

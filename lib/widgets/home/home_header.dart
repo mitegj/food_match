@@ -8,6 +8,8 @@ import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/home/filters.dart';
 import 'package:morning_brief/widgets/inventory/inventory_page.dart';
 
+import 'filters_header.dart';
+
 class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -58,24 +60,34 @@ class HomeHeader extends StatelessWidget {
                   ),
                 ),
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: UIColors.detailBlack,
-                      borderRadius: BorderRadius.circular(15)),
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.filter_alt_outlined,
-                      color: UIColors.white,
+              Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        color: UIColors.detailBlack,
+                        borderRadius: BorderRadius.circular(15)),
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.filter_alt_outlined,
+                        color: UIColors.white,
+                      ),
+                      onPressed: () {
+                        Get.to(() => FiltersPage());
+                      },
                     ),
-                    onPressed: () {
-                      /*Get.bottomSheet(InventoryBottomSheet(),
-                      isScrollControlled: true);*/
-                      Get.to(() => FiltersPage());
-                    },
                   ),
-                ),
+                  FilterHeader.listFilters.length > 0
+                      ? Positioned(
+                          child: CircleAvatar(
+                            radius: 7,
+                            backgroundColor: UIColors.darkPurple,
+                          ),
+                          top: -3,
+                          right: -3,
+                        )
+                      : Text("")
+                ],
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0),

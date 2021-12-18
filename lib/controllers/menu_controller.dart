@@ -39,6 +39,7 @@ class MenuController extends GetxController {
   }
 
   getMenuList(RxList<int> filters) {
+    print(filters);
     if (filters.length == 0) {
       filters = getAllFilters();
     }
@@ -85,13 +86,17 @@ class MenuController extends GetxController {
 
   checkBeforeSaveMenu(MenuModel menu) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    final String lastTimeCookedS = (prefs.getString('lastTimeCooked') ?? "");
+    String lastTimeCookedS = "";
+    double lastCookingTime = 0;
+    (prefs.getString('lastTimeCooked') != null)
+        ? lastTimeCookedS = prefs.getString('lastTimeCooked')!
+        : lastTimeCookedS = DateTime(0).toString();
+    prefs.getDouble('lastCookingTime') != null
+        ? lastCookingTime = prefs.getDouble('lastCookingTime')!
+        : lastCookingTime = 0;
 
     DateTime lastTimeCooked = DateTime.parse(lastTimeCookedS);
-    double? lastCookingTime = prefs.getDouble('lastCookingTime');
-
-    if (DateTime.now().difference(lastTimeCooked).inMinutes <
-        lastCookingTime!) {
+    if (DateTime.now().difference(lastTimeCooked).inMinutes < lastCookingTime) {
       Get.snackbar(
         "Ulala",
         "ulala il cuoco piu veloce del west",
