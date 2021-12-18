@@ -11,7 +11,7 @@ class ArrowHeader extends StatelessWidget {
     var mediaQuery = MediaQuery.of(context);
     return Container(
       height: mediaQuery.size.height,
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(3),
       color: theme.backgroundColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -20,7 +20,7 @@ class ArrowHeader extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Container(
               decoration: BoxDecoration(
-                  color: UIColors.detailBlack,
+                  color: UIColors.black,
                   borderRadius: BorderRadius.circular(15)),
               child: IconButton(
                 icon: Icon(

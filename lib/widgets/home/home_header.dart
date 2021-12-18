@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/screens/settings_screen.dart';
 
 import 'package:morning_brief/utils/UIColors.dart';
+import 'package:morning_brief/widgets/home/filters.dart';
 import 'package:morning_brief/widgets/inventory/inventory_page.dart';
 
 class HomeHeader extends StatelessWidget {
@@ -17,7 +18,7 @@ class HomeHeader extends StatelessWidget {
       alignment: Alignment.topLeft,
       color: theme.backgroundColor,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
@@ -50,6 +51,24 @@ class HomeHeader extends StatelessWidget {
                 ),
                 onPressed: () {
                   Get.to(() => SettingsScreen());
+                  //Get.to(() => StatsPage());
+                },
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: UIColors.detailBlack,
+                  borderRadius: BorderRadius.circular(15)),
+              child: IconButton(
+                icon: Icon(
+                  Icons.filter_alt_outlined,
+                  color: UIColors.white,
+                ),
+                onPressed: () {
+                  Get.to(() => FiltersPage());
                   //Get.to(() => StatsPage());
                 },
               ),

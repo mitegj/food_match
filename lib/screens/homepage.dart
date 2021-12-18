@@ -35,11 +35,10 @@ class HomePage extends GetWidget<IngredientController> {
                 body: SafeArea(
                     child: Column(children: [
                   HomeHeader(),
-                  SizedBox(height: 10),
                   FilterHeader(),
                   Padding(
                     padding: const EdgeInsets.only(
-                        left: 10.0, right: 10.0, top: 30.0),
+                        left: 20.0, right: 10.0, top: 30.0),
                     child: Row(
                       children: [
                         Text("Piatti consigliati",
@@ -52,7 +51,7 @@ class HomePage extends GetWidget<IngredientController> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                        left: 10.0, right: 10.0, bottom: 10.0),
+                        left: 20.0, right: 10.0, bottom: 10.0),
                     child: Row(
                       children: [
                         Text("Scorri per visualizzare altre ricette",
@@ -63,12 +62,6 @@ class HomePage extends GetWidget<IngredientController> {
                       ],
                     ),
                   ),
-                  Container(
-                      height: 8,
-                      width: 370,
-                      decoration: BoxDecoration(
-                          color: UIColors.detailBlack.withOpacity(0.6),
-                          borderRadius: BorderRadius.all(Radius.circular(10)))),
                   Expanded(
                       child: _menuController.menus?.length == 0
                           ? EmptyMenu()
@@ -86,7 +79,10 @@ class HomePage extends GetWidget<IngredientController> {
                             _menuController
                                 .getMenuList(FilterHeader.listFilters)
                           },
-                      child: Text("Carica altri elementi"))
+                      child: Text(
+                        "Carica altri elementi",
+                        style: TextStyle(color: Colors.white),
+                      ))
                 ])),
               )
             : LoadingWidget()

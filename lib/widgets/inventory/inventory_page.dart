@@ -56,7 +56,7 @@ class InventoryScreen extends GetWidget<IngredientController> {
       //resizeToAvoidBottomPadding: false,
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             if (mediaQuery.viewInsets.bottom == 0)
               Flexible(flex: 1, child: ArrowHeader()),
@@ -64,18 +64,21 @@ class InventoryScreen extends GetWidget<IngredientController> {
               Flexible(
                 flex: 1,
                 child: Padding(
-                  padding: EdgeInsets.only(left: 20, right: 20),
-                  child: Text("Gestisci il tuo inventario personale",
+                  padding: EdgeInsets.only(
+                    left: 20,
+                    right: 20,
+                  ),
+                  child: Text("Manage your personal inventory",
                       style: GoogleFonts.poppins(
                           color: UIColors.white,
                           fontSize: 30,
                           fontWeight: FontWeight.w700)),
                 ),
               ),
-            Flexible(
+            Expanded(
               flex: 1,
               child: Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
+                padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
                 child: TextField(
                   autofocus: false,
                   decoration: InputDecoration(
@@ -96,8 +99,8 @@ class InventoryScreen extends GetWidget<IngredientController> {
                 ),
               ),
             ),
-            Flexible(
-              flex: 4,
+            Expanded(
+              flex: 5,
               child: Container(
                 padding: const EdgeInsets.only(
                     top: 0, bottom: 0, left: 20, right: 20),
@@ -153,9 +156,12 @@ class InventoryScreen extends GetWidget<IngredientController> {
                                                       color: Colors.white,
                                                       width: 1.5,
                                                     ),
-                                                    checkColor: UIColors.green,
-                                                    focusColor: UIColors.green,
-                                                    activeColor: UIColors.green,
+                                                    checkColor:
+                                                        UIColors.darkPurple,
+                                                    focusColor:
+                                                        UIColors.darkPurple,
+                                                    activeColor:
+                                                        UIColors.darkPurple,
                                                     value: getStock(
                                                         ingCtrl, index),
                                                     onChanged: (bool? value) {
