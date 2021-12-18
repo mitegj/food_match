@@ -35,7 +35,6 @@ class HomePage extends GetWidget<IngredientController> {
                 body: SafeArea(
                     child: Column(children: [
                   HomeHeader(),
-                  FilterHeader(),
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 20.0, right: 10.0, top: 30.0),
