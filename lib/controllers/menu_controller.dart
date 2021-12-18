@@ -27,9 +27,9 @@ class MenuController extends GetxController {
     // getMenuList();
   }
 
-  List<int> getAllFilters() {
+  RxList<int> getAllFilters() {
     // se i filtri sono vuoti li aggiungo tutti
-    List<int> fl = [];
+    RxList<int> fl = RxList<int>();
 
     DishType.values.forEach((el) {
       fl.add(el.index);
@@ -38,8 +38,7 @@ class MenuController extends GetxController {
     return fl;
   }
 
-  getMenuList(List<int> filters) {
-    print(filters);
+  getMenuList(RxList<int> filters) {
     if (filters.length == 0) {
       filters = getAllFilters();
     }

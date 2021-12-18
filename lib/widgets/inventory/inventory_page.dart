@@ -68,7 +68,7 @@ class InventoryScreen extends GetWidget<IngredientController> {
                     left: 20,
                     right: 20,
                   ),
-                  child: Text("Manage your personal inventory",
+                  child: Text("Manage your personal food inventory",
                       style: GoogleFonts.poppins(
                           color: UIColors.white,
                           fontSize: 30,
