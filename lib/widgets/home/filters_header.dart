@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/utils/UIColors.dart';
@@ -25,9 +26,7 @@ class FilterHeader extends StatelessWidget {
           },
           child: Obx(
             () => Container(
-              margin: EdgeInsets.all(20),
-              height: 150,
-              width: 150,
+              margin: EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
                   color: listFilters.contains(el.index)
                       ? UIColors.darkPurple
@@ -47,7 +46,7 @@ class FilterHeader extends StatelessWidget {
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
                         el.name.toString(),
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontWeight: FontWeight.w600,
                             fontSize: 20),

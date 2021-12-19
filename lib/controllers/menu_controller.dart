@@ -4,6 +4,7 @@ import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/services/menu_database.dart';
+import 'package:morning_brief/widgets/home/confirm_cooked.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MenuController extends GetxController {
@@ -67,12 +68,15 @@ class MenuController extends GetxController {
     try {
       if (await DatabaseMenu().updateCookedMenu(menuId)) {
         //Get.back();
-        Get.snackbar(
+        /*Get.snackbar(
           "Ottimo lavoro",
           "Il tuo piatto è stato cucinato",
           colorText: Colors.white,
           snackPosition: SnackPosition.BOTTOM,
-        );
+        );*/
+        Get.to(ConfirmCooked(
+          cooked: true,
+        ));
       }
     } catch (e) {
       Get.snackbar(
@@ -97,12 +101,13 @@ class MenuController extends GetxController {
 
     DateTime lastTimeCooked = DateTime.parse(lastTimeCookedS);
     if (DateTime.now().difference(lastTimeCooked).inMinutes < lastCookingTime) {
-      Get.snackbar(
+      /*Get.snackbar(
         "Ulala",
         "ulala il cuoco piu veloce del west",
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
-      );
+      );*/
+      Get.to(ConfirmCooked(cooked: false));
     } else {
       updateSavedMenu(menu.id).then(
         (_) => prefs.setDouble("lastCookingTime", menu.preparationTime).then(

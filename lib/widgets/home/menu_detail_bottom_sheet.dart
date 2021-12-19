@@ -6,6 +6,7 @@ import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/step_circle.dart';
+import 'package:morning_brief/widgets/home/confirm_cooked.dart';
 
 class DetailBottomSheet extends GetWidget<MenuController> {
   DetailBottomSheet({Key? key, required this.menu, required this.ingredients})
@@ -232,7 +233,8 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                 InkWell(
                   onTap: () {
                     controller.checkBeforeSaveMenu(menu);
-                    Navigator.pop(context);
+                    //Navigator.pop(context);
+                    //Get.to(ConfirmCooked());
                   },
                   child: Container(
                     padding: const EdgeInsets.all(20),
