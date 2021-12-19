@@ -268,7 +268,16 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                       ],
                     ),
                   ),
-                )
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                    "Premendo il bottone 'Piatto cucinato' salvi il piatto fra i cucinati",
+                    style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w300,
+                        fontSize: 12))
               ],
             )
           ],
