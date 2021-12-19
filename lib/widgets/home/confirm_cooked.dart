@@ -13,8 +13,12 @@ class ConfirmCooked extends StatelessWidget {
       backgroundColor: cooked ? UIColors.lightGreen : UIColors.orange,
       body: InkWell(
         onTap: () {
-          Get.back();
-          Navigator.pop(context);
+          if (cooked == true) {
+            Get.back();
+            Navigator.pop(context);
+          } else {
+            Get.back();
+          }
         },
         child: SafeArea(
           child: Container(
