@@ -11,7 +11,7 @@ import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 // ignore: must_be_immutable
-class InventoryScreen extends StatelessWidget {
+class InventoryScreen extends GetWidget<IngredientController> {
   RxList<UserInventory> _userInventory = RxList();
   IngredientController ingController =
       Get.put<IngredientController>(IngredientController());
@@ -135,60 +135,77 @@ class InventoryScreen extends StatelessWidget {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Obx(() => (ingController.ingSearch.length > 0)
-                          ? Expanded(
-                              child: Container(
-                                  child: ListView.builder(
-                                itemCount: ingController.ingSearch.length,
-                                itemBuilder: (_, index) {
-                                  setUserInventoryCheck(ingController, index);
-                                  return Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Container(
-                                            alignment: Alignment.center,
-                                            padding: const EdgeInsets.all(8),
-                                            child: Text(
-                                              ingController
-                                                  .ingSearch[index].listName
-                                                  .toString()
-                                                  .toLowerCase(),
-                                              style: GoogleFonts.poppins(
-                                                  color: UIColors.white,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w400),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: <Widget>[
-                                          Checkbox(
-                                            side: BorderSide(
-                                              color: Colors.white,
-                                              width: 1.5,
-                                            ),
-                                            checkColor: UIColors.darkPurple,
-                                            focusColor: UIColors.darkPurple,
-                                            activeColor: UIColors.darkPurple,
-                                            value:
-                                                getStock(ingController, index),
-                                            onChanged: (bool? value) {
-                                              updateStock(
-                                                  ingController, index, value);
-                                            },
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  );
-                                },
-                              )),
-                            )
-                          : LoadingWidget())
+                      Obx(() => GetX<IngredientController>(
+                            init: Get.put<IngredientController>(
+                                IngredientController()),
+                            builder: (IngredientController ingCtrl) {
+                              if (ingCtrl.ingSearch.length > 0) {
+                                return Expanded(
+                                  child: Container(
+                                      child: ListView.builder(
+                                    itemCount: ingCtrl.ingSearch.length,
+                                    itemBuilder: (_, index) {
+                                      setUserInventoryCheck(ingCtrl, index);
+                                      return Obx(() => Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Container(
+                                                    alignment: Alignment.center,
+                                                    padding:
+                                                        const EdgeInsets.all(8),
+                                                    child: Text(
+                                                      ingCtrl.ingSearch[index]
+                                                          .listName
+                                                          .toString()
+                                                          .toLowerCase(),
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                              color: UIColors
+                                                                  .white,
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: <Widget>[
+                                                  Checkbox(
+                                                    side: BorderSide(
+                                                      color: Colors.white,
+                                                      width: 1.5,
+                                                    ),
+                                                    checkColor:
+                                                        UIColors.darkPurple,
+                                                    focusColor:
+                                                        UIColors.darkPurple,
+                                                    activeColor:
+                                                        UIColors.darkPurple,
+                                                    value: getStock(
+                                                        ingCtrl, index),
+                                                    onChanged: (bool? value) {
+                                                      updateStock(ingCtrl,
+                                                          index, value);
+                                                    },
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ));
+                                    },
+                                  )),
+                                );
+                              } else {
+                                //ingCtrl.filterIngredients("");
+                                return LoadingWidget();
+                              }
+                            },
+                          ))
                     ]),
               ),
             ),
