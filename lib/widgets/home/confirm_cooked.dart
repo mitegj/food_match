@@ -10,7 +10,7 @@ class ConfirmCooked extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: UIColors.lightGreen,
+      backgroundColor: cooked ? UIColors.lightGreen : UIColors.orange,
       body: InkWell(
         onTap: () {
           Get.back();
@@ -68,6 +68,16 @@ class ConfirmCooked extends StatelessWidget {
           "mhhhh...",
           style: GoogleFonts.poppins(
             fontSize: 27,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Text(
+          "troppo veloce per averlo cucinato.",
+          style: GoogleFonts.poppins(
+            fontSize: 14,
             fontWeight: FontWeight.w600,
           ),
         ),
