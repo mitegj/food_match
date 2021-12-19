@@ -60,44 +60,47 @@ class HomeHeader extends StatelessWidget {
                   ),
                 ),
               ),
-              Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        color: UIColors.detailBlack,
-                        borderRadius: BorderRadius.circular(15)),
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.filter_alt_outlined,
-                        color: UIColors.white,
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          color: UIColors.detailBlack,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.filter_alt_outlined,
+                          color: UIColors.white,
+                        ),
+                        onPressed: () {
+                          Get.to(() => FiltersPage());
+                        },
                       ),
-                      onPressed: () {
-                        Get.to(() => FiltersPage());
-                      },
                     ),
-                  ),
-                  FilterHeader.listFilters.length > 0
-                      ? Positioned(
-                          child: CircleAvatar(
-                            radius: 7,
-                            backgroundColor: UIColors.darkPurple,
-                          ),
-                          top: -3,
-                          right: -3,
-                        )
-                      : Text("")
-                ],
+                    FilterHeader.listFilters.length > 0
+                        ? Positioned(
+                            child: CircleAvatar(
+                              radius: 7,
+                              backgroundColor: UIColors.darkPurple,
+                            ),
+                            top: -3,
+                            right: -3,
+                          )
+                        : Text("")
+                  ],
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 8.0),
+                padding: const EdgeInsets.only(left: 10.0),
                 child: Container(
                   decoration: BoxDecoration(
                       color: UIColors.detailBlack,
                       borderRadius: BorderRadius.circular(15)),
                   child: IconButton(
                     icon: Icon(
-                      Icons.add_outlined,
+                      Icons.shopping_bag,
                       color: UIColors.white,
                     ),
                     onPressed: () {
