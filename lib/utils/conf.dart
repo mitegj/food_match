@@ -3,7 +3,7 @@ class Conf {
   String userCollection = "users";
   String menuCollection = "menu";
   String inventoryCollection = "inventory";
-  String inventoryLisrCollection = "inventoryList";
+  String inventoryListCollection = "inventoryList";
   String cookedMenuCollection = "cookedMenu";
 
   String appPlayStoreLink =

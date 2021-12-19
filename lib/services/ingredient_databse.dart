@@ -8,7 +8,7 @@ class DatabaseIngredient {
 
   Stream<List<IngredientModel>> ingredientStream() {
     return _firestore
-        .collection(conf.inventoryLisrCollection)
+        .collection(conf.inventoryListCollection)
         .snapshots()
         .map((QuerySnapshot query) {
       List<IngredientModel> retVal = [];

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
 import 'package:morning_brief/controllers/setting_controller.dart';
 import 'package:morning_brief/screens/allergies.dart';
+import 'package:morning_brief/screens/statistics.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 
 class SettingsBody extends GetWidget<SettingController> {
@@ -35,9 +36,11 @@ class SettingsBody extends GetWidget<SettingController> {
                   child: Container(
                     alignment: Alignment.center,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(() => StatisticsScreen());
+                      },
                       child: Text(
-                        'Dati personali',
+                        'Statistiche',
                         style: GoogleFonts.poppins(
                           color: UIColors.white,
                           fontSize: 15,

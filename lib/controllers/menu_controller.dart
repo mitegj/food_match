@@ -8,6 +8,8 @@ import 'package:morning_brief/widgets/home/confirm_cooked.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MenuController extends GetxController {
+  static MenuController instance = Get.find();
+
   Rxn<MenuModel> menu = Rxn<MenuModel>();
   Rxn<List<MenuModel>> menuList = Rxn<List<MenuModel>>().obs();
   List<MenuModel>? get menus => menuList.value.obs();
@@ -64,9 +66,9 @@ class MenuController extends GetxController {
     }
   }
 
-  Future<void> updateSavedMenu(String menuId) async {
+  Future<void> updateSavedMenu(MenuModel menu) async {
     try {
-      if (await DatabaseMenu().updateCookedMenu(menuId)) {
+      if (await DatabaseMenu().updateCookedMenu(menu)) {
         //Get.back();
         /*Get.snackbar(
           "Ottimo lavoro",
@@ -109,7 +111,7 @@ class MenuController extends GetxController {
       );*/
       Get.to(ConfirmCooked(cooked: false));
     } else {
-      updateSavedMenu(menu.id).then(
+      updateSavedMenu(menu).then(
         (_) => prefs.setDouble("lastCookingTime", menu.preparationTime).then(
             (_) =>
                 prefs.setString('lastTimeCooked', DateTime.now().toString())),
