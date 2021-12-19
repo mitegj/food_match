@@ -32,15 +32,14 @@ class MenuTile extends StatelessWidget {
             Container(
                 height: mediaQuery.size.height * 0.15,
                 width: mediaQuery.size.width * 0.30,
-                margin: EdgeInsets.only(top: 20, bottom: 0, left: 10, right: 0),
+                margin: EdgeInsets.only(top: 20, bottom: 0, left: 20),
                 decoration: BoxDecoration(
                   color: UIColors.violet,
                 )),
             Container(
                 height: mediaQuery.size.height * 0.15,
-                width: mediaQuery.size.width * 0.62,
-                margin:
-                    EdgeInsets.only(top: 20, bottom: 0, left: 10, right: 10),
+                width: mediaQuery.size.width * 0.57,
+                margin: EdgeInsets.only(top: 20, bottom: 0, left: 10),
                 decoration: BoxDecoration(color: UIColors.detailBlack),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -59,11 +58,13 @@ class MenuTile extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Text(
-                            menu.menuName.toString(),
-                            style: TextStyle(
-                                color: UIColors.white,
-                                fontWeight: FontWeight.w600),
+                          Expanded(
+                            child: Text(
+                              menu.menuName.toString(),
+                              style: TextStyle(
+                                  color: UIColors.white,
+                                  fontWeight: FontWeight.w600),
+                            ),
                           ),
                         ],
                       ),
@@ -76,14 +77,12 @@ class MenuTile extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 38),
-                      Row(
-                        children: [
-                          Text("Calorie",
-                              style: TextStyle(
-                                  color: Colors.white.withOpacity(0.5))),
-                        ],
-                      )
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Text("Calorie",
+                            style: TextStyle(
+                                color: Colors.white.withOpacity(0.5))),
+                      ),
                     ],
                   ),
                 )),

@@ -36,19 +36,27 @@ class HomeBody extends GetWidget<IngredientController> {
                           child: Center(
                               child: Column(
                             children: [
-                              Text(
-                                'Le nostre proposte',
-                                style: GoogleFonts.poppins(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Ricette del giorno',
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  ),
+                                ],
                               ),
-                              Text(
-                                'Scorri per visualizzare altre ricette',
-                                style: GoogleFonts.poppins(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Scorri per visualizzare altre ricette',
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.white.withOpacity(0.6)),
+                                  ),
+                                ],
                               ),
                             ],
                           )),

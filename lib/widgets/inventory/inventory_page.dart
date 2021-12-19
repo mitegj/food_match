@@ -68,11 +68,33 @@ class InventoryScreen extends GetWidget<IngredientController> {
                     left: 20,
                     right: 20,
                   ),
-                  child: Text("Manage your personal food inventory",
-                      style: GoogleFonts.poppins(
-                          color: UIColors.white,
-                          fontSize: 30,
-                          fontWeight: FontWeight.w700)),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text("Food Inventory",
+                              style: GoogleFonts.poppins(
+                                  color: UIColors.white,
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.w600)),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text("Selected products: ",
+                              style: GoogleFonts.poppins(
+                                  color: UIColors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w400)),
+                          Text("4",
+                              style: GoogleFonts.poppins(
+                                  color: UIColors.darkPurple,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600)),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             Expanded(
