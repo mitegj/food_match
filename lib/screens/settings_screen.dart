@@ -12,7 +12,11 @@ class SettingsScreen extends StatelessWidget {
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Flexible(flex: 1, child: ArrowHeader()),
+            Flexible(
+                flex: 1,
+                child: ArrowHeader(
+                  home: true,
+                )),
             Flexible(flex: 6, child: SettingsBody())
           ],
         )));

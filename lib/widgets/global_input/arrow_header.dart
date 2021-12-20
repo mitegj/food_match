@@ -5,6 +5,9 @@ import 'package:morning_brief/screens/homepage.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 
 class ArrowHeader extends StatelessWidget {
+  ArrowHeader({Key? key, required this.home}) : super(key: key);
+  final bool home;
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -28,7 +31,11 @@ class ArrowHeader extends StatelessWidget {
                   color: UIColors.white,
                 ),
                 onPressed: () {
-                  Get.offAll(() => HomePage());
+                  home
+                      ? Get.offAll(() => HomePage(),
+                          transition: Transition.leftToRight,
+                          duration: Duration(milliseconds: 250))
+                      : Get.back();
                 },
               ),
             ),

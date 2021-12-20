@@ -20,7 +20,11 @@ class FiltersPage extends GetWidget<AllergyController> {
         body: SafeArea(
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Flexible(flex: 1, child: ArrowHeader()),
+          Flexible(
+              flex: 1,
+              child: ArrowHeader(
+                home: true,
+              )),
           Expanded(
               flex: 2,
               child: Container(
@@ -50,8 +54,7 @@ class FiltersPage extends GetWidget<AllergyController> {
                   ],
                 ),
               )),
-              
-              FilterHeader()
+          FilterHeader()
         ])));
   }
 }

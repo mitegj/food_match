@@ -61,7 +61,11 @@ class InventoryScreen extends GetWidget<IngredientController> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             if (mediaQuery.viewInsets.bottom == 0)
-              Flexible(flex: 1, child: ArrowHeader()),
+              Flexible(
+                  flex: 1,
+                  child: ArrowHeader(
+                    home: true,
+                  )),
             if (mediaQuery.viewInsets.bottom == 0)
               Flexible(
                 flex: 1,

@@ -39,7 +39,9 @@ class AuthController extends GetxController {
   _initialScreen(User? user) {
     if (user == null) {
       print("login page");
-      Get.offAll(() => OnBoardingPage());
+      Get.offAll(() => OnBoardingPage(),
+          transition: Transition.leftToRight,
+          duration: Duration(milliseconds: 250));
     } else {
       UserDatabase().saveUserLastLogin();
       Get.offAll(() => HomePage());
@@ -66,8 +68,11 @@ class AuthController extends GetxController {
       if (authResult.additionalUserInfo!.isNewUser) {
         // se utente non esiste quando fa login lo creo con solo l'id
         if (user != null) {
-          createUser(user.uid.toString())
-              .then((value) => {Get.off(() => ContractScreen())});
+          createUser(user.uid.toString()).then((value) => {
+                Get.off(() => ContractScreen(),
+                    transition: Transition.zoom,
+                    duration: Duration(milliseconds: 300))
+              });
         } else {
           print("errore");
         }

@@ -33,7 +33,7 @@ class AllergyController extends GetxController {
           .updateAllergies(_isChecked)
           .then((value) => Get.offAll(() => HomePage()));
     } else {
-      Get.offAll(() => HomePage());
+      Get.back();
     }
   }
 
