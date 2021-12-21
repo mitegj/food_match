@@ -25,7 +25,7 @@ class HomeHeader extends StatelessWidget {
           Row(
             children: [
               Text(
-                'Ciao',
+                'HELLO'.tr,
                 style: GoogleFonts.poppins(
                     fontSize: 27,
                     fontWeight: FontWeight.w600,
@@ -88,7 +88,7 @@ class HomeHeader extends StatelessWidget {
                             top: -3,
                             right: -3,
                           )
-                        : Text("")
+                        : SizedBox()
                   ],
                 ),
               ),

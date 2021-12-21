@@ -9,14 +9,17 @@ class DatabaseCookedMenu {
 
   DateTime getDate(DateTime d) => DateTime(d.year, d.month, d.day);
 
-  Stream<List<CookedMenuModel>> cookedMenuStream() {
+  Stream<List<CookedMenuModel>> cookedMenuStream(bool monthly) {
+    // monthly -> false per una visualizzazione settimanale
     String uid = FirebaseAuth.instance.currentUser!.uid.toString();
 
     final DateTime date = DateTime.now();
-    final DateTime start =
-        getDate(date.subtract(Duration(days: date.weekday - 1)));
-    final DateTime end =
-        getDate(date.add(Duration(days: DateTime.daysPerWeek - date.weekday)));
+    final DateTime start = getDate(date
+        .subtract(Duration(days: monthly ? date.weekday - 1 : date.day - 1)));
+    final DateTime end = getDate(date.add(Duration(
+        days: monthly
+            ? DateTime.daysPerWeek - date.weekday
+            : DateTime.daysPerWeek + date.weekday)));
     return _firestore
         .collection(conf.userCollection)
         .doc(uid)
