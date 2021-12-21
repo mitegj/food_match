@@ -22,6 +22,8 @@ class DatabaseCookedMenu {
         .doc(uid)
         .collection(conf.cookedMenuCollection)
         .where("cookedTime", isGreaterThanOrEqualTo: start)
+        .where("cookedTime", isLessThanOrEqualTo: end)
+        .orderBy("cookedTime")
         .snapshots()
         .map((QuerySnapshot query) {
       List<CookedMenuModel> retVal = [];

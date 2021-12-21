@@ -20,29 +20,51 @@ class StatisticsScreen extends GetWidget<AllergyController> {
     var theme = Theme.of(context);
 
     return SafeArea(
-      child: Stack(
-        children: <Widget>[
-          AspectRatio(
-            aspectRatio: 1.70,
-            child: Container(
-              decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(18),
-                  ),
-                  color: Color(0xff232d37)),
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    right: 18.0, left: 12.0, top: 24, bottom: 12),
-                child: Obx(
-                  () => LineChart(
-                    mainData(),
+      child: Column(children: [
+        Stack(
+          children: <Widget>[
+            AspectRatio(
+              aspectRatio: 1.70,
+              child: Container(
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(18),
+                    ),
+                    color: Color(0xff232d37)),
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      right: 18.0, left: 12.0, top: 24, bottom: 12),
+                  child: Obx(
+                    () => LineChart(
+                      mainData(),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
-      ),
+          ],
+        ),
+        weeklySummary()
+      ]),
+    );
+  }
+
+  Widget weeklySummary() {
+    return Obx(
+      () => statisticController.cookedMenus != null
+          ? Expanded(
+              child: ListView.builder(
+                itemCount: statisticController.cookedMenus?.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Row(
+                    children: [
+                      Text(statisticController.cookedMenus![index].name)
+                    ],
+                  );
+                },
+              ),
+            )
+          : SizedBox(),
     );
   }
 
