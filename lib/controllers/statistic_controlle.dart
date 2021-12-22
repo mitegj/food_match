@@ -13,6 +13,7 @@ class StatisticController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+
     cookedMenuList.bindStream(DatabaseCookedMenu().cookedMenuStream(false));
   }
 

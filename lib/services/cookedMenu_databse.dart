@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:morning_brief/models/cooked_menu_model.dart';
 import 'package:morning_brief/utils/conf.dart';
 
@@ -11,7 +13,6 @@ class DatabaseCookedMenu {
 
   Stream<List<CookedMenuModel>> cookedMenuStream(bool monthly) {
     // monthly -> false per una visualizzazione settimanale
-    String uid = FirebaseAuth.instance.currentUser!.uid.toString();
 
     final DateTime date = DateTime.now();
     final DateTime start = getDate(date
@@ -20,20 +21,31 @@ class DatabaseCookedMenu {
         days: monthly
             ? DateTime.daysPerWeek - date.weekday
             : DateTime.daysPerWeek + date.weekday)));
-    return _firestore
-        .collection(conf.userCollection)
-        .doc(uid)
-        .collection(conf.cookedMenuCollection)
-        .where("cookedTime", isGreaterThanOrEqualTo: start)
-        .where("cookedTime", isLessThanOrEqualTo: end)
-        .orderBy("cookedTime")
-        .snapshots()
-        .map((QuerySnapshot query) {
-      List<CookedMenuModel> retVal = [];
-      for (var element in query.docs) {
-        retVal.add(CookedMenuModel.fromDocumentSnapshot(element));
-      }
-      return retVal;
-    });
+    try {
+      String uid = FirebaseAuth.instance.currentUser!.uid.toString();
+      return _firestore
+          .collection(conf.userCollection)
+          .doc(uid)
+          .collection(conf.cookedMenuCollection)
+          .where("cookedTime", isGreaterThanOrEqualTo: start)
+          .where("cookedTime", isLessThanOrEqualTo: end)
+          .orderBy("cookedTime")
+          .snapshots()
+          .map((QuerySnapshot query) {
+        List<CookedMenuModel> retVal = [];
+        for (var element in query.docs) {
+          retVal.add(CookedMenuModel.fromDocumentSnapshot(element));
+        }
+        return retVal;
+      });
+    } catch (e) {
+      Get.snackbar(
+        "Error",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return Stream.empty();
+    }
   }
 }

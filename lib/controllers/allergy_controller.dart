@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/models/allergyChecked_model.dart';
 import 'package:morning_brief/models/allergy_model.dart';
 import 'package:morning_brief/screens/homepage.dart';

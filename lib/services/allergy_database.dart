@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:morning_brief/models/allergy_model.dart';
 import 'package:morning_brief/models/user_model.dart';
@@ -10,49 +11,77 @@ class DatabaseAllergy {
   final Conf conf = new Conf();
 
   Stream<List<AllergyModel>> allergiesStream() {
-    return _firestore
-        .collection(conf
-            .allergyCollection) // firebase non consente di usare le regex nei filtri quindi bisogna creare questo array denominato 'filters' con tutti i valori possibili per filtrarlo (alla creazione di una nuova location prendere nome e fare split)
-        .snapshots()
-        .map((QuerySnapshot query) {
-      List<AllergyModel> retVal = [];
-      for (var element in query.docs) {
-        retVal.add(AllergyModel.fromDocumentSnapshot(element));
-      }
-      return retVal;
-    });
+    try {
+      return _firestore
+          .collection(conf
+              .allergyCollection) // firebase non consente di usare le regex nei filtri quindi bisogna creare questo array denominato 'filters' con tutti i valori possibili per filtrarlo (alla creazione di una nuova location prendere nome e fare split)
+          .snapshots()
+          .map((QuerySnapshot query) {
+        List<AllergyModel> retVal = [];
+        for (var element in query.docs) {
+          retVal.add(AllergyModel.fromDocumentSnapshot(element));
+        }
+        return retVal;
+      });
+    } catch (e) {
+      Get.snackbar(
+        "Error",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return Stream.empty();
+    }
   }
 
   Stream<List<String>> userAllergiesStream() {
     String uid = FirebaseAuth.instance.currentUser!.uid.toString();
-
-    return _firestore
-        .collection(conf.userCollection)
-        .where('id', isEqualTo: uid)
-        .snapshots()
-        .map((QuerySnapshot query) {
-      List<UserModel> retVal = [];
-      for (var element in query.docs) {
-        retVal.add(UserModel.fromDocumentSnapshot(element));
-      }
-      return retVal.length > 0 ? retVal[0].allergies : [];
-    });
+    try {
+      return _firestore
+          .collection(conf.userCollection)
+          .where('id', isEqualTo: uid)
+          .snapshots()
+          .map((QuerySnapshot query) {
+        List<UserModel> retVal = [];
+        for (var element in query.docs) {
+          retVal.add(UserModel.fromDocumentSnapshot(element));
+        }
+        return retVal.length > 0 ? retVal[0].allergies : [];
+      });
+    } catch (e) {
+      Get.snackbar(
+        "Error",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return Stream.empty();
+    }
   }
 
   Future<RxList<String>> getUserAllergies() async {
-    String uid = FirebaseAuth.instance.currentUser!.uid.toString();
-
-    var result = await FirebaseFirestore.instance
-        .collection(conf.userCollection)
-        .where('id', isEqualTo: uid)
-        .get();
-
     RxList<String> allergies = RxList();
-    if (result.docs.isNotEmpty) {
-      result.docs[0].data();
-      for (final a in result.docs[0].data()["allergies"]) {
-        allergies.add(a);
+
+    try {
+      String uid = FirebaseAuth.instance.currentUser!.uid.toString();
+
+      var result = await FirebaseFirestore.instance
+          .collection(conf.userCollection)
+          .where('id', isEqualTo: uid)
+          .get();
+      if (result.docs.isNotEmpty) {
+        result.docs[0].data();
+        for (final a in result.docs[0].data()["allergies"]) {
+          allergies.add(a);
+        }
       }
+    } catch (e) {
+      Get.snackbar(
+        "Error",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
     }
     return allergies;
   }
@@ -67,9 +96,13 @@ class DatabaseAllergy {
           .update({"allergies": getAllergiesId(isChecked)});
       return true;
     } catch (e) {
-      print(e);
+      Get.snackbar(
+        "Error",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
       return false;
-      // popup errore
     }
   }
 

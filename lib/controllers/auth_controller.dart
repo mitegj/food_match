@@ -1,12 +1,9 @@
 import 'dart:io';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:morning_brief/controllers/user_controller.dart';
 import 'package:morning_brief/models/user_model.dart';
 import 'package:morning_brief/screens/contract.dart';
 import 'package:morning_brief/screens/homepage.dart';
@@ -38,7 +35,6 @@ class AuthController extends GetxController {
 
   _initialScreen(User? user) {
     if (user == null) {
-      print("login page");
       Get.offAll(() => OnBoardingPage(),
           transition: Transition.leftToRight,
           duration: Duration(milliseconds: 250));
