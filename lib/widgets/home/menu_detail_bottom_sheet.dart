@@ -43,7 +43,7 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                   borderRadius: BorderRadius.circular(20.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: UIColors.white,
+                      color: UIColors.black,
                     ),
                     child: Image.network(
                       'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
@@ -81,8 +81,22 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                     ),
                   ],
                 ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        menu.desc.toString(),
+                        style: GoogleFonts.poppins(
+                          color: UIColors.white.withOpacity(0.7),
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
                 SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
                 Container(
                   width: mediaQuery.size.width,
@@ -96,26 +110,43 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                     children: [
                       Row(
                         children: [
-                          Icon(Icons.timelapse, color: Colors.white,),
-                          Text("Tempo", style: TextStyle(color: Colors.white),),
+                          Icon(
+                            Icons.timelapse,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            "Tempo",
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ],
                       ),
                       Row(
                         children: [
-                          Icon(Icons.accessible_forward_outlined, color: Colors.white,),
-                          Text("Difficoltà",style: TextStyle(color: Colors.white),),
+                          Icon(
+                            Icons.article_outlined,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            "Difficoltà",
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ],
                       ),
                       Row(
                         children: [
-                          Icon(Icons.food_bank, color: Colors.white,),
-                          Text("Calorie",style: TextStyle(color: Colors.white),),
+                          Icon(
+                            Icons.food_bank_outlined,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            "Calorie",
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ],
                       )
                     ],
                   ),
                 ),
-
                 Container(
                   width: mediaQuery.size.width,
                   padding: const EdgeInsets.all(20),
@@ -127,22 +158,19 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Icon(Icons.fastfood_rounded, color: Colors.white),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
-                        child: Text("Lista ingredienti",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20)),
-                      ),
+                      Text("Lista ingredienti",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20)),
                     ],
                   ),
                 ),
                 SizedBox(height: 10),
                 Container(
                   width: mediaQuery.size.width,
-                  padding: const EdgeInsets.only(left:20, right: 20, top: 10, bottom: 0),
+                  padding: const EdgeInsets.only(
+                      left: 20, right: 20, top: 10, bottom: 0),
                   decoration: BoxDecoration(
                       color: UIColors.black,
                       borderRadius: new BorderRadius.only(
@@ -270,9 +298,9 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                   },
                   child: Container(
                     padding: const EdgeInsets.all(20),
-                    margin: const EdgeInsets.only(top: 20),
+                    margin: const EdgeInsets.only(top: 20,left: 5,right: 5),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: UIColors.white,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Row(
@@ -282,7 +310,7 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                           child: Icon(
                             Icons.done_all_outlined,
                             size: 25,
-                            color: UIColors.black,
+                            color: UIColors.detailBlack,
                           ),
                         ),
                         Expanded(
@@ -291,7 +319,7 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                             child: Text(
                               'Piatto cucinato',
                               style: GoogleFonts.poppins(
-                                  color: Colors.black,
+                                  color: UIColors.detailBlack,
                                   fontWeight: FontWeight.w400,
                                   fontSize: 18),
                             ),
@@ -301,19 +329,6 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: [
-                    Text(
-                        "Premendo il bottone salvi il piatto fra i cucinati",
-                        style: GoogleFonts.poppins(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300,
-                            fontSize: 12)),
-                  ],
-                )
               ],
             )
           ],

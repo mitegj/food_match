@@ -15,9 +15,12 @@ class MenuTile extends StatelessWidget {
       : super(key: key);
   final MenuModel menu;
   final List<IngredientModel>? ingredients;
+
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
+
+
     return InkWell(
         onTap: () => {
               Get.bottomSheet(
@@ -70,19 +73,17 @@ class MenuTile extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Text(
-                            "Descrizione bla bla bla bla",
-                            style: TextStyle(
-                                color: UIColors.white.withOpacity(0.8)),
+                          Expanded(
+                            child: Text(
+                              "Descrizione da sistemare",
+                              style: TextStyle(
+                                  color: UIColors.white.withOpacity(0.8),
+                                fontSize: 15
+                              ),
+                            ),
                           ),
                         ],
-                      ),
-                      Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Text("Calorie",
-                            style: TextStyle(
-                                color: Colors.white.withOpacity(0.5))),
-                      ),
+                      )
                     ],
                   ),
                 )),

@@ -15,7 +15,7 @@ class FilterHeader extends StatelessWidget {
     List<Widget> filters = [];
     DishType.values.forEach((el) {
       filters.add(Padding(
-        padding: const EdgeInsets.only(right: 10.0, left: 10),
+        padding: const EdgeInsets.only(right: 20.0, left: 20, bottom: 20),
         child: InkWell(
           onTap: () => {
             (!listFilters.contains(el.index))
