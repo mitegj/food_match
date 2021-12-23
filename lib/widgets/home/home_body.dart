@@ -146,6 +146,7 @@ class HomeBody extends GetWidget<IngredientController> {
                                     ],
                                   ),
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         'Ricette del giorno',

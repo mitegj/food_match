@@ -87,6 +87,38 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                 Container(
                   width: mediaQuery.size.width,
                   padding: const EdgeInsets.all(20),
+                  margin: EdgeInsets.only(bottom: 20),
+                  decoration: BoxDecoration(
+                      color: UIColors.black,
+                      borderRadius: new BorderRadius.circular(15.0)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(Icons.timelapse, color: Colors.white,),
+                          Text("Tempo", style: TextStyle(color: Colors.white),),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.accessible_forward_outlined, color: Colors.white,),
+                          Text("Difficoltà",style: TextStyle(color: Colors.white),),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.food_bank, color: Colors.white,),
+                          Text("Calorie",style: TextStyle(color: Colors.white),),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+
+                Container(
+                  width: mediaQuery.size.width,
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                       color: UIColors.black,
                       borderRadius: new BorderRadius.only(
@@ -110,7 +142,7 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                 SizedBox(height: 10),
                 Container(
                   width: mediaQuery.size.width,
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.only(left:20, right: 20, top: 10, bottom: 0),
                   decoration: BoxDecoration(
                       color: UIColors.black,
                       borderRadius: new BorderRadius.only(
@@ -272,12 +304,16 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                 SizedBox(
                   height: 10,
                 ),
-                Text(
-                    "Premendo il bottone 'Piatto cucinato' salvi il piatto fra i cucinati",
-                    style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w300,
-                        fontSize: 12))
+                Row(
+                  children: [
+                    Text(
+                        "Premendo il bottone salvi il piatto fra i cucinati",
+                        style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 12)),
+                  ],
+                )
               ],
             )
           ],
