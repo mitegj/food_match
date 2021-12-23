@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:morning_brief/controllers/auth_controller.dart';
 import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -26,11 +24,6 @@ class SettingController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
     }
-  }
-
-  void logout() {
-    // controllo se ios o android
-    AuthController().logoutGoogle();
   }
 
   Future<void> getFutureAppCurrentVersion() async {

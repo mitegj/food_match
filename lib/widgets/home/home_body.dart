@@ -149,7 +149,7 @@ class HomeBody extends GetWidget<IngredientController> {
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        'Ricette del giorno',
+                                        'DAILY_RECEPY'.tr,
                                         style: GoogleFonts.poppins(
                                             fontSize: 22,
                                             fontWeight: FontWeight.w600,
@@ -162,7 +162,7 @@ class HomeBody extends GetWidget<IngredientController> {
                               Row(
                                 children: [
                                   Text(
-                                    'Scorri per visualizzare altre ricette',
+                                    'SCROLLFORMORE'.tr,
                                     style: GoogleFonts.poppins(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,

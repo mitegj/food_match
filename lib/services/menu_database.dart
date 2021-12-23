@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/models/menu_ingredients_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
@@ -48,41 +50,60 @@ class DatabaseMenu {
 
   Stream<List<MenuModel>> menuStream(
       IngredientController? _ingController, List<int> filters, int limit) {
-    return _firestore
-        .collection(conf.menuCollection)
-        .where("dishType", whereIn: filters)
-        .limit(limit)
-        .snapshots()
-        .map((QuerySnapshot query) {
-      List<MenuModel> retVal = [];
-      for (var element in query.docs) {
-        MenuModel menu = MenuModel.fromDocumentSnapshot(element);
-        if (!isUserAllergic(menu, _ingController)) {
-          if (userHasIngredients(menu, _ingController)) {
-            retVal.add(menu);
+    try {
+      return _firestore
+          .collection(conf.menuCollection)
+          .where("dishType", whereIn: filters)
+          .limit(limit)
+          .snapshots()
+          .map((QuerySnapshot query) {
+        List<MenuModel> retVal = [];
+        for (var element in query.docs) {
+          MenuModel menu = MenuModel.fromDocumentSnapshot(element);
+          if (!isUserAllergic(menu, _ingController)) {
+            if (userHasIngredients(menu, _ingController)) {
+              retVal.add(menu);
+            }
           }
         }
-      }
-      return retVal;
-    });
+        return retVal;
+      });
+    } catch (e) {
+      Get.snackbar(
+        "Error",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return Stream.empty();
+    }
   }
 
   Stream<List<UserInventory>> userInventoryStream() {
     String uid = FirebaseAuth.instance.currentUser!.uid.toString();
-
-    return _firestore
-        .collection(conf.userCollection)
-        .doc(uid)
-        // prendere solamente quelli a true?
-        .collection(conf.inventoryCollection)
-        .snapshots()
-        .map((QuerySnapshot query) {
-      List<UserInventory> retVal = [];
-      for (var element in query.docs) {
-        retVal.add(UserInventory.fromDocumentSnapshot(element));
-      }
-      return retVal;
-    });
+    try {
+      return _firestore
+          .collection(conf.userCollection)
+          .doc(uid)
+          // prendere solamente quelli a true?
+          .collection(conf.inventoryCollection)
+          .snapshots()
+          .map((QuerySnapshot query) {
+        List<UserInventory> retVal = [];
+        for (var element in query.docs) {
+          retVal.add(UserInventory.fromDocumentSnapshot(element));
+        }
+        return retVal;
+      });
+    } catch (e) {
+      Get.snackbar(
+        "Error",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return Stream.empty();
+    }
   }
 
   Future<bool> updateInventory(String idIngredient, bool stock) async {
@@ -98,9 +119,13 @@ class DatabaseMenu {
 
       return true;
     } catch (e) {
-      print(e);
+      Get.snackbar(
+        "Error",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
       return false;
-      // popup errore
     }
   }
 
@@ -126,7 +151,12 @@ class DatabaseMenu {
 
       return true;
     } catch (e) {
-      print(e);
+      Get.snackbar(
+        "Error",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
       return false;
       // popup errore
     }

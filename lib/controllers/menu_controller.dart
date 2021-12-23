@@ -42,7 +42,6 @@ class MenuController extends GetxController {
   }
 
   getMenuList(RxList<int> filters) {
-    print(filters);
     if (filters.length == 0) {
       filters = getAllFilters();
     }
@@ -69,13 +68,6 @@ class MenuController extends GetxController {
   Future<void> updateSavedMenu(MenuModel menu) async {
     try {
       if (await DatabaseMenu().updateCookedMenu(menu)) {
-        //Get.back();
-        /*Get.snackbar(
-          "Ottimo lavoro",
-          "Il tuo piatto è stato cucinato",
-          colorText: Colors.white,
-          snackPosition: SnackPosition.BOTTOM,
-        );*/
         Get.to(ConfirmCooked(
           cooked: true,
         ));
@@ -103,12 +95,6 @@ class MenuController extends GetxController {
 
     DateTime lastTimeCooked = DateTime.parse(lastTimeCookedS);
     if (DateTime.now().difference(lastTimeCooked).inMinutes < lastCookingTime) {
-      /*Get.snackbar(
-        "Ulala",
-        "ulala il cuoco piu veloce del west",
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-      );*/
       Get.to(ConfirmCooked(cooked: false));
     } else {
       updateSavedMenu(menu).then(
