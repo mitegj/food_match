@@ -87,6 +87,14 @@ class UIColors {
   }
 
   static Color get particularBlack {
-    return Color(0xF191D22);
+    return Color(0xFF191D22);
+  }
+
+  static Color get violetMain {
+    return Color(0xFF4B3869);
+  }
+
+  static Color get violetMainlightOption {
+    return Color(0xFF664E88);
   }
 }

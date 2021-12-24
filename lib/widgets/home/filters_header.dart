@@ -28,7 +28,7 @@ class FilterHeader extends StatelessWidget {
             () => Container(
               decoration: BoxDecoration(
                   color: listFilters.contains(el.index)
-                      ? UIColors.darkPurple
+                      ? UIColors.violetMain
                       : UIColors.detailBlack,
                   borderRadius: BorderRadius.circular(20)),
               child: Align(
@@ -36,10 +36,15 @@ class FilterHeader extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Icon(
-                      Icons.local_pizza,
-                      color: UIColors.white,
-                      size: 50,
+                    CircleAvatar(
+                      radius: 25,
+                      backgroundColor: listFilters.contains(el.index)
+                          ? UIColors.violetMainlightOption
+                          : UIColors.black.withOpacity(0.6),
+                      child: Icon(
+                        Icons.free_breakfast,
+                        color: UIColors.white,
+                      ), //free_breakfast dinner_dining
                     ),
                     Padding(
                       padding: const EdgeInsets.all(10.0),

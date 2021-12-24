@@ -77,7 +77,7 @@ class HomeHeader extends StatelessWidget {
                         ? Positioned(
                             child: CircleAvatar(
                               radius: 7,
-                              backgroundColor: UIColors.darkPurple,
+                              backgroundColor: UIColors.violetMain,
                             ),
                             top: -3,
                             right: -3,
