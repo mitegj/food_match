@@ -29,7 +29,7 @@ class DatabaseCookedMenu {
           .collection(conf.cookedMenuCollection)
           .where("cookedTime", isGreaterThanOrEqualTo: start)
           .where("cookedTime", isLessThanOrEqualTo: end)
-          .orderBy("cookedTime")
+          .orderBy("cookedTime", descending: true)
           .snapshots()
           .map((QuerySnapshot query) {
         List<CookedMenuModel> retVal = [];
