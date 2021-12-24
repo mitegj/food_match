@@ -281,10 +281,10 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                                 fontWeight: FontWeight.w400,
                               )),
                           CircleAvatar(
-                            backgroundColor: UIColors.orange.withOpacity(0.2),
+                            backgroundColor: UIColors.black.withOpacity(0.6),
                             child: Icon(
                               Icons.sick,
-                              color: UIColors.orange,
+                              color: UIColors.white,
                             ),
                           )
                         ],
@@ -307,10 +307,10 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                                 fontWeight: FontWeight.w400,
                               )),
                           CircleAvatar(
-                            backgroundColor: UIColors.orange.withOpacity(0.2),
+                            backgroundColor: UIColors.black.withOpacity(0.6),
                             child: Icon(
                               Icons.star,
-                              color: UIColors.orange,
+                              color: UIColors.white,
                             ),
                           )
                         ],
@@ -336,10 +336,10 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                                 fontWeight: FontWeight.w400,
                               )),
                           CircleAvatar(
-                            backgroundColor: UIColors.orange.withOpacity(0.2),
+                            backgroundColor: UIColors.black.withOpacity(0.6),
                             child: Icon(
                               Icons.help,
-                              color: UIColors.orange,
+                              color: UIColors.white,
                             ),
                           )
                         ],
@@ -361,10 +361,10 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                               fontWeight: FontWeight.w400,
                             )),
                         CircleAvatar(
-                          backgroundColor: UIColors.orange.withOpacity(0.2),
+                          backgroundColor: UIColors.black.withOpacity(0.6),
                           child: Icon(
                             Icons.privacy_tip,
-                            color: UIColors.orange,
+                            color: UIColors.white,
                           ),
                         )
                       ],
@@ -396,10 +396,10 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                             fontWeight: FontWeight.w400,
                           )),
                       CircleAvatar(
-                        backgroundColor: UIColors.lightRed.withOpacity(0.2),
+                        backgroundColor: UIColors.black.withOpacity(0.6),
                         child: Icon(
                           Icons.exit_to_app_sharp,
-                          color: UIColors.lightRed,
+                          color: Colors.red[500],
                         ),
                       )
                     ],
