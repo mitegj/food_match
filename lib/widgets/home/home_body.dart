@@ -51,11 +51,13 @@ class HomeBody extends GetWidget<IngredientController> {
                                                   bottom: 30, top: 25),
                                               height:
                                                   mediaQuery.size.height * 0.15,
-                                              width: mediaQuery.size.width * 0.7,
+                                              width:
+                                                  mediaQuery.size.width * 0.7,
                                               decoration: BoxDecoration(
                                                   color: UIColors.detailBlack,
                                                   borderRadius:
-                                                      BorderRadius.circular(10)),
+                                                      BorderRadius.circular(
+                                                          10)),
                                               child: Column(
                                                 children: [
                                                   Row(
@@ -63,9 +65,11 @@ class HomeBody extends GetWidget<IngredientController> {
                                                       Text(
                                                         "Resoconto settimanale",
                                                         style: TextStyle(
-                                                            color: UIColors.pink,
+                                                            color:
+                                                                UIColors.pink,
                                                             fontWeight:
-                                                                FontWeight.w600),
+                                                                FontWeight
+                                                                    .w600),
                                                       ),
                                                     ],
                                                   ),
@@ -146,7 +150,6 @@ class HomeBody extends GetWidget<IngredientController> {
                                       ],
                                     ),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                           'DAILY_RECEPY'.tr,

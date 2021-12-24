@@ -7,6 +7,7 @@ import 'package:morning_brief/screens/allergies.dart';
 import 'package:morning_brief/screens/statistics.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 
+// ignore: must_be_immutable
 class SettingsBody extends GetWidget<SettingController> {
   SettingController _settingController =
       Get.put<SettingController>(SettingController());

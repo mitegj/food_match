@@ -25,14 +25,7 @@ class HomeHeader extends StatelessWidget {
           Row(
             children: [
               Text(
-                'HELLO'.tr,
-                style: GoogleFonts.poppins(
-                    fontSize: 27,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white),
-              ),
-              Text(
-                ', ${FirebaseAuth.instance.currentUser!.displayName!.split(' ')[0]}',
+                '${FirebaseAuth.instance.currentUser!.displayName!.split(' ')[0]}',
                 style: GoogleFonts.poppins(
                     fontSize: 27,
                     fontWeight: FontWeight.w300,

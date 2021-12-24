@@ -11,9 +11,8 @@ class ArrowHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    var mediaQuery = MediaQuery.of(context);
+
     return Container(
-      height: mediaQuery.size.height,
       padding: const EdgeInsets.all(0),
       color: theme.backgroundColor,
       child: Row(
