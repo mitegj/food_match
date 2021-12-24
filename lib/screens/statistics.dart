@@ -24,6 +24,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
+    var mediaQuery = MediaQuery.of(context);
     DateFormat formattedDate = DateFormat(
         Get.deviceLocale == "en" ? 'kk:mm  yyyy-MM-dd' : "kk:mm  dd-MM-yyyy");
     return Scaffold(
@@ -93,12 +94,109 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                   ],
                 )),
             Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Text("Storico settimanale",
-                  style: GoogleFonts.poppins(
-                      color: UIColors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700)),
+              padding:
+                  const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
+              child: Container(
+                width: mediaQuery.size.width,
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                    color: UIColors.detailBlack,
+                    borderRadius: new BorderRadius.only(
+                        topLeft: const Radius.circular(15.0),
+                        topRight: const Radius.circular(15.0))),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20.0),
+                      child: Icon(
+                        Icons.article_outlined,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text("Storico settimanale",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20)),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0, right: 20),
+              child: Visibility(
+                visible: false,
+                child: Container(
+                  width: mediaQuery.size.width,
+                  height: mediaQuery.size.height * 0.2,
+                  padding: const EdgeInsets.only(
+                      left: 20, right: 20, top: 10, bottom: 0),
+                  decoration: BoxDecoration(
+                      color: UIColors.detailBlack,
+                      borderRadius: new BorderRadius.only(
+                          bottomLeft: const Radius.circular(15.0),
+                          bottomRight: const Radius.circular(15.0))),
+                  child: Column(
+                    children: [
+                      Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Piatto numero 1",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Piatto numero 2",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Piatto numero 3",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            height: 30,
+                            color: Colors.deepOrange,
+                            child: Center(
+                              child: Text(
+                                'Carica altri elementi',
+                                style: GoogleFonts.poppins(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
             Container(
               child: Obx(() => statisticController.cookedMenus != null
@@ -138,7 +236,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                           ),
                         );
                       }))
-                  : Text("ciao")),
+                  : Text("")),
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
