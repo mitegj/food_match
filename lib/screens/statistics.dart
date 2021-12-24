@@ -8,7 +8,7 @@ import 'package:morning_brief/controllers/allergy_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
 import 'package:morning_brief/controllers/setting_controller.dart';
-import 'package:morning_brief/controllers/statistic_controlle.dart';
+import 'package:morning_brief/controllers/statistic_controller.dart';
 import 'package:morning_brief/screens/allergies.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/arrow_header.dart';

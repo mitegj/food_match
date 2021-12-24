@@ -35,9 +35,9 @@ class ConfirmCooked extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(
-          Icons.done_all_outlined,
-          size: 40,
+        Text(
+          "🤙",
+          style: TextStyle(fontSize: 40),
         ),
         Text(
           "Ottimo lavoro.",

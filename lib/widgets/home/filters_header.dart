@@ -15,7 +15,7 @@ class FilterHeader extends StatelessWidget {
     List<Widget> filters = [];
     DishType.values.forEach((el) {
       filters.add(Padding(
-        padding: const EdgeInsets.only(right: 20.0, left: 20, bottom: 20),
+        padding: const EdgeInsets.only(bottom: 0),
         child: InkWell(
           onTap: () => {
             (!listFilters.contains(el.index))
@@ -26,7 +26,6 @@ class FilterHeader extends StatelessWidget {
           },
           child: Obx(
             () => Container(
-              margin: EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
                   color: listFilters.contains(el.index)
                       ? UIColors.darkPurple
@@ -67,9 +66,16 @@ class FilterHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
         flex: 5,
-        child: GridView.count(
-          crossAxisCount: 2,
-          children: getFilters(),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20.0, right: 20),
+          child: GridView.count(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            childAspectRatio: MediaQuery.of(context).size.width /
+                (MediaQuery.of(context).size.height / 2.5),
+            children: getFilters(),
+          ),
         ));
   }
 }
