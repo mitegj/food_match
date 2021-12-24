@@ -1,11 +1,15 @@
 import 'dart:ui';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/allergy_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:morning_brief/controllers/auth_controller.dart';
+import 'package:morning_brief/controllers/setting_controller.dart';
 import 'package:morning_brief/controllers/statistic_controlle.dart';
+import 'package:morning_brief/screens/allergies.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:intl/intl.dart';
@@ -21,6 +25,10 @@ class StatisticsScreen extends GetWidget<AllergyController> {
 
   StatisticController statisticController =
       Get.put<StatisticController>(StatisticController());
+
+  SettingController _settingController =
+      Get.put<SettingController>(SettingController());
+  AuthController _authController = Get.put<AuthController>(AuthController());
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -49,7 +57,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                     color: UIColors.blue,
                   ),
                   child: Text(
-                    "AM",
+                    "${FirebaseAuth.instance.currentUser!.displayName!.split('')[0] + FirebaseAuth.instance.currentUser!.displayName!.split(' ')[1].substring(0, 1)}",
                     style: GoogleFonts.poppins(
                         color: UIColors.white,
                         fontSize: 20,
@@ -101,11 +109,13 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                       fontWeight: FontWeight.w700)),
             ),
             Container(
+              height: 200,
               child: Obx(() => statisticController.cookedMenus != null
                   ? (ListView.builder(
                       physics: ScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: statisticController.cookedMenus?.length,
+                      scrollDirection: Axis.horizontal,
                       itemBuilder: (BuildContext context, int index) {
                         return Padding(
                           padding: const EdgeInsets.all(20.0),
@@ -155,122 +165,181 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                 color: UIColors.detailBlack,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Column(
                 children: [
-                  CircleAvatar(
-                    backgroundColor: UIColors.orange.withOpacity(0.2),
-                    child: Icon(
-                      Icons.article_outlined,
-                      color: UIColors.orange,
+                  InkWell(
+                    onTap: () {
+                      Get.to(() => AllergiesScreen());
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Allergie",
+                              style: GoogleFonts.poppins(
+                                color: UIColors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                              )),
+                          CircleAvatar(
+                            backgroundColor: UIColors.orange.withOpacity(0.2),
+                            child: Icon(
+                              Icons.sick,
+                              color: UIColors.orange,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  )
+                  ),
+                  Divider(
+                    color: UIColors.black,
+                  ),
+                  InkWell(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Support us with 5 star",
+                              style: GoogleFonts.poppins(
+                                color: UIColors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                              )),
+                          CircleAvatar(
+                            backgroundColor: UIColors.orange.withOpacity(0.2),
+                            child: Icon(
+                              Icons.star,
+                              color: UIColors.orange,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Divider(
+                    color: UIColors.black,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      _settingController.openEmailFeedback();
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Help and assistence",
+                              style: GoogleFonts.poppins(
+                                color: UIColors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                              )),
+                          CircleAvatar(
+                            backgroundColor: UIColors.orange.withOpacity(0.2),
+                            child: Icon(
+                              Icons.help,
+                              color: UIColors.orange,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Divider(
+                    color: UIColors.black,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Privacy policy",
+                            style: GoogleFonts.poppins(
+                              color: UIColors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                            )),
+                        CircleAvatar(
+                          backgroundColor: UIColors.orange.withOpacity(0.2),
+                          child: Icon(
+                            Icons.privacy_tip,
+                            color: UIColors.orange,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ],
               ),
-            )
+            ),
+            InkWell(
+              onTap: () {
+                _authController.logoutGoogle();
+              },
+              child: Container(
+                margin: EdgeInsets.only(left: 20, right: 20),
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: UIColors.detailBlack,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Disconnetti account",
+                          style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                          )),
+                      CircleAvatar(
+                        backgroundColor: UIColors.lightRed.withOpacity(0.2),
+                        child: Icon(
+                          Icons.exit_to_app_sharp,
+                          color: UIColors.lightRed,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: Text(
+                'Cancella account',
+                style: GoogleFonts.poppins(
+                  color: theme.secondaryHeaderColor,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            Container(
+                alignment: Alignment.center,
+                child: Obx(() => Text(
+                      _settingController.appCurrentVersion.value,
+                      style: GoogleFonts.poppins(
+                        color: theme.secondaryHeaderColor,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    )))
           ],
         )),
       ),
     );
-
-    /*
-    Container(
-                            child: Padding(
-                          padding: const EdgeInsets.only(left: 20.0, right: 20),
-                          child: Card(
-                              color: UIColors.orange,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: ListTile(
-                                title: Text(
-                                  statisticController.cookedMenus![index].name,
-                                  style: TextStyle(color: UIColors.black),
-                                ),
-                                subtitle: Text(formattedDate.format(
-                                    statisticController
-                                        .cookedMenus![index].cookedTime
-                                        .toDate())),
-                              )),
-                        ))
-    
-    return Scaffold(
-      backgroundColor: theme.backgroundColor,
-      resizeToAvoidBottomInset: true,
-      body: SafeArea(
-        child: LayoutBuilder(builder: (context, constraint) {
-          return SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(minHeight: constraint.maxHeight),
-              child: IntrinsicHeight(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: UIColors.black,
-                              borderRadius: BorderRadius.circular(15)),
-                          child: IconButton(
-                            icon: Icon(
-                              Icons.arrow_back_ios_rounded,
-                              color: UIColors.white,
-                            ),
-                            onPressed: () {},
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Flexible(
-                          flex: 1,
-                          child: Text(
-                              "Ecco le calorie che hai consumato questa settimana",
-                              style: GoogleFonts.poppins(
-                                  color: UIColors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700)),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0, right: 20),
-                        child: Expanded(
-                          child: Stack(
-                            children: <Widget>[
-                              AspectRatio(
-                                aspectRatio: 1,
-                                child: Container(
-                                  decoration: const BoxDecoration(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(20),
-                                      ),
-                                      color: Color(0xFF12161C)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        right: 30.0,
-                                        left: 5,
-                                        top: 20,
-                                        bottom: 10),
-                                    child: Obx(
-                                      () => LineChart(
-                                        mainData(),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ]),
-              ),
-            ),
-          );
-        }),
-      ),
-    );*/
   }
 
   Widget weeklySummary() {
