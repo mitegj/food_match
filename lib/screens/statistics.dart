@@ -142,8 +142,8 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                       Text("Mostra",
                           style: TextStyle(
                               color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20)),
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16)),
                     ],
                   ),
                 ),
