@@ -6,18 +6,18 @@ import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/step_circle.dart';
-import 'package:morning_brief/widgets/home/confirm_cooked.dart';
 
-class DetailBottomSheet extends GetWidget<MenuController> {
+class DetailBottomSheet extends StatelessWidget {
   DetailBottomSheet({Key? key, required this.menu, required this.ingredients})
       : super(key: key);
   final MenuModel menu;
   final List<IngredientModel>? ingredients;
 
+  MenuController menuController = Get.put<MenuController>(MenuController());
+
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
-    int index = 0;
     return Container(
       height: mediaQuery.size.height * 0.85,
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
@@ -189,7 +189,7 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                        controller.getIngredientName(
+                                        menuController.getIngredientName(
                                             item!.id.toString(), ingredients),
                                         style: GoogleFonts.poppins(
                                             color: UIColors.white,
@@ -292,13 +292,13 @@ class DetailBottomSheet extends GetWidget<MenuController> {
                 ),
                 InkWell(
                   onTap: () {
-                    controller.checkBeforeSaveMenu(menu);
+                    menuController.checkBeforeSaveMenu(menu);
                     //Navigator.pop(context);
                     //Get.to(ConfirmCooked());
                   },
                   child: Container(
                     padding: const EdgeInsets.all(20),
-                    margin: const EdgeInsets.only(top: 20,left: 5,right: 5),
+                    margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
                     decoration: BoxDecoration(
                       color: UIColors.white,
                       borderRadius: BorderRadius.circular(20),

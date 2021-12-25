@@ -98,9 +98,8 @@ class MenuController extends GetxController {
       Get.to(ConfirmCooked(cooked: false));
     } else {
       updateSavedMenu(menu).then(
-        (_) => prefs.setDouble("lastCookingTime", menu.preparationTime).then(
-            (_) =>
-                prefs.setString('lastTimeCooked', DateTime.now().toString())),
+        (_) => prefs.setInt("lastCookingTime", menu.preparationTime).then((_) =>
+            prefs.setString('lastTimeCooked', DateTime.now().toString())),
       );
     }
   }

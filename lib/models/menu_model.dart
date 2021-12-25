@@ -1,12 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:morning_brief/models/menu_ingredients_model.dart';
+import 'package:morning_brief/utils/conf.dart';
+
+final Conf conf = new Conf();
 
 class MenuModel {
   late String id;
   late String menuName;
   late int kcal;
-  late double difficulty;
-  late double preparationTime;
+  late int difficulty;
+  late int preparationTime;
   late List<String> allergies;
   late List<String> steps;
   late List<MenuIngredientModel?> ingredients;
@@ -30,15 +33,15 @@ class MenuModel {
   Map<String, dynamic> toMap() {
     return {
       "id": id,
-      "menuName": menuName,
+      "name" + conf.lang: menuName,
       "kcal": kcal,
       "difficulty,": difficulty,
       "preparationTime": preparationTime,
       "allergies": allergies,
-      "steps": steps,
+      "steps" + conf.lang: steps,
       "ingredients": ingredients,
-      "note": note,
-      "desc": desc,
+      "note" + conf.lang: note,
+      "desc" + conf.lang: desc,
       "dishType": dishType
     };
   }
@@ -46,15 +49,15 @@ class MenuModel {
   factory MenuModel.fromJson(Map<String, dynamic> parsedJson) {
     return MenuModel(
         id: parsedJson["id"],
-        menuName: parsedJson['menuName'],
+        menuName: parsedJson['name' + conf.lang],
         kcal: parsedJson['kcal'],
         difficulty: parsedJson['difficulty'],
         preparationTime: parsedJson['preparationTime'],
         allergies: parsedJson['allergies'],
-        steps: parsedJson['steps'],
+        steps: parsedJson['steps' + conf.lang],
         ingredients: parsedJson['ingredients'],
-        note: parsedJson['note'],
-        desc: parsedJson['desc'],
+        note: parsedJson['note' + conf.lang],
+        desc: parsedJson['desc' + conf.lang],
         dishType: parsedJson['dishType']);
   }
 
@@ -62,14 +65,14 @@ class MenuModel {
     DocumentSnapshot documentSnapshot,
   ) {
     id = documentSnapshot.id;
-    menuName = documentSnapshot["menuName"] ?? "";
+    menuName = documentSnapshot["name" + conf.lang] ?? "";
     kcal = documentSnapshot["kcal"] ?? 0.0;
     difficulty = documentSnapshot["difficulty"] ?? 0.0;
 
     preparationTime = documentSnapshot["preparationTime"] ?? 0.0;
 
     allergies = documentSnapshot["allergies"].cast<String>() ?? [];
-    steps = documentSnapshot["steps"].cast<String>() ?? [];
+    steps = documentSnapshot["steps" + conf.lang].cast<String>() ?? [];
 
     ingredients = List<MenuIngredientModel>.from(
         documentSnapshot["ingredients"].map((item) {
@@ -77,9 +80,9 @@ class MenuModel {
           id: item["id"], qty: item["qty"], unit: item["unit"]);
     }));
 
-    note = documentSnapshot["note"] ?? "";
+    note = documentSnapshot["note" + conf.lang] ?? "";
 
-    desc = documentSnapshot["desc"] ?? "";
+    desc = documentSnapshot["desc" + conf.lang] ?? "";
     dishType = documentSnapshot["dishType"] ?? 0;
 
     //ingredients =
@@ -90,15 +93,15 @@ class MenuModel {
 extension MenuExtensions on QueryDocumentSnapshot {
   MenuModel get touser => MenuModel(
         id: this.id,
-        menuName: this['menuName'],
+        menuName: this['menu' + conf.lang],
         kcal: this['kcal'],
         difficulty: this['difficulty'],
         preparationTime: this['preparationTime'],
         allergies: this['allergies'],
-        steps: this['steps'],
+        steps: this['steps' + conf.lang],
         ingredients: this['ingredients'],
-        note: this['note'],
-        desc: this['desc'],
+        note: this['note' + conf.lang],
+        desc: this['desc' + conf.lang],
         dishType: this['dishType'],
       );
 }
