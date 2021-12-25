@@ -49,7 +49,7 @@ class FilterBody extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
-                        el.name.toString(),
+                        el.name.toString().tr,
                         style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontWeight: FontWeight.w600,

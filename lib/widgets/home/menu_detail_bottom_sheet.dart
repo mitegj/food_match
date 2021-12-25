@@ -135,8 +135,9 @@ class DetailBottomSheet extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            describeEnum(
-                                DishDifficulty.values[menu.difficulty]),
+                            describeEnum(DishDifficulty.values[menu.difficulty])
+                                .toString()
+                                .tr,
                             style: TextStyle(color: Colors.white),
                           ),
                         ],
