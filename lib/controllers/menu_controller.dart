@@ -105,6 +105,9 @@ class MenuController extends GetxController {
   }
 
   String getIngredientName(String id, ingredients) {
-    return ingredients!.where((el) => el.id == id).single.listName;
+    var ing = ingredients!.where((el) => el.id == id);
+    return (ing.length == 0)
+        ? ""
+        : ingredients!.where((el) => el.id == id).single.name;
   }
 }

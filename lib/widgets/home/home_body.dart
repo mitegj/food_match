@@ -5,7 +5,7 @@ import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/home/empty_menu.dart';
-import 'package:morning_brief/widgets/home/filters_header.dart';
+import 'package:morning_brief/widgets/home/filters_body.dart';
 import 'package:morning_brief/widgets/home/menu_tile.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
@@ -19,7 +19,7 @@ class HomeBody extends GetWidget<IngredientController> {
     MenuController _menuController =
         Get.put<MenuController>(MenuController.fromCtrl(ingController));
     _menuController.menus = [];
-    _menuController.getMenuList(FilterHeader.listFilters);
+    _menuController.getMenuList(FilterBody.listFilters);
 
     return Expanded(
       child: Container(

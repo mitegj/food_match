@@ -33,7 +33,7 @@ class MenuModel {
   Map<String, dynamic> toMap() {
     return {
       "id": id,
-      "name" + conf.lang: menuName,
+      "name": menuName,
       "kcal": kcal,
       "difficulty,": difficulty,
       "preparationTime": preparationTime,

@@ -6,8 +6,8 @@ import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 
-class FilterHeader extends StatelessWidget {
-  FilterHeader({Key? key}) : super(key: key);
+class FilterBody extends StatelessWidget {
+  FilterBody({Key? key}) : super(key: key);
 
   static RxList<int> listFilters = RxList<int>().obs();
   List<Widget> getFilters() {

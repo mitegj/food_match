@@ -37,8 +37,7 @@ class IngredientController extends GetxController {
     ingSearch.clear();
     if (ingredients != null)
       ingredients!.forEach((el) => {
-            if (el.listName.contains(src) || src.trim() == "")
-              {ingSearch.add(el)}
+            if (el.name.contains(src) || src.trim() == "") {ingSearch.add(el)}
           });
   }
 

@@ -161,8 +161,8 @@ class InventoryScreen extends GetWidget<IngredientController> {
                                                     padding:
                                                         const EdgeInsets.all(8),
                                                     child: Text(
-                                                      ingCtrl.ingSearch[index]
-                                                          .listName
+                                                      ingCtrl
+                                                          .ingSearch[index].name
                                                           .toString()
                                                           .toLowerCase(),
                                                       style:

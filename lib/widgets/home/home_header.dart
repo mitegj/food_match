@@ -7,9 +7,8 @@ import 'package:morning_brief/screens/statistics.dart';
 
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/home/filters.dart';
+import 'package:morning_brief/widgets/home/filters_body.dart';
 import 'package:morning_brief/widgets/inventory/inventory_page.dart';
-
-import 'filters_header.dart';
 
 class HomeHeader extends StatelessWidget {
   @override
@@ -80,7 +79,7 @@ class HomeHeader extends StatelessWidget {
                         },
                       ),
                     ),
-                    FilterHeader.listFilters.length > 0
+                    FilterBody.listFilters.length > 0
                         ? Positioned(
                             child: CircleAvatar(
                               radius: 7,
