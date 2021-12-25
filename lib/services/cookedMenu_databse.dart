@@ -40,7 +40,7 @@ class DatabaseCookedMenu {
       });
     } catch (e) {
       Get.snackbar(
-        "Error",
+        "Error getting cooked menu",
         e.toString(),
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,

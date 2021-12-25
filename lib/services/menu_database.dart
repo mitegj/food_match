@@ -70,7 +70,7 @@ class DatabaseMenu {
       });
     } catch (e) {
       Get.snackbar(
-        "Error",
+        "Error getting menus",
         e.toString(),
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
@@ -97,7 +97,7 @@ class DatabaseMenu {
       });
     } catch (e) {
       Get.snackbar(
-        "Error",
+        "Error getting user inventory",
         e.toString(),
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
@@ -120,7 +120,7 @@ class DatabaseMenu {
       return true;
     } catch (e) {
       Get.snackbar(
-        "Error",
+        "Error updating inventory",
         e.toString(),
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
@@ -152,7 +152,7 @@ class DatabaseMenu {
       return true;
     } catch (e) {
       Get.snackbar(
-        "Error",
+        "Error updating cooked menu",
         e.toString(),
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
