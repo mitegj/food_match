@@ -556,6 +556,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
       maxY: 4000,
       lineBarsData: [
         LineChartBarData(
+          isStepLineChart: true,
           spots: statisticController.points,
           isCurved: true,
           colors: gradientColors,

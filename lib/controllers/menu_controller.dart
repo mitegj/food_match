@@ -68,9 +68,9 @@ class MenuController extends GetxController {
   Future<void> updateSavedMenu(MenuModel menu) async {
     try {
       if (await DatabaseMenu().updateCookedMenu(menu)) {
-        Get.to(ConfirmCooked(
-          cooked: true,
-        ));
+        Get.to(() => ConfirmCooked(
+              cooked: true,
+            ));
       }
     } catch (e) {
       Get.snackbar(
@@ -95,7 +95,7 @@ class MenuController extends GetxController {
 
     DateTime lastTimeCooked = DateTime.parse(lastTimeCookedS);
     if (DateTime.now().difference(lastTimeCooked).inMinutes < lastCookingTime) {
-      Get.to(ConfirmCooked(cooked: false));
+      Get.to(() => ConfirmCooked(cooked: false));
     } else {
       updateSavedMenu(menu).then(
         (_) => prefs.setInt("lastCookingTime", menu.preparationTime).then((_) =>
