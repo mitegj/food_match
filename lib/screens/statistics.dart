@@ -7,13 +7,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/allergy_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
+import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/controllers/setting_controller.dart';
 import 'package:morning_brief/controllers/statistic_controller.dart';
+import 'package:morning_brief/models/cooked_menu_model.dart';
 import 'package:morning_brief/screens/allergies.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:intl/intl.dart';
 import 'package:morning_brief/widgets/home/home_header.dart';
+import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 class StatisticsScreen extends GetWidget<AllergyController> {
   StatisticsScreen({Key? key}) : super(key: key);
@@ -21,6 +24,9 @@ class StatisticsScreen extends GetWidget<AllergyController> {
     UIColors.orange,
     UIColors.yellow,
   ];
+
+  RxBool visibility = false.obs;
+
   // https://pub.dev/packages/fl_chart
 
   StatisticController statisticController =
@@ -102,151 +108,137 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                   ],
                 )),
             Padding(
-              padding:
-                  const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
-              child: Container(
-                width: mediaQuery.size.width,
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                    color: UIColors.detailBlack,
-                    borderRadius: new BorderRadius.only(
-                        topLeft: const Radius.circular(15.0),
-                        topRight: const Radius.circular(15.0))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20.0),
-                      child: Icon(
-                        Icons.article_outlined,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text("Storico settimanale",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20)),
-                  ],
-                ),
-              ),
+              padding: const EdgeInsets.all(20.0),
+              child: Text("Storico settimanale",
+                  style: GoogleFonts.poppins(
+                      color: UIColors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700)),
             ),
-            SizedBox(height: 10),
             Padding(
-              padding: const EdgeInsets.only(left: 20.0, right: 20),
-              child: Visibility(
-                visible: false,
+              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              child: InkWell(
+                onTap: () => {visibility.value = !visibility.value},
                 child: Container(
                   width: mediaQuery.size.width,
-                  height: mediaQuery.size.height * 0.2,
-                  padding: const EdgeInsets.only(
-                      left: 20, right: 20, top: 10, bottom: 0),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                       color: UIColors.detailBlack,
-                      borderRadius: new BorderRadius.only(
-                          bottomLeft: const Radius.circular(15.0),
-                          bottomRight: const Radius.circular(15.0))),
-                  child: Column(
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 10.0),
-                            child: Row(
-                              children: [
-                                Text(
-                                  "Piatto numero 1",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20),
-                                ),
-                              ],
-                            ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20.0),
+                        child: Obx(
+                          () => Icon(
+                            visibility.value
+                                ? Icons.keyboard_arrow_down
+                                : Icons.keyboard_arrow_right,
+                            color: Colors.white,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 10.0),
-                            child: Row(
-                              children: [
-                                Text(
-                                  "Piatto numero 2",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 10.0),
-                            child: Row(
-                              children: [
-                                Text(
-                                  "Piatto numero 3",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            height: 30,
-                            color: Colors.deepOrange,
-                            child: Center(
-                              child: Text(
-                                'Carica altri elementi',
-                                style: GoogleFonts.poppins(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
+                      Text("Mostra",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20)),
                     ],
                   ),
                 ),
               ),
             ),
+            SizedBox(height: 10),
             Container(
-              height: 200,
-              child: Obx(() => statisticController.cookedMenus != null
-                  ? (ListView.builder(
-                      physics: ScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: statisticController.cookedMenus?.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Container(
-                            padding: EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                                color: UIColors.lightGreen,
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.more_time_sharp),
-                                Text(
-                                    statisticController
-                                        .cookedMenus![index].name,
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600)),
-                                Text(
-                                    formattedDate.format(
-                                      statisticController
-                                          .cookedMenus![index].cookedTime
-                                          .toDate(),
-                                    ),
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w300))
-                              ],
-                            ),
+              margin: EdgeInsets.only(left: 20, right: 20),
+              decoration: BoxDecoration(
+                  color: UIColors.detailBlack,
+                  borderRadius: BorderRadius.circular(15)),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20),
+                child: Obx(
+                  () => statisticController.cookedMenus != null
+                      ? Visibility(
+                          visible: visibility.value,
+                          child: Column(
+                            children: [
+                              ListView.builder(
+                                  physics: ScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount:
+                                      statisticController.cookedMenus?.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Padding(
+                                        padding: const EdgeInsets.only(
+                                            bottom: 10.0, top: 20.0),
+                                        child: Column(
+                                          children: <Widget>[
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  bottom: 20.0),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                          statisticController
+                                                              .cookedMenus![
+                                                                  index]
+                                                              .name
+                                                              .toString(),
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                            color:
+                                                                UIColors.white,
+                                                            fontSize: 15,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                          )),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                          formattedDate.format(
+                                                              statisticController
+                                                                  .cookedMenus![
+                                                                      index]
+                                                                  .cookedTime
+                                                                  .toDate()),
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                            color:
+                                                                UIColors.white,
+                                                            fontSize: 15,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                          )),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            if (index !=
+                                                (statisticController
+                                                        .cookedMenus?.length)! -
+                                                    1)
+                                              Divider(
+                                                color: UIColors.black,
+                                              )
+                                          ],
+                                        ));
+                                  })
+                            ],
                           ),
-                        );
-                      }))
-                  : Text("")),
+                        )
+                      : LoadingWidget(),
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
@@ -282,10 +274,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                               )),
                           CircleAvatar(
                             backgroundColor: UIColors.black.withOpacity(0.6),
-                            child: Icon(
-                              Icons.sick,
-                              color: UIColors.white,
-                            ),
+                            child: Icon(Icons.sick, color: UIColors.white),
                           )
                         ],
                       ),
