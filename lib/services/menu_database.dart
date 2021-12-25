@@ -80,8 +80,8 @@ class DatabaseMenu {
   }
 
   Stream<List<UserInventory>> userInventoryStream() {
-    String uid = FirebaseAuth.instance.currentUser!.uid.toString();
     try {
+      String uid = FirebaseAuth.instance.currentUser!.uid.toString();
       return _firestore
           .collection(conf.userCollection)
           .doc(uid)

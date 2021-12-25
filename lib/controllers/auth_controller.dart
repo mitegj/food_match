@@ -42,6 +42,8 @@ class AuthController extends GetxController {
       UserDatabase().saveUserLastLogin();
       Get.offAll(() => HomePage());
     }
+
+    //Get.offAll(() => HomePage());
   }
 
   void googleLogin() async {
@@ -64,11 +66,7 @@ class AuthController extends GetxController {
       if (authResult.additionalUserInfo!.isNewUser) {
         // se utente non esiste quando fa login lo creo con solo l'id
         if (user != null) {
-          createUser(user.uid.toString()).then((value) => {
-                Get.off(() => ContractScreen(),
-                    transition: Transition.zoom,
-                    duration: Duration(milliseconds: 300))
-              });
+          createUser(user.uid.toString()).then((value) => {});
         } else {
           print("errore");
         }

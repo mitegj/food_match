@@ -28,7 +28,7 @@ class AppleLogin extends StatelessWidget {
                 child: Container(
                   alignment: Alignment.center,
                   child: Text(
-                    'Login with Apple',
+                    'Continue with Apple',
                     style: GoogleFonts.poppins(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,

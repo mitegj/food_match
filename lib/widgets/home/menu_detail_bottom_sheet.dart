@@ -1,7 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
+import 'package:morning_brief/enum/dish_difficulty_enum.dart';
 import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
@@ -110,36 +112,46 @@ class DetailBottomSheet extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Icon(
-                            Icons.timelapse,
-                            color: Colors.white,
+                          Padding(
+                            padding: const EdgeInsets.only(right: 5.0),
+                            child: Icon(
+                              Icons.timelapse,
+                              color: Colors.white,
+                            ),
                           ),
                           Text(
-                            "Tempo",
+                            menu.preparationTime.toString() + " min",
                             style: TextStyle(color: Colors.white),
                           ),
                         ],
                       ),
                       Row(
                         children: [
-                          Icon(
-                            Icons.article_outlined,
-                            color: Colors.white,
+                          Padding(
+                            padding: const EdgeInsets.only(right: 5.0),
+                            child: Icon(
+                              Icons.article_outlined,
+                              color: Colors.white,
+                            ),
                           ),
                           Text(
-                            "Difficoltà",
+                            describeEnum(
+                                DishDifficulty.values[menu.difficulty]),
                             style: TextStyle(color: Colors.white),
                           ),
                         ],
                       ),
                       Row(
                         children: [
-                          Icon(
-                            Icons.food_bank_outlined,
-                            color: Colors.white,
+                          Padding(
+                            padding: const EdgeInsets.only(right: 5.0),
+                            child: Icon(
+                              Icons.food_bank_outlined,
+                              color: Colors.white,
+                            ),
                           ),
                           Text(
-                            "Calorie",
+                            menu.kcal.toString() + " kcal",
                             style: TextStyle(color: Colors.white),
                           ),
                         ],
