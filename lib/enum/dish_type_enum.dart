@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 enum DishType { Colazione, Primo, Secondo, Contorno, Dolce }
 
 extension DishTypeExtension on DishType {
@@ -15,6 +17,23 @@ extension DishTypeExtension on DishType {
         return 4;
       default:
         return -1;
+    }
+  }
+
+  IconData get icon {
+    switch (this) {
+      case DishType.Colazione:
+        return Icons.free_breakfast;
+      case DishType.Primo:
+        return Icons.dinner_dining;
+      case DishType.Secondo:
+        return Icons.dining;
+      case DishType.Contorno:
+        return Icons.dinner_dining;
+      case DishType.Dolce:
+        return Icons.bakery_dining;
+      default:
+        return Icons.dinner_dining;
     }
   }
 }
