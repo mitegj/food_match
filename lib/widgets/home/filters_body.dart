@@ -42,7 +42,7 @@ class FilterHeader extends StatelessWidget {
                           ? UIColors.violetMainlightOption
                           : UIColors.black.withOpacity(0.6),
                       child: Icon(
-                        Icons.free_breakfast,
+                        el.icon,
                         color: UIColors.white,
                       ), //free_breakfast dinner_dining
                     ),

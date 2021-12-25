@@ -4,7 +4,7 @@ import 'package:morning_brief/controllers/allergy_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/arrow_header.dart';
-import 'package:morning_brief/widgets/home/filters_header.dart';
+import 'package:morning_brief/widgets/home/filters_body.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 class FiltersPage extends GetWidget<AllergyController> {
@@ -54,7 +54,7 @@ class FiltersPage extends GetWidget<AllergyController> {
                   ],
                 ),
               )),
-          FilterHeader()
+          FilterBody()
         ])));
   }
 }
