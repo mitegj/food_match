@@ -10,6 +10,8 @@ import 'package:morning_brief/widgets/home/filters.dart';
 import 'package:morning_brief/widgets/home/filters_body.dart';
 import 'package:morning_brief/widgets/inventory/inventory_page.dart';
 
+import 'filters_body.dart';
+
 class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -24,13 +26,6 @@ class HomeHeader extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(
-                "Ciao, ",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 27,
-                    fontWeight: FontWeight.bold),
-              ),
               Text(
                 '${FirebaseAuth.instance.currentUser!.displayName!.split(' ')[0]}',
                 style: GoogleFonts.poppins(

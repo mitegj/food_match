@@ -22,7 +22,7 @@ class DatabaseIngredient {
       });
     } catch (e) {
       Get.snackbar(
-        "Error",
+        "Error getting ingredients",
         e.toString(),
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,

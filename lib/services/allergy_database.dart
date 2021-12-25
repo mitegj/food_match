@@ -25,7 +25,7 @@ class DatabaseAllergy {
       });
     } catch (e) {
       Get.snackbar(
-        "Error",
+        "Error getting allergies",
         e.toString(),
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
@@ -50,7 +50,7 @@ class DatabaseAllergy {
       });
     } catch (e) {
       Get.snackbar(
-        "Error",
+        "Error getting user allergies",
         e.toString(),
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
@@ -77,7 +77,7 @@ class DatabaseAllergy {
       }
     } catch (e) {
       Get.snackbar(
-        "Error",
+        "Error getting user allergies",
         e.toString(),
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
@@ -97,7 +97,7 @@ class DatabaseAllergy {
       return true;
     } catch (e) {
       Get.snackbar(
-        "Error",
+        "Error updating allergies",
         e.toString(),
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,

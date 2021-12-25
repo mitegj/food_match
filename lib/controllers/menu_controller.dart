@@ -85,12 +85,12 @@ class MenuController extends GetxController {
   checkBeforeSaveMenu(MenuModel menu) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String lastTimeCookedS = "";
-    double lastCookingTime = 0;
+    int lastCookingTime = 0;
     (prefs.getString('lastTimeCooked') != null)
         ? lastTimeCookedS = prefs.getString('lastTimeCooked')!
         : lastTimeCookedS = DateTime(0).toString();
-    prefs.getDouble('lastCookingTime') != null
-        ? lastCookingTime = prefs.getDouble('lastCookingTime')!
+    prefs.getInt('lastCookingTime') != null
+        ? lastCookingTime = prefs.getInt('lastCookingTime')!
         : lastCookingTime = 0;
 
     DateTime lastTimeCooked = DateTime.parse(lastTimeCookedS);

@@ -6,7 +6,7 @@ class CookedMenuModel {
   late Timestamp cookedTime;
   late int dishType;
   late int kcal;
-  late double preparationTime;
+  late int preparationTime;
   CookedMenuModel(
       {required this.id,
       required this.name,

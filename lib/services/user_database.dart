@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:morning_brief/controllers/auth_controller.dart';
 import 'package:morning_brief/models/user_model.dart';
 import 'package:morning_brief/utils/conf.dart';
 
@@ -10,17 +11,16 @@ class UserDatabase {
   final Conf conf = new Conf();
 
   Future<void> saveUserLastLogin() async {
-    String uid = FirebaseAuth.instance.currentUser!.uid.toString();
-
     try {
+      String uid = FirebaseAuth.instance.currentUser!.uid.toString();
       await FirebaseFirestore.instance
           .collection(conf.userCollection)
           .doc(uid)
           .update({"lastLogin": new DateTime.now()});
     } catch (e) {
       Get.snackbar(
-        "Error",
-        e.toString(),
+        "Error saving last login",
+        "Contact Us please",
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
       );
@@ -38,7 +38,7 @@ class UserDatabase {
       });
     } catch (e) {
       Get.snackbar(
-        "Error",
+        "Error creating user",
         e.toString(),
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
@@ -63,7 +63,7 @@ class UserDatabase {
       });
     } catch (e) {
       Get.snackbar(
-        "Error",
+        "Error user ingredient",
         e.toString(),
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
