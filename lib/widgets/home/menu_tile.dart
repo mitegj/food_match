@@ -1,5 +1,10 @@
+import 'dart:ui';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
@@ -14,6 +19,7 @@ class MenuTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
+
 
     return InkWell(
         onTap: () => {
@@ -46,7 +52,7 @@ class MenuTile extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            "ESTIMATEDTIME".tr,
+                            "Tempo stimato",
                             style: TextStyle(
                                 color: UIColors.pink,
                                 fontWeight: FontWeight.w400),
@@ -69,10 +75,11 @@ class MenuTile extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              "---- Descrizione da sistemare ------",
+                              "Descrizione da sistemare",
                               style: TextStyle(
                                   color: UIColors.white.withOpacity(0.8),
-                                  fontSize: 15),
+                                fontSize: 15
+                              ),
                             ),
                           ),
                         ],

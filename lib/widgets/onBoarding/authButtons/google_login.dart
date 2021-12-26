@@ -27,7 +27,7 @@ class GoogleLogin extends GetWidget<AuthController> {
                 child: Container(
                   alignment: Alignment.center,
                   child: Text(
-                    'CONTINUEWITH'.tr + ' Google',
+                    'Continue with Google',
                     style: GoogleFonts.poppins(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,

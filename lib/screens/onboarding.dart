@@ -102,7 +102,7 @@ class OnBoardingPage extends StatelessWidget {
                             padding:
                                 const EdgeInsets.only(left: 10.0, right: 10),
                             child: Text(
-                              "SLOGAN".tr,
+                              "Embrace a new way to enjoy cooking your meals and finding new recipes.",
                               style: GoogleFonts.poppins(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w200,
@@ -127,7 +127,7 @@ class OnBoardingPage extends StatelessWidget {
                             },
                             child: Row(
                               children: [
-                                Text("TERMSANDCONDITIONS".tr,
+                                Text("Terms and Conditions agreement",
                                     overflow: TextOverflow.visible,
                                     softWrap: false,
                                     style: GoogleFonts.poppins(

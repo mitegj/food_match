@@ -66,8 +66,8 @@ class MenuModel {
   ) {
     id = documentSnapshot.id;
     menuName = documentSnapshot["name" + conf.lang] ?? "";
-    kcal = documentSnapshot["kcal"] ?? 0;
-    difficulty = documentSnapshot["difficulty"] ?? 0;
+    kcal = documentSnapshot["kcal"] ?? 0.0;
+    difficulty = documentSnapshot["difficulty"] ?? 0.0;
 
     preparationTime = documentSnapshot["preparationTime"] ?? 0.0;
 
