@@ -44,7 +44,6 @@ class InventoryScreen extends GetWidget<IngredientController> {
         stock = element.stock;
       }
     }
-
     return stock;
   }
 
@@ -78,24 +77,10 @@ class InventoryScreen extends GetWidget<IngredientController> {
                     children: [
                       Row(
                         children: [
-                          Text("Food Inventory",
+                          Text("INGREDIENTSINVENTORY".tr,
                               style: GoogleFonts.poppins(
                                   color: UIColors.white,
                                   fontSize: 32,
-                                  fontWeight: FontWeight.w600)),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text("Selected products: ",
-                              style: GoogleFonts.poppins(
-                                  color: UIColors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400)),
-                          Text("4",
-                              style: GoogleFonts.poppins(
-                                  color: UIColors.darkPurple,
-                                  fontSize: 20,
                                   fontWeight: FontWeight.w600)),
                         ],
                       ),

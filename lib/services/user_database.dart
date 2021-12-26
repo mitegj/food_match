@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morning_brief/controllers/auth_controller.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:morning_brief/models/user_model.dart';
 import 'package:morning_brief/utils/conf.dart';
 
@@ -13,18 +13,12 @@ class UserDatabase {
   Future<void> saveUserLastLogin() async {
     try {
       String uid = FirebaseAuth.instance.currentUser!.uid.toString();
+      print(uid);
       await FirebaseFirestore.instance
           .collection(conf.userCollection)
           .doc(uid)
           .update({"lastLogin": new DateTime.now()});
-    } catch (e) {
-      Get.snackbar(
-        "Error saving last login",
-        "Contact Us please",
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    }
+    } catch (e) {}
   }
 
   Future<void> createNewUser(UserModel user) async {
@@ -36,6 +30,34 @@ class UserDatabase {
         "lastShop": user.lastShop,
         "name": user.name
       });
+    } catch (e) {
+      Get.snackbar(
+        "Error creating user",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
+
+  Future<void> deleteUser(String uid) async {
+    try {
+      final FirebaseAuth _auth = FirebaseAuth.instance;
+      var googleSignInAccount = Rx<GoogleSignInAccount?>(null);
+      final GoogleSignIn googleSignIn = GoogleSignIn();
+      googleSignInAccount.value = await googleSignIn.signIn();
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.value!.authentication;
+      AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+
+      _auth.signInWithCredential(credential);
+
+      User? user = _auth.currentUser;
+      user?.delete();
+      await _firestore.collection(conf.userCollection).doc(uid).delete();
     } catch (e) {
       Get.snackbar(
         "Error creating user",

@@ -40,7 +40,7 @@ class ConfirmCooked extends StatelessWidget {
           style: TextStyle(fontSize: 40),
         ),
         Text(
-          "Ottimo lavoro.",
+          "WELLDONE".tr,
           style: GoogleFonts.poppins(
             fontSize: 27,
             fontWeight: FontWeight.w600,
@@ -50,7 +50,7 @@ class ConfirmCooked extends StatelessWidget {
           height: 10,
         ),
         Text(
-          "(tap ovunque per continuare)",
+          "(" + "TAPANYWARE".tr + ")",
           style: GoogleFonts.poppins(
             fontSize: 12,
             fontWeight: FontWeight.w300,
@@ -79,7 +79,7 @@ class ConfirmCooked extends StatelessWidget {
           height: 10,
         ),
         Text(
-          "troppo veloce per averlo cucinato.",
+          "TOOFAST".tr,
           style: GoogleFonts.poppins(
             fontSize: 14,
             fontWeight: FontWeight.w600,
@@ -89,7 +89,7 @@ class ConfirmCooked extends StatelessWidget {
           height: 10,
         ),
         Text(
-          "(tap ovunque per continuare)",
+          "(" + "TAPANYWARE".tr + ")",
           style: GoogleFonts.poppins(
             fontSize: 12,
             fontWeight: FontWeight.w300,

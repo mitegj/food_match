@@ -35,13 +35,14 @@ class HomeBody extends GetWidget<IngredientController> {
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
                           child: Container(
-                            height: 250,
+                            // height: 250,
                             margin: EdgeInsets.only(top: 20),
                             child: Center(
                                 child: Column(
                               children: [
                                 Column(
                                   children: [
+                                    /*
                                     Stack(
                                       children: <Widget>[
                                         Row(
@@ -151,6 +152,7 @@ class HomeBody extends GetWidget<IngredientController> {
                                         ),
                                       ],
                                     ),
+                                  */
                                     Row(
                                       children: [
                                         Text(
@@ -198,7 +200,7 @@ class HomeBody extends GetWidget<IngredientController> {
                           color: Colors.deepOrange,
                           child: Center(
                             child: Text(
-                              'Carica altri elementi',
+                              'LOADOTHERMENU'.tr,
                               style: GoogleFonts.poppins(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,

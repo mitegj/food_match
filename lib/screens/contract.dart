@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:morning_brief/screens/allergies.dart';
-import 'package:morning_brief/screens/onboarding.dart';
 import 'package:morning_brief/utils/UIColors.dart';
-import 'package:morning_brief/widgets/global_input/arrow_header.dart';
+import 'package:get/get.dart';
 
 class ContractScreen extends StatelessWidget {
   const ContractScreen({Key? key}) : super(key: key);
@@ -29,7 +26,7 @@ class ContractScreen extends StatelessWidget {
               children: [
                 Flexible(
                   flex: 1,
-                  child: Text("Terms and conditions",
+                  child: Text("TERMSANDCONDITIONS".tr,
                       style: GoogleFonts.poppins(
                           color: UIColors.white,
                           fontSize: 30,
@@ -37,7 +34,7 @@ class ContractScreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text("Your agreement",
+                    Text("YOURAGREEMENT".tr,
                         style: GoogleFonts.poppins(
                             color: UIColors.pink,
                             fontSize: 22,
@@ -80,7 +77,7 @@ class ContractScreen extends StatelessWidget {
                           child: Container(
                             alignment: Alignment.center,
                             child: Text(
-                              'Ho letto',
+                              'HAVEREAD'.tr,
                               style: GoogleFonts.poppins(
                                   color: UIColors.detailBlack,
                                   fontWeight: FontWeight.w400,

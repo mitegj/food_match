@@ -29,14 +29,13 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                             const EdgeInsets.only(right: 20, left: 20, top: 50),
                         child: Column(
                           children: [
-                            Text("Do you have any kind of allergies?",
+                            Text("ANYALLERGY".tr + "?",
                                 style: GoogleFonts.poppins(
                                     color: UIColors.white,
                                     fontSize: 30,
                                     fontWeight: FontWeight.w700)),
                             SizedBox(height: 20),
-                            Text(
-                                "Declare them and we will not show you recipes wich contains those",
+                            Text("DECLAREYOURALLERGIES".tr,
                                 style: GoogleFonts.poppins(
                                     color: UIColors.grey,
                                     fontSize: 20,
@@ -125,7 +124,7 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                               borderRadius: BorderRadius.circular(15)),
                           child: Align(
                             alignment: Alignment.center,
-                            child: Text('Done',
+                            child: Text('DONE'.tr,
                                 style: GoogleFonts.poppins(
                                     color: UIColors.black,
                                     fontSize: 20,
