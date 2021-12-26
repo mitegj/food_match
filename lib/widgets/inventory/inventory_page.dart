@@ -130,8 +130,6 @@ class InventoryScreen extends GetWidget<IngredientController> {
             Expanded(
               flex: 5,
               child: Container(
-                padding: const EdgeInsets.only(
-                    top: 0, bottom: 0, left: 20, right: 20),
                 margin: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -145,41 +143,50 @@ class InventoryScreen extends GetWidget<IngredientController> {
                             builder: (IngredientController ingCtrl) {
                               if (ingCtrl.ingSearch.length > 0) {
                                 return Expanded(
-                                  child: Container(
-                                      child: ListView.builder(
+                                  child: ListView.builder(
                                     itemCount: ingCtrl.ingSearch.length,
                                     itemBuilder: (_, index) {
                                       setUserInventoryCheck(ingCtrl, index);
-                                      return Obx(() => Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Container(
-                                                    alignment: Alignment.center,
-                                                    padding:
-                                                        const EdgeInsets.all(8),
-                                                    child: Text(
-                                                      ingCtrl
-                                                          .ingSearch[index].name
-                                                          .toString()
-                                                          .toLowerCase(),
-                                                      style:
-                                                          GoogleFonts.poppins(
-                                                              color: UIColors
-                                                                  .white,
-                                                              fontSize: 20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400),
-                                                    ),
+                                      return Obx(() => Container(
+                                            margin: EdgeInsets.only(
+                                              left: 20,
+                                              right: 20,
+                                              top: 20,
+                                            ),
+                                            padding: EdgeInsets.only(
+                                                top: 10,
+                                                bottom: 10,
+                                                right: 20,
+                                                left: 20),
+                                            decoration: BoxDecoration(
+                                                color: UIColors.black
+                                                    .withOpacity(0.6),
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Flexible(
+                                                  flex: 3,
+                                                  child: Text(
+                                                    ingCtrl
+                                                        .ingSearch[index].name
+                                                        .toString()
+                                                        .toLowerCase(),
+                                                    overflow:
+                                                        TextOverflow.visible,
+                                                    style: GoogleFonts.poppins(
+                                                        color: UIColors.white,
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w400),
                                                   ),
-                                                ],
-                                              ),
-                                              Row(
-                                                children: <Widget>[
-                                                  Checkbox(
+                                                ),
+                                                Flexible(
+                                                  flex: 1,
+                                                  child: Checkbox(
                                                     side: BorderSide(
                                                       color: Colors.white,
                                                       width: 1.5,
@@ -197,12 +204,12 @@ class InventoryScreen extends GetWidget<IngredientController> {
                                                           index, value);
                                                     },
                                                   ),
-                                                ],
-                                              )
-                                            ],
+                                                )
+                                              ],
+                                            ),
                                           ));
                                     },
-                                  )),
+                                  ),
                                 );
                               } else {
                                 //ingCtrl.filterIngredients("");
