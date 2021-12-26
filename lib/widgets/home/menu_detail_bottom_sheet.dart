@@ -115,13 +115,16 @@ class DetailBottomSheet extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(right: 5.0),
                             child: Icon(
-                              Icons.timelapse,
+                              Icons.access_time_filled_rounded,
                               color: Colors.white,
                             ),
                           ),
                           Text(
                             menu.preparationTime.toString() + " min",
-                            style: TextStyle(color: Colors.white),
+                            style: GoogleFonts.poppins(
+                                color: UIColors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w300),
                           ),
                         ],
                       ),
@@ -130,7 +133,7 @@ class DetailBottomSheet extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(right: 5.0),
                             child: Icon(
-                              Icons.article_outlined,
+                              Icons.emoji_events_rounded,
                               color: Colors.white,
                             ),
                           ),
@@ -138,7 +141,10 @@ class DetailBottomSheet extends StatelessWidget {
                             describeEnum(DishDifficulty.values[menu.difficulty])
                                 .toString()
                                 .tr,
-                            style: TextStyle(color: Colors.white),
+                            style: GoogleFonts.poppins(
+                                color: UIColors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w300),
                           ),
                         ],
                       ),
@@ -147,13 +153,16 @@ class DetailBottomSheet extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(right: 5.0),
                             child: Icon(
-                              Icons.food_bank_outlined,
+                              Icons.insights_rounded,
                               color: Colors.white,
                             ),
                           ),
                           Text(
                             menu.kcal.toString() + " kcal",
-                            style: TextStyle(color: Colors.white),
+                            style: GoogleFonts.poppins(
+                                color: UIColors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w300),
                           ),
                         ],
                       )
@@ -174,8 +183,8 @@ class DetailBottomSheet extends StatelessWidget {
                       Text("Lista ingredienti",
                           style: TextStyle(
                               color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20)),
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18)),
                     ],
                   ),
                 ),
@@ -319,13 +328,6 @@ class DetailBottomSheet extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
-                          child: Icon(
-                            Icons.done_all_outlined,
-                            size: 25,
-                            color: UIColors.detailBlack,
-                          ),
-                        ),
                         Expanded(
                           child: Container(
                             alignment: Alignment.center,
@@ -333,7 +335,7 @@ class DetailBottomSheet extends StatelessWidget {
                               'Piatto cucinato',
                               style: GoogleFonts.poppins(
                                   color: UIColors.detailBlack,
-                                  fontWeight: FontWeight.w400,
+                                  fontWeight: FontWeight.w700,
                                   fontSize: 18),
                             ),
                           ),
