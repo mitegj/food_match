@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/enum/dish_difficulty_enum.dart';
+import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
@@ -48,9 +49,9 @@ class DetailBottomSheet extends StatelessWidget {
                       color: UIColors.black,
                     ),
                     child: Image.network(
-                      'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+                      menu.linkUrl,
                       fit: BoxFit.cover,
-                      height: mediaQuery.size.height * 0.2,
+                      height: mediaQuery.size.height * 0.25,
                       width: mediaQuery.size.width * 1,
                     ),
                   ),
@@ -61,7 +62,9 @@ class DetailBottomSheet extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "Tipologia piatto",
+                      describeEnum(DishType.values[menu.dishType])
+                          .toString()
+                          .tr,
                       style: GoogleFonts.poppins(
                           color: UIColors.pink,
                           fontSize: 15,
@@ -73,7 +76,7 @@ class DetailBottomSheet extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        menu.menuName.toString(),
+                        menu.name.toString(),
                         overflow: TextOverflow.visible,
                         style: GoogleFonts.poppins(
                             color: UIColors.white,
@@ -180,7 +183,7 @@ class DetailBottomSheet extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text("Lista ingredienti",
+                      Text("INGREDIENTSLIST".tr,
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
@@ -266,7 +269,7 @@ class DetailBottomSheet extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          "Per 4 porzioni",
+                          menu.note,
                           style: GoogleFonts.poppins(
                               color: UIColors.pink,
                               fontSize: 15,
@@ -278,7 +281,7 @@ class DetailBottomSheet extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            "Procedimento",
+                            "METHOD".tr,
                             overflow: TextOverflow.visible,
                             style: GoogleFonts.poppins(
                                 color: UIColors.white,
@@ -332,7 +335,7 @@ class DetailBottomSheet extends StatelessWidget {
                           child: Container(
                             alignment: Alignment.center,
                             child: Text(
-                              'Piatto cucinato',
+                              'DISHCOOKED'.tr,
                               style: GoogleFonts.poppins(
                                   color: UIColors.detailBlack,
                                   fontWeight: FontWeight.w700,

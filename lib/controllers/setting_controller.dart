@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:package_info/package_info.dart';
@@ -24,6 +25,13 @@ class SettingController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
     }
+  }
+
+  String getUserInitial() {
+    return FirebaseAuth.instance.currentUser!.displayName!.split('')[0] +
+        FirebaseAuth.instance.currentUser!.displayName!
+            .split(' ')[1]
+            .substring(0, 1);
   }
 
   Future<void> getFutureAppCurrentVersion() async {

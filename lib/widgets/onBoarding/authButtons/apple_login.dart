@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/utils/UIColors.dart';
+import 'package:get/get.dart';
 
 class AppleLogin extends StatelessWidget {
   AppleLogin({required this.onPressed});
@@ -28,7 +29,7 @@ class AppleLogin extends StatelessWidget {
                 child: Container(
                   alignment: Alignment.center,
                   child: Text(
-                    'Continue with Apple',
+                    'CONTINUEWITH'.tr + ' Apple',
                     style: GoogleFonts.poppins(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,

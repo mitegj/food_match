@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:morning_brief/widgets/home/filters_body.dart';
-import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 class FiltersPage extends GetWidget<AllergyController> {
   FiltersPage({Key? key}) : super(key: key);
@@ -35,7 +34,7 @@ class FiltersPage extends GetWidget<AllergyController> {
                   children: [
                     Flexible(
                       flex: 1,
-                      child: Text("Do you have any kind of preferences?",
+                      child: Text("ANYPREFERENCES".tr + "?",
                           style: GoogleFonts.poppins(
                               color: UIColors.white,
                               fontSize: 31,
@@ -44,7 +43,7 @@ class FiltersPage extends GetWidget<AllergyController> {
                     SizedBox(height: 20),
                     Row(
                       children: [
-                        Text("Select them with the filters!",
+                        Text("SELECTWITHFILTERS".tr + "!",
                             style: GoogleFonts.poppins(
                                 color: UIColors.grey,
                                 fontSize: 20,

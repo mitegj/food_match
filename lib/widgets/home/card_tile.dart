@@ -113,7 +113,7 @@ class CardTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        menu.menuName,
+                        menu.name,
                         style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontSize: 20,

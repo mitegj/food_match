@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:get/get.dart';
@@ -7,15 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/allergy_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
-import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/controllers/setting_controller.dart';
 import 'package:morning_brief/controllers/statistic_controller.dart';
-import 'package:morning_brief/models/cooked_menu_model.dart';
 import 'package:morning_brief/screens/allergies.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:intl/intl.dart';
-import 'package:morning_brief/widgets/home/home_header.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 class StatisticsScreen extends GetWidget<AllergyController> {
@@ -39,8 +34,9 @@ class StatisticsScreen extends GetWidget<AllergyController> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var mediaQuery = MediaQuery.of(context);
-    DateFormat formattedDate = DateFormat(
-        Get.deviceLocale == "en" ? 'kk:mm  yyyy-MM-dd' : "kk:mm  dd-MM-yyyy");
+    DateFormat formattedDate = DateFormat(Get.deviceLocale.toString() == "en"
+        ? 'kk:mm  yyyy-MM-dd'
+        : "kk:mm  dd-MM-yyyy");
     return Scaffold(
       backgroundColor: theme.backgroundColor,
       resizeToAvoidBottomInset: true,
@@ -64,7 +60,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                     color: UIColors.blue,
                   ),
                   child: Text(
-                    "${FirebaseAuth.instance.currentUser!.displayName!.split('')[0] + FirebaseAuth.instance.currentUser!.displayName!.split(' ')[1].substring(0, 1)}",
+                    _settingController.getUserInitial(),
                     style: GoogleFonts.poppins(
                         color: UIColors.white,
                         fontSize: 20,
@@ -76,7 +72,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Text("Calorie settimanali",
+              child: Text("WEEKLYCAL".tr,
                   style: GoogleFonts.poppins(
                       color: UIColors.white,
                       fontSize: 20,
@@ -109,7 +105,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                 )),
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Text("Storico settimanale",
+              child: Text("WEEKLYHISTORY".tr,
                   style: GoogleFonts.poppins(
                       color: UIColors.white,
                       fontSize: 20,
@@ -139,7 +135,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                           ),
                         ),
                       ),
-                      Text("Mostra",
+                      Text("SHOW".tr,
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
@@ -242,7 +238,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Text("Impostazioni",
+              child: Text("SETTINGS".tr,
                   style: GoogleFonts.poppins(
                       color: UIColors.white,
                       fontSize: 20,
@@ -266,7 +262,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Allergie",
+                          Text("ALLERGIES".tr,
                               style: GoogleFonts.poppins(
                                 color: UIColors.white,
                                 fontSize: 15,
@@ -289,7 +285,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Support us with 5 star",
+                          Text("SUPPORTUS".tr,
                               style: GoogleFonts.poppins(
                                 color: UIColors.white,
                                 fontSize: 15,
@@ -318,7 +314,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Help and assistence",
+                          Text("HELPASSISTANCE".tr,
                               style: GoogleFonts.poppins(
                                 color: UIColors.white,
                                 fontSize: 15,
@@ -343,7 +339,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Privacy policy",
+                        Text("PRIVACYPOLICY".tr,
                             style: GoogleFonts.poppins(
                               color: UIColors.white,
                               fontSize: 15,
@@ -378,7 +374,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Disconnetti account",
+                      Text("DISCONNECTACCOUNT".tr,
                           style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontSize: 15,
@@ -399,14 +395,19 @@ class StatisticsScreen extends GetWidget<AllergyController> {
             SizedBox(
               height: 40,
             ),
-            Container(
-              alignment: Alignment.center,
-              child: Text(
-                'Cancella account',
-                style: GoogleFonts.poppins(
-                  color: theme.secondaryHeaderColor,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
+            InkWell(
+              onTap: () {
+                _authController.deleteUser();
+              },
+              child: Container(
+                alignment: Alignment.center,
+                child: Text(
+                  'DELETEACCOUNT'.tr,
+                  style: GoogleFonts.poppins(
+                    color: theme.secondaryHeaderColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
             ),
@@ -504,19 +505,19 @@ class StatisticsScreen extends GetWidget<AllergyController> {
           getTitles: (value) {
             switch (value.toInt()) {
               case 1:
-                return 'Lun';
+                return 'MON'.tr;
               case 2:
-                return 'Mar';
+                return 'TUE'.tr;
               case 3:
-                return 'Mer';
+                return 'WED'.tr;
               case 4:
-                return 'Gio';
+                return 'THU'.tr;
               case 5:
-                return 'Ven';
+                return 'FRI'.tr;
               case 6:
-                return 'Sab';
+                return 'SAT'.tr;
               case 7:
-                return 'Dom';
+                return 'SUN'.tr;
             }
             return '';
           },

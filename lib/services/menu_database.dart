@@ -142,7 +142,7 @@ class DatabaseMenu {
           .doc()
           .set({
         "id": menu.id,
-        "name": menu.menuName,
+        "name": menu.name,
         "kcal": menu.kcal,
         "dishType": menu.dishType,
         "preparationTime": menu.preparationTime,

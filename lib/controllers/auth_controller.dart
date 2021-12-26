@@ -68,7 +68,12 @@ class AuthController extends GetxController {
         if (user != null) {
           createUser(user.uid.toString()).then((value) => {});
         } else {
-          print("errore");
+          Get.snackbar(
+            "Error signing in",
+            "",
+            colorText: Colors.white,
+            snackPosition: SnackPosition.BOTTOM,
+          );
         }
       }
       update();
@@ -91,9 +96,24 @@ class AuthController extends GetxController {
           allergies: [],
           dinnerTime: 0,
           lastShop: DateTime.now(),
+          lastLogin: DateTime.now(),
           name: '');
 
       await UserDatabase().createNewUser(_user);
+    } catch (e) {
+      Get.snackbar(
+        "Error creating Account",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
+
+  Future<void> deleteUser() async {
+    try {
+      String uid = FirebaseAuth.instance.currentUser!.uid.toString();
+      await UserDatabase().deleteUser(uid);
     } catch (e) {
       Get.snackbar(
         "Error creating Account",

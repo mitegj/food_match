@@ -7,6 +7,7 @@ class UserController extends GetxController {
           allergies: [],
           dinnerTime: 0,
           lastShop: DateTime.now(),
+          lastLogin: DateTime.now(),
           name: '')
       .obs;
 

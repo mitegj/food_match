@@ -1,10 +1,5 @@
-import 'dart:ui';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
@@ -20,7 +15,6 @@ class MenuTile extends StatelessWidget {
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
 
-
     return InkWell(
         onTap: () => {
               Get.bottomSheet(
@@ -32,13 +26,19 @@ class MenuTile extends StatelessWidget {
             },
         child: Row(
           children: [
-            Container(
-                height: mediaQuery.size.height * 0.15,
-                width: mediaQuery.size.width * 0.30,
-                margin: EdgeInsets.only(top: 20, bottom: 0, left: 20),
-                decoration: BoxDecoration(
-                  color: UIColors.violet,
-                )),
+            ClipRRect(
+              child: Container(
+                  height: mediaQuery.size.height * 0.15,
+                  width: mediaQuery.size.width * 0.30,
+                  margin: EdgeInsets.only(top: 20, bottom: 0, left: 20),
+                  child: Image.network(
+                    menu.linkUrl,
+                    fit: BoxFit.cover,
+                  ),
+                  decoration: BoxDecoration(
+                    color: UIColors.violet,
+                  )),
+            ),
             Container(
                 height: mediaQuery.size.height * 0.15,
                 width: mediaQuery.size.width * 0.57,
@@ -52,7 +52,7 @@ class MenuTile extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            "Tempo stimato",
+                            "ESTIMATEDTIME".tr,
                             style: TextStyle(
                                 color: UIColors.pink,
                                 fontWeight: FontWeight.w400),
@@ -63,7 +63,7 @@ class MenuTile extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              menu.menuName.toString(),
+                              menu.name.toString(),
                               style: TextStyle(
                                   color: UIColors.white,
                                   fontWeight: FontWeight.w600),
@@ -75,11 +75,10 @@ class MenuTile extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              "Descrizione da sistemare",
+                              "---- Descrizione da sistemare ------",
                               style: TextStyle(
                                   color: UIColors.white.withOpacity(0.8),
-                                fontSize: 15
-                              ),
+                                  fontSize: 15),
                             ),
                           ),
                         ],
