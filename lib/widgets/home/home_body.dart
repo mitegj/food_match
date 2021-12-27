@@ -41,49 +41,9 @@ class HomeBody extends GetWidget<IngredientController> {
                             child: Center(
                                 child: Column(
                               children: [
-                                Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'DAILY_RECEPY'.tr,
-                                          style: GoogleFonts.poppins(
-                                              fontSize: 22,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white),
-                                        ),
-                                        InkWell(
-                                          onTap: () {
-                                            Get.to(() => FiltersPage());
-                                          },
-                                          child: Stack(
-                                            clipBehavior: Clip.none,
-                                            children: [
-                                              Icon(
-                                                Icons.filter_alt_outlined,
-                                                color: UIColors.white,
-                                              ),
-                                              FilterBody.listFilters.length > 0
-                                                  ? Positioned(
-                                                      child: CircleAvatar(
-                                                        radius: 6,
-                                                        backgroundColor:
-                                                            UIColors.violetMain,
-                                                      ),
-                                                      top: -5,
-                                                      right: -10,
-                                                    )
-                                                  : SizedBox()
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
                                 Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       'SCROLLFORMORE'.tr,
@@ -91,6 +51,31 @@ class HomeBody extends GetWidget<IngredientController> {
                                           fontSize: 16,
                                           fontWeight: FontWeight.w400,
                                           color: Colors.white.withOpacity(0.6)),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        Get.to(() => FiltersPage());
+                                      },
+                                      child: Stack(
+                                        clipBehavior: Clip.none,
+                                        children: [
+                                          Icon(
+                                            Icons.filter_alt_outlined,
+                                            color: UIColors.white,
+                                          ),
+                                          FilterBody.listFilters.length > 0
+                                              ? Positioned(
+                                                  child: CircleAvatar(
+                                                    radius: 6,
+                                                    backgroundColor:
+                                                        UIColors.violetMain,
+                                                  ),
+                                                  top: -5,
+                                                  right: -10,
+                                                )
+                                              : SizedBox()
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -140,6 +125,9 @@ class HomeBody extends GetWidget<IngredientController> {
                             ),
                           ],
                         ),
+                        SizedBox(
+                          height: 20,
+                        )
                       ],
                     )
               : LoadingWidget())),

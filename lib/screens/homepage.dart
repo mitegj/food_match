@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
+import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/home/home_body.dart';
 import 'package:morning_brief/widgets/home/home_header.dart';
 
@@ -18,7 +19,7 @@ class HomePage extends GetWidget<IngredientController> {
       body: SafeArea(
           child: Column(children: [
         HomeHeader(),
-        SizedBox(height: 10),
+        //SizedBox(height: 10),
         HomeBody(),
       ])),
     );
