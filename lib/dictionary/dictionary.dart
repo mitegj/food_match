@@ -56,7 +56,8 @@ class Messages extends Translations {
           "METHOD": "Method",
           "DISHCOOKED": "Dish cooked",
           "ESTIMATEDTIME": "Estimated time",
-          "INGREDIENTSINVENTORY": "Ingredients store",
+          "INGREDIENTSINVENTORY": "Inventory home",
+          "INGREDIENTSINVENTORYSUBTITLE": "Home inventory stock",
           "CONTINUEWITH": "Continue with",
           "ANYPREFERENCES": "Any preferences"
         },
@@ -106,16 +107,17 @@ class Messages extends Translations {
           "NOADVICES": "Non abbiamo suggerimenti per te",
           "TRYADDSOMEBASICPRODUCT":
               "Prova ad aggiungere alcuni di questi prodotti di base facendo clic sul seguente pulsante di scelta rapida!",
-          "SELECTWITHFILTERS": "Selezionali con i filtri",
+          "SELECTWITHFILTERS": "Seleziona con uno o più filtri",
           "LOADOTHERMENU": "Visualizza altri menu",
           "DISHTYPE": "Tipo di piatto",
           "INGREDIENTSLIST": "Lista di ingredienti",
           "METHOD": "Procedimento",
           "DISHCOOKED": "Piatto cucinato",
           "ESTIMATEDTIME": "Tempo stimato",
-          "INGREDIENTSINVENTORY": "Inventario ingredienti",
+          "INGREDIENTSINVENTORY": "Inventario casa",
+          "INGREDIENTSINVENTORYSUBTITLE": "Giacenza inventario casa",
           "CONTINUEWITH": "Continua con",
-          "ANYPREFERENCES": "Hai qualche preferenza"
+          "ANYPREFERENCES": "Hai qualche tipo di preferenza"
         },
       };
 }

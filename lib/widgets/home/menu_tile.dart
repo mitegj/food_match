@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
@@ -61,21 +62,27 @@ class MenuTile extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            "ESTIMATEDTIME".tr,
-                            style: TextStyle(
-                                color: UIColors.pink,
-                                fontWeight: FontWeight.w400),
+                            "ESTIMATEDTIME ".tr +
+                                menu.preparationTime.toString(),
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.white),
                           ),
                         ],
                       ),
                       Row(
                         children: [
                           Expanded(
+                            flex: 2,
                             child: Text(
                               menu.name.toString(),
-                              style: TextStyle(
-                                  color: UIColors.white,
-                                  fontWeight: FontWeight.w600),
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.poppins(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.white),
                             ),
                           ),
                         ],
@@ -84,10 +91,12 @@ class MenuTile extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              "Descrizione da sistemare",
-                              style: TextStyle(
-                                  color: UIColors.white.withOpacity(0.8),
-                                  fontSize: 15),
+                              menu.desc,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.poppins(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.white),
                             ),
                           ),
                         ],
