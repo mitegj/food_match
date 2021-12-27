@@ -25,86 +25,89 @@ class MenuTile extends StatelessWidget {
                   ),
                   isScrollControlled: true)
             },
-        child: Row(
-          children: [
-            Container(
-                height: mediaQuery.size.height * 0.20,
-                width: mediaQuery.size.width * 0.30,
-                margin: EdgeInsets.only(top: 20, bottom: 0, left: 20),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      bottomLeft: Radius.circular(20)),
-                  child: Image.network(
-                    menu.linkUrl,
-                    fit: BoxFit.cover,
-                  ),
+        child: Container(
+          margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: UIColors.lowTransaprentWhite,
                 ),
-                decoration: BoxDecoration(
-                    color: UIColors.violet,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        bottomLeft: Radius.circular(20)))),
-            Container(
-                height: mediaQuery.size.height * 0.20,
-                width: mediaQuery.size.width * 0.57,
-                margin: EdgeInsets.only(top: 20, bottom: 0, left: 10),
-                decoration: BoxDecoration(
-                    color: UIColors.detailBlack,
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(20),
-                        bottomRight: Radius.circular(20))),
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Row(
-                        children: [
-                          Text(
-                            "ESTIMATEDTIME ".tr +
-                                menu.preparationTime.toString(),
-                            overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.poppins(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.white),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 2,
-                            child: Text(
-                              menu.name.toString(),
-                              overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300,
-                                  color: Colors.white),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.access_time_filled_rounded,
+                              color: UIColors.black,
                             ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              menu.desc,
-                              overflow: TextOverflow.ellipsis,
+                            Text(
+                              " " +
+                                  menu.preparationTime.toString() +
+                                  " ESTIMATEDTIME".tr,
                               style: GoogleFonts.poppins(
                                   fontSize: 14,
-                                  fontWeight: FontWeight.w300,
-                                  color: Colors.white),
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black),
                             ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.insights_rounded,
+                              color: Colors.black,
+                            ),
+                            Text(" " + menu.kcal.toString() + " kcal",
+                                style: GoogleFonts.poppins(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black))
+                          ],
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: UIColors.blue),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.network(
+                            menu.linkUrl,
+                            fit: BoxFit.cover,
+                            height: mediaQuery.size.height * 0.25,
+                            width: mediaQuery.size.height * 1,
+                          )),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            menu.name + " - da inserire la descrizione",
+                            overflow: TextOverflow.visible,
+                            style: GoogleFonts.poppins(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.black),
                           ),
-                        ],
-                      )
-                    ],
-                  ),
-                )),
-          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ));
   }
 }

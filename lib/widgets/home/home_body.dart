@@ -5,6 +5,7 @@ import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/home/empty_menu.dart';
+import 'package:morning_brief/widgets/home/filters.dart';
 import 'package:morning_brief/widgets/home/filters_body.dart';
 import 'package:morning_brief/widgets/home/menu_tile.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
@@ -33,7 +34,7 @@ class HomeBody extends GetWidget<IngredientController> {
                   : ListView(
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.only(left: 20),
+                          padding: const EdgeInsets.only(left: 20, right: 20),
                           child: Container(
                             // height: 250,
                             margin: EdgeInsets.only(top: 20),
@@ -42,125 +43,41 @@ class HomeBody extends GetWidget<IngredientController> {
                               children: [
                                 Column(
                                   children: [
-                                    /*
-                                    Stack(
-                                      children: <Widget>[
-                                        Row(
-                                          children: [
-                                            Container(
-                                              padding: EdgeInsets.only(
-                                                  top: 10, left: 15),
-                                              margin: EdgeInsets.only(
-                                                  bottom: 30, top: 25),
-                                              height:
-                                                  mediaQuery.size.height * 0.15,
-                                              width:
-                                                  mediaQuery.size.width * 0.7,
-                                              decoration: BoxDecoration(
-                                                  color: UIColors.detailBlack,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                              child: Column(
-                                                children: [
-                                                  Row(
-                                                    children: [
-                                                      Text(
-                                                        "Resoconto settimanale",
-                                                        style: TextStyle(
-                                                            color:
-                                                                UIColors.pink,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Text(
-                                                        "Piatto preferito",
-                                                        style: TextStyle(
-                                                          color: UIColors.white,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Text(
-                                                        "Nome del piatto",
-                                                        style: TextStyle(
-                                                          color: UIColors.white
-                                                              .withOpacity(0.6),
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10,
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Text(
-                                                        "Piatti cucinati",
-                                                        style: TextStyle(
-                                                          color: UIColors.white,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Text(
-                                                        "Numero di piatti",
-                                                        style: TextStyle(
-                                                          color: UIColors.white
-                                                              .withOpacity(0.6),
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Positioned(
-                                          right: 20,
-                                          top: 0,
-                                          child: Container(
-                                            child: Align(
-                                              alignment: Alignment.centerRight,
-                                              child: Image.asset(
-                                                'assets/images/home.png',
-                                                scale: 1.1,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  */
                                     Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                           'DAILY_RECEPY'.tr,
                                           style: GoogleFonts.poppins(
                                               fontSize: 22,
-                                              fontWeight: FontWeight.w600,
+                                              fontWeight: FontWeight.w400,
                                               color: Colors.white),
+                                        ),
+                                        InkWell(
+                                          onTap: () {
+                                            Get.to(() => FiltersPage());
+                                          },
+                                          child: Stack(
+                                            clipBehavior: Clip.none,
+                                            children: [
+                                              Icon(
+                                                Icons.filter_alt_outlined,
+                                                color: UIColors.white,
+                                              ),
+                                              FilterBody.listFilters.length > 0
+                                                  ? Positioned(
+                                                      child: CircleAvatar(
+                                                        radius: 6,
+                                                        backgroundColor:
+                                                            UIColors.violetMain,
+                                                      ),
+                                                      top: -5,
+                                                      right: -10,
+                                                    )
+                                                  : SizedBox()
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -193,20 +110,28 @@ class HomeBody extends GetWidget<IngredientController> {
                                       )));
                             }),
                         SizedBox(
-                          height: 50,
+                          height: 20,
                         ),
-                        Container(
-                          height: 40,
-                          color: Colors.deepOrange,
-                          child: Center(
-                            child: Text(
-                              'LOADOTHERMENU'.tr,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              padding:
+                                  const EdgeInsets.only(left: 20, right: 20),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: UIColors.detailBlack,
+                              ),
+                              child: TextButton(
+                                onPressed: null,
+                                child: Text("LOADOTHERMENU".tr,
+                                    style: GoogleFonts.poppins(
+                                        color: UIColors.white,
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 16)),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
                       ],
                     )

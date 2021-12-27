@@ -27,7 +27,7 @@ class HomeHeader extends StatelessWidget {
           Row(
             children: [
               Text(
-                '${FirebaseAuth.instance.currentUser!.displayName!.split(' ')[0]}',
+                'foodmatch.',
                 style: GoogleFonts.poppins(
                     fontSize: 27,
                     fontWeight: FontWeight.w300,
@@ -55,7 +55,7 @@ class HomeHeader extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
+              /*Padding(
                 padding: const EdgeInsets.only(left: 10.0),
                 child: Stack(
                   clipBehavior: Clip.none,
@@ -86,7 +86,7 @@ class HomeHeader extends StatelessWidget {
                         : SizedBox()
                   ],
                 ),
-              ),
+              ),*/
               Padding(
                 padding: const EdgeInsets.only(left: 10.0),
                 child: Container(
