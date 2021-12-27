@@ -195,16 +195,22 @@ class HomeBody extends GetWidget<IngredientController> {
                         SizedBox(
                           height: 50,
                         ),
-                        Container(
-                          height: 40,
-                          color: Colors.deepOrange,
-                          child: Center(
-                            child: Text(
-                              'LOADOTHERMENU'.tr,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white),
+                        InkWell(
+                          onTap: () => {
+                            _menuController.incrementLimitMultiplier(),
+                            _menuController.getMenuList(FilterBody.listFilters)
+                          },
+                          child: Container(
+                            height: 40,
+                            color: Colors.deepOrange,
+                            child: Center(
+                              child: Text(
+                                'LOADOTHERMENU'.tr,
+                                style: GoogleFonts.poppins(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white),
+                              ),
                             ),
                           ),
                         ),

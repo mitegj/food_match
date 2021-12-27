@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:get/get.dart';
 import 'package:morning_brief/models/cooked_menu_model.dart';
@@ -19,11 +21,20 @@ class StatisticController extends GetxController {
 
   void getPoints() {
     points.clear();
+
+    List<dynamic> list = [];
+    for (double i = 1.0; i < 7; i++) {
+      list.add({"x": i, "y": -1.0});
+    }
+
     if (cookedMenuList.value != null)
       for (CookedMenuModel item in cookedMenuList.value ?? []) {
-        points.add(FlSpot(
-            item.cookedTime.toDate().weekday.toDouble(), item.kcal.toDouble()));
+        list[item.cookedTime.toDate().weekday.toInt() - 1]['y'] +=
+            item.kcal.toDouble();
       }
+    list.forEach((el) {
+      if (el['y'] != -1) points.add(FlSpot(el['x'], el['y'] + 1));
+    });
 
     points.sort((a, b) => a.x.compareTo(b.x));
   }

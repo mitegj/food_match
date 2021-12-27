@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
@@ -44,12 +41,14 @@ class MenuController extends GetxController {
     return fl;
   }
 
-  getMenuList(RxList<int> filters) {
+  getMenuList(RxList<int> filters) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int m = prefs.getInt("limitMultiplier") ?? 1;
     if (filters.length == 0) {
       filters = getAllFilters();
     }
-    menuList
-        .bindStream(DatabaseMenu().menuStream(_ingController, filters, limit));
+    menuList.bindStream(
+        DatabaseMenu().menuStream(_ingController, filters, limit * m));
   }
 
   Future<void> updateStockCtrl(String uid, bool stock) async {
@@ -105,6 +104,12 @@ class MenuController extends GetxController {
             prefs.setString('lastTimeCooked', DateTime.now().toString())),
       );
     }
+  }
+
+  incrementLimitMultiplier() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int m = prefs.getInt("limitMultiplier") ?? 1;
+    prefs.setInt("limitMultiplier", ++m);
   }
 
   String getIngredientName(String id, ingredients) {

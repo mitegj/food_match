@@ -54,6 +54,7 @@ class DatabaseMenu {
       return _firestore
           .collection(conf.menuCollection)
           .where("dishType", whereIn: filters)
+          .orderBy("insertionDate", descending: true)
           .limit(limit)
           .snapshots()
           .map((QuerySnapshot query) {
