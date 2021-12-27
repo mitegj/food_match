@@ -55,38 +55,6 @@ class HomeHeader extends StatelessWidget {
                   ),
                 ),
               ),
-              /*Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: UIColors.detailBlack,
-                          borderRadius: BorderRadius.circular(15)),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.filter_alt_outlined,
-                          color: UIColors.white,
-                        ),
-                        onPressed: () {
-                          Get.to(() => FiltersPage());
-                        },
-                      ),
-                    ),
-                    FilterBody.listFilters.length > 0
-                        ? Positioned(
-                            child: CircleAvatar(
-                              radius: 7,
-                              backgroundColor: UIColors.violetMain,
-                            ),
-                            top: -3,
-                            right: -3,
-                          )
-                        : SizedBox()
-                  ],
-                ),
-              ),*/
               Padding(
                 padding: const EdgeInsets.only(left: 10.0),
                 child: Container(

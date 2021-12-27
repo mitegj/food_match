@@ -9,7 +9,6 @@ import 'package:morning_brief/widgets/home/filters.dart';
 import 'package:morning_brief/widgets/home/filters_body.dart';
 import 'package:morning_brief/widgets/home/menu_tile.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
-
 import 'filters_body.dart';
 
 class HomeBody extends GetWidget<IngredientController> {
