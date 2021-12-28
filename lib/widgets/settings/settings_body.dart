@@ -149,7 +149,6 @@ class SettingsBody extends GetWidget<SettingController> {
                 borderRadius: BorderRadius.circular(20)),
             child: TextButton(
               onPressed: () {
-                // TODO: Logout da google
                 _authController.logoutGoogle();
               },
               child: Text(

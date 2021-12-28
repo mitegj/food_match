@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:get/get.dart';
 import 'package:morning_brief/models/cooked_menu_model.dart';
@@ -23,7 +21,7 @@ class StatisticController extends GetxController {
     points.clear();
 
     List<dynamic> list = [];
-    for (double i = 1.0; i < 7; i++) {
+    for (double i = 1.0; i <= 7; i++) {
       list.add({"x": i, "y": -1.0});
     }
 

@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
-import 'package:morning_brief/widgets/spinner/spinner.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Root extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     resetLimitMultiplier();
     AuthController.instance.checkUpdates();
-    return LoadingWidget();
+    return Scaffold(
+        backgroundColor: theme.backgroundColor,
+        resizeToAvoidBottomInset: true,
+        body: Center(
+            child: Text("Welcome 🤙",
+                style: GoogleFonts.poppins(
+                    fontSize: 27,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white))));
   }
 
   resetLimitMultiplier() async {

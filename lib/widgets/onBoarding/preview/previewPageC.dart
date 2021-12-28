@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:morning_brief/screens/onboarding.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 
 class PreviewPageC extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var mediaQuery = MediaQuery.of(context);
     return Container(
         padding: const EdgeInsets.all(20),
         child: Column(

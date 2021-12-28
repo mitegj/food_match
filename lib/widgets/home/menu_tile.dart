@@ -33,7 +33,7 @@ class MenuTile extends StatelessWidget {
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: UIColors.detailBlack,
+                  color: UIColors.lowTransaprentWhite,
                 ),
                 child: Column(
                   children: [

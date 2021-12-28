@@ -38,6 +38,9 @@ dependencies:
   package_info: ^2.0.2
   firebase_remote_config: ^0.11.0+2
   shared_preferences: ^2.0.11
+  flutter_local_notifications: ^9.1.5
+  rxdart: ^0.27.3
+  flutter_native_timezone: ^2.0.0
 
   fl_chart: ^0.40.6
   unsplash_client: ^2.1.0+1

@@ -1,16 +1,12 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:morning_brief/screens/settings_screen.dart';
+
 import 'package:morning_brief/screens/statistics.dart';
 
 import 'package:morning_brief/utils/UIColors.dart';
-import 'package:morning_brief/widgets/home/filters.dart';
-import 'package:morning_brief/widgets/home/filters_body.dart';
-import 'package:morning_brief/widgets/inventory/inventory_page.dart';
 
-import 'filters_body.dart';
+import 'package:morning_brief/widgets/inventory/inventory_page.dart';
 
 class HomeHeader extends StatelessWidget {
   @override

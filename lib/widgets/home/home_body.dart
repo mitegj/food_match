@@ -16,8 +16,6 @@ class HomeBody extends GetWidget<IngredientController> {
       Get.put<IngredientController>(IngredientController());
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
-
     MenuController _menuController =
         Get.put<MenuController>(MenuController.fromCtrl(ingController));
     _menuController.menus = [];

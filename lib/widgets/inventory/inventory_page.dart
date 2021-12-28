@@ -91,14 +91,14 @@ class InventoryScreen extends GetWidget<IngredientController> {
                         children: [
                           Expanded(
                             child: Text("INGREDIENTSINVENTORYSUBTITLE".tr,
-                                overflow: TextOverflow.visible,
+                                overflow: TextOverflow.ellipsis,
                                 style: GoogleFonts.poppins(
                                     color: UIColors.grey,
                                     fontSize: 20,
                                     fontWeight: FontWeight.w300)),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -131,9 +131,10 @@ class InventoryScreen extends GetWidget<IngredientController> {
               flex: 5,
               child: Container(
                 margin: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: UIColors.detailBlack),
+                    color: UIColors.lightBlack.withOpacity(0.5)),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -148,19 +149,10 @@ class InventoryScreen extends GetWidget<IngredientController> {
                                     itemBuilder: (_, index) {
                                       setUserInventoryCheck(ingCtrl, index);
                                       return Obx(() => Container(
-                                            margin: EdgeInsets.only(
-                                              left: 20,
-                                              right: 20,
-                                              top: 20,
-                                            ),
-                                            padding: EdgeInsets.only(
-                                                top: 10,
-                                                bottom: 10,
-                                                right: 20,
-                                                left: 20),
+                                            margin: EdgeInsets.all(5),
+                                            padding: EdgeInsets.all(0),
                                             decoration: BoxDecoration(
-                                                color: UIColors.black
-                                                    .withOpacity(0.6),
+                                                color: UIColors.lightBlack,
                                                 borderRadius:
                                                     BorderRadius.circular(20)),
                                             child: Row(
@@ -170,41 +162,34 @@ class InventoryScreen extends GetWidget<IngredientController> {
                                               children: [
                                                 Flexible(
                                                   flex: 3,
-                                                  child: Text(
-                                                    ingCtrl
-                                                        .ingSearch[index].name
-                                                        .toString()
-                                                        .toLowerCase(),
-                                                    overflow:
-                                                        TextOverflow.visible,
-                                                    style: GoogleFonts.poppins(
-                                                        color: UIColors.white,
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.w400),
-                                                  ),
-                                                ),
-                                                Flexible(
-                                                  flex: 1,
-                                                  child: Checkbox(
-                                                    side: BorderSide(
-                                                      color: Colors.white,
-                                                      width: 1.5,
+                                                  child: CheckboxListTile(
+                                                    checkColor: UIColors.green,
+                                                    activeColor: UIColors.green,
+
+                                                    title: Text(
+                                                      ingCtrl
+                                                          .ingSearch[index].name
+                                                          .toString()
+                                                          .toLowerCase(),
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal),
                                                     ),
-                                                    checkColor:
-                                                        UIColors.darkPurple,
-                                                    focusColor:
-                                                        UIColors.darkPurple,
-                                                    activeColor:
-                                                        UIColors.darkPurple,
                                                     value: getStock(
                                                         ingCtrl, index),
                                                     onChanged: (bool? value) {
                                                       updateStock(ingCtrl,
                                                           index, value);
                                                     },
+                                                    controlAffinity:
+                                                        ListTileControlAffinity
+                                                            .trailing, //  <-- leading Checkbox
                                                   ),
-                                                )
+                                                ),
                                               ],
                                             ),
                                           ));

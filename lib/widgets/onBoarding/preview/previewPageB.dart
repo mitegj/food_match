@@ -5,7 +5,6 @@ import 'package:morning_brief/utils/UIColors.dart';
 class PreviewPageB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var mediaQuery = MediaQuery.of(context);
     return Container(
         padding: const EdgeInsets.all(20),
         child: Column(
