@@ -1,53 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
-import 'package:morning_brief/main.dart';
 import 'package:morning_brief/widgets/home/home_body.dart';
 import 'package:morning_brief/widgets/home/home_header.dart';
-import 'package:timezone/data/latest_all.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
 
 class HomePage extends GetWidget<IngredientController> {
   HomePage({Key? key}) : super(key: key);
-
-  void initState() {
-    _requestPermissions();
-    _configureDidReceiveLocalNotificationSubject();
-    _configureSelectNotificationSubject();
-  }
-
-  void _requestPermissions() {
-    flutterLocalNotificationsPlugin
-        .resolvePlatformSpecificImplementation<
-            IOSFlutterLocalNotificationsPlugin>()
-        ?.requestPermissions(
-          alert: true,
-          badge: true,
-          sound: true,
-        );
-    flutterLocalNotificationsPlugin
-        .resolvePlatformSpecificImplementation<
-            MacOSFlutterLocalNotificationsPlugin>()
-        ?.requestPermissions(
-          alert: true,
-          badge: true,
-          sound: true,
-        );
-  }
-
-  void _configureDidReceiveLocalNotificationSubject() {
-    didReceiveLocalNotificationSubject.stream
-        .listen((ReceivedNotification receivedNotification) async {
-      print(receivedNotification);
-    });
-  }
-
-  void _configureSelectNotificationSubject() {
-    selectNotificationSubject.stream.listen((String? payload) async {
-      print(payload);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +15,6 @@ class HomePage extends GetWidget<IngredientController> {
       backgroundColor: theme.backgroundColor,
       body: SafeArea(
           child: Column(children: [
-        TextButton(
-          onPressed: _showNotificationWithNoSound,
-          child: Text("w"),
-        ),
         HomeHeader(),
         //SizedBox(height: 10),
         HomeBody(),
@@ -69,6 +23,7 @@ class HomePage extends GetWidget<IngredientController> {
   }
 }
 
+/*
 Future<void> _showNotificationWithNoSound() async {
   const AndroidNotificationDetails androidPlatformChannelSpecifics =
       AndroidNotificationDetails('silent channel id', 'silent channel name',
@@ -84,7 +39,7 @@ Future<void> _showNotificationWithNoSound() async {
       iOS: iOSPlatformChannelSpecifics,
       macOS: macOSPlatformChannelSpecifics);
   await flutterLocalNotificationsPlugin.show(
-      0, 'Insisti', 'a me questa cosa crea disagio', platformChannelSpecifics);
+      0, 'Insisti', '', platformChannelSpecifics);
 }
 
 Future<void> _scheduleDailyTenAMNotification() async {
@@ -113,3 +68,4 @@ tz.TZDateTime _nextInstanceOfTenAM() {
   }
   return scheduledDate;
 }
+*/

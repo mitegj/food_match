@@ -430,8 +430,9 @@ class StatisticsScreen extends GetWidget<AllergyController> {
   }
 
   Widget weeklySummary() {
-    DateFormat formattedDate = DateFormat(
-        Get.deviceLocale == "en" ? 'kk:mm  yyyy-MM-dd' : "kk:mm  dd-MM-yyyy");
+    DateFormat formattedDate = DateFormat(Get.deviceLocale.toString() == "en"
+        ? 'kk:mm  yyyy-MM-dd'
+        : "kk:mm  dd-MM-yyyy");
     return Obx(
       () => statisticController.cookedMenus != null
           ? Padding(
