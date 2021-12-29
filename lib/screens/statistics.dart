@@ -10,6 +10,7 @@ import 'package:morning_brief/screens/allergies.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:intl/intl.dart';
+import 'package:morning_brief/widgets/global_input/time_eating_screen.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 class StatisticsScreen extends GetWidget<AllergyController> {
@@ -180,39 +181,51 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                                                 children: [
                                                   Row(
                                                     children: [
-                                                      Text(
-                                                          statisticController
-                                                              .cookedMenus![
-                                                                  index]
-                                                              .name
-                                                              .toString(),
-                                                          style: GoogleFonts
-                                                              .poppins(
-                                                            color:
-                                                                UIColors.white,
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          )),
+                                                      Expanded(
+                                                        child: Text(
+                                                            statisticController
+                                                                .cookedMenus![
+                                                                    index]
+                                                                .name
+                                                                .toString(),
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            style: GoogleFonts
+                                                                .poppins(
+                                                              color: UIColors
+                                                                  .white,
+                                                              fontSize: 15,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                            )),
+                                                      ),
                                                     ],
                                                   ),
                                                   Row(
                                                     children: [
-                                                      Text(
-                                                          formattedDate.format(
-                                                              statisticController
-                                                                  .cookedMenus![
-                                                                      index]
-                                                                  .cookedTime
-                                                                  .toDate()),
-                                                          style: GoogleFonts
-                                                              .poppins(
-                                                            color:
-                                                                UIColors.white,
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          )),
+                                                      Expanded(
+                                                        child: Text(
+                                                            formattedDate.format(
+                                                                statisticController
+                                                                    .cookedMenus![
+                                                                        index]
+                                                                    .cookedTime
+                                                                    .toDate()),
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            style: GoogleFonts
+                                                                .poppins(
+                                                              color: UIColors
+                                                                  .white,
+                                                              fontSize: 15,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                            )),
+                                                      ),
                                                     ],
                                                   ),
                                                 ],
@@ -270,6 +283,35 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                           CircleAvatar(
                             backgroundColor: UIColors.black.withOpacity(0.6),
                             child: Icon(Icons.sick, color: UIColors.white),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Divider(
+                    color: UIColors.black,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Get.to(TimeEatingScreen());
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("NOTIFICATION".tr,
+                              style: GoogleFonts.poppins(
+                                color: UIColors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                              )),
+                          CircleAvatar(
+                            backgroundColor: UIColors.black.withOpacity(0.6),
+                            child: Icon(
+                              Icons.notifications_on,
+                              color: UIColors.white,
+                            ),
                           )
                         ],
                       ),

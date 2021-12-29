@@ -59,7 +59,11 @@ class Messages extends Translations {
           "INGREDIENTSINVENTORY": "Inventory home",
           "INGREDIENTSINVENTORYSUBTITLE": "Home inventory stock",
           "CONTINUEWITH": "Continue with",
-          "ANYPREFERENCES": "Any preferences"
+          "ANYPREFERENCES": "Any preferences",
+          "NOTIFICATION": "Notification",
+          "LABELENABLENOTIFICATION":
+              "Enable notifications for a better experience.",
+          "LABELTIMENOTIFICATION": "send time: ",
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -117,7 +121,11 @@ class Messages extends Translations {
           "INGREDIENTSINVENTORY": "Inventario casa",
           "INGREDIENTSINVENTORYSUBTITLE": "Giacenza inventario casa",
           "CONTINUEWITH": "Continua con",
-          "ANYPREFERENCES": "Hai qualche tipo di preferenza"
+          "ANYPREFERENCES": "Hai qualche tipo di preferenza",
+          "NOTIFICATION": "Notifiche",
+          "LABELENABLENOTIFICATION":
+              "Abilita le notifiche per avere un esperienza migliore.",
+          "LABELTIMENOTIFICATION": "ora invio: ",
         },
       };
 }

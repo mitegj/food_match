@@ -22,14 +22,6 @@ class Notification {
           badge: true,
           sound: true,
         );
-    flutterLocalNotificationsPlugin
-        .resolvePlatformSpecificImplementation<
-            MacOSFlutterLocalNotificationsPlugin>()
-        ?.requestPermissions(
-          alert: true,
-          badge: true,
-          sound: true,
-        );
   }
 
   void _configureDidReceiveLocalNotificationSubject() {
@@ -50,7 +42,7 @@ class Notification {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String dinnerTime = prefs.getString("dinnerTime") ?? "";
       // dinnerTime != ""
-      if (true) {
+      if (dinnerTime != "") {
         tz.initializeTimeZones();
         final String? timeZoneName =
             await FlutterNativeTimezone.getLocalTimezone();
@@ -60,8 +52,8 @@ class Notification {
             0,
             'scheduled title',
             'scheduled body',
-            //tz.TZDateTime.parse(tz.local, dinnerTime),
-            tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
+            tz.TZDateTime.parse(tz.local, dinnerTime),
+            //tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
             const NotificationDetails(
                 android: AndroidNotificationDetails(
                     'full screen channel id', 'full screen channel name',
