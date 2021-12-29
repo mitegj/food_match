@@ -49,7 +49,7 @@ class MenuTile extends StatelessWidget {
                             Text(
                               " " +
                                   menu.preparationTime.toString() +
-                                  " ESTIMATEDTIME".tr,
+                                  "ESTIMATEDTIME".tr,
                               style: GoogleFonts.poppins(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,

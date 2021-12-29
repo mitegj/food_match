@@ -117,7 +117,7 @@ class Messages extends Translations {
           "INGREDIENTSLIST": "Lista di ingredienti",
           "METHOD": "Procedimento",
           "DISHCOOKED": "Piatto cucinato",
-          "ESTIMATEDTIME": "Tempo stimato",
+          "ESTIMATEDTIME": " Minuti circa",
           "INGREDIENTSINVENTORY": "Inventario casa",
           "INGREDIENTSINVENTORYSUBTITLE": "Giacenza inventario casa",
           "CONTINUEWITH": "Continua con",

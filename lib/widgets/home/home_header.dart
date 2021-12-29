@@ -25,7 +25,7 @@ class HomeHeader extends StatelessWidget {
               Text(
                 'foodmatch.',
                 style: GoogleFonts.poppins(
-                    fontSize: 27,
+                    fontSize: 26,
                     fontWeight: FontWeight.w300,
                     color: Colors.white),
               ),
@@ -52,7 +52,26 @@ class HomeHeader extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 10.0),
+                padding: const EdgeInsets.only(left: 7.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: UIColors.detailBlack,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.bookmark,
+                      color: UIColors.white,
+                    ),
+                    onPressed: () {
+                      /*Get.bottomSheet(InventoryBottomSheet(),
+                      isScrollControlled: true);*/
+                      Get.offAll(() => InventoryScreen());
+                    },
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 7.0),
                 child: Container(
                   decoration: BoxDecoration(
                       color: UIColors.detailBlack,

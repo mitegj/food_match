@@ -26,7 +26,7 @@ class TimeEatingScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-                flex: 1,
+                flex: 2,
                 child: Container(
                   padding: const EdgeInsets.only(right: 20, left: 20, top: 50),
                   child: Column(

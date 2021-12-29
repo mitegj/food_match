@@ -24,27 +24,28 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                       Expanded(
+                          flex: 2,
                           child: Container(
-                        padding:
-                            const EdgeInsets.only(right: 20, left: 20, top: 50),
-                        child: Column(
-                          children: [
-                            Text("ANYALLERGY".tr + "?",
-                                style: GoogleFonts.poppins(
-                                    color: UIColors.white,
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.w700)),
-                            SizedBox(height: 20),
-                            Text("DECLAREYOURALLERGIES".tr,
-                                style: GoogleFonts.poppins(
-                                    color: UIColors.grey,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w300)),
-                          ],
-                        ),
-                      )),
+                            padding: const EdgeInsets.only(
+                                right: 20, left: 20, top: 50),
+                            child: Column(
+                              children: [
+                                Text("ANYALLERGY".tr + "?",
+                                    style: GoogleFonts.poppins(
+                                        color: UIColors.white,
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.w700)),
+                                SizedBox(height: 20),
+                                Text("DECLAREYOURALLERGIES".tr,
+                                    style: GoogleFonts.poppins(
+                                        color: UIColors.grey,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w300)),
+                              ],
+                            ),
+                          )),
                       Expanded(
-                        flex: 2,
+                        flex: 3,
                         child: Container(
                           padding: const EdgeInsets.all(10),
                           margin: const EdgeInsets.all(20),
