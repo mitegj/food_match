@@ -16,25 +16,30 @@ class DatabaseCookedMenu {
 
     final DateTime date = DateTime.now();
     final DateTime start = getDate(date
-        .subtract(Duration(days: monthly ? date.weekday - 1 : date.day - 1)));
+        .subtract(Duration(days: !monthly ? date.weekday - 1 : date.day - 1)));
     final DateTime end = getDate(date.add(Duration(
-        days: monthly
+        days: !monthly
             ? DateTime.daysPerWeek - date.weekday
             : DateTime.daysPerWeek + date.weekday)));
+
     try {
       String uid = FirebaseAuth.instance.currentUser!.uid.toString();
       return _firestore
           .collection(conf.userCollection)
           .doc(uid)
           .collection(conf.cookedMenuCollection)
-          .where("cookedTime", isGreaterThanOrEqualTo: start)
-          .where("cookedTime", isLessThanOrEqualTo: end)
+          .where("cookedTime",
+              isGreaterThanOrEqualTo: Timestamp.fromDate(start))
+          .where("cookedTime", isLessThanOrEqualTo: Timestamp.fromDate(end))
           .orderBy("cookedTime", descending: true)
           .snapshots()
           .map((QuerySnapshot query) {
         List<CookedMenuModel> retVal = [];
         for (var element in query.docs) {
           retVal.add(CookedMenuModel.fromDocumentSnapshot(element));
+          print("--");
+          print(CookedMenuModel.fromDocumentSnapshot(element).cookedTime);
+          print("--");
         }
         return retVal;
       });
