@@ -1,4 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:morning_brief/utils/conf.dart';
+
+final Conf conf = new Conf();
 
 class MenuIngredientModel {
   late String id;
@@ -30,9 +33,13 @@ class MenuIngredientModel {
   MenuIngredientModel.fromDocumentSnapshot(
     DocumentSnapshot documentSnapshot,
   ) {
-    id = documentSnapshot["id"] ?? "";
-    qty = documentSnapshot["qty"] ?? 0.0;
-    unit = documentSnapshot["unit"] ?? "";
+    id = conf.docContains("id", documentSnapshot) ? documentSnapshot["id"] : "";
+    qty = conf.docContains("qty", documentSnapshot)
+        ? documentSnapshot["qty"]
+        : 0.0;
+    unit = conf.docContains("unit", documentSnapshot)
+        ? documentSnapshot["unit"]
+        : "";
   }
 }
 

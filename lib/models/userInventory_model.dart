@@ -1,4 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:morning_brief/utils/conf.dart';
+
+final Conf conf = new Conf();
 
 class UserInventory {
   late String id;
@@ -25,8 +28,10 @@ class UserInventory {
   UserInventory.fromDocumentSnapshot(
     DocumentSnapshot documentSnapshot,
   ) {
-    id = documentSnapshot["id"] ?? "";
-    stock = documentSnapshot["stock"] ?? 0;
+    id = conf.docContains("id", documentSnapshot) ? documentSnapshot["id"] : "";
+    stock = conf.docContains("stock", documentSnapshot)
+        ? documentSnapshot["stock"]
+        : false;
   }
 }
 

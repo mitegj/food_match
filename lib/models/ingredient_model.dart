@@ -27,7 +27,9 @@ class IngredientModel {
     DocumentSnapshot documentSnapshot,
   ) {
     id = documentSnapshot.id;
-    name = documentSnapshot["name" + conf.lang] ?? "";
+    name = conf.docContains("name" + conf.lang, documentSnapshot)
+        ? documentSnapshot["name" + conf.lang]
+        : "";
   }
 }
 

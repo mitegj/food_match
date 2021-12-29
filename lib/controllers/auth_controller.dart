@@ -8,6 +8,7 @@ import 'package:morning_brief/models/user_model.dart';
 import 'package:morning_brief/screens/homepage.dart';
 import 'package:morning_brief/screens/onboarding.dart';
 import 'package:morning_brief/services/user_database.dart';
+import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/utils/conf.dart';
 import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -93,7 +94,6 @@ class AuthController extends GetxController {
       UserModel _user = UserModel(
           id: uid,
           allergies: [],
-          dinnerTime: 0,
           lastShop: DateTime.now(),
           lastLogin: DateTime.now(),
           name: '');
@@ -154,8 +154,24 @@ class AuthController extends GetxController {
 
     if (currentVersion < latestVersion) {
       Get.defaultDialog(
-          title: '',
-          content: Column(
+          backgroundColor: UIColors.black,
+          title: '\n' + 'UPDATETHEAPP'.tr,
+          titleStyle: TextStyle(color: UIColors.white),
+          middleText: 'NEWVERSIONAVAIABLE'.tr + '\n',
+          middleTextStyle: TextStyle(color: UIColors.white),
+          textConfirm: "OK",
+          confirmTextColor: UIColors.white,
+          buttonColor: UIColors.darkPurple,
+          onConfirm: () {
+            try {
+              if (Platform.isAndroid) {
+                launch(conf.appPlayStoreLink);
+              } else if (Platform.isIOS) {
+                launch(conf.appAppStroreLink);
+              }
+            } catch (e) {}
+          },
+          /*content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text("è presente una nuova versione, aggiorna l'app stronzo"),
@@ -176,11 +192,12 @@ class AuthController extends GetxController {
                 },
                 child: Text(
                   'OK',
-                  style: TextStyle(color: Colors.white, fontSize: 16.0),
+                  style: TextStyle(color: Colors.black, fontSize: 16.0),
                 ),
               )
             ],
           ),
+          */
           radius: 10.0);
     }
   }

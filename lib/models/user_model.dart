@@ -1,4 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:morning_brief/utils/conf.dart';
+
+final Conf conf = new Conf();
 
 class UserModel {
   late String id;
@@ -6,14 +9,12 @@ class UserModel {
   late List<String> allergies;
   late DateTime lastShop;
   late DateTime lastLogin;
-  late int dinnerTime;
   UserModel(
       {required this.id,
       required this.name,
       required this.allergies,
       required this.lastShop,
-      required this.lastLogin,
-      required this.dinnerTime});
+      required this.lastLogin});
 
   Map<String, dynamic> toMap() {
     return {
@@ -22,7 +23,7 @@ class UserModel {
       "allergies,": allergies,
       "lastShop": lastShop,
       "lastLogin": lastLogin,
-      "dinnerTime": dinnerTime,
+      //"dinnerTime": dinnerTime,
     };
   }
 
@@ -33,7 +34,7 @@ class UserModel {
       allergies: parsedJson['allergies'],
       lastShop: parsedJson['lastShop'],
       lastLogin: parsedJson['lastLogin'],
-      dinnerTime: parsedJson['dinnerTime'],
+      //dinnerTime: parsedJson['dinnerTime'],
     );
   }
 
@@ -41,11 +42,18 @@ class UserModel {
     DocumentSnapshot documentSnapshot,
   ) {
     id = documentSnapshot.id;
-    name = documentSnapshot["name"] ?? "";
-    allergies = documentSnapshot["allergies"].cast<String>() ?? [];
-    lastShop = documentSnapshot["lastShop"].toDate() ?? DateTime.now();
-    lastLogin = documentSnapshot["lastLogin"].toDate() ?? DateTime.now();
-    dinnerTime = documentSnapshot["dinnerTime"] ?? 0;
+    name = conf.docContains("name", documentSnapshot)
+        ? documentSnapshot["name"]
+        : "";
+    allergies = conf.docContains("allergies", documentSnapshot)
+        ? documentSnapshot["allergies"].cast<String>()
+        : [];
+    lastShop = conf.docContains("lastShop", documentSnapshot)
+        ? documentSnapshot["lastShop"].toDate()
+        : DateTime.now();
+    lastLogin = conf.docContains("lastLogin", documentSnapshot)
+        ? documentSnapshot["lastLogin"].toDate()
+        : DateTime.now();
   }
 }
 
@@ -56,6 +64,5 @@ extension UserExtensions on QueryDocumentSnapshot {
         allergies: this['allergies'],
         lastShop: this['lastShop'],
         lastLogin: this['lastLogin'],
-        dinnerTime: this['dinnerTime'],
       );
 }

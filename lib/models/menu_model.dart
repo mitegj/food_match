@@ -69,30 +69,44 @@ class MenuModel {
     DocumentSnapshot documentSnapshot,
   ) {
     id = documentSnapshot.id;
-    name = documentSnapshot["name" + conf.lang] ?? "";
-    kcal = documentSnapshot["kcal"] ?? 0;
-    difficulty = documentSnapshot["difficulty"] ?? 0;
+    name = conf.docContains("name" + conf.lang, documentSnapshot)
+        ? documentSnapshot["name" + conf.lang]
+        : '';
+    kcal = conf.docContains("kcal", documentSnapshot)
+        ? documentSnapshot["kcal"]
+        : 0;
+    difficulty = conf.docContains("difficulty", documentSnapshot)
+        ? documentSnapshot["difficulty"]
+        : 0;
+    preparationTime = conf.docContains("preparationTime", documentSnapshot)
+        ? documentSnapshot["preparationTime"]
+        : 0;
+    allergies = conf.docContains("allergies", documentSnapshot)
+        ? documentSnapshot["allergies"].cast<String>()
+        : [];
+    steps = conf.docContains("steps", documentSnapshot)
+        ? documentSnapshot["steps" + conf.lang].cast<String>()
+        : [];
+    note = conf.docContains("note", documentSnapshot)
+        ? documentSnapshot["note" + conf.lang]
+        : "";
+    desc = conf.docContains("desc", documentSnapshot)
+        ? documentSnapshot["desc" + conf.lang]
+        : "";
+    dishType = conf.docContains("dishType", documentSnapshot)
+        ? documentSnapshot["dishType"]
+        : -1;
+    linkUrl = conf.docContains("linkUrl", documentSnapshot)
+        ? documentSnapshot["linkUrl"]
+        : "https://images.pexels.com/photos/349609/pexels-photo-349609.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
 
-    preparationTime = documentSnapshot["preparationTime"] ?? 0.0;
-
-    allergies = documentSnapshot["allergies"].cast<String>() ?? [];
-    steps = documentSnapshot["steps" + conf.lang].cast<String>() ?? [];
-
-    ingredients = List<MenuIngredientModel>.from(
-        documentSnapshot["ingredients"].map((item) {
-      return new MenuIngredientModel(
-          id: item["id"], qty: item["qty"], unit: item["unit"]);
-    }));
-
-    note = documentSnapshot["note" + conf.lang] ?? "";
-
-    desc = documentSnapshot["desc" + conf.lang] ?? "";
-    dishType = documentSnapshot["dishType"] ?? 0;
-
-    linkUrl = documentSnapshot["linkUrl"] ?? "";
-
-    //ingredients =
-    //  documentSnapshot["ingredients"].cast<MenuIngredientModel>() ?? [];
+    ingredients = conf.docContains("ingredients", documentSnapshot)
+        ? List<MenuIngredientModel>.from(
+            documentSnapshot["ingredients"].map((item) {
+            return new MenuIngredientModel(
+                id: item["id"], qty: item["qty"], unit: item["unit"]);
+          }))
+        : [];
   }
 }
 

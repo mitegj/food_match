@@ -1,4 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:morning_brief/utils/conf.dart';
+
+final Conf conf = new Conf();
 
 class CookedMenuModel {
   late String id;
@@ -30,11 +34,21 @@ class CookedMenuModel {
     DocumentSnapshot documentSnapshot,
   ) {
     id = documentSnapshot.id;
-    name = documentSnapshot["name"];
-    cookedTime = documentSnapshot["cookedTime"];
-    dishType = documentSnapshot["dishType"];
-    kcal = documentSnapshot["kcal"];
-    preparationTime = documentSnapshot["preparationTime"];
+    name = conf.docContains("name", documentSnapshot)
+        ? documentSnapshot["name"]
+        : '';
+    cookedTime = conf.docContains("cookedTime", documentSnapshot)
+        ? documentSnapshot["cookedTime"]
+        : new Timestamp.now();
+    dishType = conf.docContains("dishType", documentSnapshot)
+        ? documentSnapshot["dishType"]
+        : 0;
+    kcal = conf.docContains("kcal", documentSnapshot)
+        ? documentSnapshot["kcal"]
+        : 0;
+    preparationTime = conf.docContains("preparationTime", documentSnapshot)
+        ? documentSnapshot["preparationTime"]
+        : 0;
   }
 }
 

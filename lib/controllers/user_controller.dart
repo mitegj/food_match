@@ -5,7 +5,6 @@ class UserController extends GetxController {
   final Rx<UserModel> _userModel = UserModel(
           id: '',
           allergies: [],
-          dinnerTime: 0,
           lastShop: DateTime.now(),
           lastLogin: DateTime.now(),
           name: '')

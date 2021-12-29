@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 class Conf {
@@ -14,4 +15,12 @@ class Conf {
       "https://apps.apple.com/it/app/tiktok-video-live-e-musica/id835599320";
 
   String lang = Get.deviceLocale.toString().split('_')[0].toUpperCase();
+
+  bool docContains(String key, DocumentSnapshot doc) {
+    String s = doc.data().toString();
+    return s.contains(key.trim() + ':');
+  }
 }
+
+
+//https://images.pexels.com/photos/349609/pexels-photo-349609.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260

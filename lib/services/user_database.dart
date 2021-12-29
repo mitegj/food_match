@@ -26,7 +26,6 @@ class UserDatabase {
       await _firestore.collection(conf.userCollection).doc(user.id).set({
         "id": user.id,
         "allergies": user.allergies,
-        "dinnerTime": user.dinnerTime,
         "lastShop": user.lastShop,
         "name": user.name
       });

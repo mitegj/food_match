@@ -16,12 +16,14 @@ class AllergyModel {
     DocumentSnapshot documentSnapshot,
   ) {
     id = documentSnapshot.id;
-    name = documentSnapshot["name" + conf.lang] ?? 0;
+    name = conf.docContains("name" + conf.lang, documentSnapshot)
+        ? documentSnapshot["name" + conf.lang]
+        : '';
   }
 }
 
 extension AllergyExtensions on QueryDocumentSnapshot {
-  AllergyModel get tomenu => AllergyModel(
+  AllergyModel get toAllergy => AllergyModel(
         id: this.id,
         name: this['name' + conf.lang],
       );

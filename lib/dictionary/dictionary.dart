@@ -64,6 +64,9 @@ class Messages extends Translations {
           "LABELENABLENOTIFICATION":
               "Enable notifications for a better experience.",
           "LABELTIMENOTIFICATION": "send time: ",
+          "UPDATETHEAPP": "Update the app",
+          "NEWVERSIONAVAIABLE":
+              "Attention, a new version of the app has been released, please update"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -126,6 +129,9 @@ class Messages extends Translations {
           "LABELENABLENOTIFICATION":
               "Abilita le notifiche per avere un esperienza migliore.",
           "LABELTIMENOTIFICATION": "ora invio: ",
+          "UPDATETHEAPP": "Aggiorna l'app",
+          "NEWVERSIONAVAIABLE":
+              "Attenzione, una nuova versione dell'app è stata rilasciata, ti preghiamo di aggiornare"
         },
       };
 }
