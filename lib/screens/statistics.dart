@@ -16,8 +16,9 @@ import 'package:morning_brief/widgets/spinner/spinner.dart';
 class StatisticsScreen extends GetWidget<AllergyController> {
   StatisticsScreen({Key? key}) : super(key: key);
   List<Color> gradientColors = [
-    UIColors.orange,
-    UIColors.yellow,
+    UIColors.lightRed,
+    UIColors.blue,
+    UIColors.darkPurple,
   ];
 
   RxBool visibility = false.obs;
@@ -508,7 +509,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                 },
               ),
             )
-          : SizedBox(),
+          : LoadingWidget(),
     );
   }
 
@@ -577,12 +578,16 @@ class StatisticsScreen extends GetWidget<AllergyController> {
             switch (value.toInt()) {
               case 500:
                 return '500';
+              case 1000:
+                return '1000';
               case 1500:
                 return '1500';
+              case 2000:
+                return '2000';
               case 2500:
                 return '2500';
-              case 3500:
-                return '3500';
+              /*case 3500:
+                return '3500';*/
             }
             return '';
           },
@@ -596,10 +601,10 @@ class StatisticsScreen extends GetWidget<AllergyController> {
       minX: 1,
       maxX: 7,
       minY: 0,
-      maxY: 4000,
+      maxY: 3000,
       lineBarsData: [
         LineChartBarData(
-          isStepLineChart: true,
+          isStepLineChart: false,
           spots: statisticController.points,
           isCurved: true,
           colors: gradientColors,

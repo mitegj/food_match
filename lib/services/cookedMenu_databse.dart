@@ -37,9 +37,6 @@ class DatabaseCookedMenu {
         List<CookedMenuModel> retVal = [];
         for (var element in query.docs) {
           retVal.add(CookedMenuModel.fromDocumentSnapshot(element));
-          print("--");
-          print(CookedMenuModel.fromDocumentSnapshot(element).cookedTime);
-          print("--");
         }
         return retVal;
       });

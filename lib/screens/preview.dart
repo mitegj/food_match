@@ -34,7 +34,6 @@ class _PreviewPageState extends State<PreviewPage> {
                     onPageChanged: (value) {
                       setState(() {
                         _activepage = value;
-                        // print('Active Page: ' + _activepage.toString());
                       });
                     },
                     children: _pages),

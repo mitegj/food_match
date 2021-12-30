@@ -13,7 +13,6 @@ class UserDatabase {
   Future<void> saveUserLastLogin() async {
     try {
       String uid = FirebaseAuth.instance.currentUser!.uid.toString();
-      print(uid);
       await FirebaseFirestore.instance
           .collection(conf.userCollection)
           .doc(uid)

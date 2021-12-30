@@ -58,6 +58,9 @@ class DetailBottomSheet extends StatelessWidget {
                       fit: BoxFit.cover,
                       height: mediaQuery.size.height * 0.25,
                       width: mediaQuery.size.width * 1,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.asset("assets/images/defaultMenu.jpeg");
+                      },
                     ),
                   ),
                 ),
@@ -378,7 +381,6 @@ class DetailBottomSheet extends StatelessWidget {
     return savedMenu
         ? InkWell(
             onTap: () {
-              print("remove");
               Navigator.pop(context);
               menuController.removeSavedMenu(menu);
             },

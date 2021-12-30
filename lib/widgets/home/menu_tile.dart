@@ -90,6 +90,10 @@ class MenuTile extends StatelessWidget {
                             fit: BoxFit.cover,
                             height: mediaQuery.size.height * 0.25,
                             width: mediaQuery.size.height * 1,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Image.asset(
+                                  "assets/images/defaultMenu.jpeg");
+                            },
                           )),
                     ),
                     SizedBox(

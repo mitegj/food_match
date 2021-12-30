@@ -46,7 +46,7 @@ class HomeHeader extends StatelessWidget {
                       color: UIColors.white,
                     ),
                     onPressed: () {
-                      Get.offAll(() => StatisticsScreen());
+                      Get.to(() => StatisticsScreen());
                       //Get.to(() => StatsPage());
                     },
                   ),

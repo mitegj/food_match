@@ -196,7 +196,6 @@ class DatabaseMenu {
           .doc(menu.id)
           .set(menu.toMap());
     } catch (e) {
-      print(e.toString());
       Get.snackbar(
         "Error saving menu",
         e.toString(),
@@ -216,7 +215,6 @@ class DatabaseMenu {
           .doc(menu.id)
           .delete();
     } catch (e) {
-      print(e.toString());
       Get.snackbar(
         "Error removing menu",
         e.toString(),
