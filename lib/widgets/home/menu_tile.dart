@@ -1,6 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:morning_brief/enum/dish_difficulty_enum.dart';
+
 import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
@@ -103,7 +106,13 @@ class MenuTile extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            menu.name + " - da inserire la descrizione",
+                            menu.name +
+                                " - " +
+                                describeEnum(
+                                        DishDifficulty.values[menu.difficulty])
+                                    .toString()
+                                    .tr +
+                                " da cucinare.",
                             overflow: TextOverflow.visible,
                             style: GoogleFonts.poppins(
                                 fontSize: 16,

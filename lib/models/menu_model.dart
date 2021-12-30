@@ -99,7 +99,7 @@ class MenuModel {
     steps = conf.docContains("steps" + conf.lang, documentSnapshot)
         ? documentSnapshot["steps" + conf.lang].cast<String>()
         : [];
-    note = conf.docContains("note", documentSnapshot)
+    note = conf.docContains("note" + conf.lang, documentSnapshot)
         ? documentSnapshot["note" + conf.lang]
         : "";
     desc = conf.docContains("desc", documentSnapshot)

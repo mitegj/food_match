@@ -94,7 +94,7 @@ class DetailBottomSheet extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
+                /*Row(
                   children: [
                     Expanded(
                       child: Text(
@@ -107,7 +107,7 @@ class DetailBottomSheet extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
+                ),*/
                 SizedBox(
                   height: 30,
                 ),
@@ -315,28 +315,19 @@ class DetailBottomSheet extends StatelessWidget {
         menuController.checkBeforeSaveMenu(menu, savedMenu);
       },
       child: Container(
+        alignment: Alignment.center,
         padding: const EdgeInsets.all(20),
         margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
         decoration: BoxDecoration(
           color: UIColors.white,
           borderRadius: BorderRadius.circular(20),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Expanded(
-              child: Container(
-                alignment: Alignment.center,
-                child: Text(
-                  'DISHCOOKED'.tr,
-                  style: GoogleFonts.poppins(
-                      color: UIColors.detailBlack,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 18),
-                ),
-              ),
-            )
-          ],
+        child: Text(
+          'DISHCOOKED'.tr,
+          style: GoogleFonts.poppins(
+              color: UIColors.detailBlack,
+              fontWeight: FontWeight.w700,
+              fontSize: 18),
         ),
       ),
     );
@@ -349,28 +340,15 @@ class DetailBottomSheet extends StatelessWidget {
               menuController.updateSavedMenu(menu);
             },
             child: Container(
+              alignment: Alignment.center,
               padding: const EdgeInsets.all(20),
-              margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
-              decoration: BoxDecoration(
-                color: UIColors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'SAVEMENUFORLATER'.tr,
-                        style: GoogleFonts.poppins(
-                            color: UIColors.detailBlack,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 18),
-                      ),
-                    ),
-                  )
-                ],
+              margin: const EdgeInsets.only(top: 10),
+              child: Text(
+                'SAVEMENUFORLATER'.tr,
+                style: GoogleFonts.poppins(
+                    color: UIColors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16),
               ),
             ),
           )
@@ -385,28 +363,15 @@ class DetailBottomSheet extends StatelessWidget {
               menuController.removeSavedMenu(menu);
             },
             child: Container(
+              alignment: Alignment.center,
               padding: const EdgeInsets.all(20),
               margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
-              decoration: BoxDecoration(
-                color: UIColors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'REMOVEFROMLATER'.tr,
-                        style: GoogleFonts.poppins(
-                            color: UIColors.detailBlack,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 18),
-                      ),
-                    ),
-                  )
-                ],
+              child: Text(
+                'REMOVEFROMLATER'.tr,
+                style: GoogleFonts.poppins(
+                    color: UIColors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16),
               ),
             ),
           )
