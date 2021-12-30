@@ -8,6 +8,7 @@ import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/home/menu_detail_bottom_sheet.dart';
+import 'package:cached_network_image_builder/cached_network_image_builder.dart';
 
 class MenuTile extends StatelessWidget {
   MenuTile(
@@ -87,17 +88,25 @@ class MenuTile extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                           color: UIColors.blue),
                       child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.network(
-                            menu.linkUrl,
-                            fit: BoxFit.cover,
-                            height: mediaQuery.size.height * 0.25,
-                            width: mediaQuery.size.height * 1,
-                            errorBuilder: (context, error, stackTrace) {
-                              return Image.asset(
-                                  "assets/images/defaultMenu.jpeg");
-                            },
-                          )),
+                        borderRadius: BorderRadius.circular(20),
+                        child: CachedNetworkImageBuilder(
+                          url: menu.linkUrl,
+                          builder: (image) {
+                            return Center(
+                                child: Image.file(
+                              image,
+                              fit: BoxFit.cover,
+                              height: mediaQuery.size.height * 0.25,
+                              width: mediaQuery.size.width * 1,
+                            ));
+                          },
+                          // Optional Placeholder widget until image loaded from url
+                          placeHolder: LinearProgressIndicator(),
+                          // Optional error widget
+                          errorWidget:
+                              Image.asset('assets/images/defaultMenu.jpeg'),
+                        ),
+                      ),
                     ),
                     SizedBox(
                       height: 20,

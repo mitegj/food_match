@@ -34,7 +34,9 @@ class HomeBody extends GetWidget<IngredientController> {
                   ingController.ingredients != null)
               ? (_menuController.menus != null &&
                       _menuController.menus?.length == 0)
-                  ? EmptyMenu()
+                  ? EmptyMenu(
+                      savedMenu: savedMenu,
+                    )
                   : ListView(
                       children: <Widget>[
                         Padding(
