@@ -66,7 +66,12 @@ class Messages extends Translations {
           "LABELTIMENOTIFICATION": "send time: ",
           "UPDATETHEAPP": "Update the app",
           "NEWVERSIONAVAIABLE":
-              "Attention, a new version of the app has been released, please update"
+              "Attention, a new version of the app has been released, please update",
+          "SAVEMENUFORLATER": "Save menu for later",
+          "REMOVEFROMLATER": "Remove menu",
+          "PERFECT": "Perfect",
+          "MENUSAVEDCORRECTLY": "Menu saved correctly",
+          "MENUREMOVEDCORRECTLY": "Menu removed correctly"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -131,7 +136,12 @@ class Messages extends Translations {
           "LABELTIMENOTIFICATION": "ora invio: ",
           "UPDATETHEAPP": "Aggiorna l'app",
           "NEWVERSIONAVAIABLE":
-              "Attenzione, una nuova versione dell'app è stata rilasciata, ti preghiamo di aggiornare"
+              "Attenzione, una nuova versione dell'app è stata rilasciata, ti preghiamo di aggiornare",
+          "SAVEMENUFORLATER": "Salva menu per dopo",
+          "REMOVEFROMLATER": "Rimuovi menu",
+          "PERFECT": "Prefetto",
+          "MENUSAVEDCORRECTLY": "Menu salvato correttamente",
+          "MENUREMOVEDCORRECTLY": "Menu rimosso correttamente"
         },
       };
 }

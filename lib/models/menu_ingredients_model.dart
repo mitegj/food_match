@@ -18,7 +18,7 @@ class MenuIngredientModel {
     return {
       "id": id,
       "qty": qty,
-      "unit,": unit,
+      "unit": unit,
     };
   }
 

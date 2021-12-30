@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/screens/statistics.dart';
 
 import 'package:morning_brief/utils/UIColors.dart';
+import 'package:morning_brief/widgets/home/home_body.dart';
 
 import 'package:morning_brief/widgets/inventory/inventory_page.dart';
 
@@ -45,7 +46,7 @@ class HomeHeader extends StatelessWidget {
                       color: UIColors.white,
                     ),
                     onPressed: () {
-                      Get.to(() => StatisticsScreen());
+                      Get.offAll(() => StatisticsScreen());
                       //Get.to(() => StatsPage());
                     },
                   ),
@@ -65,7 +66,20 @@ class HomeHeader extends StatelessWidget {
                     onPressed: () {
                       /*Get.bottomSheet(InventoryBottomSheet(),
                       isScrollControlled: true);*/
-                      Get.offAll(() => InventoryScreen());
+                      Get.to(
+                        () => Scaffold(
+                          backgroundColor: theme.backgroundColor,
+                          body: SafeArea(
+                            child: Column(
+                              children: [
+                                HomeBody(
+                                  savedMenu: true,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
                     },
                   ),
                 ),

@@ -35,17 +35,29 @@ class MenuModel {
   Map<String, dynamic> toMap() {
     return {
       "id": id,
-      "name": name,
+      "name" + conf.lang: name,
       "kcal": kcal,
       "difficulty,": difficulty,
       "preparationTime": preparationTime,
       "allergies": allergies,
       "steps" + conf.lang: steps,
-      "ingredients": ingredients,
+      "ingredients": ingredients.map((e) => e?.toMap()).toList(),
       "note" + conf.lang: note,
       "desc" + conf.lang: desc,
       "dishType": dishType,
-      "linkUrl": linkUrl
+      "linkUrl": linkUrl,
+      "insertionDate": DateTime.now()
+    };
+  }
+
+  Map<String, dynamic> toCookedMap() {
+    return {
+      "id": id,
+      "name": name,
+      "kcal": kcal,
+      "dishType": dishType,
+      "preparationTime": preparationTime,
+      "cookedTime": DateTime.now()
     };
   }
 
@@ -84,7 +96,7 @@ class MenuModel {
     allergies = conf.docContains("allergies", documentSnapshot)
         ? documentSnapshot["allergies"].cast<String>()
         : [];
-    steps = conf.docContains("steps", documentSnapshot)
+    steps = conf.docContains("steps" + conf.lang, documentSnapshot)
         ? documentSnapshot["steps" + conf.lang].cast<String>()
         : [];
     note = conf.docContains("note", documentSnapshot)

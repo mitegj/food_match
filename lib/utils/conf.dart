@@ -8,6 +8,7 @@ class Conf {
   String inventoryCollection = "inventory";
   String inventoryListCollection = "ingredients";
   String cookedMenuCollection = "cookedMenu";
+  String savedMenuCollection = "savedMenu";
 
   String appPlayStoreLink =
       "https://play.google.com/store/apps/details?id=appPackageName";

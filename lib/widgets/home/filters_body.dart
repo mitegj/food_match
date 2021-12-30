@@ -19,7 +19,7 @@ class FilterBody extends StatelessWidget {
               ? listFilters.add(el.index)
               : listFilters.remove(el.index),
           //if (listFilters.length == 0) listFilters.add(-1),
-          _menuController.getMenuList(listFilters)
+          _menuController.getMenuList(listFilters, false)
         },
         child: Obx(
           () => Container(

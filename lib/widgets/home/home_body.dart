@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/utils/UIColors.dart';
+import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:morning_brief/widgets/home/empty_menu.dart';
 import 'package:morning_brief/widgets/home/filters.dart';
 import 'package:morning_brief/widgets/home/filters_body.dart';
@@ -12,6 +13,12 @@ import 'package:morning_brief/widgets/spinner/spinner.dart';
 import 'filters_body.dart';
 
 class HomeBody extends GetWidget<IngredientController> {
+  HomeBody({
+    Key? key,
+    required this.savedMenu,
+  }) : super(key: key);
+  final bool savedMenu;
+
   IngredientController ingController =
       Get.put<IngredientController>(IngredientController());
   @override
@@ -19,7 +26,7 @@ class HomeBody extends GetWidget<IngredientController> {
     MenuController _menuController =
         Get.put<MenuController>(MenuController.fromCtrl(ingController));
     _menuController.menus = [];
-    _menuController.getMenuList(FilterBody.listFilters);
+    _menuController.getMenuList(FilterBody.listFilters, savedMenu);
 
     return Expanded(
       child: Container(
@@ -38,44 +45,8 @@ class HomeBody extends GetWidget<IngredientController> {
                             child: Center(
                                 child: Column(
                               children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'SCROLLFORMORE'.tr,
-                                      style: GoogleFonts.poppins(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w400,
-                                          color: Colors.white.withOpacity(0.6)),
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        Get.to(() => FiltersPage());
-                                      },
-                                      child: Stack(
-                                        clipBehavior: Clip.none,
-                                        children: [
-                                          Icon(
-                                            Icons.filter_alt_outlined,
-                                            color: UIColors.white,
-                                          ),
-                                          FilterBody.listFilters.length > 0
-                                              ? Positioned(
-                                                  child: CircleAvatar(
-                                                    radius: 6,
-                                                    backgroundColor:
-                                                        UIColors.violetMain,
-                                                  ),
-                                                  top: -5,
-                                                  right: -10,
-                                                )
-                                              : SizedBox()
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                arrowHeader(),
+                                headerBeforeCard(),
                               ],
                             )),
                           ),
@@ -87,9 +58,9 @@ class HomeBody extends GetWidget<IngredientController> {
                             itemBuilder: (BuildContext context, int index) {
                               return Container(
                                   child: Obx(() => MenuTile(
-                                        ingredients: ingController.ingredients,
-                                        menu: _menuController.menus![index],
-                                      )));
+                                      ingredients: ingController.ingredients,
+                                      menu: _menuController.menus![index],
+                                      savedMenu: savedMenu)));
                             }),
                         SizedBox(
                           height: 20,
@@ -100,8 +71,8 @@ class HomeBody extends GetWidget<IngredientController> {
                             InkWell(
                               onTap: () => {
                                 _menuController.incrementLimitMultiplier(),
-                                _menuController
-                                    .getMenuList(FilterBody.listFilters)
+                                _menuController.getMenuList(
+                                    FilterBody.listFilters, savedMenu)
                               },
                               child: Container(
                                 padding:
@@ -128,6 +99,57 @@ class HomeBody extends GetWidget<IngredientController> {
                       ],
                     )
               : LoadingWidget())),
+    );
+  }
+
+  Widget arrowHeader() {
+    return savedMenu
+        ? ArrowHeader(
+            home: true,
+          )
+        : SizedBox();
+  }
+
+  Widget headerBeforeCard() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          'SCROLLFORMORE'.tr,
+          style: GoogleFonts.poppins(
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+              color: Colors.white.withOpacity(0.6)),
+        ),
+        !savedMenu ? filtersIcon() : SizedBox(),
+      ],
+    );
+  }
+
+  Widget filtersIcon() {
+    return InkWell(
+      onTap: () {
+        Get.to(() => FiltersPage());
+      },
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Icon(
+            Icons.filter_alt_outlined,
+            color: UIColors.white,
+          ),
+          FilterBody.listFilters.length > 0
+              ? Positioned(
+                  child: CircleAvatar(
+                    radius: 6,
+                    backgroundColor: UIColors.violetMain,
+                  ),
+                  top: -5,
+                  right: -10,
+                )
+              : SizedBox()
+        ],
+      ),
     );
   }
 }

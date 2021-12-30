@@ -11,10 +11,15 @@ import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/step_circle.dart';
 
 class DetailBottomSheet extends StatelessWidget {
-  DetailBottomSheet({Key? key, required this.menu, required this.ingredients})
+  DetailBottomSheet(
+      {Key? key,
+      required this.menu,
+      required this.ingredients,
+      required this.savedMenu})
       : super(key: key);
   final MenuModel menu;
   final List<IngredientModel>? ingredients;
+  final bool savedMenu;
 
   MenuController menuController = Get.put<MenuController>(MenuController());
 
@@ -238,31 +243,6 @@ class DetailBottomSheet extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    /*for (var item in menu.ingredients)
-                      IntrinsicHeight(
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: Text(
-                                    item!.qty.toString() +
-                                        item.unit +
-                                        " " +
-                                        controller.getIngredientName(
-                                            item.id.toString(), ingredients),
-                                    textAlign: TextAlign.start,
-                                    overflow: TextOverflow.visible,
-                                    style: GoogleFonts.poppins(
-                                        color: UIColors.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w300)),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),*/
                     SizedBox(
                       height: 30,
                     ),
@@ -315,43 +295,119 @@ class DetailBottomSheet extends StatelessWidget {
                       ),
                   ],
                 ),
-                InkWell(
-                  onTap: () {
-                    menuController.checkBeforeSaveMenu(menu);
-                    //Navigator.pop(context);
-                    //Get.to(ConfirmCooked());
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(20),
-                    margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
-                    decoration: BoxDecoration(
-                      color: UIColors.white,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            alignment: Alignment.center,
-                            child: Text(
-                              'DISHCOOKED'.tr,
-                              style: GoogleFonts.poppins(
-                                  color: UIColors.detailBlack,
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 18),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                cookedButton(),
+                saveForLaterButton(),
+                removeFromLaterButton(context),
               ],
             )
           ],
         )),
       ]),
     );
+  }
+
+  Widget cookedButton() {
+    return InkWell(
+      onTap: () {
+        menuController.checkBeforeSaveMenu(menu, savedMenu);
+      },
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
+        decoration: BoxDecoration(
+          color: UIColors.white,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Expanded(
+              child: Container(
+                alignment: Alignment.center,
+                child: Text(
+                  'DISHCOOKED'.tr,
+                  style: GoogleFonts.poppins(
+                      color: UIColors.detailBlack,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 18),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget saveForLaterButton() {
+    return !savedMenu
+        ? InkWell(
+            onTap: () {
+              menuController.updateSavedMenu(menu);
+            },
+            child: Container(
+              padding: const EdgeInsets.all(20),
+              margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
+              decoration: BoxDecoration(
+                color: UIColors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'SAVEMENUFORLATER'.tr,
+                        style: GoogleFonts.poppins(
+                            color: UIColors.detailBlack,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          )
+        : SizedBox();
+  }
+
+  Widget removeFromLaterButton(BuildContext context) {
+    return savedMenu
+        ? InkWell(
+            onTap: () {
+              print("remove");
+              Navigator.pop(context);
+              menuController.removeSavedMenu(menu);
+            },
+            child: Container(
+              padding: const EdgeInsets.all(20),
+              margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
+              decoration: BoxDecoration(
+                color: UIColors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'REMOVEFROMLATER'.tr,
+                        style: GoogleFonts.poppins(
+                            color: UIColors.detailBlack,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          )
+        : SizedBox();
   }
 }

@@ -7,10 +7,15 @@ import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/home/menu_detail_bottom_sheet.dart';
 
 class MenuTile extends StatelessWidget {
-  MenuTile({Key? key, required this.menu, required this.ingredients})
+  MenuTile(
+      {Key? key,
+      required this.menu,
+      required this.ingredients,
+      required this.savedMenu})
       : super(key: key);
   final MenuModel menu;
   final List<IngredientModel>? ingredients;
+  final bool savedMenu;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +27,7 @@ class MenuTile extends StatelessWidget {
                   DetailBottomSheet(
                     menu: menu,
                     ingredients: ingredients,
+                    savedMenu: savedMenu,
                   ),
                   isScrollControlled: true)
             },

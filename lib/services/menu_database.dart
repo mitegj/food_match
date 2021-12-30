@@ -80,6 +80,36 @@ class DatabaseMenu {
     }
   }
 
+  Stream<List<MenuModel>> savedMenuStream(int limit) {
+    try {
+      String uid = FirebaseAuth.instance.currentUser!.uid.toString();
+
+      return _firestore
+          .collection(conf.userCollection)
+          .doc(uid)
+          .collection(conf.savedMenuCollection)
+          .orderBy("insertionDate", descending: true)
+          .limit(limit)
+          .snapshots()
+          .map((QuerySnapshot query) {
+        List<MenuModel> retVal = [];
+        for (var element in query.docs) {
+          MenuModel menu = MenuModel.fromDocumentSnapshot(element);
+          retVal.add(menu);
+        }
+        return retVal;
+      });
+    } catch (e) {
+      Get.snackbar(
+        "Error getting menus",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return Stream.empty();
+    }
+  }
+
   Stream<List<UserInventory>> userInventoryStream() {
     try {
       String uid = FirebaseAuth.instance.currentUser!.uid.toString();
@@ -141,14 +171,7 @@ class DatabaseMenu {
           .doc(uid)
           .collection(conf.cookedMenuCollection)
           .doc()
-          .set({
-        "id": menu.id,
-        "name": menu.name,
-        "kcal": menu.kcal,
-        "dishType": menu.dishType,
-        "preparationTime": menu.preparationTime,
-        "cookedTime": DateTime.now()
-      });
+          .set(menu.toCookedMap());
 
       return true;
     } catch (e) {
@@ -160,6 +183,46 @@ class DatabaseMenu {
       );
       return false;
       // popup errore
+    }
+  }
+
+  Future<void> saveMenuForLater(MenuModel menu) async {
+    try {
+      String uid = FirebaseAuth.instance.currentUser!.uid.toString();
+      await _firestore
+          .collection(conf.userCollection)
+          .doc(uid)
+          .collection(conf.savedMenuCollection)
+          .doc(menu.id)
+          .set(menu.toMap());
+    } catch (e) {
+      print(e.toString());
+      Get.snackbar(
+        "Error saving menu",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
+
+  Future<void> removeMenuFromLater(MenuModel menu) async {
+    try {
+      String uid = FirebaseAuth.instance.currentUser!.uid.toString();
+      await _firestore
+          .collection(conf.userCollection)
+          .doc(uid)
+          .collection(conf.savedMenuCollection)
+          .doc(menu.id)
+          .delete();
+    } catch (e) {
+      print(e.toString());
+      Get.snackbar(
+        "Error removing menu",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
     }
   }
 }

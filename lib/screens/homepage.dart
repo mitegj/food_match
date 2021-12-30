@@ -17,7 +17,9 @@ class HomePage extends GetWidget<IngredientController> {
           child: Column(children: [
         HomeHeader(),
         //SizedBox(height: 10),
-        HomeBody(),
+        HomeBody(
+          savedMenu: false,
+        ),
       ])),
     );
   }
