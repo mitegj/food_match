@@ -13,15 +13,15 @@ class EmptyMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(20),
-      child: Column(
-        children: [
-          Row(
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 20.0),
+          child: Row(
             children: [
               savedMenu ? ArrowHeader(home: true) : SizedBox(),
               Expanded(
-                child: Text("NOADVICES".tr,
+                child: Text("SAVEDMENU".tr,
                     overflow: TextOverflow.visible,
                     style: GoogleFonts.poppins(
                         color: UIColors.white,
@@ -30,7 +30,10 @@ class EmptyMenu extends StatelessWidget {
               )
             ],
           ),
-          Row(
+        ),
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Row(
             children: [
               Expanded(
                 child: Text("TRYADDSOMEBASICPRODUCT".tr,
@@ -41,9 +44,9 @@ class EmptyMenu extends StatelessWidget {
                         fontWeight: FontWeight.w300)),
               )
             ],
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }

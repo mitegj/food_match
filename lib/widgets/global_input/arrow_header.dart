@@ -13,17 +13,11 @@ class ArrowHeader extends StatelessWidget {
     var theme = Theme.of(context);
 
     return Container(
-      padding: const EdgeInsets.all(0),
-      color: theme.backgroundColor,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Align(
             alignment: Alignment.centerLeft,
             child: Container(
-              decoration: BoxDecoration(
-                  color: UIColors.black,
-                  borderRadius: BorderRadius.circular(15)),
               child: IconButton(
                 icon: Icon(
                   Icons.arrow_back_ios_rounded,

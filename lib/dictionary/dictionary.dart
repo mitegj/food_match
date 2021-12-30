@@ -48,7 +48,7 @@ class Messages extends Translations {
           "TOOFAST": "Too fast to have cooked it",
           "NOADVICES": "We have no advices for you",
           "TRYADDSOMEBASICPRODUCT":
-              "Try adding some of those basic products by clicking the following shortcut button!",
+              "Here you will find dishes that you liked but didn't have time to cook.",
           "SELECTWITHFILTERS": "Select them with the filters",
           "LOADOTHERMENU": "Show other menus",
           "DISHTYPE": "Dish type",
@@ -71,7 +71,10 @@ class Messages extends Translations {
           "REMOVEFROMLATER": "Remove menu",
           "PERFECT": "Perfect",
           "MENUSAVEDCORRECTLY": "Menu saved correctly",
-          "MENUREMOVEDCORRECTLY": "Menu removed correctly"
+          "MENUREMOVEDCORRECTLY": "Menu removed correctly",
+          "SAVEDMENU": "Saved Menu",
+          "SAVED": "Saved",
+          "SAVEDFORLATER": "Manu saved for later"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -118,7 +121,7 @@ class Messages extends Translations {
           "TOOFAST": "Troppo veloce per averlo cucinato",
           "NOADVICES": "Non abbiamo suggerimenti per te",
           "TRYADDSOMEBASICPRODUCT":
-              "Prova ad aggiungere alcuni di questi prodotti di base facendo clic sul seguente pulsante di scelta rapida!",
+              "Qui troverai i piatti che ti sono piaciuti ma che non hai avuto il tempo di cucinare.",
           "SELECTWITHFILTERS": "Seleziona con uno o più filtri",
           "LOADOTHERMENU": "Visualizza altri menu",
           "DISHTYPE": "Tipo di piatto",
@@ -141,7 +144,10 @@ class Messages extends Translations {
           "REMOVEFROMLATER": "Rimuovi menu",
           "PERFECT": "Prefetto",
           "MENUSAVEDCORRECTLY": "Menu salvato correttamente",
-          "MENUREMOVEDCORRECTLY": "Menu rimosso correttamente"
+          "MENUREMOVEDCORRECTLY": "Menu rimosso correttamente",
+          "SAVEDMENU": "Menu salvati",
+          "SAVED": "Salvato",
+          "SAVEDFORLATER": "Menu salvato per dopo"
         },
       };
 }

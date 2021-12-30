@@ -5,6 +5,7 @@ import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/services/menu_database.dart';
 import 'package:morning_brief/widgets/home/confirm_cooked.dart';
+import 'package:morning_brief/widgets/home/reminder_menu.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MenuController extends GetxController {
@@ -128,12 +129,7 @@ class MenuController extends GetxController {
   Future<void> updateSavedMenu(MenuModel menu) async {
     try {
       await DatabaseMenu().saveMenuForLater(menu);
-      Get.snackbar(
-        "PERFECT".tr,
-        "MENUSAVEDCORRECTLY".tr,
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      Get.to(ReminderMenu());
     } catch (e) {
       Get.snackbar(
         "Error saving menu",

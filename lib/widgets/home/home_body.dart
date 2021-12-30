@@ -39,19 +39,16 @@ class HomeBody extends GetWidget<IngredientController> {
                     )
                   : ListView(
                       children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20, right: 20),
-                          child: Container(
-                            // height: 250,
-                            margin: EdgeInsets.only(top: 20),
-                            child: Center(
-                                child: Column(
-                              children: [
-                                arrowHeader(),
-                                headerBeforeCard(),
-                              ],
-                            )),
-                          ),
+                        Container(
+                          // height: 250,
+                          margin: EdgeInsets.only(top: 20),
+                          child: Center(
+                              child: Column(
+                            children: [
+                              arrowHeader(),
+                              headerBeforeCard(),
+                            ],
+                          )),
                         ),
                         ListView.builder(
                             physics: ScrollPhysics(),
@@ -106,25 +103,38 @@ class HomeBody extends GetWidget<IngredientController> {
 
   Widget arrowHeader() {
     return savedMenu
-        ? ArrowHeader(
-            home: true,
+        ? Row(
+            children: [
+              ArrowHeader(
+                home: true,
+              ),
+              Text("SAVEDMENU".tr,
+                  overflow: TextOverflow.visible,
+                  style: GoogleFonts.poppins(
+                      color: UIColors.white,
+                      fontSize: 30,
+                      fontWeight: FontWeight.w700))
+            ],
           )
         : SizedBox();
   }
 
   Widget headerBeforeCard() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          'SCROLLFORMORE'.tr,
-          style: GoogleFonts.poppins(
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-              color: Colors.white.withOpacity(0.6)),
-        ),
-        !savedMenu ? filtersIcon() : SizedBox(),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, right: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            'SCROLLFORMORE'.tr,
+            style: GoogleFonts.poppins(
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                color: Colors.white.withOpacity(0.6)),
+          ),
+          !savedMenu ? filtersIcon() : SizedBox(),
+        ],
+      ),
     );
   }
 
