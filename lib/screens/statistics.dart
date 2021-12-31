@@ -48,9 +48,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
-              child: ArrowHeader(
-                home: false,
-              ),
+              child: ArrowHeader(),
             ),
             CircleAvatar(
               radius: 50,

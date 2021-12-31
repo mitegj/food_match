@@ -19,7 +19,7 @@ class EmptyMenu extends StatelessWidget {
           padding: const EdgeInsets.only(top: 20.0),
           child: Row(
             children: [
-              savedMenu ? ArrowHeader(home: true) : SizedBox(),
+              savedMenu ? ArrowHeader() : SizedBox(),
               Expanded(
                 child: Text("SAVEDMENU".tr,
                     overflow: TextOverflow.visible,

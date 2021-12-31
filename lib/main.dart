@@ -121,10 +121,7 @@ class MyApp extends StatelessWidget {
     ]);
     return GetMaterialApp(
       theme: ThemeData(
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
         backgroundColor: UIColors.black,
-        primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
       initialBinding: AuthBinding(),
@@ -134,13 +131,4 @@ class MyApp extends StatelessWidget {
       home: Root(),
     );
   }
-}
-
-Future<void> _configureLocalTimeZone() async {
-  if (kIsWeb || Platform.isLinux) {
-    return;
-  }
-  tz.initializeTimeZones();
-  final String? timeZoneName = await FlutterNativeTimezone.getLocalTimezone();
-  tz.setLocalLocation(tz.getLocation(timeZoneName!));
 }

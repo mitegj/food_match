@@ -19,12 +19,12 @@ class MenuController extends GetxController {
     menus?.clear();
   }
 
-  IngredientController? _ingController;
-
+  IngredientController? _ingController = IngredientController.instance;
+/*
   MenuController();
   MenuController.fromCtrl(IngredientController ingController)
       : _ingController = ingController;
-
+*/
   @override
   void onInit() {
     super.onInit();
@@ -50,8 +50,7 @@ class MenuController extends GetxController {
     }
 
     if (!savedMenu) {
-      menuList.bindStream(
-          DatabaseMenu().menuStream(_ingController, filters, limit * m));
+      menuList.bindStream(DatabaseMenu().menuStream(filters, limit * m));
     } else {
       menuList.bindStream(DatabaseMenu().savedMenuStream(limit * m));
     }

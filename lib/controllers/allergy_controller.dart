@@ -27,13 +27,7 @@ class AllergyController extends GetxController {
   }
 
   setAllergies(allergyController) {
-    if (isValueUpdated) {
-      allergyController
-          .updateAllergies(_isChecked)
-          .then((value) => Get.offAll(() => HomePage()));
-    } else {
-      Get.back();
-    }
+    allergyController.updateAllergies(_isChecked).then((value) => Get.back());
   }
 
   getAllergyName(allergyController, index) {

@@ -5,18 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/models/userInventory_model.dart';
-import 'package:morning_brief/screens/homepage.dart';
 
 import 'package:morning_brief/utils/UIColors.dart';
-import 'package:morning_brief/widgets/global_input/arrow_header.dart';
+import 'package:morning_brief/widgets/home/filters_body.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 // ignore: must_be_immutable
-class InventoryScreen extends GetWidget<IngredientController> {
+class InventoryScreen extends StatelessWidget {
   bool isValueUpdated = false;
   RxList<UserInventory> _userInventory = RxList();
-  IngredientController ingController =
-      Get.put<IngredientController>(IngredientController());
+  IngredientController ingController = Get.find<IngredientController>();
 
   updateStock(state, index, stocked) {
     UserInventory inv =
@@ -210,13 +208,9 @@ class InventoryScreen extends GetWidget<IngredientController> {
             ),
             InkWell(
               onTap: () {
-                if (isValueUpdated)
-                  Get.offAll(() => HomePage(),
-                      transition: Transition.leftToRight,
-                      duration: Duration(milliseconds: 250));
-                else
-                  Get.back();
-                // controller.setAllergies(controller);
+                MenuController.instance
+                    .getMenuList(FilterBody.listFilters, false);
+                Get.back();
               },
               child: Container(
                 width: mediaQuery.size.height * 1,
