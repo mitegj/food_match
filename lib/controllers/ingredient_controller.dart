@@ -8,6 +8,7 @@ import 'package:morning_brief/services/menu_database.dart';
 import 'menu_controller.dart';
 
 class IngredientController extends GetxController {
+  static IngredientController instance = Get.find();
   Rxn<IngredientModel> ingredient = Rxn<IngredientModel>();
   Rxn<List<IngredientModel>> ingredientList =
       Rxn<List<IngredientModel>>().obs();

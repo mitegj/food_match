@@ -12,20 +12,19 @@ class DatabaseMenu {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final Conf conf = new Conf();
 
-  bool isUserAllergic(MenuModel menu, IngredientController? _ingController) {
+  bool isUserAllergic(MenuModel menu) {
     bool isUserAllergic = false;
     menu.allergies.forEach((al) {
-      if (_ingController?.userAllergies?.contains(al) ?? false)
+      if (IngredientController.instance.userAllergies?.contains(al) ?? false)
         isUserAllergic = true;
     });
 
     return isUserAllergic;
   }
 
-  bool userHasIngredients(
-      MenuModel menu, IngredientController? _ingController) {
+  bool userHasIngredients(MenuModel menu) {
     bool hasUserIngredients = false;
-    List<String> userIngredients = getUserIngredientsList(_ingController);
+    List<String> userIngredients = getUserIngredientsList();
 
     for (MenuIngredientModel? ing in menu.ingredients) {
       if (userIngredients.contains(ing?.id)) {
@@ -38,9 +37,9 @@ class DatabaseMenu {
     return hasUserIngredients;
   }
 
-  List<String> getUserIngredientsList(IngredientController? _ingController) {
+  List<String> getUserIngredientsList() {
     List<String> ing = [];
-    _ingController?.userIngredients?.forEach((UserInventory el) {
+    IngredientController.instance.userIngredients?.forEach((UserInventory el) {
       if (el.stock) {
         ing.add(el.id);
       }
@@ -48,8 +47,7 @@ class DatabaseMenu {
     return ing;
   }
 
-  Stream<List<MenuModel>> menuStream(
-      IngredientController? _ingController, List<int> filters, int limit) {
+  Stream<List<MenuModel>> menuStream(List<int> filters, int limit) {
     try {
       return _firestore
           .collection(conf.menuCollection)
@@ -61,8 +59,8 @@ class DatabaseMenu {
         List<MenuModel> retVal = [];
         for (var element in query.docs) {
           MenuModel menu = MenuModel.fromDocumentSnapshot(element);
-          if (!isUserAllergic(menu, _ingController)) {
-            if (userHasIngredients(menu, _ingController)) {
+          if (!isUserAllergic(menu)) {
+            if (userHasIngredients(menu)) {
               retVal.add(menu);
             }
           }

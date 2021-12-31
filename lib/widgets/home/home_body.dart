@@ -12,22 +12,15 @@ import 'package:morning_brief/widgets/home/menu_tile.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 import 'filters_body.dart';
 
-class HomeBody extends GetWidget<IngredientController> {
-  HomeBody({
-    Key? key,
-    required this.savedMenu,
-  }) : super(key: key);
+class HomeBody extends GetWidget<MenuController> {
+  HomeBody({Key? key, required this.savedMenu}) : super(key: key);
   final bool savedMenu;
 
-  IngredientController ingController =
-      Get.put<IngredientController>(IngredientController());
+  IngredientController ingController = IngredientController.instance;
   @override
   Widget build(BuildContext context) {
-    MenuController _menuController =
-        Get.put<MenuController>(MenuController.fromCtrl(ingController));
-    _menuController.menus = [];
+    MenuController _menuController = Get.put<MenuController>(MenuController());
     _menuController.getMenuList(FilterBody.listFilters, savedMenu);
-
     return Expanded(
       child: Container(
           child: Obx(() => (ingController.userAllergies != null &&
@@ -107,9 +100,7 @@ class HomeBody extends GetWidget<IngredientController> {
             padding: const EdgeInsets.only(bottom: 20.0),
             child: Column(
               children: [
-                ArrowHeader(
-                  home: true,
-                ),
+                ArrowHeader(),
                 Text("SAVEDMENU".tr,
                     overflow: TextOverflow.visible,
                     style: GoogleFonts.poppins(

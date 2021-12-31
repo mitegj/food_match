@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morning_brief/screens/homepage.dart';
-
 import 'package:morning_brief/utils/UIColors.dart';
 
 class ArrowHeader extends StatelessWidget {
-  ArrowHeader({Key? key, required this.home}) : super(key: key);
-  final bool home;
+  ArrowHeader({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-
     return Container(
       child: Row(
         children: [
@@ -24,7 +19,7 @@ class ArrowHeader extends StatelessWidget {
                   color: UIColors.white,
                 ),
                 onPressed: () {
-                  home ? Get.back() : Get.back();
+                  Get.back();
                 },
               ),
             ),

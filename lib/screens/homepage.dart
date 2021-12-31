@@ -4,8 +4,10 @@ import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/widgets/home/home_body.dart';
 import 'package:morning_brief/widgets/home/home_header.dart';
 
-class HomePage extends GetWidget<IngredientController> {
+class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
+  IngredientController ingController =
+      Get.put<IngredientController>(IngredientController());
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +21,7 @@ class HomePage extends GetWidget<IngredientController> {
         //SizedBox(height: 10),
         HomeBody(
           savedMenu: false,
+          // ingController: ingController,
         ),
       ])),
     );
