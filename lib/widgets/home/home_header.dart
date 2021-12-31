@@ -66,7 +66,7 @@ class HomeHeader extends StatelessWidget {
                     onPressed: () {
                       /*Get.bottomSheet(InventoryBottomSheet(),
                       isScrollControlled: true);*/
-                      Get.off(
+                      Get.to(
                         () => Scaffold(
                           backgroundColor: theme.backgroundColor,
                           body: SafeArea(

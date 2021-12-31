@@ -24,11 +24,7 @@ class ArrowHeader extends StatelessWidget {
                   color: UIColors.white,
                 ),
                 onPressed: () {
-                  home
-                      ? Get.offAll(() => HomePage(),
-                          transition: Transition.leftToRight,
-                          duration: Duration(milliseconds: 250))
-                      : Get.back();
+                  home ? Get.back() : Get.back();
                 },
               ),
             ),

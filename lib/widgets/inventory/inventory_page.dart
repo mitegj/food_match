@@ -61,50 +61,6 @@ class InventoryScreen extends GetWidget<IngredientController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            /* if (mediaQuery.viewInsets.bottom == 0)
-              Flexible(
-                  flex: 1,
-                  child: ArrowHeader(
-                    home: true,
-                  )),*/
-            if (mediaQuery.viewInsets.bottom == 0)
-              Flexible(
-                flex: 1,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    left: 20,
-                    right: 20,
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text("INGREDIENTSINVENTORY".tr,
-                                overflow: TextOverflow.visible,
-                                style: GoogleFonts.poppins(
-                                    color: UIColors.white,
-                                    fontSize: 31,
-                                    fontWeight: FontWeight.w600)),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text("INGREDIENTSINVENTORYSUBTITLE".tr,
-                                overflow: TextOverflow.ellipsis,
-                                style: GoogleFonts.poppins(
-                                    color: UIColors.grey,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w300)),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
             Expanded(
               flex: 1,
               child: Padding(
@@ -129,6 +85,26 @@ class InventoryScreen extends GetWidget<IngredientController> {
                 ),
               ),
             ),
+            if (mediaQuery.viewInsets.bottom == 0)
+              Padding(
+                padding: EdgeInsets.only(left: 20, right: 20, top: 0),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text("INGREDIENTSINVENTORYSUBTITLE".tr + ":",
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.poppins(
+                                  color: UIColors.grey,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w300)),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             Expanded(
               flex: 5,
               child: Container(
@@ -211,9 +187,10 @@ class InventoryScreen extends GetWidget<IngredientController> {
             InkWell(
               onTap: () {
                 if (isValueUpdated)
-                  Get.offAll(() => HomePage(),
-                      transition: Transition.leftToRight,
-                      duration: Duration(milliseconds: 250));
+                  Get.to(
+                    () => HomePage(),
+                    transition: Transition.leftToRight,
+                  );
                 else
                   Get.back();
                 // controller.setAllergies(controller);

@@ -143,13 +143,13 @@ class Messages extends Translations {
           "DISHCOOKED": "Piatto cucinato",
           "ESTIMATEDTIME": " Minuti circa",
           "INGREDIENTSINVENTORY": "Inventario casa",
-          "INGREDIENTSINVENTORYSUBTITLE": "Giacenza inventario casa",
+          "INGREDIENTSINVENTORYSUBTITLE": "Giacenza dispensa",
           "CONTINUEWITH": "Continua con",
           "ANYPREFERENCES": "Hai qualche tipo di preferenza",
           "NOTIFICATION": "Notifiche",
           "LABELENABLENOTIFICATION":
               "Abilita le notifiche per avere un esperienza migliore.",
-          "LABELTIMENOTIFICATION": "ora invio: ",
+          "LABELTIMENOTIFICATION": "ora arrivo notifiche ",
           "UPDATETHEAPP": "Aggiorna l'app",
           "NEWVERSIONAVAIABLE":
               "Attenzione, una nuova versione dell'app è stata rilasciata, ti preghiamo di aggiornare",

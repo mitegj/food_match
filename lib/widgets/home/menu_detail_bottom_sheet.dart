@@ -31,15 +31,15 @@ class DetailBottomSheet extends StatelessWidget {
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
+            topLeft: const Radius.circular(20),
+            topRight: const Radius.circular(20),
           ),
           color: UIColors.detailBlack),
       child: Column(children: [
         Container(
             width: 60,
             child: Divider(height: 5, color: UIColors.black, thickness: 4)),
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         Expanded(
@@ -94,7 +94,7 @@ class DetailBottomSheet extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Container(
@@ -149,7 +149,7 @@ class DetailBottomSheet extends StatelessWidget {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(right: 5.0),
-                            child: Icon(
+                            child: const Icon(
                               Icons.insights_rounded,
                               color: Colors.white,
                             ),
@@ -185,7 +185,7 @@ class DetailBottomSheet extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Container(
                   width: mediaQuery.size.width,
                   padding: const EdgeInsets.only(
@@ -232,7 +232,7 @@ class DetailBottomSheet extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     Row(
@@ -338,7 +338,7 @@ class DetailBottomSheet extends StatelessWidget {
               ),
             ),
           )
-        : SizedBox();
+        : const SizedBox();
   }
 
   Widget removeFromLaterButton(BuildContext context) {
@@ -361,6 +361,6 @@ class DetailBottomSheet extends StatelessWidget {
               ),
             ),
           )
-        : SizedBox();
+        : const SizedBox();
   }
 }

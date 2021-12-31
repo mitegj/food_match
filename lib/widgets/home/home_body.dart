@@ -103,18 +103,21 @@ class HomeBody extends GetWidget<IngredientController> {
 
   Widget arrowHeader() {
     return savedMenu
-        ? Row(
-            children: [
-              ArrowHeader(
-                home: true,
-              ),
-              Text("SAVEDMENU".tr,
-                  overflow: TextOverflow.visible,
-                  style: GoogleFonts.poppins(
-                      color: UIColors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.w700))
-            ],
+        ? Padding(
+            padding: const EdgeInsets.only(bottom: 20.0),
+            child: Column(
+              children: [
+                ArrowHeader(
+                  home: true,
+                ),
+                Text("SAVEDMENU".tr,
+                    overflow: TextOverflow.visible,
+                    style: GoogleFonts.poppins(
+                        color: Colors.white.withOpacity(0.6),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400))
+              ],
+            ),
           )
         : SizedBox();
   }

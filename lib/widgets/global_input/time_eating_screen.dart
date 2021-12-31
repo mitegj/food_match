@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/utils/UIColors.dart';
+import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:morning_brief/utils/notification_scheduler.dart' as nt;
 
@@ -25,10 +26,11 @@ class TimeEatingScreen extends StatelessWidget {
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            ArrowHeader(home: false),
             Expanded(
                 flex: 2,
                 child: Container(
-                  padding: const EdgeInsets.only(right: 20, left: 20, top: 50),
+                  padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
                   child: Column(
                     children: [
                       Align(
@@ -48,11 +50,11 @@ class TimeEatingScreen extends StatelessWidget {
                     ],
                   ),
                 )),
-            Expanded(flex: 2, child: hourMinute12HCustomStyle()),
+            Expanded(flex: 3, child: hourMinute12HCustomStyle()),
             Obx(
               () => Container(
                 padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
-                margin: EdgeInsets.symmetric(vertical: 20),
+                margin: EdgeInsets.all(20),
                 child: Column(
                   children: [
                     Text(
@@ -100,12 +102,13 @@ class TimeEatingScreen extends StatelessWidget {
     return new TimePickerSpinner(
       is24HourMode: true,
       normalTextStyle: GoogleFonts.poppins(
-          color: UIColors.white, fontSize: 20, fontWeight: FontWeight.w700),
+          color: UIColors.grey, fontSize: 20, fontWeight: FontWeight.w300),
       highlightedTextStyle: GoogleFonts.poppins(
           color: UIColors.blue, fontSize: 20, fontWeight: FontWeight.w700),
       spacing: 40,
       isForce2Digits: false,
       minutesInterval: 5,
+      alignment: Alignment.center,
       onTimeChange: (time) {
         _dateTime.value = time;
       },
