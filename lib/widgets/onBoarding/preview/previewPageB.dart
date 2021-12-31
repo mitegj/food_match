@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/utils/UIColors.dart';
+import "package:get/get.dart";
 
 class PreviewPageB extends StatelessWidget {
   @override
@@ -17,7 +18,7 @@ class PreviewPageB extends StatelessWidget {
               height: 30,
             ),
             Text(
-              "TUTORIAL 2 \n",
+              "SELECTWHATYOU".tr + "\n" + "HAVEATHOME".tr,
               style: GoogleFonts.poppins(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -27,7 +28,7 @@ class PreviewPageB extends StatelessWidget {
               height: 30,
             ),
             Text(
-              "tutorial 2!",
+              "AND".tr + " . . .",
               style: GoogleFonts.poppins(
                   color: UIColors.pink,
                   fontWeight: FontWeight.bold,

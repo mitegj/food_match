@@ -94,20 +94,6 @@ class DetailBottomSheet extends StatelessWidget {
                     ),
                   ],
                 ),
-                /*Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        menu.desc.toString(),
-                        style: GoogleFonts.poppins(
-                          color: UIColors.white.withOpacity(0.7),
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),*/
                 SizedBox(
                   height: 30,
                 ),

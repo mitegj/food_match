@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/models/userInventory_model.dart';
+import 'package:morning_brief/screens/homepage.dart';
 
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/arrow_header.dart';
@@ -12,6 +13,7 @@ import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 // ignore: must_be_immutable
 class InventoryScreen extends GetWidget<IngredientController> {
+  bool isValueUpdated = false;
   RxList<UserInventory> _userInventory = RxList();
   IngredientController ingController =
       Get.put<IngredientController>(IngredientController());
@@ -59,12 +61,12 @@ class InventoryScreen extends GetWidget<IngredientController> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            if (mediaQuery.viewInsets.bottom == 0)
+            /* if (mediaQuery.viewInsets.bottom == 0)
               Flexible(
                   flex: 1,
                   child: ArrowHeader(
                     home: true,
-                  )),
+                  )),*/
             if (mediaQuery.viewInsets.bottom == 0)
               Flexible(
                 flex: 1,
@@ -184,6 +186,7 @@ class InventoryScreen extends GetWidget<IngredientController> {
                                                     onChanged: (bool? value) {
                                                       updateStock(ingCtrl,
                                                           index, value);
+                                                      isValueUpdated = true;
                                                     },
                                                     controlAffinity:
                                                         ListTileControlAffinity
@@ -203,6 +206,33 @@ class InventoryScreen extends GetWidget<IngredientController> {
                             },
                           ))
                     ]),
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                if (isValueUpdated)
+                  Get.offAll(() => HomePage(),
+                      transition: Transition.leftToRight,
+                      duration: Duration(milliseconds: 250));
+                else
+                  Get.back();
+                // controller.setAllergies(controller);
+              },
+              child: Container(
+                width: mediaQuery.size.height * 1,
+                padding: const EdgeInsets.all(20),
+                margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                decoration: BoxDecoration(
+                    color: UIColors.white,
+                    borderRadius: BorderRadius.circular(15)),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text('DONE'.tr,
+                      style: GoogleFonts.poppins(
+                          color: UIColors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal)),
+                ),
               ),
             ),
           ],

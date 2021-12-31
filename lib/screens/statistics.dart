@@ -7,6 +7,7 @@ import 'package:morning_brief/controllers/auth_controller.dart';
 import 'package:morning_brief/controllers/setting_controller.dart';
 import 'package:morning_brief/controllers/statistic_controller.dart';
 import 'package:morning_brief/screens/allergies.dart';
+import 'package:morning_brief/screens/contract.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:intl/intl.dart';
@@ -376,25 +377,30 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                   Divider(
                     color: UIColors.black,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20.0, bottom: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("PRIVACYPOLICY".tr,
-                            style: GoogleFonts.poppins(
+                  InkWell(
+                    onTap: () {
+                      Get.to(ContractScreen());
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("PRIVACYPOLICY".tr,
+                              style: GoogleFonts.poppins(
+                                color: UIColors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                              )),
+                          CircleAvatar(
+                            backgroundColor: UIColors.black.withOpacity(0.6),
+                            child: Icon(
+                              Icons.privacy_tip,
                               color: UIColors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400,
-                            )),
-                        CircleAvatar(
-                          backgroundColor: UIColors.black.withOpacity(0.6),
-                          child: Icon(
-                            Icons.privacy_tip,
-                            color: UIColors.white,
-                          ),
-                        )
-                      ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],

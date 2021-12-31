@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/utils/UIColors.dart';
+import "package:get/get.dart";
 
 class PreviewPageA extends StatelessWidget {
   @override
@@ -17,9 +18,12 @@ class PreviewPageA extends StatelessWidget {
               height: 30,
             ),
             Text(
-              "Tired of cooking \n"
-              "always the same \n"
-              "things?",
+              "TIREDOFCOOKING".tr +
+                  " \n" +
+                  "ALWAYSTHESAME".tr +
+                  " \n" +
+                  "THINGS".tr +
+                  "?",
               style: GoogleFonts.poppins(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -29,7 +33,7 @@ class PreviewPageA extends StatelessWidget {
               height: 30,
             ),
             Text(
-              "We got the solution!",
+              "WEGOTTHESOLUTION".tr + "!",
               style: GoogleFonts.poppins(
                   color: UIColors.pink,
                   fontWeight: FontWeight.bold,

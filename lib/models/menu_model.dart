@@ -14,7 +14,6 @@ class MenuModel {
   late List<String> steps;
   late List<MenuIngredientModel?> ingredients;
   late String note;
-  late String desc;
   late int dishType;
   late String linkUrl;
 
@@ -28,7 +27,6 @@ class MenuModel {
       required this.steps,
       required this.ingredients,
       required this.note,
-      required this.desc,
       required this.dishType,
       required this.linkUrl});
 
@@ -43,7 +41,6 @@ class MenuModel {
       "steps" + conf.lang: steps,
       "ingredients": ingredients.map((e) => e?.toMap()).toList(),
       "note" + conf.lang: note,
-      "desc" + conf.lang: desc,
       "dishType": dishType,
       "linkUrl": linkUrl,
       "insertionDate": DateTime.now()
@@ -72,7 +69,6 @@ class MenuModel {
         steps: parsedJson['steps' + conf.lang],
         ingredients: parsedJson['ingredients'],
         note: parsedJson['note' + conf.lang],
-        desc: parsedJson['desc' + conf.lang],
         dishType: parsedJson['dishType'],
         linkUrl: parsedJson['linkUrl']);
   }
@@ -102,9 +98,6 @@ class MenuModel {
     note = conf.docContains("note" + conf.lang, documentSnapshot)
         ? documentSnapshot["note" + conf.lang]
         : "";
-    desc = conf.docContains("desc", documentSnapshot)
-        ? documentSnapshot["desc" + conf.lang]
-        : "";
     dishType = conf.docContains("dishType", documentSnapshot)
         ? documentSnapshot["dishType"]
         : -1;
@@ -133,7 +126,6 @@ extension MenuExtensions on QueryDocumentSnapshot {
         steps: this['steps' + conf.lang],
         ingredients: this['ingredients'],
         note: this['note' + conf.lang],
-        desc: this['desc' + conf.lang],
         dishType: this['dishType'],
         linkUrl: this['linkUrl'],
       );

@@ -23,9 +23,12 @@ class PreviewPageC extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      "We will suggest \n"
-                      "you new recipes \n"
-                      "everyday.",
+                      "WEWILLSUGGEST".tr +
+                          " \n" +
+                          "YOUNEWRECEPIES".tr +
+                          " \n" +
+                          "EVERYDAY".tr +
+                          ".",
                       style: GoogleFonts.poppins(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -44,7 +47,7 @@ class PreviewPageC extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 20.0),
                       child: Text(
-                        "Now, it's your turn!",
+                        "NOWITSYOURTURN".tr + "!",
                         style: GoogleFonts.poppins(
                             color: UIColors.pink,
                             fontWeight: FontWeight.bold,
