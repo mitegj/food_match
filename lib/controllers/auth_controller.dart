@@ -40,8 +40,6 @@ class AuthController extends GetxController {
       UserDatabase().saveUserLastLogin();
       Get.offAll(() => HomePage());
     }
-
-    //Get.offAll(() => HomePage());
   }
 
   void googleLogin() async {

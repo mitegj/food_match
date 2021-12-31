@@ -7,9 +7,7 @@ import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 class EmptyMenu extends StatelessWidget {
   EmptyMenu({
     Key? key,
-    required this.savedMenu,
   }) : super(key: key);
-  final bool savedMenu;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +17,7 @@ class EmptyMenu extends StatelessWidget {
           padding: const EdgeInsets.only(top: 20.0),
           child: Row(
             children: [
-              savedMenu ? ArrowHeader() : SizedBox(),
+              ArrowHeader(),
               Expanded(
                 child: Text("SAVEDMENU".tr,
                     overflow: TextOverflow.visible,

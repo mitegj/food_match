@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:morning_brief/screens/saved_menu.dart';
 
 import 'package:morning_brief/screens/statistics.dart';
 
@@ -72,9 +73,7 @@ class HomeHeader extends StatelessWidget {
                           body: SafeArea(
                             child: Column(
                               children: [
-                                HomeBody(
-                                  savedMenu: true,
-                                ),
+                                SavedMenuPage(),
                               ],
                             ),
                           ),

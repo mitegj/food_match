@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
+import 'package:morning_brief/controllers/saved_menu_controller%20copy.dart';
 import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/services/menu_database.dart';
@@ -19,12 +20,6 @@ class MenuController extends GetxController {
     menus?.clear();
   }
 
-  IngredientController? _ingController = IngredientController.instance;
-/*
-  MenuController();
-  MenuController.fromCtrl(IngredientController ingController)
-      : _ingController = ingController;
-*/
   @override
   void onInit() {
     super.onInit();
@@ -42,18 +37,14 @@ class MenuController extends GetxController {
     return fl;
   }
 
-  getMenuList(RxList<int> filters, bool savedMenu) async {
+  getMenuList(RxList<int> filters) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int m = prefs.getInt("limitMultiplier") ?? 1;
-    if (filters.length == 0 || savedMenu) {
+    if (filters.length == 0) {
       filters = getAllFilters();
     }
 
-    if (!savedMenu) {
-      menuList.bindStream(DatabaseMenu().menuStream(filters, limit * m));
-    } else {
-      menuList.bindStream(DatabaseMenu().savedMenuStream(limit * m));
-    }
+    menuList.bindStream(DatabaseMenu().menuStream(filters, limit * m));
   }
 
   Future<void> updateStockCtrl(String uid, bool stock) async {
@@ -89,7 +80,7 @@ class MenuController extends GetxController {
     }
   }
 
-  checkBeforeSaveMenu(MenuModel menu, bool savedMenu) async {
+  checkBeforeSaveMenu(MenuModel menu) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String lastTimeCookedS = "";
     int lastCookingTime = 0;
@@ -108,7 +99,7 @@ class MenuController extends GetxController {
         (_) => prefs.setInt("lastCookingTime", menu.preparationTime).then((_) =>
             prefs.setString('lastTimeCooked', DateTime.now().toString())),
       );
-      removeSavedMenu(menu);
+      SavedMenuController.instance.removeSavedMenu(menu);
     }
   }
 
@@ -128,29 +119,10 @@ class MenuController extends GetxController {
   Future<void> updateSavedMenu(MenuModel menu) async {
     try {
       await DatabaseMenu().saveMenuForLater(menu);
-      Get.to(ReminderMenu());
+      Get.to(() => ReminderMenu());
     } catch (e) {
       Get.snackbar(
         "Error saving menu",
-        e.toString(),
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    }
-  }
-
-  Future<void> removeSavedMenu(MenuModel menu) async {
-    try {
-      await DatabaseMenu().removeMenuFromLater(menu);
-      /*Get.snackbar(
-        "PERFECT".tr,
-        "MENUREMOVEDCORRECTLY".tr,
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-      );*/
-    } catch (e) {
-      Get.snackbar(
-        "Error removing menu",
         e.toString(),
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,

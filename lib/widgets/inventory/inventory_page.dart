@@ -184,8 +184,7 @@ class InventoryScreen extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                MenuController.instance
-                    .getMenuList(FilterBody.listFilters, false);
+                MenuController.instance.getMenuList(FilterBody.listFilters);
                 Get.back();
               },
               child: Container(

@@ -118,7 +118,7 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                           controller.setAllergies(controller);
 
                           MenuController.instance
-                              .getMenuList(FilterBody.listFilters, false);
+                              .getMenuList(FilterBody.listFilters);
                         },
                         child: Container(
                           width: mediaQuery.size.height * 1,

@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
+import 'package:morning_brief/controllers/saved_menu_controller%20copy.dart';
 import 'package:morning_brief/enum/dish_difficulty_enum.dart';
 import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/step_circle.dart';
+import 'package:morning_brief/widgets/home/removed_menu.dart';
 
 class DetailBottomSheet extends StatelessWidget {
   DetailBottomSheet(
@@ -298,7 +300,7 @@ class DetailBottomSheet extends StatelessWidget {
   Widget cookedButton() {
     return InkWell(
       onTap: () {
-        menuController.checkBeforeSaveMenu(menu, savedMenu);
+        menuController.checkBeforeSaveMenu(menu);
       },
       child: Container(
         alignment: Alignment.center,
@@ -345,8 +347,11 @@ class DetailBottomSheet extends StatelessWidget {
     return savedMenu
         ? InkWell(
             onTap: () {
-              Navigator.pop(context);
-              menuController.removeSavedMenu(menu);
+              Get.to(() => RemovedMenu(
+                    context: context,
+                  ));
+
+              SavedMenuController.instance.removeSavedMenu(menu);
             },
             child: Container(
               alignment: Alignment.center,

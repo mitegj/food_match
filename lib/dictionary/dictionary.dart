@@ -87,7 +87,8 @@ class Messages extends Translations {
           "YOUNEWRECEPIES": "you new recipes",
           "EVERYDAY": "everyday",
           "NOWITSYOURTURN": "Now, it's your turn",
-          "": "",
+          "REMOVED": "Removed",
+          "MENUREMOVED": "The menu has been removed"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -173,6 +174,8 @@ class Messages extends Translations {
           "YOUNEWRECEPIES": "nuove ricette",
           "EVERYDAY": "ogni giorno",
           "NOWITSYOURTURN": "Ora, è il tuo turno",
+          "REMOVED": "Rimosso",
+          "MENUREMOVED": "Il menu è stato rimosso"
         },
       };
 }
