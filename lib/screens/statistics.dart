@@ -267,7 +267,9 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                 children: [
                   InkWell(
                     onTap: () {
-                      Get.to(() => AllergiesScreen());
+                      Get.to(() => AllergiesScreen(
+                            isFirstLogin: false,
+                          ));
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(top: 20.0, bottom: 20),
@@ -293,7 +295,9 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                   ),
                   InkWell(
                     onTap: () {
-                      Get.to(TimeEatingScreen());
+                      Get.to(TimeEatingScreen(
+                        isFirstLogin: false,
+                      ));
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(top: 20.0, bottom: 20),

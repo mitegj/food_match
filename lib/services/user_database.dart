@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:morning_brief/models/user_model.dart';
+import 'package:morning_brief/screens/onboarding.dart';
 import 'package:morning_brief/utils/conf.dart';
 
 class UserDatabase {
@@ -56,6 +57,7 @@ class UserDatabase {
       User? user = _auth.currentUser;
       user?.delete();
       await _firestore.collection(conf.userCollection).doc(uid).delete();
+      // Get.offAll(() => OnBoardingPage());
     } catch (e) {
       Get.snackbar(
         "Error creating user",

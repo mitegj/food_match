@@ -4,11 +4,13 @@ import 'package:morning_brief/controllers/allergy_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/utils/UIColors.dart';
+import 'package:morning_brief/widgets/global_input/time_eating_screen.dart';
 import 'package:morning_brief/widgets/home/filters_body.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 class AllergiesScreen extends GetWidget<AllergyController> {
-  AllergiesScreen({Key? key}) : super(key: key);
+  AllergiesScreen({Key? key, required this.isFirstLogin}) : super(key: key);
+  final isFirstLogin;
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
@@ -119,6 +121,12 @@ class AllergiesScreen extends GetWidget<AllergyController> {
 
                           MenuController.instance
                               .getMenuList(FilterBody.listFilters);
+                          if (isFirstLogin)
+                            Get.to(TimeEatingScreen(
+                              isFirstLogin: isFirstLogin,
+                            ));
+                          else
+                            Get.back();
                         },
                         child: Container(
                           width: mediaQuery.size.height * 1,

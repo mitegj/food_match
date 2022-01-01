@@ -60,7 +60,9 @@ class SettingsBody extends GetWidget<SettingController> {
                     alignment: Alignment.center,
                     child: TextButton(
                       onPressed: () {
-                        Get.to(() => AllergiesScreen());
+                        Get.to(() => AllergiesScreen(
+                              isFirstLogin: false,
+                            ));
                       },
                       child: Text(
                         'Allergie',

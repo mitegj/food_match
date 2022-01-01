@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:morning_brief/models/user_model.dart';
+import 'package:morning_brief/screens/allergies.dart';
 import 'package:morning_brief/screens/homepage.dart';
 import 'package:morning_brief/screens/onboarding.dart';
 import 'package:morning_brief/services/user_database.dart';
@@ -21,7 +22,6 @@ class AuthController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late Rx<User?> _user;
   static AuthController instance = Get.find();
-  bool isNewUser = false;
   late UserCredential authResult;
 
   @override
@@ -61,6 +61,10 @@ class AuthController extends GetxController {
 
       if (authResult.additionalUserInfo!.isNewUser) {
         // se utente non esiste quando fa login lo creo con solo l'id
+
+        Get.to(AllergiesScreen(
+          isFirstLogin: true,
+        ));
         if (user != null) {
           createUser(user.uid.toString()).then((value) => {});
         } else {
@@ -108,7 +112,7 @@ class AuthController extends GetxController {
   Future<void> deleteUser() async {
     try {
       String uid = FirebaseAuth.instance.currentUser!.uid.toString();
-      await UserDatabase().deleteUser(uid);
+      UserDatabase().deleteUser(uid);
     } catch (e) {
       Get.snackbar(
         "Error creating Account",
@@ -167,33 +171,6 @@ class AuthController extends GetxController {
               }
             } catch (e) {}
           },
-          /*content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text("è presente una nuova versione, aggiorna l'app stronzo"),
-              SizedBox(
-                height: 30.0,
-              ),
-              TextButton(
-                onPressed: () {
-                  // TODO: verificare una volta in fase di test se funzionano
-
-                  try {
-                    if (Platform.isAndroid) {
-                      launch(conf.appPlayStoreLink);
-                    } else if (Platform.isIOS) {
-                      launch(conf.appAppStroreLink);
-                    }
-                  } catch (e) {}
-                },
-                child: Text(
-                  'OK',
-                  style: TextStyle(color: Colors.black, fontSize: 16.0),
-                ),
-              )
-            ],
-          ),
-          */
           radius: 10.0);
     }
   }

@@ -3,6 +3,7 @@ import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:get/get.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:morning_brief/screens/homepage.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,8 +11,8 @@ import 'package:morning_brief/utils/notification_scheduler.dart' as nt;
 
 // ignore: must_be_immutable
 class TimeEatingScreen extends StatelessWidget {
-  TimeEatingScreen();
-
+  TimeEatingScreen({Key? key, required this.isFirstLogin}) : super(key: key);
+  final bool isFirstLogin;
   Rx<DateTime> _dateTime = DateTime.now().obs;
 
   @override
@@ -26,7 +27,6 @@ class TimeEatingScreen extends StatelessWidget {
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ArrowHeader(),
             Expanded(
                 flex: 2,
                 child: Container(
@@ -74,6 +74,10 @@ class TimeEatingScreen extends StatelessWidget {
             InkWell(
               onTap: () {
                 saveNotificationDinnerTime();
+                if (isFirstLogin)
+                  Get.offAll(HomePage());
+                else
+                  Get.back();
               },
               child: Container(
                 width: mediaQuery.size.height * 1,
@@ -120,6 +124,5 @@ class TimeEatingScreen extends StatelessWidget {
     prefs.setString(
         'dinnerTime', DateTime.parse(_dateTime.value.toString()).toString());
     nt.Notification().initState();
-    Get.back();
   }
 }

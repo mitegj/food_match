@@ -88,7 +88,9 @@ class Messages extends Translations {
           "EVERYDAY": "everyday",
           "NOWITSYOURTURN": "Now, it's your turn",
           "REMOVED": "Removed",
-          "MENUREMOVED": "The menu has been removed"
+          "MENUREMOVED": "The menu has been removed",
+          "TERMS":
+              "By continuing you confirm that you have read and accepted the terms and conditions of the app"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -175,7 +177,9 @@ class Messages extends Translations {
           "EVERYDAY": "ogni giorno",
           "NOWITSYOURTURN": "Ora, è il tuo turno",
           "REMOVED": "Rimosso",
-          "MENUREMOVED": "Il menu è stato rimosso"
+          "MENUREMOVED": "Il menu è stato rimosso",
+          "TERMS":
+              "Proseguendo si conferma di aver letto e accettato i termini e le condizioni dell'app"
         },
       };
 }

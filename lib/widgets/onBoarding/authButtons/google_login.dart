@@ -10,7 +10,7 @@ class GoogleLogin extends GetWidget<AuthController> {
     return Padding(
       padding: const EdgeInsets.only(right: 15.0, left: 15.0, bottom: 0.0),
       child: GestureDetector(
-        onTap: () => AuthController.instance.googleLogin(),
+        onTap: () => {AuthController.instance.googleLogin()},
         child: Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
