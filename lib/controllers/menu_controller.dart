@@ -99,7 +99,10 @@ class MenuController extends GetxController {
         (_) => prefs.setInt("lastCookingTime", menu.preparationTime).then((_) =>
             prefs.setString('lastTimeCooked', DateTime.now().toString())),
       );
-      SavedMenuController.instance.removeSavedMenu(menu);
+
+      SavedMenuController _menuController =
+          Get.put<SavedMenuController>(SavedMenuController());
+      _menuController.removeSavedMenu(menu);
     }
   }
 
