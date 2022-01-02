@@ -19,7 +19,7 @@ class DatabaseCookedMenu {
         .subtract(Duration(days: !monthly ? date.weekday - 1 : date.day - 1)));
     final DateTime end = getDate(date.add(Duration(
         days: !monthly
-            ? DateTime.daysPerWeek - date.weekday
+            ? (DateTime.daysPerWeek - date.weekday) + 1
             : DateTime.daysPerWeek + date.weekday)));
 
     try {
@@ -30,7 +30,7 @@ class DatabaseCookedMenu {
           .collection(conf.cookedMenuCollection)
           .where("cookedTime",
               isGreaterThanOrEqualTo: Timestamp.fromDate(start))
-          .where("cookedTime", isLessThanOrEqualTo: Timestamp.fromDate(end))
+          .where("cookedTime", isLessThan: Timestamp.fromDate(end))
           .orderBy("cookedTime", descending: true)
           .snapshots()
           .map((QuerySnapshot query) {
