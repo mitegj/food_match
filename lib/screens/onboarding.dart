@@ -5,6 +5,7 @@ import 'package:morning_brief/screens/contract.dart';
 import 'package:morning_brief/screens/preview.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/onBoarding/authButtons/apple_login.dart';
+
 import 'package:morning_brief/widgets/onBoarding/authButtons/google_login.dart';
 
 class OnBoardingPage extends StatelessWidget {
@@ -40,10 +41,9 @@ class OnBoardingPage extends StatelessWidget {
               Container(
                 child: Column(
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 30.0, left: 30, right: 30, bottom: 0),
-                      child: Image.asset("assets/images/onboarding.png"),
+                    Icon(
+                      Icons.facebook,
+                      size: 100,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
@@ -140,13 +140,13 @@ class OnBoardingPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15.0),
-                      child: new GoogleLogin(),
+                    SizedBox(
+                      height: 10,
                     ),
                     new AppleLogin(onPressed: () {
                       print('Apple Auth');
-                    })
+                    }),
+                    new GoogleLogin(),
                   ],
                 ),
               )

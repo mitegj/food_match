@@ -121,6 +121,8 @@ class MyApp extends StatelessWidget {
     ]);
     return GetMaterialApp(
       theme: ThemeData(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         backgroundColor: UIColors.black,
       ),
       debugShowCheckedModeBanner: false,

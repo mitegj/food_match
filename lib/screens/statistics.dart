@@ -54,11 +54,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
               radius: 50,
               backgroundColor: UIColors.blue,
               child: Container(
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: UIColors.blue,
-                  ),
+                  padding: const EdgeInsets.all(20),
                   child: Text(
                     _settingController.getUserInitial(),
                     style: GoogleFonts.poppins(

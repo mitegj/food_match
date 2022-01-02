@@ -7,6 +7,7 @@ import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/models/userInventory_model.dart';
 
 import 'package:morning_brief/utils/UIColors.dart';
+import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:morning_brief/widgets/home/filters_body.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
@@ -59,6 +60,30 @@ class InventoryScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            if (mediaQuery.viewInsets.bottom == 0)
+              Flexible(
+                flex: 1,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 0, right: 20, top: 20),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          ArrowHeader(),
+                          Expanded(
+                            child: Text("INGREDIENTSINVENTORYSUBTITLE".tr,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.poppins(
+                                    fontSize: 26,
+                                    fontWeight: FontWeight.w300,
+                                    color: Colors.white)),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             Expanded(
               flex: 1,
               child: Padding(
@@ -83,30 +108,10 @@ class InventoryScreen extends StatelessWidget {
                 ),
               ),
             ),
-            if (mediaQuery.viewInsets.bottom == 0)
-              Padding(
-                padding: EdgeInsets.only(left: 20, right: 20, top: 0),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text("INGREDIENTSINVENTORYSUBTITLE".tr + ":",
-                              overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.poppins(
-                                  color: UIColors.grey,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300)),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
             Expanded(
               flex: 5,
               child: Container(
-                margin: const EdgeInsets.all(20),
+                margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),

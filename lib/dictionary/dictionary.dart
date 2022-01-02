@@ -90,7 +90,14 @@ class Messages extends Translations {
           "REMOVED": "Removed",
           "MENUREMOVED": "The menu has been removed",
           "TERMS":
-              "By continuing you confirm that you have read and accepted the terms and conditions of the app"
+              "By continuing you confirm that you have read and accepted the terms and conditions of the app",
+          "YOURSAVEDMENU": "Your menus saved for later.",
+          "VIEWINVENTORY": "View inventory",
+          "EMPTYSCREENMESSAGE": "Oops .. we couldn't find anything for you.",
+          "EMPTYSCREENMESSAGE1":
+              "Try updating your inventory by adding new ingredients.",
+          "EMPTYSCREENMESSAGE2": "Or check the filters you've applied.",
+          "SAVEDMENULABEL": "Save them and then come back to this section."
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -105,7 +112,7 @@ class Messages extends Translations {
           "SECONDCOURSE": "Secondo",
           "SIDECOURSE": "Contorno",
           "SWEETCOURSE": "Dolce",
-          "ANYALLERGY": "Hai qualche tipo di allergia",
+          "ANYALLERGY": "Hai qualche tipo di allergia o intolleranza",
           "DECLAREYOURALLERGIES":
               "Dichiarale e non ti faremo più vedere ricette che le contengono",
           "DONE": "Fatto",
@@ -146,7 +153,7 @@ class Messages extends Translations {
           "DISHCOOKED": "Piatto cucinato",
           "ESTIMATEDTIME": " Minuti circa",
           "INGREDIENTSINVENTORY": "Inventario casa",
-          "INGREDIENTSINVENTORYSUBTITLE": "Giacenza dispensa",
+          "INGREDIENTSINVENTORYSUBTITLE": "Dispensa",
           "CONTINUEWITH": "Continua con",
           "ANYPREFERENCES": "Hai qualche tipo di preferenza",
           "NOTIFICATION": "Notifiche",
@@ -179,7 +186,15 @@ class Messages extends Translations {
           "REMOVED": "Rimosso",
           "MENUREMOVED": "Il menu è stato rimosso",
           "TERMS":
-              "Proseguendo si conferma di aver letto e accettato i termini e le condizioni dell'app"
+              "Proseguendo si conferma di aver letto e accettato i termini e le condizioni dell'app",
+          "YOURSAVEDMENU": "I tuoi menu salvati per dopo",
+          "VIEWINVENTORY": "Visualizza inventario",
+          "EMPTYSCREENMESSAGE":
+              "Ops.. non siamo riusciti a trovare niente che faccia al caso tuo.",
+          "EMPTYSCREENMESSAGE1":
+              "Prova ad aggiornare il tuo inventario aggiungendo nuovi ingredienti.",
+          "EMPTYSCREENMESSAGE2": "Oppure controlli i filtri che hai applicato.",
+          "SAVEDMENULABEL": "Salvali e poi torna in questa sezione."
         },
       };
 }

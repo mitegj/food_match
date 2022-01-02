@@ -37,19 +37,19 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                 Text("ANYALLERGY".tr + "?",
                                     style: GoogleFonts.poppins(
                                         color: UIColors.white,
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.w700)),
+                                        fontSize: 26,
+                                        fontWeight: FontWeight.w600)),
                                 SizedBox(height: 20),
                                 Text("DECLAREYOURALLERGIES".tr,
                                     style: GoogleFonts.poppins(
                                         color: UIColors.grey,
-                                        fontSize: 20,
+                                        fontSize: 18,
                                         fontWeight: FontWeight.w300)),
                               ],
                             ),
                           )),
                       Expanded(
-                        flex: 3,
+                        flex: 4,
                         child: Container(
                           padding: const EdgeInsets.all(10),
                           margin: const EdgeInsets.all(20),
@@ -148,7 +148,8 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                       ),
                     ])));
           } else {
-            return LoadingWidget();
+            return Scaffold(
+                backgroundColor: UIColors.black, body: LoadingWidget());
           }
         }));
   }

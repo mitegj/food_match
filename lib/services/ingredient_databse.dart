@@ -18,6 +18,7 @@ class DatabaseIngredient {
         for (var element in query.docs) {
           retVal.add(IngredientModel.fromDocumentSnapshot(element));
         }
+        retVal.sort((a, b) => a.name.compareTo(b.name));
         return retVal;
       });
     } catch (e) {

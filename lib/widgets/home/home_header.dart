@@ -71,11 +71,7 @@ class HomeHeader extends StatelessWidget {
                         () => Scaffold(
                           backgroundColor: theme.backgroundColor,
                           body: SafeArea(
-                            child: Column(
-                              children: [
-                                SavedMenuPage(),
-                              ],
-                            ),
+                            child: SavedMenuPage(),
                           ),
                         ),
                       );
