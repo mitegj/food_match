@@ -22,7 +22,7 @@ class StatisticController extends GetxController {
 
     List<dynamic> list = [];
     for (double i = 1.0; i <= 7; i++) {
-      list.add({"x": i, "y": -1.0});
+      list.add({"x": i, "y": 0.0});
     }
 
     if (cookedMenuList.value != null)
@@ -31,7 +31,8 @@ class StatisticController extends GetxController {
             item.kcal.toDouble();
       }
     list.forEach((el) {
-      if (el['y'] != -1) points.add(FlSpot(el['x'], el['y'] + 1));
+      // if (el['y'] != -1) points.add(FlSpot(el['x'], el['y'] + 1));
+      points.add(FlSpot(el['x'], el['y']));
     });
 
     points.sort((a, b) => a.x.compareTo(b.x));
