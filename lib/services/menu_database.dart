@@ -12,19 +12,19 @@ class DatabaseMenu {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final Conf conf = new Conf();
 
-  bool isUserAllergic(MenuModel menu) {
+  bool isUserAllergic(MenuModel menu, IngredientController ingController) {
     bool isUserAllergic = false;
     menu.allergies.forEach((al) {
-      if (IngredientController.instance.userAllergies?.contains(al) ?? false)
+      if (ingController.userAllergies?.contains(al) ?? false)
         isUserAllergic = true;
     });
 
     return isUserAllergic;
   }
 
-  bool userHasIngredients(MenuModel menu) {
+  bool userHasIngredients(MenuModel menu, IngredientController ingController) {
     bool hasUserIngredients = false;
-    List<String> userIngredients = getUserIngredientsList();
+    List<String> userIngredients = getUserIngredientsList(ingController);
 
     for (MenuIngredientModel? ing in menu.ingredients) {
       if (userIngredients.contains(ing?.id)) {
@@ -37,9 +37,9 @@ class DatabaseMenu {
     return hasUserIngredients;
   }
 
-  List<String> getUserIngredientsList() {
+  List<String> getUserIngredientsList(IngredientController ingController) {
     List<String> ing = [];
-    IngredientController.instance.userIngredients?.forEach((UserInventory el) {
+    ingController.userIngredients?.forEach((UserInventory el) {
       if (el.stock) {
         ing.add(el.id);
       }
@@ -49,6 +49,8 @@ class DatabaseMenu {
 
   Stream<List<MenuModel>> menuStream(List<int> filters, int limit) {
     try {
+      IngredientController ingController = Get.find<IngredientController>();
+
       return _firestore
           .collection(conf.menuCollection)
           .where("dishType", whereIn: filters)
@@ -59,8 +61,8 @@ class DatabaseMenu {
         List<MenuModel> retVal = [];
         for (var element in query.docs) {
           MenuModel menu = MenuModel.fromDocumentSnapshot(element);
-          if (!isUserAllergic(menu)) {
-            if (userHasIngredients(menu)) {
+          if (!isUserAllergic(menu, ingController)) {
+            if (userHasIngredients(menu, ingController)) {
               retVal.add(menu);
             }
           }
