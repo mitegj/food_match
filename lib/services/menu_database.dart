@@ -3,10 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
+import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/models/menu_ingredients_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/models/userInventory_model.dart';
 import 'package:morning_brief/utils/conf.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DatabaseMenu {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -67,6 +69,7 @@ class DatabaseMenu {
             }
           }
         }
+        hasOtherMenu(retVal.length);
         return retVal;
       });
     } catch (e) {
@@ -77,6 +80,19 @@ class DatabaseMenu {
         snackPosition: SnackPosition.BOTTOM,
       );
       return Stream.empty();
+    }
+  }
+
+  Future<void> hasOtherMenu(int len) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int menuLength = prefs.getInt("menuLength") ?? 0;
+
+    if (len != 0) if (len == menuLength) {
+      // Get.snackbar("Ops", "We don't have other menu to show you");
+      MenuController.instance.hasOtherMenu.value = false;
+    } else if (len > menuLength) {
+      MenuController.instance.hasOtherMenu.value = false;
+      prefs.setInt("menuLength", len);
     }
   }
 

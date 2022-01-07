@@ -27,5 +27,7 @@ class Root extends StatelessWidget {
   resetLimitMultiplier() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt("limitMultiplier", 1);
+
+    prefs.setInt("menuLength", 0);
   }
 }

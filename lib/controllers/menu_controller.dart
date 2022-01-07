@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/saved_menu_controller%20copy.dart';
 import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/models/menu_model.dart';
@@ -16,6 +15,7 @@ class MenuController extends GetxController {
   Rxn<List<MenuModel>> menuList = Rxn<List<MenuModel>>().obs();
   List<MenuModel>? get menus => menuList.value.obs();
   int limit = 30;
+  RxBool hasOtherMenu = true.obs;
   set menus(List<MenuModel>? value) {
     menus?.clear();
   }

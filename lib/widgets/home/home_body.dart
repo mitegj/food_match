@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/utils/UIColors.dart';
-import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:morning_brief/widgets/home/empty_menu.dart';
 import 'package:morning_brief/widgets/home/filters.dart';
 import 'package:morning_brief/widgets/home/filters_body.dart';
@@ -59,29 +58,7 @@ class HomeBody extends GetWidget<MenuController> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            InkWell(
-                              onTap: () => {
-                                _menuController.incrementLimitMultiplier(),
-                                _menuController
-                                    .getMenuList(FilterBody.listFilters)
-                              },
-                              child: Container(
-                                padding:
-                                    const EdgeInsets.only(left: 20, right: 20),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: UIColors.detailBlack,
-                                ),
-                                child: TextButton(
-                                  onPressed: null,
-                                  child: Text("LOADOTHERMENU".tr,
-                                      style: GoogleFonts.poppins(
-                                          color: UIColors.white,
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 16)),
-                                ),
-                              ),
-                            ),
+                            showOtherButton(),
                           ],
                         ),
                         SizedBox(
@@ -91,6 +68,32 @@ class HomeBody extends GetWidget<MenuController> {
                     )
               : LoadingWidget())),
     );
+  }
+
+  Widget showOtherButton() {
+    return Obx(() => MenuController.instance.hasOtherMenu.value
+        ? InkWell(
+            onTap: () => {
+              _menuController.incrementLimitMultiplier(),
+              _menuController.getMenuList(FilterBody.listFilters)
+            },
+            child: Container(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: UIColors.detailBlack,
+              ),
+              child: TextButton(
+                onPressed: null,
+                child: Text("LOADOTHERMENU".tr,
+                    style: GoogleFonts.poppins(
+                        color: UIColors.white,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16)),
+              ),
+            ),
+          )
+        : SizedBox());
   }
 
   Widget headerBeforeCard() {
