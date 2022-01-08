@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 
 import 'package:get/get.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
@@ -15,8 +14,6 @@ import 'package:morning_brief/dictionary/dictionary.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/utils/root.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:timezone/data/latest_all.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -51,6 +48,7 @@ String? selectedNotificationPayload;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // ignore: unused_local_variable
   final NotificationAppLaunchDetails? notificationAppLaunchDetails = !kIsWeb &&
           Platform.isLinux
       ? null

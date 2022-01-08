@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:get/get.dart';
-import 'package:morning_brief/widgets/global_input/arrow_header.dart';
-import 'package:morning_brief/widgets/home/filters.dart';
-import 'package:morning_brief/widgets/home/filters_body.dart';
-import 'package:morning_brief/widgets/inventory.dart';
+import 'package:morning_brief/widgets/filter/filters.dart';
+import 'package:morning_brief/widgets/filter/filters_body.dart';
 import 'package:morning_brief/widgets/inventory/inventory_page.dart';
 
 class EmptyMenu extends StatelessWidget {

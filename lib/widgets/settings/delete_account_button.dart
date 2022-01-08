@@ -3,8 +3,8 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
 
-class deleteAccount extends StatelessWidget {
-  const deleteAccount({
+class DeleteAccount extends StatelessWidget {
+  const DeleteAccount({
     Key? key,
     required AuthController authController,
     required this.theme,

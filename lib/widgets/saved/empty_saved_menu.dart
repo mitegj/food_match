@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:get/get.dart';
-import 'package:morning_brief/widgets/home/filters.dart';
-import 'package:morning_brief/widgets/home/filters_body.dart';
+import 'package:morning_brief/widgets/filter/filters.dart';
+import 'package:morning_brief/widgets/filter/filters_body.dart';
 
 class EmptySavedMenu extends StatelessWidget {
   EmptySavedMenu({

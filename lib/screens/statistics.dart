@@ -14,6 +14,7 @@ import 'package:morning_brief/widgets/settings/info_version.dart';
 import 'package:morning_brief/widgets/settings/settings_area.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
+// ignore: must_be_immutable
 class StatisticsScreen extends GetWidget<AllergyController> {
   StatisticsScreen({Key? key}) : super(key: key);
   List<Color> gradientColors = [
@@ -233,12 +234,12 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                       fontSize: 18,
                       fontWeight: FontWeight.w700)),
             ),
-            settingsArea(settingController: _settingController),
-            disconnectAccountButton(authController: _authController),
+            SettingsArea(settingController: _settingController),
+            DisconnectAccountButton(authController: _authController),
             const SizedBox(height: 40),
-            deleteAccount(authController: _authController, theme: theme),
+            DeleteAccount(authController: _authController, theme: theme),
             const SizedBox(height: 40),
-            infoVersion(settingController: _settingController, theme: theme),
+            InfoVersion(settingController: _settingController, theme: theme),
             const SizedBox(height: 20),
           ],
         ),

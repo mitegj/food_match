@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:morning_brief/models/allergyChecked_model.dart';
 import 'package:morning_brief/models/allergy_model.dart';
-import 'package:morning_brief/screens/homepage.dart';
 import 'package:morning_brief/services/allergy_database.dart';
 
 class AllergyController extends GetxController {

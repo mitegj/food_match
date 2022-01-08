@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 
-class disconnectAccountButton extends StatelessWidget {
-  const disconnectAccountButton({
+class DisconnectAccountButton extends StatelessWidget {
+  const DisconnectAccountButton({
     Key? key,
     required AuthController authController,
   })  : _authController = authController,

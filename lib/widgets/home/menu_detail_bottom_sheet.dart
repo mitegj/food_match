@@ -12,6 +12,7 @@ import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/step_circle.dart';
 import 'package:morning_brief/widgets/home/removed_menu.dart';
 
+// ignore: must_be_immutable
 class DetailBottomSheet extends StatelessWidget {
   DetailBottomSheet(
       {Key? key,

@@ -7,8 +7,8 @@ import 'package:morning_brief/screens/contract.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/time_eating_screen.dart';
 
-class settingsArea extends StatelessWidget {
-  const settingsArea({
+class SettingsArea extends StatelessWidget {
+  const SettingsArea({
     Key? key,
     required SettingController settingController,
   })  : _settingController = settingController,

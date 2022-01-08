@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/services/menu_database.dart';
-import 'package:morning_brief/widgets/home/removed_menu.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SavedMenuController extends MenuController {

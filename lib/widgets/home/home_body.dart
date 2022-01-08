@@ -4,13 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/utils/UIColors.dart';
+import 'package:morning_brief/widgets/filter/filters.dart';
+import 'package:morning_brief/widgets/filter/filters_body.dart';
 import 'package:morning_brief/widgets/home/empty_menu.dart';
-import 'package:morning_brief/widgets/home/filters.dart';
-import 'package:morning_brief/widgets/home/filters_body.dart';
 import 'package:morning_brief/widgets/home/menu_tile.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
-import 'filters_body.dart';
 
+// ignore: must_be_immutable
 class HomeBody extends GetWidget<MenuController> {
   HomeBody({Key? key}) : super(key: key);
 
