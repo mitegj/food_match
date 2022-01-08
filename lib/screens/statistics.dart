@@ -6,12 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
 import 'package:morning_brief/controllers/setting_controller.dart';
 import 'package:morning_brief/controllers/statistic_controller.dart';
-import 'package:morning_brief/screens/allergies.dart';
-import 'package:morning_brief/screens/contract.dart';
 import 'package:morning_brief/utils/UIColors.dart';
-import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:intl/intl.dart';
-import 'package:morning_brief/widgets/global_input/time_eating_screen.dart';
+import 'package:morning_brief/widgets/settings/delete_account_button.dart';
+import 'package:morning_brief/widgets/settings/disconnect_account_button.dart';
+import 'package:morning_brief/widgets/settings/info_version.dart';
+import 'package:morning_brief/widgets/settings/settings_area.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 class StatisticsScreen extends GetWidget<AllergyController> {
@@ -43,13 +43,9 @@ class StatisticsScreen extends GetWidget<AllergyController> {
       backgroundColor: theme.backgroundColor,
       resizeToAvoidBottomInset: true,
       body: SafeArea(
-        child: Container(
-            child: ListView(
+        child: ListView(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: ArrowHeader(),
-            ),
+            const SizedBox(height: 20),
             CircleAvatar(
               radius: 50,
               backgroundColor: UIColors.blue,
@@ -63,15 +59,13 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                         fontWeight: FontWeight.w400),
                   )),
             ),
-            SizedBox(
-              height: 40,
-            ),
+            const SizedBox(height: 40),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Text("WEEKLYCAL".tr,
                   style: GoogleFonts.poppins(
                       color: UIColors.white,
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w700)),
             ),
             Padding(
@@ -104,7 +98,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
               child: Text("WEEKLYHISTORY".tr,
                   style: GoogleFonts.poppins(
                       color: UIColors.white,
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w700)),
             ),
             Padding(
@@ -135,13 +129,13 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
-                              fontSize: 16)),
+                              fontSize: 15)),
                     ],
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
               margin: EdgeInsets.only(left: 20, right: 20),
               decoration: BoxDecoration(
@@ -153,92 +147,79 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                   () => statisticController.cookedMenus != null
                       ? Visibility(
                           visible: visibility.value,
-                          child: Column(
-                            children: [
-                              ListView.builder(
-                                  physics: ScrollPhysics(),
-                                  shrinkWrap: true,
-                                  itemCount:
-                                      statisticController.cookedMenus?.length,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return Padding(
-                                        padding: const EdgeInsets.only(
-                                            bottom: 10.0, top: 20.0),
-                                        child: Column(
-                                          children: <Widget>[
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  bottom: 20.0),
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
+                          child: ListView.builder(
+                              physics: ScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount:
+                                  statisticController.cookedMenus?.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Padding(
+                                    padding: const EdgeInsets.only(
+                                        bottom: 10.0, top: 20.0),
+                                    child: Column(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: 20.0),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
                                                 children: [
-                                                  Row(
-                                                    children: [
-                                                      Expanded(
-                                                        child: Text(
-                                                            statisticController
-                                                                .cookedMenus![
-                                                                    index]
-                                                                .name
-                                                                .toString(),
-                                                            overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
-                                                            style: GoogleFonts
-                                                                .poppins(
-                                                              color: UIColors
-                                                                  .white,
-                                                              fontSize: 15,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                            )),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Expanded(
-                                                        child: Text(
-                                                            formattedDate.format(
-                                                                statisticController
-                                                                    .cookedMenus![
-                                                                        index]
-                                                                    .cookedTime
-                                                                    .toDate()),
-                                                            overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
-                                                            style: GoogleFonts
-                                                                .poppins(
-                                                              color: UIColors
-                                                                  .white,
-                                                              fontSize: 15,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                            )),
-                                                      ),
-                                                    ],
+                                                  Expanded(
+                                                    child: Text(
+                                                        statisticController
+                                                            .cookedMenus![index]
+                                                            .name
+                                                            .toString(),
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style:
+                                                            GoogleFonts.poppins(
+                                                          color: UIColors.white,
+                                                          fontSize: 15,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                        )),
                                                   ),
                                                 ],
                                               ),
-                                            ),
-                                            if (index !=
-                                                (statisticController
-                                                        .cookedMenus?.length)! -
-                                                    1)
-                                              Divider(
-                                                color: UIColors.black,
-                                              )
-                                          ],
-                                        ));
-                                  })
-                            ],
-                          ),
+                                              Row(
+                                                children: [
+                                                  Expanded(
+                                                    child: Text(
+                                                        formattedDate.format(
+                                                            statisticController
+                                                                .cookedMenus![
+                                                                    index]
+                                                                .cookedTime
+                                                                .toDate()),
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style:
+                                                            GoogleFonts.poppins(
+                                                          color: UIColors.white,
+                                                          fontSize: 15,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                        )),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        if (index !=
+                                            (statisticController
+                                                    .cookedMenus?.length)! -
+                                                1)
+                                          Divider(
+                                            color: UIColors.black,
+                                          )
+                                      ],
+                                    ));
+                              }),
                         )
                       : LoadingWidget(),
                 ),
@@ -249,229 +230,18 @@ class StatisticsScreen extends GetWidget<AllergyController> {
               child: Text("SETTINGS".tr,
                   style: GoogleFonts.poppins(
                       color: UIColors.white,
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w700)),
             ),
-            Container(
-              margin: EdgeInsets.all(20),
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: UIColors.detailBlack,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Get.to(() => AllergiesScreen(
-                            isFirstLogin: false,
-                          ));
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 20.0, bottom: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("ALLERGIES".tr,
-                              style: GoogleFonts.poppins(
-                                color: UIColors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w400,
-                              )),
-                          CircleAvatar(
-                            backgroundColor: UIColors.black.withOpacity(0.6),
-                            child: Icon(Icons.sick, color: UIColors.white),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Divider(
-                    color: UIColors.black,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Get.to(TimeEatingScreen(
-                        isFirstLogin: false,
-                      ));
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 20.0, bottom: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("NOTIFICATION".tr,
-                              style: GoogleFonts.poppins(
-                                color: UIColors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w400,
-                              )),
-                          CircleAvatar(
-                            backgroundColor: UIColors.black.withOpacity(0.6),
-                            child: Icon(
-                              Icons.notifications_on,
-                              color: UIColors.white,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Divider(
-                    color: UIColors.black,
-                  ),
-                  InkWell(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 20.0, bottom: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("SUPPORTUS".tr,
-                              style: GoogleFonts.poppins(
-                                color: UIColors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w400,
-                              )),
-                          CircleAvatar(
-                            backgroundColor: UIColors.black.withOpacity(0.6),
-                            child: Icon(
-                              Icons.star,
-                              color: UIColors.white,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Divider(
-                    color: UIColors.black,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      _settingController.openEmailFeedback();
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 20.0, bottom: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("HELPASSISTANCE".tr,
-                              style: GoogleFonts.poppins(
-                                color: UIColors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w400,
-                              )),
-                          CircleAvatar(
-                            backgroundColor: UIColors.black.withOpacity(0.6),
-                            child: Icon(
-                              Icons.help,
-                              color: UIColors.white,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Divider(
-                    color: UIColors.black,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Get.to(ContractScreen());
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 20.0, bottom: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("PRIVACYPOLICY".tr,
-                              style: GoogleFonts.poppins(
-                                color: UIColors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w400,
-                              )),
-                          CircleAvatar(
-                            backgroundColor: UIColors.black.withOpacity(0.6),
-                            child: Icon(
-                              Icons.privacy_tip,
-                              color: UIColors.white,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                _authController.logoutGoogle();
-              },
-              child: Container(
-                margin: EdgeInsets.only(left: 20, right: 20),
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: UIColors.detailBlack,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("DISCONNECTACCOUNT".tr,
-                          style: GoogleFonts.poppins(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400,
-                          )),
-                      CircleAvatar(
-                        backgroundColor: UIColors.black.withOpacity(0.6),
-                        child: Icon(
-                          Icons.exit_to_app_sharp,
-                          color: Colors.red[500],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            InkWell(
-              onTap: () {
-                _authController.deleteUser();
-              },
-              child: Container(
-                alignment: Alignment.center,
-                child: Text(
-                  'DELETEACCOUNT'.tr,
-                  style: GoogleFonts.poppins(
-                    color: theme.secondaryHeaderColor,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Container(
-                alignment: Alignment.center,
-                child: Obx(() => Text(
-                      _settingController.appCurrentVersion.value,
-                      style: GoogleFonts.poppins(
-                        color: theme.secondaryHeaderColor,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w300,
-                      ),
-                    )))
+            settingsArea(settingController: _settingController),
+            disconnectAccountButton(authController: _authController),
+            const SizedBox(height: 40),
+            deleteAccount(authController: _authController, theme: theme),
+            const SizedBox(height: 40),
+            infoVersion(settingController: _settingController, theme: theme),
+            const SizedBox(height: 20),
           ],
-        )),
+        ),
       ),
     );
   }
@@ -558,7 +328,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
               case 3:
                 return 'WED'.tr;
               case 4:
-                return 'THU'.tr;
+                return 'THE'.tr;
               case 5:
                 return 'FRI'.tr;
               case 6:

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:get/get.dart';
-import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:morning_brief/widgets/home/filters.dart';
 import 'package:morning_brief/widgets/home/filters_body.dart';
 
@@ -16,10 +15,6 @@ class EmptySavedMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 20.0),
-          child: ArrowHeader(),
-        ),
         Container(
           margin: const EdgeInsets.all(20),
           padding: const EdgeInsets.all(20),

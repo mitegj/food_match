@@ -1,5 +1,6 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_timezone/flutter_native_timezone.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:morning_brief/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
@@ -50,8 +51,8 @@ class Notification {
 
         await flutterLocalNotificationsPlugin.zonedSchedule(
             0,
-            'scheduled title',
-            'scheduled body',
+            'foodmatch',
+            'NOTIFICATIONBODY'.tr,
             tz.TZDateTime.parse(tz.local, dinnerTime),
             //tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
             const NotificationDetails(

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
@@ -60,56 +61,50 @@ class InventoryScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            if (mediaQuery.viewInsets.bottom == 0)
-              Flexible(
-                flex: 1,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 0, right: 20, top: 20),
-                  child: Column(
-                    children: [
-                      Row(
+            //if (mediaQuery.viewInsets.bottom == 0)
+            Expanded(
+              flex: 2,
+              child: Padding(
+                padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 20.0),
+                      child: Row(
                         children: [
-                          ArrowHeader(),
-                          Expanded(
-                            child: Text("INGREDIENTSINVENTORYSUBTITLE".tr,
-                                overflow: TextOverflow.ellipsis,
-                                style: GoogleFonts.poppins(
-                                    fontSize: 26,
-                                    fontWeight: FontWeight.w300,
-                                    color: Colors.white)),
-                          ),
+                          Text("INVENTORY".tr,
+                              style: GoogleFonts.poppins(
+                                  color: UIColors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700)),
                         ],
                       ),
-                    ],
-                  ),
-                ),
-              ),
-            Expanded(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-                child: TextField(
-                  autofocus: false,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: UIColors.white,
-                    focusedBorder: UnderlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    enabledBorder: UnderlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: UIColors.detailBlack,
                     ),
-                  ),
-                  onChanged: (text) {
-                    ingController.filterIngredients(text);
-                  },
+                    Flexible(
+                      child: CupertinoTextField(
+                        padding: EdgeInsets.all(20),
+                        onChanged: (text) {
+                          ingController.filterIngredients(text);
+                        },
+                        autofocus: false,
+                        style: TextStyle(fontSize: 15.0, color: Colors.white),
+                        placeholder: "cerca nella tua dispensa...",
+                        placeholderStyle:
+                            TextStyle(color: Colors.white.withOpacity(0.5)),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                              width: 1,
+                              color: UIColors.lightBlack.withOpacity(0.5)),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
             Expanded(
-              flex: 5,
+              flex: 7,
               child: Container(
                 margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
                 padding: const EdgeInsets.all(20),
@@ -131,48 +126,34 @@ class InventoryScreen extends StatelessWidget {
                                       setUserInventoryCheck(ingCtrl, index);
                                       return Obx(() => Container(
                                             margin: EdgeInsets.all(5),
-                                            padding: EdgeInsets.all(0),
                                             decoration: BoxDecoration(
                                                 color: UIColors.lightBlack,
                                                 borderRadius:
                                                     BorderRadius.circular(20)),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Flexible(
-                                                  flex: 3,
-                                                  child: CheckboxListTile(
-                                                    checkColor: UIColors.green,
-                                                    activeColor: UIColors.green,
-
-                                                    title: Text(
-                                                      ingCtrl
-                                                          .ingSearch[index].name
-                                                          .toString()
-                                                          .toLowerCase(),
-                                                      style:
-                                                          GoogleFonts.poppins(
-                                                              color:
-                                                                  Colors.white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .normal),
-                                                    ),
-                                                    value: getStock(
-                                                        ingCtrl, index),
-                                                    onChanged: (bool? value) {
-                                                      updateStock(ingCtrl,
-                                                          index, value);
-                                                      isValueUpdated = true;
-                                                    },
-                                                    controlAffinity:
-                                                        ListTileControlAffinity
-                                                            .trailing, //  <-- leading Checkbox
-                                                  ),
+                                            child: Flexible(
+                                              flex: 3,
+                                              child: CheckboxListTile(
+                                                checkColor: UIColors.green,
+                                                activeColor: UIColors.green,
+                                                title: Text(
+                                                  ingCtrl.ingSearch[index].name
+                                                      .toString()
+                                                      .toLowerCase(),
+                                                  style: GoogleFonts.poppins(
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w300),
                                                 ),
-                                              ],
+                                                value: getStock(ingCtrl, index),
+                                                onChanged: (bool? value) {
+                                                  updateStock(
+                                                      ingCtrl, index, value);
+                                                  isValueUpdated = true;
+                                                },
+                                                controlAffinity:
+                                                    ListTileControlAffinity
+                                                        .trailing, //  <-- leading Checkbox
+                                              ),
                                             ),
                                           ));
                                     },
@@ -198,14 +179,14 @@ class InventoryScreen extends StatelessWidget {
                 margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
                 decoration: BoxDecoration(
                     color: UIColors.white,
-                    borderRadius: BorderRadius.circular(15)),
+                    borderRadius: BorderRadius.circular(20)),
                 child: Align(
                   alignment: Alignment.center,
                   child: Text('DONE'.tr,
                       style: GoogleFonts.poppins(
                           color: UIColors.black,
                           fontSize: 20,
-                          fontWeight: FontWeight.normal)),
+                          fontWeight: FontWeight.w600)),
                 ),
               ),
             ),

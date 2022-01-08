@@ -41,10 +41,6 @@ class OnBoardingPage extends StatelessWidget {
               Container(
                 child: Column(
                   children: <Widget>[
-                    Icon(
-                      Icons.facebook,
-                      size: 100,
-                    ),
                     Padding(
                       padding: const EdgeInsets.only(
                           left: 10.0, right: 10.0, top: 10.0, bottom: 0),

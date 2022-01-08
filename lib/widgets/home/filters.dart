@@ -18,11 +18,10 @@ class FiltersPage extends GetWidget<AllergyController> {
         body: SafeArea(
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Flexible(flex: 1, child: ArrowHeader()),
           Expanded(
               flex: 2,
               child: Container(
-                padding: const EdgeInsets.only(right: 20, left: 20),
+                padding: const EdgeInsets.only(right: 20, left: 20, top: 50),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -32,7 +31,7 @@ class FiltersPage extends GetWidget<AllergyController> {
                       child: Text("ANYPREFERENCES".tr + "?",
                           style: GoogleFonts.poppins(
                               color: UIColors.white,
-                              fontSize: 31,
+                              fontSize: 26,
                               fontWeight: FontWeight.w700)),
                     ),
                     SizedBox(height: 20),
@@ -41,7 +40,7 @@ class FiltersPage extends GetWidget<AllergyController> {
                         Text("SELECTWITHFILTERS".tr + "!",
                             style: GoogleFonts.poppins(
                                 color: UIColors.grey,
-                                fontSize: 20,
+                                fontSize: 18,
                                 fontWeight: FontWeight.w300)),
                       ],
                     ),

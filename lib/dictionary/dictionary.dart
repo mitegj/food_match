@@ -12,10 +12,10 @@ class Messages extends Translations {
           "HARD": "Hard",
           "BREAKFAST": "Breakfast",
           "STARTER": "Starter",
-          "FIRSTCOURSE": "First course",
-          "SECONDCOURSE": "Second course",
-          "SIDECOURSE": "Side course",
-          "SWEETCOURSE": "Sweet course",
+          "FIRSTCOURSE": "First",
+          "SECONDCOURSE": "Second",
+          "SIDECOURSE": "Side",
+          "SWEETCOURSE": "Sweet",
           "ANYALLERGY": "Do you have any kind of allergies",
           "DECLAREYOURALLERGIES":
               "Declare them and we will not show you recipes wich contains those",
@@ -27,9 +27,9 @@ class Messages extends Translations {
               "Embrace a new way to enjoy cooking your meals and finding new recipes.",
           "WEEKLYCAL": "Weekly calories",
           "WEEKLYHISTORY": "Weekly history",
-          "SHOW": "Show",
+          "SHOW": "Show now",
           "SETTINGS": "Settings",
-          "ALLERGIES": "Allergies",
+          "ALLERGIES": "Allergies and intolerances",
           "SUPPORTUS": "Support us with 5 stars",
           "HELPASSISTANCE": "Help and assistance",
           "PRIVACYPOLICY": "Privacy policy",
@@ -59,8 +59,8 @@ class Messages extends Translations {
           "INGREDIENTSINVENTORY": "Inventory home",
           "INGREDIENTSINVENTORYSUBTITLE": "Home inventory stock",
           "CONTINUEWITH": "Continue with",
-          "ANYPREFERENCES": "Any preferences",
-          "NOTIFICATION": "Notification",
+          "ANYPREFERENCES": "Do you have any preferences",
+          "NOTIFICATION": "Smart notification",
           "LABELENABLENOTIFICATION":
               "Enable notifications for a better experience.",
           "LABELTIMENOTIFICATION": "send time: ",
@@ -97,7 +97,11 @@ class Messages extends Translations {
           "EMPTYSCREENMESSAGE1":
               "Try updating your inventory by adding new ingredients.",
           "EMPTYSCREENMESSAGE2": "Or check the filters you've applied.",
-          "SAVEDMENULABEL": "Save them and then come back to this section."
+          "SAVEDMENULABEL": "Save them and then come back to this section.",
+          "NOTIFICATIONBODY":
+              "Hey, dinner time is coming. Take a look at what you can cook.",
+          "INVENTORY": "Inventory",
+          "TOCOOK": " to cook"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -123,9 +127,9 @@ class Messages extends Translations {
               "Abbraccia un nuovo modo di divertirti a cucinare i tuoi pasti e a trovare nuove ricette.",
           "WEEKLYCAL": "Calorie settimanale",
           "WEEKLYHISTORY": "Storico settimanale",
-          "SHOW": "Visualizza",
+          "SHOW": "Visualizza ora",
           "SETTINGS": "Impostazioni",
-          "ALLERGIES": "Allergie",
+          "ALLERGIES": "Allergie e intolleranze",
           "SUPPORTUS": "Supportaci con 5 stelle",
           "HELPASSISTANCE": "Aiuto e assistenza",
           "PRIVACYPOLICY": "Privacy policy",
@@ -154,9 +158,9 @@ class Messages extends Translations {
           "ESTIMATEDTIME": " Minuti circa",
           "INGREDIENTSINVENTORY": "Inventario casa",
           "INGREDIENTSINVENTORYSUBTITLE": "Dispensa",
-          "CONTINUEWITH": "Continua con",
+          "CONTINUEWITH": "continua con",
           "ANYPREFERENCES": "Hai qualche tipo di preferenza",
-          "NOTIFICATION": "Notifiche",
+          "NOTIFICATION": "Notifiche smart",
           "LABELENABLENOTIFICATION":
               "Abilita le notifiche per avere un esperienza migliore.",
           "LABELTIMENOTIFICATION": "ora arrivo notifiche ",
@@ -194,7 +198,11 @@ class Messages extends Translations {
           "EMPTYSCREENMESSAGE1":
               "Prova ad aggiornare il tuo inventario aggiungendo nuovi ingredienti.",
           "EMPTYSCREENMESSAGE2": "Oppure controlli i filtri che hai applicato.",
-          "SAVEDMENULABEL": "Salvali e poi torna in questa sezione."
+          "SAVEDMENULABEL": "Salvali e poi torna in questa sezione.",
+          "NOTIFICATIONBODY":
+              "Hey, l'orario di cena si sta avvicinando. Dai un'occhiata a quello che puoi cucinare.",
+          "INVENTORY": "Inventario",
+          "TOCOOK": " da cucinare"
         },
       };
 }

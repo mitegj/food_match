@@ -58,6 +58,7 @@ class MenuTile extends StatelessWidget {
                             Text(
                               " " +
                                   menu.preparationTime.toString() +
+                                  " " +
                                   "ESTIMATEDTIME".tr,
                               style: GoogleFonts.poppins(
                                   fontSize: 14,
@@ -112,7 +113,7 @@ class MenuTile extends StatelessWidget {
                                         DishDifficulty.values[menu.difficulty])
                                     .toString()
                                     .tr +
-                                " da cucinare.",
+                                "TOCOOK".tr,
                             overflow: TextOverflow.visible,
                             style: GoogleFonts.poppins(
                                 fontSize: 16,

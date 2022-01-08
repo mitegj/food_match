@@ -35,12 +35,14 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                             child: Column(
                               children: [
                                 Text("ANYALLERGY".tr + "?",
+                                    overflow: TextOverflow.clip,
                                     style: GoogleFonts.poppins(
                                         color: UIColors.white,
                                         fontSize: 26,
                                         fontWeight: FontWeight.w600)),
                                 SizedBox(height: 20),
                                 Text("DECLAREYOURALLERGIES".tr,
+                                    overflow: TextOverflow.ellipsis,
                                     style: GoogleFonts.poppins(
                                         color: UIColors.grey,
                                         fontSize: 18,
@@ -49,7 +51,7 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                             ),
                           )),
                       Expanded(
-                        flex: 4,
+                        flex: 5,
                         child: Container(
                           padding: const EdgeInsets.all(10),
                           margin: const EdgeInsets.all(20),
@@ -142,7 +144,7 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                 style: GoogleFonts.poppins(
                                     color: UIColors.black,
                                     fontSize: 20,
-                                    fontWeight: FontWeight.normal)),
+                                    fontWeight: FontWeight.w600)),
                           ),
                         ),
                       ),
