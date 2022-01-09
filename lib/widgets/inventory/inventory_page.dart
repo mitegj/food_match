@@ -15,7 +15,8 @@ import 'package:morning_brief/widgets/spinner/spinner.dart';
 class InventoryScreen extends StatelessWidget {
   bool isValueUpdated = false;
   RxList<UserInventory> _userInventory = RxList();
-  IngredientController ingController = Get.find<IngredientController>();
+  IngredientController ingController =
+      Get.put<IngredientController>(IngredientController());
 
   updateStock(state, index, stocked) {
     UserInventory inv =
