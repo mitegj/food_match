@@ -91,7 +91,7 @@ class TimeEatingScreen extends StatelessWidget {
                       style: GoogleFonts.poppins(
                           color: UIColors.black,
                           fontSize: 20,
-                          fontWeight: FontWeight.normal)),
+                          fontWeight: FontWeight.w600)),
                 ),
               ),
             ),

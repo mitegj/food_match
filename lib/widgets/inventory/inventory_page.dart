@@ -2,13 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
-
 import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/models/userInventory_model.dart';
-
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/filter/filters_body.dart';
+
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 // ignore: must_be_immutable
@@ -69,33 +68,30 @@ class InventoryScreen extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 20.0),
-                      child: Row(
-                        children: [
-                          Text("INVENTORY".tr,
-                              style: GoogleFonts.poppins(
-                                  color: UIColors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700)),
-                        ],
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text("INVENTORY".tr,
+                            style: GoogleFonts.poppins(
+                                color: UIColors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700)),
                       ),
                     ),
-                    Flexible(
-                      child: CupertinoTextField(
-                        padding: EdgeInsets.all(20),
-                        onChanged: (text) {
-                          ingController.filterIngredients(text);
-                        },
-                        autofocus: false,
-                        style: TextStyle(fontSize: 15.0, color: Colors.white),
-                        placeholder: "cerca nella tua dispensa...",
-                        placeholderStyle:
-                            TextStyle(color: Colors.white.withOpacity(0.5)),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                              width: 1,
-                              color: UIColors.lightBlack.withOpacity(0.5)),
-                        ),
+                    CupertinoTextField(
+                      padding: EdgeInsets.all(20),
+                      onChanged: (text) {
+                        ingController.filterIngredients(text);
+                      },
+                      autofocus: false,
+                      style: TextStyle(fontSize: 15.0, color: Colors.white),
+                      placeholder: "cerca nella tua dispensa...",
+                      placeholderStyle:
+                          TextStyle(color: Colors.white.withOpacity(0.5)),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                            width: 1,
+                            color: UIColors.lightBlack.withOpacity(0.5)),
                       ),
                     ),
                   ],
@@ -129,30 +125,27 @@ class InventoryScreen extends StatelessWidget {
                                                 color: UIColors.lightBlack,
                                                 borderRadius:
                                                     BorderRadius.circular(20)),
-                                            child: Flexible(
-                                              flex: 3,
-                                              child: CheckboxListTile(
-                                                checkColor: UIColors.green,
-                                                activeColor: UIColors.green,
-                                                title: Text(
-                                                  ingCtrl.ingSearch[index].name
-                                                      .toString()
-                                                      .toLowerCase(),
-                                                  style: GoogleFonts.poppins(
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.w300),
-                                                ),
-                                                value: getStock(ingCtrl, index),
-                                                onChanged: (bool? value) {
-                                                  updateStock(
-                                                      ingCtrl, index, value);
-                                                  isValueUpdated = true;
-                                                },
-                                                controlAffinity:
-                                                    ListTileControlAffinity
-                                                        .trailing, //  <-- leading Checkbox
+                                            child: CheckboxListTile(
+                                              checkColor: UIColors.green,
+                                              activeColor: UIColors.green,
+                                              title: Text(
+                                                ingCtrl.ingSearch[index].name
+                                                    .toString()
+                                                    .toLowerCase(),
+                                                style: GoogleFonts.poppins(
+                                                    color: Colors.white,
+                                                    fontWeight:
+                                                        FontWeight.w300),
                                               ),
+                                              value: getStock(ingCtrl, index),
+                                              onChanged: (bool? value) {
+                                                updateStock(
+                                                    ingCtrl, index, value);
+                                                isValueUpdated = true;
+                                              },
+                                              controlAffinity:
+                                                  ListTileControlAffinity
+                                                      .trailing, //  <-- leading Checkbox
                                             ),
                                           ));
                                     },
