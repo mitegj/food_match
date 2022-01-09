@@ -8,7 +8,7 @@ class SavedHeader extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(25),
       alignment: Alignment.topLeft,
       color: theme.backgroundColor,
       child: Row(

@@ -85,7 +85,7 @@ class InventoryScreen extends StatelessWidget {
                       },
                       autofocus: false,
                       style: TextStyle(fontSize: 15.0, color: Colors.white),
-                      placeholder: "cerca nella tua dispensa...",
+                      placeholder: "TEXTFIELDLABELINVENTORY".tr,
                       placeholderStyle:
                           TextStyle(color: Colors.white.withOpacity(0.5)),
                       decoration: BoxDecoration(

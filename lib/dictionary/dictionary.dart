@@ -101,7 +101,8 @@ class Messages extends Translations {
           "NOTIFICATIONBODY":
               "Hey, dinner time is coming. Take a look at what you can cook.",
           "INVENTORY": "Inventory",
-          "TOCOOK": " to cook"
+          "TOCOOK": " to cook",
+          "TEXTFIELDLABELINVENTORY": "search in your pantry..."
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -202,7 +203,8 @@ class Messages extends Translations {
           "NOTIFICATIONBODY":
               "Hey, l'orario di cena si sta avvicinando. Dai un'occhiata a quello che puoi cucinare.",
           "INVENTORY": "Inventario",
-          "TOCOOK": " da cucinare"
+          "TOCOOK": " da cucinare",
+          "TEXTFIELDLABELINVENTORY": "cerca nella tua dispensa..."
         },
       };
 }
