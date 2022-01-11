@@ -61,9 +61,9 @@ void main() async {
   /// done later
   final IOSInitializationSettings initializationSettingsIOS =
       IOSInitializationSettings(
-          requestAlertPermission: true,
-          requestBadgePermission: true,
-          requestSoundPermission: true,
+          requestAlertPermission: false,
+          requestBadgePermission: false,
+          requestSoundPermission: false,
           onDidReceiveLocalNotification: (
             int id,
             String? title,

@@ -52,6 +52,7 @@ class InventoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var mediaQuery = MediaQuery.of(context);
+    ingController.filterIngredients("");
     return Scaffold(
       backgroundColor: theme.backgroundColor,
       resizeToAvoidBottomInset: true,
@@ -161,28 +162,30 @@ class InventoryScreen extends StatelessWidget {
                     ]),
               ),
             ),
-            InkWell(
-              onTap: () {
-                MenuController.instance.getMenuList(FilterBody.listFilters);
-                Get.back();
-              },
-              child: Container(
-                width: mediaQuery.size.height * 1,
-                padding: const EdgeInsets.all(20),
-                margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
-                decoration: BoxDecoration(
-                    color: UIColors.white,
-                    borderRadius: BorderRadius.circular(20)),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text('DONE'.tr,
-                      style: GoogleFonts.poppins(
-                          color: UIColors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600)),
+            if (mediaQuery.viewInsets.bottom == 0)
+              InkWell(
+                onTap: () {
+                  MenuController.instance.getMenuList(FilterBody.listFilters);
+                  Get.back();
+                },
+                child: Container(
+                  width: mediaQuery.size.height * 1,
+                  padding: const EdgeInsets.all(20),
+                  margin:
+                      const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                  decoration: BoxDecoration(
+                      color: UIColors.white,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text('DONE'.tr,
+                        style: GoogleFonts.poppins(
+                            color: UIColors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600)),
+                  ),
                 ),
               ),
-            ),
           ],
         ),
       ),

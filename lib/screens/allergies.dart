@@ -41,12 +41,16 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                         fontSize: 26,
                                         fontWeight: FontWeight.w600)),
                                 SizedBox(height: 20),
-                                Text("DECLAREYOURALLERGIES".tr,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: GoogleFonts.poppins(
-                                        color: UIColors.grey,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w300)),
+                                Row(
+                                  children: [
+                                    Text("DECLAREYOURALLERGIES".tr,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: GoogleFonts.poppins(
+                                            color: UIColors.grey,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w300)),
+                                  ],
+                                ),
                               ],
                             ),
                           )),
@@ -124,9 +128,9 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                           MenuController.instance
                               .getMenuList(FilterBody.listFilters);
                           if (isFirstLogin)
-                            Get.to(TimeEatingScreen(
-                              isFirstLogin: isFirstLogin,
-                            ));
+                            Get.to(() => TimeEatingScreen(
+                                  isFirstLogin: isFirstLogin,
+                                ));
                           else
                             Get.back();
                         },

@@ -62,9 +62,9 @@ class AuthController extends GetxController {
       if (authResult.additionalUserInfo!.isNewUser) {
         // se utente non esiste quando fa login lo creo con solo l'id
 
-        Get.to(AllergiesScreen(
-          isFirstLogin: true,
-        ));
+        Get.to(() => AllergiesScreen(
+              isFirstLogin: true,
+            ));
         if (user != null) {
           createUser(user.uid.toString()).then((value) => {});
         } else {

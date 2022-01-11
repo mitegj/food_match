@@ -6,15 +6,26 @@ import 'package:morning_brief/controllers/auth_controller.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 
 class GoogleLogin extends GetWidget<AuthController> {
+  GoogleLogin({Key? key, required this.checked}) : super(key: key);
+  final RxBool checked;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        right: 15.0,
-        left: 15.0,
+        right: 20.0,
+        left: 20.0,
       ),
       child: GestureDetector(
-        onTap: () => {AuthController.instance.googleLogin()},
+        onTap: () => {
+          if (checked.value)
+            {AuthController.instance.googleLogin()}
+          else
+            {
+              Get.snackbar("Accetta i termini!",
+                  "Per continuare con il login bisogna accettere le condizioni d'utilizzo",
+                  colorText: UIColors.white)
+            }
+        },
         child: Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
@@ -25,7 +36,9 @@ class GoogleLogin extends GetWidget<AuthController> {
             padding: const EdgeInsets.all(10),
             child: Row(
               children: [
-                FaIcon(FontAwesomeIcons.google),
+                FaIcon(
+                  FontAwesomeIcons.google,
+                ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,

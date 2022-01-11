@@ -1,11 +1,10 @@
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:morning_brief/controllers/allergy_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/filter/filters_body.dart';
 
-class FiltersPage extends GetWidget<AllergyController> {
+class FiltersPage extends StatelessWidget {
   FiltersPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {

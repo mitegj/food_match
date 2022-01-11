@@ -20,11 +20,12 @@ class Messages extends Translations {
           "DECLAREYOURALLERGIES":
               "Declare them and we will not show you recipes wich contains those",
           "DONE": "Done",
-          "TERMSANDCONDITIONS": "Terms and conditions",
+          "TERMSANDCONDITIONS":
+              "By pressing continue you confirm that you have read and accept the EULA, the CCPA and the GDPR for privacy.",
           "YOURAGREEMENT": "Your agreement",
           "HAVEREAD": "I have read",
           "SLOGAN":
-              "Embrace a new way to enjoy cooking your meals and finding new recipes.",
+              "Embrace a new way to cooking your meals and finding new recipes.",
           "WEEKLYCAL": "Weekly calories",
           "WEEKLYHISTORY": "Weekly history",
           "SHOW": "Show now",
@@ -118,14 +119,14 @@ class Messages extends Translations {
           "SIDECOURSE": "Contorno",
           "SWEETCOURSE": "Dolce",
           "ANYALLERGY": "Hai qualche tipo di allergia o intolleranza",
-          "DECLAREYOURALLERGIES":
-              "Dichiarale e non ti faremo più vedere ricette che le contengono",
+          "DECLAREYOURALLERGIES": "Select your allergies or intolerances",
           "DONE": "Fatto",
-          "TERMSANDCONDITIONS": "Termini e condizioni",
+          "TERMSANDCONDITIONS":
+              "Premendo continua confermi di aver letto e accetto l'EULA, il CCPA e il GDPR per la privacy.",
           "YOURAGREEMENT": "Il tuo contratto",
           "HAVEREAD": "Ho letto",
           "SLOGAN":
-              "Abbraccia un nuovo modo di divertirti a cucinare i tuoi pasti e a trovare nuove ricette.",
+              "Abbraccia un nuovo modo di cucinare i tuoi pasti e a trovare nuove ricette.",
           "WEEKLYCAL": "Calorie settimanale",
           "WEEKLYHISTORY": "Storico settimanale",
           "SHOW": "Visualizza ora",

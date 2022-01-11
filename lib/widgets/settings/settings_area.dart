@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/setting_controller.dart';
 import 'package:morning_brief/screens/allergies.dart';
-import 'package:morning_brief/screens/contract.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/time_eating_screen.dart';
 
@@ -57,9 +56,9 @@ class SettingsArea extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Get.to(TimeEatingScreen(
-                isFirstLogin: false,
-              ));
+              Get.to(() => TimeEatingScreen(
+                    isFirstLogin: false,
+                  ));
             },
             child: Padding(
               padding: const EdgeInsets.only(top: 20.0, bottom: 20),
@@ -142,9 +141,7 @@ class SettingsArea extends StatelessWidget {
             color: UIColors.black,
           ),
           InkWell(
-            onTap: () {
-              Get.to(ContractScreen());
-            },
+            onTap: () {},
             child: Padding(
               padding: const EdgeInsets.only(top: 20.0, bottom: 20),
               child: Row(

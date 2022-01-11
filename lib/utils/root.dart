@@ -17,7 +17,7 @@ class Root extends StatelessWidget {
         backgroundColor: theme.backgroundColor,
         resizeToAvoidBottomInset: true,
         body: Center(
-            child: Text("foodmatch.",
+            child: Text("Hi, ✌️",
                 style: GoogleFonts.poppins(
                     fontSize: 26,
                     fontWeight: FontWeight.w600,

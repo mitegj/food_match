@@ -8,13 +8,13 @@ import 'package:timezone/timezone.dart' as tz;
 
 class Notification {
   void initState() {
-    _requestPermissions();
+    //_requestPermissions();
     _configureDidReceiveLocalNotificationSubject();
     _configureSelectNotificationSubject();
     _repeatNotification();
   }
 
-  void _requestPermissions() {
+  void requestPermissions() {
     flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
             IOSFlutterLocalNotificationsPlugin>()

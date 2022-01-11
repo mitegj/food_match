@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:get/get.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/screens/homepage.dart';
 import 'package:morning_brief/utils/UIColors.dart';
@@ -18,7 +17,7 @@ class TimeEatingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var mediaQuery = MediaQuery.of(context);
-
+    nt.Notification().requestPermissions();
     return Scaffold(
       backgroundColor: theme.backgroundColor,
       body: SafeArea(

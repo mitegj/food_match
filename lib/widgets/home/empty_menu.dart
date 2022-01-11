@@ -85,7 +85,7 @@ class EmptyMenu extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  Get.to(InventoryScreen());
+                  Get.to(() => InventoryScreen());
                 },
                 child: Container(
                   alignment: Alignment.center,
