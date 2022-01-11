@@ -25,14 +25,15 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                 resizeToAvoidBottomInset: true,
                 body: SafeArea(
                     child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                      Expanded(
-                          flex: 2,
-                          child: Container(
-                            padding: const EdgeInsets.only(
-                                right: 20, left: 20, top: 50),
+                      Flexible(
+                          flex: 1,
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.only(left: 20.0, right: 20),
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text("ANYALLERGY".tr + "?",
                                     overflow: TextOverflow.clip,
@@ -40,7 +41,7 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                         color: UIColors.white,
                                         fontSize: 26,
                                         fontWeight: FontWeight.w600)),
-                                SizedBox(height: 20),
+                                /*SizedBox(height: 20),
                                 Row(
                                   children: [
                                     Text("DECLAREYOURALLERGIES".tr,
@@ -50,12 +51,12 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                             fontSize: 18,
                                             fontWeight: FontWeight.w300)),
                                   ],
-                                ),
+                                ),*/
                               ],
                             ),
                           )),
                       Expanded(
-                        flex: 5,
+                        flex: 4,
                         child: Container(
                           padding: const EdgeInsets.all(10),
                           margin: const EdgeInsets.all(20),

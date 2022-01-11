@@ -17,8 +17,7 @@ class Messages extends Translations {
           "SIDECOURSE": "Side",
           "SWEETCOURSE": "Sweet",
           "ANYALLERGY": "Do you have any kind of allergies",
-          "DECLAREYOURALLERGIES":
-              "Declare them and we will not show you recipes wich contains those",
+          "DECLAREYOURALLERGIES": "Select your allergies or intolerances",
           "DONE": "Done",
           "TERMSANDCONDITIONS":
               "By pressing continue you confirm that you have read and accept the EULA, the CCPA and the GDPR for privacy.",
@@ -119,7 +118,7 @@ class Messages extends Translations {
           "SIDECOURSE": "Contorno",
           "SWEETCOURSE": "Dolce",
           "ANYALLERGY": "Hai qualche tipo di allergia o intolleranza",
-          "DECLAREYOURALLERGIES": "Select your allergies or intolerances",
+          "DECLAREYOURALLERGIES": "Seleziona le tue allergie o intolleranze",
           "DONE": "Fatto",
           "TERMSANDCONDITIONS":
               "Premendo continua confermi di aver letto e accetto l'EULA, il CCPA e il GDPR per la privacy.",

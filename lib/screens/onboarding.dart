@@ -16,19 +16,20 @@ class OnBoardingPage extends StatelessWidget {
         backgroundColor: theme.backgroundColor,
         resizeToAvoidBottomInset: true,
         body: SafeArea(
-          child: Container(
-            child: Column(
-              children: <Widget>[
-                Padding(
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                flex: 3,
+                child: Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Image.asset(
                     "assets/images/hamburger.png",
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Padding(
+              ),
+              Flexible(
+                flex: 2,
+                child: Padding(
                   padding: const EdgeInsets.only(
                       left: 20.0, right: 20.0, top: 10.0, bottom: 0),
                   child: Text(
@@ -39,23 +40,25 @@ class OnBoardingPage extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                   ),
                 ),
-                Padding(
+              ),
+              Expanded(
+                flex: 1,
+                child: Padding(
                   padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                  child: Expanded(
-                    child: Text(
-                      "SLOGAN".tr,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                          color: Colors.white.withOpacity(0.6),
-                          fontWeight: FontWeight.w300,
-                          fontSize: 16),
-                    ),
+                  child: Text(
+                    "SLOGAN".tr,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                        color: Colors.white.withOpacity(0.6),
+                        fontWeight: FontWeight.w300,
+                        fontSize: 16),
                   ),
                 ),
-                const SizedBox(
-                  height: 40,
-                ),
-                Padding(
+              ),
+              Spacer(),
+              Flexible(
+                flex: 2,
+                child: Padding(
                   padding:
                       const EdgeInsets.only(left: 20.0, right: 20, bottom: 10),
                   child: Container(
@@ -88,17 +91,24 @@ class OnBoardingPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                AppleLogin(onPressed: () {
-                  print('Apple Auth');
-                }),
-                const SizedBox(
-                  height: 10,
+              ),
+              Expanded(
+                flex: 3,
+                child: Column(
+                  children: [
+                    AppleLogin(onPressed: () {
+                      print('Apple Auth');
+                    }),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    GoogleLogin(
+                      checked: checked,
+                    )
+                  ],
                 ),
-                GoogleLogin(
-                  checked: checked,
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ));
   }

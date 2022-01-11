@@ -101,7 +101,7 @@ class InventoryScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 7,
+              flex: 6,
               child: Container(
                 margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
                 padding: const EdgeInsets.all(20),
