@@ -21,8 +21,7 @@ class GoogleLogin extends GetWidget<AuthController> {
             {AuthController.instance.googleLogin()}
           else
             {
-              Get.snackbar("Accetta i termini!",
-                  "Per continuare con il login bisogna accettere le condizioni d'utilizzo",
+              Get.snackbar("ACCEPTTHETERMS".tr + "!", "MUSTACCEPT".tr,
                   colorText: UIColors.white)
             }
         },

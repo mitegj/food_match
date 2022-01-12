@@ -38,7 +38,7 @@ class AuthController extends GetxController {
       Get.offAll(() => OnBoardingPage(), transition: Transition.leftToRight);
     } else {
       UserDatabase().saveUserLastLogin();
-      Get.offAll(() => HomePage());
+      Get.offAll(() => HomePage(isFirstLogin: false));
     }
   }
 

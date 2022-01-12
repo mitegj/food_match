@@ -73,7 +73,7 @@ class TimeEatingScreen extends StatelessWidget {
               onTap: () {
                 saveNotificationDinnerTime();
                 if (isFirstLogin)
-                  Get.offAll(HomePage());
+                  Get.offAll(HomePage(isFirstLogin: true));
                 else
                   Get.back();
               },

@@ -102,7 +102,11 @@ class Messages extends Translations {
               "Hey, dinner time is coming. Take a look at what you can cook.",
           "INVENTORY": "Inventory",
           "TOCOOK": " to cook",
-          "TEXTFIELDLABELINVENTORY": "search in your pantry..."
+          "TEXTFIELDLABELINVENTORY": "search in your pantry...",
+          "ACCEPTTHETERMS": "Accept the terms",
+          "MUSTACCEPT":
+              "To continue with the login you must accept the terms of use",
+          "NOTICE": "Notice"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -204,7 +208,11 @@ class Messages extends Translations {
               "Hey, l'orario di cena si sta avvicinando. Dai un'occhiata a quello che puoi cucinare.",
           "INVENTORY": "Inventario",
           "TOCOOK": " da cucinare",
-          "TEXTFIELDLABELINVENTORY": "cerca nella tua dispensa..."
+          "TEXTFIELDLABELINVENTORY": "cerca nella tua dispensa...",
+          "ACCEPTTHETERMS": "Accetta i termini",
+          "MUSTACCEPT":
+              "Per continuare con il login bisogna accettare le condizioni d'utilizzo",
+          "NOTICE": "Avviso"
         },
       };
 }
