@@ -58,7 +58,7 @@ class Messages extends Translations {
           "ESTIMATEDTIME": "Estimated time",
           "INGREDIENTSINVENTORY": "Inventory home",
           "INGREDIENTSINVENTORYSUBTITLE": "Home inventory stock",
-          "CONTINUEWITH": "Continue with",
+          "CONTINUEWITH": "continue with",
           "ANYPREFERENCES": "Do you have any preferences",
           "NOTIFICATION": "Smart notification",
           "LABELENABLENOTIFICATION":

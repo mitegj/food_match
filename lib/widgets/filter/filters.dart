@@ -19,10 +19,10 @@ class FiltersPage extends StatelessWidget {
           Expanded(
               flex: 2,
               child: Container(
-                padding: const EdgeInsets.only(right: 20, left: 20, top: 50),
+                padding: const EdgeInsets.only(right: 20, left: 20, top: 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Flexible(
                       flex: 1,

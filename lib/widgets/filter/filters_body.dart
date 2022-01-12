@@ -74,8 +74,7 @@ class FilterBody extends StatelessWidget {
             crossAxisCount: 2,
             crossAxisSpacing: 20,
             mainAxisSpacing: 20,
-            childAspectRatio: MediaQuery.of(context).size.width /
-                (MediaQuery.of(context).size.height / 2),
+            childAspectRatio: 1,
             children: getFilters(),
           ),
         ));

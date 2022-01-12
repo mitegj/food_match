@@ -17,6 +17,7 @@ class OnBoardingPage extends StatelessWidget {
         resizeToAvoidBottomInset: true,
         body: SafeArea(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               Expanded(
                 flex: 3,
@@ -55,12 +56,13 @@ class OnBoardingPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Spacer(),
+              Spacer(
+                flex: 1,
+              ),
               Flexible(
                 flex: 2,
                 child: Padding(
-                  padding:
-                      const EdgeInsets.only(left: 20.0, right: 20, bottom: 10),
+                  padding: const EdgeInsets.only(left: 20.0, right: 20),
                   child: Container(
                     padding: EdgeInsets.all(15),
                     decoration: BoxDecoration(
@@ -93,8 +95,9 @@ class OnBoardingPage extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 3,
+                flex: 4,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     AppleLogin(onPressed: () {
                       print('Apple Auth');
@@ -104,7 +107,7 @@ class OnBoardingPage extends StatelessWidget {
                     ),
                     GoogleLogin(
                       checked: checked,
-                    )
+                    ),
                   ],
                 ),
               ),

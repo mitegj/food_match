@@ -13,102 +13,104 @@ class EmptyMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 20.0),
-          child: headerBeforeCard(),
-        ),
-        Container(
-          margin: EdgeInsets.all(20),
-          padding: EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: UIColors.particularBlack,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: headerBeforeCard(),
           ),
-          child: Column(
-            children: [
-              Text(
-                "😤",
-                style: TextStyle(fontSize: 40),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text("EMPTYSCREENMESSAGE".tr,
-                          overflow: TextOverflow.visible,
-                          style: GoogleFonts.poppins(
-                              color: UIColors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600)),
-                    )
-                  ],
+          Container(
+            margin: EdgeInsets.all(20),
+            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: UIColors.particularBlack,
+            ),
+            child: Column(
+              children: [
+                Text(
+                  "✌️",
+                  style: TextStyle(fontSize: 40),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text("EMPTYSCREENMESSAGE1".tr,
-                          overflow: TextOverflow.visible,
-                          style: GoogleFonts.poppins(
-                              color: UIColors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300)),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text("EMPTYSCREENMESSAGE2".tr,
-                          overflow: TextOverflow.visible,
-                          style: GoogleFonts.poppins(
-                              color: UIColors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300)),
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              InkWell(
-                onTap: () {
-                  Get.to(() => InventoryScreen());
-                },
-                child: Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(20),
-                  margin: const EdgeInsets.only(
-                      top: 20, left: 20, right: 20, bottom: 20),
-                  decoration: BoxDecoration(
-                    color: UIColors.white,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    'VIEWINVENTORY'.tr,
-                    style: GoogleFonts.poppins(
-                        color: UIColors.detailBlack,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text("EMPTYSCREENMESSAGE".tr,
+                            overflow: TextOverflow.visible,
+                            style: GoogleFonts.poppins(
+                                color: UIColors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600)),
+                      )
+                    ],
                   ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0, right: 20),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text("EMPTYSCREENMESSAGE1".tr,
+                            overflow: TextOverflow.visible,
+                            style: GoogleFonts.poppins(
+                                color: UIColors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300)),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0, right: 20),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text("EMPTYSCREENMESSAGE2".tr,
+                            overflow: TextOverflow.visible,
+                            style: GoogleFonts.poppins(
+                                color: UIColors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300)),
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                InkWell(
+                  onTap: () {
+                    Get.to(() => InventoryScreen());
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.all(20),
+                    margin: const EdgeInsets.only(
+                        top: 20, left: 20, right: 20, bottom: 20),
+                    decoration: BoxDecoration(
+                      color: UIColors.white,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      'VIEWINVENTORY'.tr,
+                      style: GoogleFonts.poppins(
+                          color: UIColors.detailBlack,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

@@ -47,7 +47,7 @@ class GoogleLogin extends GetWidget<AuthController> {
                       style: GoogleFonts.poppins(
                           color: Colors.black,
                           fontWeight: FontWeight.w500,
-                          fontSize: 18),
+                          fontSize: 17),
                     ),
                   ),
                 )
