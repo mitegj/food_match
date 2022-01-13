@@ -1,13 +1,29 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:morning_brief/utils/UIColors.dart';
+import 'package:morning_brief/utils/conf.dart';
 import 'package:morning_brief/widgets/onBoarding/authButtons/apple_login.dart';
 
 import 'package:morning_brief/widgets/onBoarding/authButtons/google_login.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+// ignore: must_be_immutable
 class OnBoardingPage extends StatelessWidget {
+  Conf conf = new Conf();
+
+  launchURL(String w) async {
+    var lng = conf.iubendaLink[conf.lang];
+    String url = lng![w].toString();
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -82,12 +98,38 @@ class OnBoardingPage extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                          child: Text("TERMSANDCONDITIONS".tr,
-                              overflow: TextOverflow.visible,
-                              style: GoogleFonts.poppins(
-                                  color: UIColors.white,
-                                  fontWeight: FontWeight.w300,
-                                  fontSize: 13)),
+                          child: RichText(
+                            text: TextSpan(
+                                text: "TERMSANDCONDITIONS".tr,
+                                style: GoogleFonts.poppins(
+                                    color: UIColors.white,
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 13),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          launchURL("terms");
+                                        },
+                                      text: " " + "CONDITIONSTERMS".tr,
+                                      style: TextStyle(
+                                          color: UIColors.violet,
+                                          fontWeight: FontWeight.w600)),
+                                  TextSpan(
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          launchURL("privacy");
+                                        },
+                                      text: " " +
+                                          "AND".tr.toLowerCase() +
+                                          " " +
+                                          "PRIVACYPOLICY".tr +
+                                          ".",
+                                      style: TextStyle(
+                                          color: UIColors.violet,
+                                          fontWeight: FontWeight.w600))
+                                ]),
+                          ),
                         ),
                       ],
                     ),

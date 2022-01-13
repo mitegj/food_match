@@ -17,6 +17,17 @@ class Conf {
 
   String lang = Get.deviceLocale.toString().split('_')[0].toUpperCase();
 
+  var iubendaLink = {
+    "IT": {
+      "privacy": "https://www.iubenda.com/privacy-policy/40397842",
+      "terms": "https://www.iubenda.com/termini-e-condizioni/40397842"
+    },
+    "EN": {
+      "privacy": "https://www.iubenda.com/privacy-policy/16023868",
+      "terms": "https://www.iubenda.com/terms-and-conditions/16023868"
+    }
+  };
+
   bool docContains(String key, DocumentSnapshot doc) {
     String s = doc.data().toString();
     return s.contains(key.trim() + ':');

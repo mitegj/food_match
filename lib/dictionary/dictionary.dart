@@ -20,7 +20,7 @@ class Messages extends Translations {
           "DECLAREYOURALLERGIES": "Select your allergies or intolerances",
           "DONE": "Done",
           "TERMSANDCONDITIONS":
-              "By pressing continue you confirm that you have read and accept the EULA, the CCPA and the GDPR for privacy.",
+              "By pressing continue you confirm that you have read and accept",
           "YOURAGREEMENT": "Your agreement",
           "HAVEREAD": "I have read",
           "SLOGAN":
@@ -106,7 +106,8 @@ class Messages extends Translations {
           "ACCEPTTHETERMS": "Accept the terms",
           "MUSTACCEPT":
               "To continue with the login you must accept the terms of use",
-          "NOTICE": "Notice"
+          "NOTICE": "Notice",
+          "CONDITIONSTERMS": "Terms and conditions"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -125,7 +126,7 @@ class Messages extends Translations {
           "DECLAREYOURALLERGIES": "Seleziona le tue allergie o intolleranze",
           "DONE": "Fatto",
           "TERMSANDCONDITIONS":
-              "Premendo continua confermi di aver letto e accetto l'EULA, il CCPA e il GDPR per la privacy.",
+              "Premendo continua confermi di aver letto e accetto",
           "YOURAGREEMENT": "Il tuo contratto",
           "HAVEREAD": "Ho letto",
           "SLOGAN":
@@ -212,7 +213,8 @@ class Messages extends Translations {
           "ACCEPTTHETERMS": "Accetta i termini",
           "MUSTACCEPT":
               "Per continuare con il login bisogna accettare le condizioni d'utilizzo",
-          "NOTICE": "Avviso"
+          "NOTICE": "Avviso",
+          "CONDITIONSTERMS": "Termini e condizioni",
         },
       };
 }
