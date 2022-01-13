@@ -109,7 +109,7 @@ class TimeEatingScreen extends StatelessWidget {
           color: UIColors.blue, fontSize: 20, fontWeight: FontWeight.w700),
       spacing: 40,
       isForce2Digits: false,
-      minutesInterval: 1,
+      minutesInterval: 5,
       alignment: Alignment.center,
       onTimeChange: (time) {
         _dateTime.value = time;
