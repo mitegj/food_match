@@ -16,7 +16,7 @@ class Messages extends Translations {
           "SECONDCOURSE": "Second",
           "SIDECOURSE": "Side",
           "SWEETCOURSE": "Sweet",
-          "ANYALLERGY": "Do you have any kind of allergies",
+          "ANYALLERGY": "Do you have any kind of allergies or intolerances",
           "DECLAREYOURALLERGIES": "Select your allergies or intolerances",
           "DONE": "Done",
           "TERMSANDCONDITIONS":

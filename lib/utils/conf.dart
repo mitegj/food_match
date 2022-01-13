@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Conf {
   String allergyCollection = "allergies";
@@ -31,6 +32,14 @@ class Conf {
   bool docContains(String key, DocumentSnapshot doc) {
     String s = doc.data().toString();
     return s.contains(key.trim() + ':');
+  }
+
+  launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      Get.snackbar("Opss", 'Could not launch $url');
+    }
   }
 }
 

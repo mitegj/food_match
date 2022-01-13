@@ -8,21 +8,10 @@ import 'package:morning_brief/utils/conf.dart';
 import 'package:morning_brief/widgets/onBoarding/authButtons/apple_login.dart';
 
 import 'package:morning_brief/widgets/onBoarding/authButtons/google_login.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 // ignore: must_be_immutable
 class OnBoardingPage extends StatelessWidget {
   Conf conf = new Conf();
-
-  launchURL(String w) async {
-    var lng = conf.iubendaLink[conf.lang];
-    String url = lng![w].toString();
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +98,9 @@ class OnBoardingPage extends StatelessWidget {
                                   TextSpan(
                                       recognizer: TapGestureRecognizer()
                                         ..onTap = () {
-                                          launchURL("terms");
+                                          var lng = conf.iubendaLink[conf.lang];
+                                          String url = lng!["terms"].toString();
+                                          conf.launchURL(url);
                                         },
                                       text: " " + "CONDITIONSTERMS".tr,
                                       style: TextStyle(
@@ -118,7 +109,10 @@ class OnBoardingPage extends StatelessWidget {
                                   TextSpan(
                                       recognizer: TapGestureRecognizer()
                                         ..onTap = () {
-                                          launchURL("privacy");
+                                          var lng = conf.iubendaLink[conf.lang];
+                                          String url =
+                                              lng!["privacy"].toString();
+                                          conf.launchURL(url);
                                         },
                                       text: " " +
                                           "AND".tr.toLowerCase() +

@@ -4,10 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/setting_controller.dart';
 import 'package:morning_brief/screens/allergies.dart';
 import 'package:morning_brief/utils/UIColors.dart';
+import 'package:morning_brief/utils/conf.dart';
 import 'package:morning_brief/widgets/global_input/time_eating_screen.dart';
 
 class SettingsArea extends StatelessWidget {
-  const SettingsArea({
+  Conf conf = new Conf();
+
+  SettingsArea({
     Key? key,
     required SettingController settingController,
   })  : _settingController = settingController,
@@ -85,29 +88,6 @@ class SettingsArea extends StatelessWidget {
           Divider(
             color: UIColors.black,
           ),
-          InkWell(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20.0, bottom: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("SUPPORTUS".tr,
-                      style: GoogleFonts.poppins(
-                        color: UIColors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400,
-                      )),
-                  CircleAvatar(
-                    backgroundColor: UIColors.black.withOpacity(0.6),
-                    child: Icon(
-                      Icons.star,
-                      color: UIColors.white,
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
           Divider(
             color: UIColors.black,
           ),
@@ -141,13 +121,45 @@ class SettingsArea extends StatelessWidget {
             color: UIColors.black,
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              var lng = conf.iubendaLink[conf.lang];
+              String url = lng!["privacy"].toString();
+              conf.launchURL(url);
+            },
             child: Padding(
               padding: const EdgeInsets.only(top: 20.0, bottom: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("PRIVACYPOLICY".tr,
+                      style: GoogleFonts.poppins(
+                        color: UIColors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                      )),
+                  CircleAvatar(
+                    backgroundColor: UIColors.black.withOpacity(0.6),
+                    child: Icon(
+                      Icons.privacy_tip,
+                      color: UIColors.white,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              var lng = conf.iubendaLink[conf.lang];
+              String url = lng!["terms"].toString();
+              conf.launchURL(url);
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("CONDITIONSTERMS".tr,
                       style: GoogleFonts.poppins(
                         color: UIColors.white,
                         fontSize: 15,
