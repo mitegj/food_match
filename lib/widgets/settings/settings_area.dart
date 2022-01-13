@@ -7,6 +7,7 @@ import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/utils/conf.dart';
 import 'package:morning_brief/widgets/global_input/time_eating_screen.dart';
 
+// ignore: must_be_immutable
 class SettingsArea extends StatelessWidget {
   Conf conf = new Conf();
 

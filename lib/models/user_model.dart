@@ -23,7 +23,6 @@ class UserModel {
       "allergies,": allergies,
       "lastShop": lastShop,
       "lastLogin": lastLogin,
-      //"dinnerTime": dinnerTime,
     };
   }
 
@@ -34,7 +33,6 @@ class UserModel {
       allergies: parsedJson['allergies'],
       lastShop: parsedJson['lastShop'],
       lastLogin: parsedJson['lastLogin'],
-      //dinnerTime: parsedJson['dinnerTime'],
     );
   }
 

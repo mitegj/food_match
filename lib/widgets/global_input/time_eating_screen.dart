@@ -109,7 +109,7 @@ class TimeEatingScreen extends StatelessWidget {
           color: UIColors.blue, fontSize: 20, fontWeight: FontWeight.w700),
       spacing: 40,
       isForce2Digits: false,
-      minutesInterval: 5,
+      minutesInterval: 1,
       alignment: Alignment.center,
       onTimeChange: (time) {
         _dateTime.value = time;
@@ -119,8 +119,8 @@ class TimeEatingScreen extends StatelessWidget {
 
   Future<void> saveNotificationDinnerTime() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString(
-        'dinnerTime', DateTime.parse(_dateTime.value.toString()).toString());
+    String dt = _dateTime.value.toString().split(' ')[1];
+    prefs.setString('dinnerTime', dt);
     nt.Notification().initState();
   }
 }

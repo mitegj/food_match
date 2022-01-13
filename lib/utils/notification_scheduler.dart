@@ -42,6 +42,7 @@ class Notification {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String dinnerTime = prefs.getString("dinnerTime") ?? "";
+
       // dinnerTime != ""
       if (dinnerTime != "") {
         tz.initializeTimeZones();
@@ -49,11 +50,14 @@ class Notification {
             await FlutterNativeTimezone.getLocalTimezone();
         tz.setLocalLocation(tz.getLocation(timeZoneName!));
 
+        String sendTime =
+            "${DateTime.now().toString().split(' ')[0]} " + dinnerTime;
+        print(sendTime);
         await flutterLocalNotificationsPlugin.zonedSchedule(
             0,
             'foodmatch',
             'NOTIFICATIONBODY'.tr,
-            tz.TZDateTime.parse(tz.local, dinnerTime),
+            tz.TZDateTime.parse(tz.local, sendTime),
             //tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
             const NotificationDetails(
                 android: AndroidNotificationDetails(
