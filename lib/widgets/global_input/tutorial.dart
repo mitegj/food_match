@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
@@ -20,90 +21,124 @@ class Tutorial extends StatelessWidget {
             topRight: const Radius.circular(20),
           ),
           color: UIColors.detailBlack),
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Align(
-              alignment: Alignment.center,
-              child: Container(
-                  width: 60,
-                  child:
-                      Divider(height: 5, color: UIColors.black, thickness: 4)),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Text("Hey Artenis,ti diamo il benvenuto su foodmatch.",
-                style: GoogleFonts.poppins(
-                    color: UIColors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700)),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Icon(
-                  Icons.help,
-                  color: Colors.white,
-                ),
-                Text(" Disclaimer:",
-                    style: GoogleFonts.poppins(
-                        color: UIColors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700)),
-              ],
-            ),
-            Text(
-                "Ti consigliamo di fare attenzione e di utilizzare le informazioni che sono riportare sull'app e sulle ricette con cautela.",
-                style: GoogleFonts.poppins(
-                    color: UIColors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500)),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Icon(
-                  Icons.assistant,
-                  color: Colors.white,
-                ),
-                Text(" Come usare foodmatch:",
-                    style: GoogleFonts.poppins(
-                        color: UIColors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700)),
-              ],
-            ),
-            Text("Spiegazione su come funziona l'app e cosa può fare",
-                style: GoogleFonts.poppins(
-                    color: UIColors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500)),
-            InkWell(
-              onTap: () {
-                Get.back();
-              },
-              child: Container(
+      child: SingleChildScrollView(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Align(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.all(20),
-                margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
-                decoration: BoxDecoration(
-                  color: UIColors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text(
-                  'Iniziamo',
-                  style: GoogleFonts.poppins(
-                      color: UIColors.detailBlack,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 18),
-                ),
+                child: Container(
+                    width: 60,
+                    child: Divider(
+                        height: 5, color: UIColors.black, thickness: 4)),
               ),
-            )
-          ]),
+              const SizedBox(
+                height: 30,
+              ),
+              Text("✌️ Hey " + FirebaseAuth.instance.currentUser!.displayName!,
+                  style: GoogleFonts.poppins(
+                      color: UIColors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700)),
+              Text("WELCOMETEST".tr,
+                  style: GoogleFonts.poppins(
+                      color: UIColors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500)),
+              const SizedBox(
+                height: 30,
+              ),
+              Row(
+                children: [
+                  Icon(Icons.help, color: UIColors.lightRed),
+                  Text(" Disclaimer:",
+                      style: GoogleFonts.poppins(
+                          color: UIColors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700)),
+                ],
+              ),
+              Text(
+                  "Ti consigliamo di fare attenzione e di utilizzare le informazioni che sono riportare sull'app e sulle ricette con cautela.",
+                  style: GoogleFonts.poppins(
+                      color: UIColors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500)),
+              const SizedBox(height: 30),
+              Row(
+                children: [
+                  Icon(
+                    Icons.assistant,
+                    color: UIColors.violet,
+                  ),
+                  Text("HOWTOUSEFOODMATCH".tr,
+                      style: GoogleFonts.poppins(
+                          color: UIColors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700)),
+                ],
+              ),
+              Text("HOWTHEAPPWORKS".tr,
+                  style: GoogleFonts.poppins(
+                      color: UIColors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500)),
+              const SizedBox(height: 10),
+              RichText(
+                text: TextSpan(
+                    text: "PRESSTHEBUTTON".tr,
+                    style: GoogleFonts.poppins(
+                        color: UIColors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500),
+                    children: [
+                      WidgetSpan(
+                        child: Icon(Icons.receipt_long, color: UIColors.white),
+                      ),
+                      TextSpan(
+                          text: "ADDINGREDIENTSLABEL".tr,
+                          style: GoogleFonts.poppins(
+                              color: UIColors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500)),
+                    ]),
+              ),
+              const SizedBox(height: 10),
+              Text("LABELCREATEALLRECIPE".tr,
+                  style: GoogleFonts.poppins(
+                      color: UIColors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500)),
+              const SizedBox(height: 10),
+              Text("DISCOVERLABEL".tr + " 💪",
+                  style: GoogleFonts.poppins(
+                      color: UIColors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500)),
+              InkWell(
+                onTap: () {
+                  Get.back();
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.all(20),
+                  margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
+                  decoration: BoxDecoration(
+                    color: UIColors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    'LETSTART'.tr,
+                    style: GoogleFonts.poppins(
+                        color: UIColors.detailBlack,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18),
+                  ),
+                ),
+              )
+            ]),
+      ),
     );
   }
 }

@@ -88,15 +88,7 @@ class DetailBottomSheet extends StatelessWidget {
                           fontSize: 15,
                           fontWeight: FontWeight.bold),
                     ),
-                    InkWell(
-                      onTap: () {
-                        menuController.updateSavedMenu(menu);
-                      },
-                      child: Icon(
-                        Icons.bookmark,
-                        color: UIColors.white,
-                      ),
-                    )
+                    removeFromLaterButton(context)
                   ],
                 ),
                 SizedBox(
@@ -309,7 +301,7 @@ class DetailBottomSheet extends StatelessWidget {
                 startCookingButton(),
                 cookedButton(),
                 //saveForLaterButton(),
-                removeFromLaterButton(context),
+                //removeFromLaterButton(context),
               ],
             )
           ],
@@ -335,7 +327,7 @@ class DetailBottomSheet extends StatelessWidget {
           'STARTCOOKING'.tr,
           style: GoogleFonts.poppins(
               color: UIColors.detailBlack,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
               fontSize: 18),
         ),
       ),
@@ -392,19 +384,19 @@ class DetailBottomSheet extends StatelessWidget {
 
               SavedMenuController.instance.removeSavedMenu(menu);
             },
-            child: Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(20),
-              margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
-              child: Text(
-                'REMOVEFROMLATER'.tr,
-                style: GoogleFonts.poppins(
-                    color: UIColors.white,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16),
-              ),
+            child: Icon(
+              Icons.bookmark_remove,
+              color: UIColors.white,
             ),
           )
-        : const SizedBox();
+        : InkWell(
+            onTap: () {
+              menuController.updateSavedMenu(menu);
+            },
+            child: Icon(
+              Icons.bookmark_add,
+              color: UIColors.white,
+            ),
+          );
   }
 }
