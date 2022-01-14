@@ -17,7 +17,7 @@ class Conf {
       "https://apps.apple.com/it/app/tiktok-video-live-e-musica/id835599320";
 
   String lang = Get.deviceLocale.toString().split('_')[0].toUpperCase();
-
+  String language = Get.deviceLocale.toString();
   var iubendaLink = {
     "IT": {
       "privacy": "https://www.iubenda.com/privacy-policy/40397842",

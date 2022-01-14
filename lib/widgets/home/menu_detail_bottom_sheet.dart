@@ -11,6 +11,7 @@ import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/step_circle.dart';
 import 'package:morning_brief/widgets/home/removed_menu.dart';
+import 'package:morning_brief/widgets/home/step_screen.dart';
 
 // ignore: must_be_immutable
 class DetailBottomSheet extends StatelessWidget {
@@ -287,6 +288,7 @@ class DetailBottomSheet extends StatelessWidget {
                       ),
                   ],
                 ),
+                startCookingButton(),
                 cookedButton(),
                 saveForLaterButton(),
                 removeFromLaterButton(context),
@@ -295,6 +297,30 @@ class DetailBottomSheet extends StatelessWidget {
           ],
         )),
       ]),
+    );
+  }
+
+  Widget startCookingButton() {
+    return InkWell(
+      onTap: () {
+        Get.to(() => StepScreen(menu: menu));
+      },
+      child: Container(
+        alignment: Alignment.center,
+        padding: const EdgeInsets.all(20),
+        margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
+        decoration: BoxDecoration(
+          color: UIColors.white,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Text(
+          'STARTCOOKING'.tr,
+          style: GoogleFonts.poppins(
+              color: UIColors.detailBlack,
+              fontWeight: FontWeight.w700,
+              fontSize: 18),
+        ),
+      ),
     );
   }
 
@@ -307,16 +333,10 @@ class DetailBottomSheet extends StatelessWidget {
         alignment: Alignment.center,
         padding: const EdgeInsets.all(20),
         margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
-        decoration: BoxDecoration(
-          color: UIColors.white,
-          borderRadius: BorderRadius.circular(20),
-        ),
         child: Text(
           'DISHCOOKED'.tr,
           style: GoogleFonts.poppins(
-              color: UIColors.detailBlack,
-              fontWeight: FontWeight.w700,
-              fontSize: 18),
+              color: UIColors.white, fontWeight: FontWeight.w700, fontSize: 18),
         ),
       ),
     );
