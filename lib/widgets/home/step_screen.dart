@@ -7,6 +7,7 @@ import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/utils/conf.dart';
 
+// ignore: must_be_immutable
 class StepScreen extends StatelessWidget {
   StepScreen({Key? key, required this.menu}) : super(key: key);
   final MenuModel menu;

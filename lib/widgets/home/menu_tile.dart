@@ -86,7 +86,7 @@ class MenuTile extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          color: UIColors.blue),
+                          color: UIColors.grey.withOpacity(0.3)),
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(20),
                           child: Image.network(
