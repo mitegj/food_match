@@ -51,27 +51,33 @@ class DetailBottomSheet extends StatelessWidget {
           children: [
             Column(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(20.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: UIColors.black,
+                Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: UIColors.black,
+                        ),
+                        child: Image.network(
+                          menu.linkUrl,
+                          fit: BoxFit.cover,
+                          height: mediaQuery.size.height * 0.25,
+                          width: mediaQuery.size.width * 1,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Image.asset(
+                                "assets/images/defaultMenu.jpeg");
+                          },
+                        ),
+                      ),
                     ),
-                    child: Image.network(
-                      menu.linkUrl,
-                      fit: BoxFit.cover,
-                      height: mediaQuery.size.height * 0.25,
-                      width: mediaQuery.size.width * 1,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Image.asset("assets/images/defaultMenu.jpeg");
-                      },
-                    ),
-                  ),
+                  ],
                 ),
                 SizedBox(
                   height: 40,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       describeEnum(DishType.values[menu.dishType])
@@ -82,7 +88,19 @@ class DetailBottomSheet extends StatelessWidget {
                           fontSize: 15,
                           fontWeight: FontWeight.bold),
                     ),
+                    InkWell(
+                      onTap: () {
+                        menuController.updateSavedMenu(menu);
+                      },
+                      child: Icon(
+                        Icons.bookmark,
+                        color: UIColors.white,
+                      ),
+                    )
                   ],
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 Row(
                   children: [
@@ -290,7 +308,7 @@ class DetailBottomSheet extends StatelessWidget {
                 ),
                 startCookingButton(),
                 cookedButton(),
-                saveForLaterButton(),
+                //saveForLaterButton(),
                 removeFromLaterButton(context),
               ],
             )
@@ -317,7 +335,7 @@ class DetailBottomSheet extends StatelessWidget {
           'STARTCOOKING'.tr,
           style: GoogleFonts.poppins(
               color: UIColors.detailBlack,
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w500,
               fontSize: 18),
         ),
       ),
@@ -336,7 +354,7 @@ class DetailBottomSheet extends StatelessWidget {
         child: Text(
           'DISHCOOKED'.tr,
           style: GoogleFonts.poppins(
-              color: UIColors.white, fontWeight: FontWeight.w700, fontSize: 18),
+              color: UIColors.white, fontWeight: FontWeight.w500, fontSize: 16),
         ),
       ),
     );

@@ -48,7 +48,7 @@ class EmptySavedMenu extends StatelessWidget {
                           overflow: TextOverflow.visible,
                           style: GoogleFonts.poppins(
                               color: UIColors.white,
-                              fontSize: 18,
+                              fontSize: 16,
                               fontWeight: FontWeight.w600)),
                     )
                   ],
@@ -63,7 +63,7 @@ class EmptySavedMenu extends StatelessWidget {
                           overflow: TextOverflow.visible,
                           style: GoogleFonts.poppins(
                               color: UIColors.white,
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.w300)),
                     )
                   ],

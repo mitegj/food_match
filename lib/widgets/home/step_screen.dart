@@ -27,31 +27,31 @@ class StepScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     speak(menu.steps[index.value]);
-    return Scaffold(
-      backgroundColor: UIColors.azure,
-      body: GestureDetector(
-        onTapDown: (TapDownDetails details) {
-          final RenderBox box = context.findRenderObject() as RenderBox;
-          final localOffset = box.globalToLocal(details.globalPosition);
-          final x = localOffset.dx;
-          if (x > box.size.width / 2 + 10 ||
-              x < box.size.width / 2 - 10) if (x < box.size.width / 3) {
-            if (index.value != 0) {
-              index.value -= 1;
-            }
-          } else {
-            if (index.value + 1 == menu.steps.length) {
-              MenuController menuController = Get.find<MenuController>();
-              menuController.checkBeforeSaveMenu(menu, true);
-              Get.back();
-              Navigator.pop(context);
-            } else {
-              index.value += 1;
-              if (_speak.value) speak(menu.steps[index.value]);
-            }
+    return GestureDetector(
+      onTapDown: (TapDownDetails details) {
+        final RenderBox box = context.findRenderObject() as RenderBox;
+        final localOffset = box.globalToLocal(details.globalPosition);
+        final x = localOffset.dx;
+        if (x > box.size.width / 2 + 10 || x < box.size.width / 2 - 10) if (x <
+            box.size.width / 3) {
+          if (index.value != 0) {
+            index.value -= 1;
           }
-        },
-        child: SafeArea(
+        } else {
+          if (index.value + 1 == menu.steps.length) {
+            MenuController menuController = Get.find<MenuController>();
+            menuController.checkBeforeSaveMenu(menu, true);
+            Get.back();
+            Navigator.pop(context);
+          } else {
+            index.value += 1;
+            if (_speak.value) speak(menu.steps[index.value]);
+          }
+        }
+      },
+      child: Scaffold(
+        backgroundColor: UIColors.azure,
+        body: SafeArea(
           child: Container(
             child: Center(
               child: cookedTrue(),
@@ -65,36 +65,77 @@ class StepScreen extends StatelessWidget {
   Widget cookedTrue() {
     return Obx(
       () => Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            (index.value + 1).toString() + " / " + menu.steps.length.toString(),
-            style: TextStyle(fontSize: 40),
-          ),
-          Text(
-            menu.steps[index.value],
-            style: GoogleFonts.poppins(
-              fontSize: 27,
-              fontWeight: FontWeight.w600,
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Icon(
+                  Icons.arrow_back_ios,
+                  color: UIColors.black,
+                  size: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    (index.value + 1).toString() +
+                        " / " +
+                        menu.steps.length.toString(),
+                    style: GoogleFonts.poppins(
+                        color: UIColors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w300),
+                  ),
+                ),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  color: UIColors.black,
+                  size: 20,
+                ),
+              ],
             ),
-            textAlign: TextAlign.center,
           ),
-          SizedBox(
-            height: 10,
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(
+              menu.steps[index.value],
+              style: GoogleFonts.poppins(
+                  color: UIColors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500),
+              textAlign: TextAlign.center,
+            ),
           ),
-          SizedBox(
-            height: 10,
-          ),
-          InkWell(
-            // onTap: speak(menu.steps[index.value]),
-            onTap: () {
-              _speak.value = !_speak.value;
-            },
-            child: Icon(
-              _speak.value
-                  ? Icons.volume_down_rounded
-                  : Icons.volume_mute_rounded,
-              size: 50,
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                InkWell(
+                  // onTap: speak(menu.steps[index.value]),
+                  onTap: () {
+                    _speak.value = !_speak.value;
+                  },
+                  child: Icon(
+                    _speak.value
+                        ? Icons.volume_up_rounded
+                        : Icons.volume_off_rounded,
+                    size: 40,
+                    color: UIColors.black,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "(" + "TAPANYWARE".tr + ")",
+                  style: GoogleFonts.poppins(
+                      color: UIColors.black,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w300),
+                ),
+              ],
             ),
           )
         ],

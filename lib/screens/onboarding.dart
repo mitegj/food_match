@@ -107,6 +107,8 @@ class OnBoardingPage extends StatelessWidget {
                                           color: UIColors.violet,
                                           fontWeight: FontWeight.w600)),
                                   TextSpan(
+                                      text: " " + "AND".tr.toLowerCase() + " "),
+                                  TextSpan(
                                       recognizer: TapGestureRecognizer()
                                         ..onTap = () {
                                           var lng = conf.iubendaLink[conf.lang];
@@ -114,11 +116,7 @@ class OnBoardingPage extends StatelessWidget {
                                               lng!["privacy"].toString();
                                           conf.launchURL(url);
                                         },
-                                      text: " " +
-                                          "AND".tr.toLowerCase() +
-                                          " " +
-                                          "PRIVACYPOLICY".tr +
-                                          ".",
+                                      text: "PRIVACYPOLICY".tr + ".",
                                       style: TextStyle(
                                           color: UIColors.violet,
                                           fontWeight: FontWeight.w600))

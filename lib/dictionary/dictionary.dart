@@ -105,7 +105,7 @@ class Messages extends Translations {
           "TEXTFIELDLABELINVENTORY": "search in your pantry...",
           "ACCEPTTHETERMS": "Accept the terms",
           "MUSTACCEPT":
-              "To continue with the login you must accept the terms of use",
+              "To continue, you must accept the Terms and Conditions of use and the Privacy Policy.",
           "NOTICE": "Notice",
           "CONDITIONSTERMS": "Terms and conditions",
           "STARTCOOKING": "Start cooking"
@@ -213,7 +213,7 @@ class Messages extends Translations {
           "TEXTFIELDLABELINVENTORY": "cerca nella tua dispensa...",
           "ACCEPTTHETERMS": "Accetta i termini",
           "MUSTACCEPT":
-              "Per continuare con il login bisogna accettare le condizioni d'utilizzo",
+              "Per continuare, bisogna accettare Termini e Condizioni d'utilizzo e Privacy Policy.",
           "NOTICE": "Avviso",
           "CONDITIONSTERMS": "Termini e condizioni",
           "STARTCOOKING": "Inizia a cucinare"

@@ -21,7 +21,7 @@ class GoogleLogin extends GetWidget<AuthController> {
             {AuthController.instance.googleLogin()}
           else
             {
-              Get.snackbar("ACCEPTTHETERMS".tr + "!", "MUSTACCEPT".tr,
+              Get.snackbar("ACCEPTTHETERMS".tr + ".", "MUSTACCEPT".tr,
                   colorText: UIColors.white)
             }
         },

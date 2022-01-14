@@ -22,12 +22,10 @@ class UserDatabase {
 
   Future<void> createNewUser(UserModel user) async {
     try {
-      await _firestore.collection(conf.userCollection).doc(user.id).set({
-        "id": user.id,
-        "allergies": user.allergies,
-        "lastShop": user.lastShop,
-        "name": user.name
-      });
+      await _firestore
+          .collection(conf.userCollection)
+          .doc(user.id)
+          .set({"id": user.id, "allergies": user.allergies, "name": user.name});
     } catch (e) {
       Get.snackbar(
         "Error creating user",

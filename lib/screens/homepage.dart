@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/utils/UIColors.dart';
+import 'package:morning_brief/widgets/global_input/tutorial.dart';
 import 'package:morning_brief/widgets/home/home_body.dart';
 import 'package:morning_brief/widgets/home/home_header.dart';
 import 'package:package_info/package_info.dart';
@@ -16,8 +17,9 @@ class HomePage extends StatelessWidget {
 
   Future<void> noResponsability() async {
     await PackageInfo.fromPlatform();
-    if (isFirstLogin) {
-      Get.defaultDialog(
+    if (false) {
+      Get.bottomSheet(Tutorial(), isScrollControlled: true);
+      /*Get.defaultDialog(
           backgroundColor: UIColors.black,
           title: '\n' + 'NOTICE'.tr,
           titleStyle: TextStyle(color: UIColors.white),
@@ -29,7 +31,7 @@ class HomePage extends StatelessWidget {
           onConfirm: () {
             Get.back();
           },
-          radius: 10.0);
+          radius: 10.0);*/
     }
   }
 

@@ -7,13 +7,12 @@ class UserModel {
   late String id;
   late String name;
   late List<String> allergies;
-  late DateTime lastShop;
+
   late DateTime lastLogin;
   UserModel(
       {required this.id,
       required this.name,
       required this.allergies,
-      required this.lastShop,
       required this.lastLogin});
 
   Map<String, dynamic> toMap() {
@@ -21,7 +20,7 @@ class UserModel {
       "id": id,
       "name": name,
       "allergies,": allergies,
-      "lastShop": lastShop,
+
       "lastLogin": lastLogin,
     };
   }
@@ -31,7 +30,7 @@ class UserModel {
       id: parsedJson['id'],
       name: parsedJson['name'],
       allergies: parsedJson['allergies'],
-      lastShop: parsedJson['lastShop'],
+
       lastLogin: parsedJson['lastLogin'],
     );
   }
@@ -46,9 +45,7 @@ class UserModel {
     allergies = conf.docContains("allergies", documentSnapshot)
         ? documentSnapshot["allergies"].cast<String>()
         : [];
-    lastShop = conf.docContains("lastShop", documentSnapshot)
-        ? documentSnapshot["lastShop"].toDate()
-        : DateTime.now();
+
     lastLogin = conf.docContains("lastLogin", documentSnapshot)
         ? documentSnapshot["lastLogin"].toDate()
         : DateTime.now();
@@ -60,7 +57,6 @@ extension UserExtensions on QueryDocumentSnapshot {
         id: this.id,
         name: this['name'],
         allergies: this['allergies'],
-        lastShop: this['lastShop'],
         lastLogin: this['lastLogin'],
       );
 }

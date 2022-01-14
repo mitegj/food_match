@@ -83,7 +83,7 @@ class HomeHeader extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15)),
                   child: IconButton(
                     icon: Icon(
-                      Icons.shopping_bag,
+                      Icons.receipt_long,
                       color: UIColors.white,
                     ),
                     onPressed: () {

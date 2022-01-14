@@ -89,9 +89,6 @@ class SettingsArea extends StatelessWidget {
           Divider(
             color: UIColors.black,
           ),
-          Divider(
-            color: UIColors.black,
-          ),
           InkWell(
             onTap: () {
               _settingController.openEmailFeedback();
@@ -149,6 +146,9 @@ class SettingsArea extends StatelessWidget {
               ),
             ),
           ),
+          Divider(
+            color: UIColors.black,
+          ),
           InkWell(
             onTap: () {
               var lng = conf.iubendaLink[conf.lang];
@@ -169,7 +169,7 @@ class SettingsArea extends StatelessWidget {
                   CircleAvatar(
                     backgroundColor: UIColors.black.withOpacity(0.6),
                     child: Icon(
-                      Icons.privacy_tip,
+                      Icons.lock,
                       color: UIColors.white,
                     ),
                   )
