@@ -68,6 +68,7 @@ class MenuController extends GetxController {
       if (await DatabaseMenu().updateCookedMenu(menu)) {
         Get.to(() => ConfirmCooked(
               cooked: true,
+              fromStepsPage: false,
             ));
       }
     } catch (e) {
@@ -80,7 +81,7 @@ class MenuController extends GetxController {
     }
   }
 
-  checkBeforeSaveMenu(MenuModel menu) async {
+  checkBeforeSaveMenu(MenuModel menu, bool fromStepsPage) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String lastTimeCookedS = "";
     int lastCookingTime = 0;
@@ -93,7 +94,10 @@ class MenuController extends GetxController {
 
     DateTime lastTimeCooked = DateTime.parse(lastTimeCookedS);
     if (DateTime.now().difference(lastTimeCooked).inMinutes < lastCookingTime) {
-      Get.to(() => ConfirmCooked(cooked: false));
+      Get.to(() => ConfirmCooked(
+            cooked: false,
+            fromStepsPage: fromStepsPage,
+          ));
     } else {
       updateCookedMenu(menu).then(
         (_) => prefs.setInt("lastCookingTime", menu.preparationTime).then((_) =>

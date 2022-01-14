@@ -107,7 +107,8 @@ class Messages extends Translations {
           "MUSTACCEPT":
               "To continue with the login you must accept the terms of use",
           "NOTICE": "Notice",
-          "CONDITIONSTERMS": "Terms and conditions"
+          "CONDITIONSTERMS": "Terms and conditions",
+          "STARTCOOKING": "Start cooking"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -215,6 +216,7 @@ class Messages extends Translations {
               "Per continuare con il login bisogna accettare le condizioni d'utilizzo",
           "NOTICE": "Avviso",
           "CONDITIONSTERMS": "Termini e condizioni",
+          "STARTCOOKING": "Inizia a cucinare"
         },
       };
 }

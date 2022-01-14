@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/screens/homepage.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 
 class ConfirmCooked extends StatelessWidget {
-  const ConfirmCooked({Key? key, required this.cooked}) : super(key: key);
+  const ConfirmCooked(
+      {Key? key, required this.cooked, required this.fromStepsPage})
+      : super(key: key);
   final bool cooked;
-
+  final bool fromStepsPage;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: cooked ? UIColors.lightGreen : UIColors.orange,
       body: InkWell(
         onTap: () {
-          Get.to(() => HomePage(isFirstLogin: false));
+          HapticFeedback.mediumImpact();
           if (cooked == true) {
             Navigator.pop(context);
+          }
+          if (fromStepsPage) {
+            Get.off(() => HomePage(isFirstLogin: false));
+          } else {
+            Get.back();
           }
         },
         child: SafeArea(

@@ -28,14 +28,12 @@ class StepScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     speak(menu.steps[index.value]);
     return Scaffold(
-      backgroundColor: UIColors.orange,
+      backgroundColor: UIColors.azure,
       body: GestureDetector(
         onTapDown: (TapDownDetails details) {
           final RenderBox box = context.findRenderObject() as RenderBox;
           final localOffset = box.globalToLocal(details.globalPosition);
           final x = localOffset.dx;
-          print(x);
-          print(box.size.width / 2);
           if (x > box.size.width / 2 + 10 ||
               x < box.size.width / 2 - 10) if (x < box.size.width / 3) {
             if (index.value != 0) {
@@ -44,7 +42,7 @@ class StepScreen extends StatelessWidget {
           } else {
             if (index.value + 1 == menu.steps.length) {
               MenuController menuController = Get.find<MenuController>();
-              menuController.checkBeforeSaveMenu(menu);
+              menuController.checkBeforeSaveMenu(menu, true);
               Get.back();
               Navigator.pop(context);
             } else {

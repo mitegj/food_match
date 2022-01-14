@@ -52,7 +52,6 @@ class Notification {
 
         String sendTime =
             "${DateTime.now().toString().split(' ')[0]} " + dinnerTime;
-        print(sendTime);
         await flutterLocalNotificationsPlugin.zonedSchedule(
             0,
             'foodmatch',

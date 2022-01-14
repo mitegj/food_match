@@ -97,4 +97,8 @@ class UIColors {
   static Color get violetMainlightOption {
     return Color(0xFF664E88);
   }
+
+  static Color get azure {
+    return Color(0xFF259fba);
+  }
 }

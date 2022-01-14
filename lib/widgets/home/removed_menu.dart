@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/utils/UIColors.dart';
@@ -13,6 +14,7 @@ class RemovedMenu extends StatelessWidget {
       backgroundColor: UIColors.lightRed,
       body: InkWell(
         onTap: () {
+          HapticFeedback.mediumImpact();
           Navigator.pop(context);
           Get.back();
         },

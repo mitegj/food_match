@@ -327,7 +327,7 @@ class DetailBottomSheet extends StatelessWidget {
   Widget cookedButton() {
     return InkWell(
       onTap: () {
-        menuController.checkBeforeSaveMenu(menu);
+        menuController.checkBeforeSaveMenu(menu, false);
       },
       child: Container(
         alignment: Alignment.center,
