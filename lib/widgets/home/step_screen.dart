@@ -24,6 +24,10 @@ class StepScreen extends StatelessWidget {
     await tts.speak(text);
   }
 
+  stopSpeak() async {
+    await tts.stop();
+  }
+
   @override
   Widget build(BuildContext context) {
     speak(menu.steps[index.value]);
@@ -115,6 +119,7 @@ class StepScreen extends StatelessWidget {
                 InkWell(
                   // onTap: speak(menu.steps[index.value]),
                   onTap: () {
+                    stopSpeak();
                     _speak.value = !_speak.value;
                   },
                   child: Icon(
