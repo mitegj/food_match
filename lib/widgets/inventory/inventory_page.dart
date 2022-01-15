@@ -51,7 +51,7 @@ class InventoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-
+    var mediaQuery = MediaQuery.of(context);
     ingController.filterIngredients("");
     return Scaffold(
       backgroundColor: theme.backgroundColor,
@@ -61,40 +61,40 @@ class InventoryScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            //if (mediaQuery.viewInsets.bottom == 0)
-            Expanded(
-              flex: 1,
-              child: Padding(
-                padding: EdgeInsets.only(left: 20, right: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("INVENTORY".tr,
-                            style: GoogleFonts.poppins(
-                                color: UIColors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700)),
-                        InkWell(
-                          onTap: () {
-                            MenuController.instance
-                                .getMenuList(FilterBody.listFilters);
-                            Get.back();
-                          },
-                          child: Text("DONE".tr.toUpperCase(),
+            if (mediaQuery.viewInsets.bottom == 0)
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("INVENTORY".tr,
                               style: GoogleFonts.poppins(
-                                  color: UIColors.violet,
-                                  fontSize: 16,
+                                  color: UIColors.white,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.w700)),
-                        )
-                      ],
-                    ),
-                  ],
+                          InkWell(
+                            onTap: () {
+                              MenuController.instance
+                                  .getMenuList(FilterBody.listFilters);
+                              Get.back();
+                            },
+                            child: Text("DONE".tr.toUpperCase(),
+                                style: GoogleFonts.poppins(
+                                    color: UIColors.violet,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700)),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
             Expanded(
               flex: 6,
               child: Container(

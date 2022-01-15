@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -46,15 +47,20 @@ class ConfirmCooked extends StatelessWidget {
           "🤙",
           style: TextStyle(fontSize: 40),
         ),
+        SizedBox(
+          height: 20,
+        ),
         Text(
-          "WELLDONE".tr,
+          "ENJOYOURMEAL".tr +
+              FirebaseAuth.instance.currentUser!.displayName!.split(" ")[0] +
+              "!",
           style: GoogleFonts.poppins(
-            fontSize: 27,
-            fontWeight: FontWeight.w600,
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
           ),
         ),
         SizedBox(
-          height: 10,
+          height: 20,
         ),
         Text(
           "(" + "TAPANYWARE".tr + ")",
@@ -74,6 +80,9 @@ class ConfirmCooked extends StatelessWidget {
         Text(
           "😲",
           style: TextStyle(fontSize: 40),
+        ),
+        SizedBox(
+          height: 20,
         ),
         Text(
           "mhhhh...",

@@ -13,7 +13,6 @@ class AllergiesScreen extends GetWidget<AllergyController> {
   final isFirstLogin;
   @override
   Widget build(BuildContext context) {
-    var mediaQuery = MediaQuery.of(context);
     var theme = Theme.of(context);
 
     return Obx(() => GetX<AllergyController>(
@@ -45,24 +44,27 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                             color: UIColors.white,
                                             fontSize: 20,
                                             fontWeight: FontWeight.w600)),
-                                    Text("DONE".tr.toUpperCase(),
-                                        style: GoogleFonts.poppins(
-                                            color: UIColors.violet,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w700))
+                                    InkWell(
+                                      onTap: () {
+                                        controller.setAllergies(controller);
+
+                                        MenuController.instance.getMenuList(
+                                            FilterBody.listFilters);
+                                        if (isFirstLogin)
+                                          Get.to(() => TimeEatingScreen(
+                                                isFirstLogin: isFirstLogin,
+                                              ));
+                                        else
+                                          Get.back();
+                                      },
+                                      child: Text("DONE".tr.toUpperCase(),
+                                          style: GoogleFonts.poppins(
+                                              color: UIColors.violet,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w700)),
+                                    )
                                   ],
                                 ),
-                                /*SizedBox(height: 20),
-                                Row(
-                                  children: [
-                                    Text("DECLAREYOURALLERGIES".tr,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: GoogleFonts.poppins(
-                                            color: UIColors.grey,
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w300)),
-                                  ],
-                                ),*/
                               ],
                             ),
                           )),
@@ -134,37 +136,6 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                               )),
                         ),
                       ),
-                      /*InkWell(
-                        onTap: () {
-                          controller.setAllergies(controller);
-
-                          MenuController.instance
-                              .getMenuList(FilterBody.listFilters);
-                          if (isFirstLogin)
-                            Get.to(() => TimeEatingScreen(
-                                  isFirstLogin: isFirstLogin,
-                                ));
-                          else
-                            Get.back();
-                        },
-                        child: Container(
-                          width: mediaQuery.size.height * 1,
-                          padding: const EdgeInsets.all(20),
-                          margin: const EdgeInsets.only(
-                              left: 20, right: 20, bottom: 20),
-                          decoration: BoxDecoration(
-                              color: UIColors.white,
-                              borderRadius: BorderRadius.circular(15)),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text('DONE'.tr,
-                                style: GoogleFonts.poppins(
-                                    color: UIColors.black,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600)),
-                          ),
-                        ),
-                      ),*/
                     ])));
           } else {
             return Scaffold(

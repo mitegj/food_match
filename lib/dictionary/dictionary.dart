@@ -24,7 +24,7 @@ class Messages extends Translations {
           "YOURAGREEMENT": "Your agreement",
           "HAVEREAD": "I have read",
           "SLOGAN":
-              "Embrace a new way to cooking your meals and finding new recipes.",
+              "Embrace a new way to cooking your meals and discover the pleasure of cooking.",
           "WEEKLYCAL": "Weekly calories",
           "WEEKLYHISTORY": "Weekly history",
           "SHOW": "Show now",
@@ -122,7 +122,8 @@ class Messages extends Translations {
           "EXIT": "Exit",
           "DISCLAIMER":
               "Remember to cook responsibly, respecting all safety regulations and pay attention to dishes that contain allergens.",
-          "ALLERGENS": "Allergens"
+          "ALLERGENS": "Allergens",
+          "ENJOYOURMEAL": "Enjoy your meal "
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -145,7 +146,7 @@ class Messages extends Translations {
           "YOURAGREEMENT": "Il tuo contratto",
           "HAVEREAD": "Ho letto",
           "SLOGAN":
-              "Abbraccia un nuovo modo di cucinare i tuoi pasti e a trovare nuove ricette.",
+              "Abbraccia un nuovo modo di cucinare i tuoi pasti e scopri il piacere delle cucina.",
           "WEEKLYCAL": "Calorie settimanale",
           "WEEKLYHISTORY": "Storico settimanale",
           "SHOW": "Visualizza ora",
@@ -244,7 +245,8 @@ class Messages extends Translations {
           "EXIT": "Esci",
           "DISCLAIMER":
               "Ricordati di cucinare in modo responsabile rispettando tutte le norme di sicurezza e presta attenzione ai piatti che contengono allergeni.",
-          "ALLERGENS": "Allergeni"
+          "ALLERGENS": "Allergeni",
+          "ENJOYOURMEAL": "Buon apetito"
         },
       };
 }

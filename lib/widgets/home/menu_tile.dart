@@ -82,7 +82,7 @@ class MenuTile extends StatelessWidget {
                         )
                       ],
                     ),
-                    SizedBox(height: 15),
+                    SizedBox(height: 20),
                     Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
@@ -101,7 +101,7 @@ class MenuTile extends StatelessWidget {
                           )),
                     ),
                     SizedBox(
-                      height: 15,
+                      height: 20,
                     ),
                     Row(
                       children: [
