@@ -51,7 +51,7 @@ class InventoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    var mediaQuery = MediaQuery.of(context);
+
     ingController.filterIngredients("");
     return Scaffold(
       backgroundColor: theme.backgroundColor,
@@ -63,38 +63,33 @@ class InventoryScreen extends StatelessWidget {
           children: [
             //if (mediaQuery.viewInsets.bottom == 0)
             Expanded(
-              flex: 2,
+              flex: 1,
               child: Padding(
-                padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+                padding: EdgeInsets.only(left: 20, right: 20),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 20.0),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text("INVENTORY".tr,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("INVENTORY".tr,
                             style: GoogleFonts.poppins(
                                 color: UIColors.white,
                                 fontSize: 20,
                                 fontWeight: FontWeight.w700)),
-                      ),
-                    ),
-                    CupertinoTextField(
-                      padding: EdgeInsets.all(20),
-                      onChanged: (text) {
-                        ingController.filterIngredients(text);
-                      },
-                      autofocus: false,
-                      style: TextStyle(fontSize: 15.0, color: Colors.white),
-                      placeholder: "TEXTFIELDLABELINVENTORY".tr,
-                      placeholderStyle:
-                          TextStyle(color: Colors.white.withOpacity(0.5)),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                            width: 1,
-                            color: UIColors.lightBlack.withOpacity(0.5)),
-                      ),
+                        InkWell(
+                          onTap: () {
+                            MenuController.instance
+                                .getMenuList(FilterBody.listFilters);
+                            Get.back();
+                          },
+                          child: Text("DONE".tr.toUpperCase(),
+                              style: GoogleFonts.poppins(
+                                  color: UIColors.violet,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700)),
+                        )
+                      ],
                     ),
                   ],
                 ),
@@ -109,8 +104,32 @@ class InventoryScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     color: UIColors.lightBlack.withOpacity(0.5)),
                 child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      CupertinoTextField(
+                        padding: EdgeInsets.all(20),
+                        onChanged: (text) {
+                          ingController.filterIngredients(text);
+                        },
+                        autofocus: false,
+                        style: GoogleFonts.poppins(
+                            color: UIColors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500),
+                        placeholder: "TEXTFIELDLABELINVENTORY".tr,
+                        placeholderStyle: GoogleFonts.poppins(
+                            color: UIColors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500),
+                        decoration: BoxDecoration(
+                          color: UIColors.lowTransaprentWhite,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
                       Obx(() => GetX<IngredientController>(
                             init: Get.put<IngredientController>(
                                 IngredientController()),
@@ -121,6 +140,7 @@ class InventoryScreen extends StatelessWidget {
                                     itemCount: ingCtrl.ingSearch.length,
                                     itemBuilder: (_, index) {
                                       setUserInventoryCheck(ingCtrl, index);
+
                                       return Obx(() => Container(
                                             margin: EdgeInsets.all(5),
                                             decoration: BoxDecoration(
@@ -137,7 +157,21 @@ class InventoryScreen extends StatelessWidget {
                                                 style: GoogleFonts.poppins(
                                                     color: Colors.white,
                                                     fontWeight:
-                                                        FontWeight.w300),
+                                                        FontWeight.w500),
+                                              ),
+                                              subtitle: Obx(
+                                                () => Text(
+                                                    getStock(ingCtrl, index)
+                                                        ? "presente in cucina"
+                                                        : "non presente in cucina",
+                                                    style: GoogleFonts.poppins(
+                                                        color: getStock(
+                                                                ingCtrl, index)
+                                                            ? UIColors
+                                                                .lightGreen
+                                                            : UIColors.orange,
+                                                        fontWeight:
+                                                            FontWeight.w300)),
                                               ),
                                               value: getStock(ingCtrl, index),
                                               onChanged: (bool? value) {
@@ -162,7 +196,7 @@ class InventoryScreen extends StatelessWidget {
                     ]),
               ),
             ),
-            if (mediaQuery.viewInsets.bottom == 0)
+            /*if (mediaQuery.viewInsets.bottom == 0)
               InkWell(
                 onTap: () {
                   MenuController.instance.getMenuList(FilterBody.listFilters);
@@ -185,7 +219,7 @@ class InventoryScreen extends StatelessWidget {
                             fontWeight: FontWeight.w600)),
                   ),
                 ),
-              ),
+              ),*/
           ],
         ),
       ),

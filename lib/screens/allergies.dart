@@ -33,14 +33,25 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                             padding:
                                 const EdgeInsets.only(left: 20.0, right: 20),
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("ANYALLERGY".tr + "?",
-                                    overflow: TextOverflow.clip,
-                                    style: GoogleFonts.poppins(
-                                        color: UIColors.white,
-                                        fontSize: 26,
-                                        fontWeight: FontWeight.w600)),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("ALLERGENS".tr,
+                                        overflow: TextOverflow.clip,
+                                        style: GoogleFonts.poppins(
+                                            color: UIColors.white,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w600)),
+                                    Text("DONE".tr.toUpperCase(),
+                                        style: GoogleFonts.poppins(
+                                            color: UIColors.violet,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w700))
+                                  ],
+                                ),
                                 /*SizedBox(height: 20),
                                 Row(
                                   children: [
@@ -56,10 +67,11 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                             ),
                           )),
                       Expanded(
-                        flex: 4,
+                        flex: 6,
                         child: Container(
                           padding: const EdgeInsets.all(10),
-                          margin: const EdgeInsets.all(20),
+                          margin: const EdgeInsets.only(
+                              left: 20, right: 20, bottom: 20),
                           decoration: BoxDecoration(
                               color: UIColors.lightBlack.withOpacity(0.5),
                               borderRadius: BorderRadius.circular(15)),
@@ -122,7 +134,7 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                               )),
                         ),
                       ),
-                      InkWell(
+                      /*InkWell(
                         onTap: () {
                           controller.setAllergies(controller);
 
@@ -152,7 +164,7 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                     fontWeight: FontWeight.w600)),
                           ),
                         ),
-                      ),
+                      ),*/
                     ])));
           } else {
             return Scaffold(

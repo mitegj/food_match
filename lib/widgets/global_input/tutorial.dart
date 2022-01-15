@@ -59,8 +59,7 @@ class Tutorial extends StatelessWidget {
                           fontWeight: FontWeight.w700)),
                 ],
               ),
-              Text(
-                  "Ti consigliamo di fare attenzione e di utilizzare le informazioni che sono riportare sull'app e sulle ricette con cautela.",
+              Text("DISCLAIMER".tr,
                   style: GoogleFonts.poppins(
                       color: UIColors.white,
                       fontSize: 16,

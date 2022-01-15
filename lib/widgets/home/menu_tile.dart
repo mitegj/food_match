@@ -82,7 +82,7 @@ class MenuTile extends StatelessWidget {
                         )
                       ],
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 15),
                     Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
@@ -92,7 +92,7 @@ class MenuTile extends StatelessWidget {
                           child: Image.network(
                             menu.linkUrl,
                             fit: BoxFit.cover,
-                            height: mediaQuery.size.height * 0.25,
+                            height: mediaQuery.size.height * 0.30,
                             width: mediaQuery.size.height * 1,
                             errorBuilder: (context, error, stackTrace) {
                               return Image.asset(
@@ -101,7 +101,7 @@ class MenuTile extends StatelessWidget {
                           )),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 15,
                     ),
                     Row(
                       children: [

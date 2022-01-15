@@ -103,7 +103,7 @@ class MenuModel {
         : -1;
     linkUrl = conf.docContains("linkUrl", documentSnapshot)
         ? documentSnapshot["linkUrl"]
-        : "https://images.pexels.com/photos/349609/pexels-photo-349609.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+        : "https://images.pexels.com/photos/1565982/pexels-photo-1565982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
 
     ingredients = conf.docContains("ingredients", documentSnapshot)
         ? List<MenuIngredientModel>.from(

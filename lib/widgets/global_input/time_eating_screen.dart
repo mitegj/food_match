@@ -36,14 +36,14 @@ class TimeEatingScreen extends StatelessWidget {
                         child: Text("NOTIFICATION".tr,
                             style: GoogleFonts.poppins(
                                 color: UIColors.white,
-                                fontSize: 30,
+                                fontSize: 25,
                                 fontWeight: FontWeight.w700)),
                       ),
                       SizedBox(height: 20),
                       Text("LABELENABLENOTIFICATION".tr,
                           style: GoogleFonts.poppins(
                               color: UIColors.grey,
-                              fontSize: 20,
+                              fontSize: 18,
                               fontWeight: FontWeight.w300)),
                     ],
                   ),

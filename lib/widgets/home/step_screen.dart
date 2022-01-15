@@ -74,30 +74,41 @@ class StepScreen extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
               children: [
-                Icon(
-                  Icons.arrow_back_ios,
-                  color: UIColors.black,
-                  size: 20,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(
+                      Icons.arrow_back_ios,
+                      color: UIColors.black,
+                      size: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Text(
+                        (index.value + 1).toString() +
+                            " / " +
+                            menu.steps.length.toString(),
+                        style: GoogleFonts.poppins(
+                            color: UIColors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300),
+                      ),
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      color: UIColors.black,
+                      size: 20,
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Text(
-                    (index.value + 1).toString() +
-                        " / " +
-                        menu.steps.length.toString(),
-                    style: GoogleFonts.poppins(
-                        color: UIColors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w300),
-                  ),
-                ),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  color: UIColors.black,
-                  size: 20,
+                Text(
+                  "(" + "TAPANYWARE".tr + ")",
+                  style: GoogleFonts.poppins(
+                      color: UIColors.black,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w300),
                 ),
               ],
             ),
@@ -132,24 +143,19 @@ class StepScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  "(" + "TAPANYWARE".tr + ")",
-                  style: GoogleFonts.poppins(
-                      color: UIColors.black,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w300),
-                ),
-                SizedBox(
                   height: 30,
                 ),
                 InkWell(
                   onTap: () {
                     Get.back();
                   },
-                  child: Text("EXIT".tr),
-                )
+                  child: Text("EXIT".tr.toUpperCase(),
+                      style: GoogleFonts.poppins(
+                          color: UIColors.black, fontWeight: FontWeight.w500)),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
               ],
             ),
           )

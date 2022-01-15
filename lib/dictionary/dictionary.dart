@@ -102,7 +102,7 @@ class Messages extends Translations {
               "Hey, dinner time is coming. Take a look at what you can cook.",
           "INVENTORY": "Inventory",
           "TOCOOK": " to cook",
-          "TEXTFIELDLABELINVENTORY": "search in your pantry...",
+          "TEXTFIELDLABELINVENTORY": "search in your pantry",
           "ACCEPTTHETERMS": "Accept the terms",
           "MUSTACCEPT":
               "To continue, you must accept the Terms and Conditions of use and the Privacy Policy.",
@@ -111,7 +111,7 @@ class Messages extends Translations {
           "STARTCOOKING": "Start cooking",
           "WELCOMETEST": "We welcome you to foodmatch.",
           "HOWTOUSEFOODMATCH": " How to use foodmatch.",
-          "HOWTHEAPPWORKS": "How the app works and what it can do.",
+          "HOWTHEAPPWORKS": "How the app works and what it can do?",
           "PRESSTHEBUTTON": "Press the button",
           "ADDINGREDIENTSLABEL":
               " to add all the ingredients you have available in your kitchen to your inventory.",
@@ -119,7 +119,10 @@ class Messages extends Translations {
               "Based on the stock of your inventory, we will create all the possible recipes that you can cook.",
           "LETSTART": "Let's start",
           "DISCOVERLABEL": "Discover the other numerous functions.",
-          "EXIT": "Exit"
+          "EXIT": "Exit",
+          "DISCLAIMER":
+              "Remember to cook responsibly, respecting all safety regulations and pay attention to dishes that contain allergens.",
+          "ALLERGENS": "Allergens"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -221,7 +224,7 @@ class Messages extends Translations {
               "Hey, l'orario di cena si sta avvicinando. Dai un'occhiata a quello che puoi cucinare.",
           "INVENTORY": "Inventario",
           "TOCOOK": " da cucinare",
-          "TEXTFIELDLABELINVENTORY": "cerca nella tua dispensa...",
+          "TEXTFIELDLABELINVENTORY": "cerca nella tua dispensa",
           "ACCEPTTHETERMS": "Accetta i termini",
           "MUSTACCEPT":
               "Per continuare, bisogna accettare Termini e Condizioni d'utilizzo e Privacy Policy.",
@@ -230,7 +233,7 @@ class Messages extends Translations {
           "STARTCOOKING": "Inizia a cucinare",
           "WELCOMETEST": "Ti diamo il benvenuto su foodmatch.",
           "HOWTOUSEFOODMATCH": " Come usare foodmatch:",
-          "HOWTHEAPPWORKS": "Come funziona l'app e cosa può fare.",
+          "HOWTHEAPPWORKS": "Come funziona l'app e cosa può fare?",
           "PRESSTHEBUTTON": "Premi il bottone",
           "ADDINGREDIENTSLABEL":
               " per aggiungere al tuo inventario tutti gli ingredienti che hai a disposizione nella tua cucina.",
@@ -238,7 +241,10 @@ class Messages extends Translations {
               "In base alla giacenza del tuo inventario, ti creeremo tutte le possibili ricette che puoi cucinare.",
           "LETSTART": "Inizaimo",
           "DISCOVERLABEL": "Scopri le altre numerossime funzioni.",
-          "EXIT": "Esci"
+          "EXIT": "Esci",
+          "DISCLAIMER":
+              "Ricordati di cucinare in modo responsabile rispettando tutte le norme di sicurezza e presta attenzione ai piatti che contengono allergeni.",
+          "ALLERGENS": "Allergeni"
         },
       };
 }
