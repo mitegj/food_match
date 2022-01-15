@@ -141,6 +141,15 @@ class StepScreen extends StatelessWidget {
                       fontSize: 12,
                       fontWeight: FontWeight.w300),
                 ),
+                SizedBox(
+                  height: 30,
+                ),
+                InkWell(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Text("EXIT".tr),
+                )
               ],
             ),
           )

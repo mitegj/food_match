@@ -118,7 +118,8 @@ class Messages extends Translations {
           "LABELCREATEALLRECIPE":
               "Based on the stock of your inventory, we will create all the possible recipes that you can cook.",
           "LETSTART": "Let's start",
-          "DISCOVERLABEL": "Discover the other numerous functions."
+          "DISCOVERLABEL": "Discover the other numerous functions.",
+          "EXIT": "Exit"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -214,7 +215,7 @@ class Messages extends Translations {
               "Ops.. non siamo riusciti a trovare niente che faccia al caso tuo.",
           "EMPTYSCREENMESSAGE1":
               "Prova ad aggiornare il tuo inventario aggiungendo nuovi ingredienti.",
-          "EMPTYSCREENMESSAGE2": "Oppure controlli i filtri che hai applicato.",
+          "EMPTYSCREENMESSAGE2": "Oppure controlla i filtri che hai applicato.",
           "SAVEDMENULABEL": "Salvali e poi torna in questa sezione.",
           "NOTIFICATIONBODY":
               "Hey, l'orario di cena si sta avvicinando. Dai un'occhiata a quello che puoi cucinare.",
@@ -234,9 +235,10 @@ class Messages extends Translations {
           "ADDINGREDIENTSLABEL":
               " per aggiungere al tuo inventario tutti gli ingredienti che hai a disposizione nella tua cucina.",
           "LABELCREATEALLRECIPE":
-              "In base alla giacenza del tuo inventario, ti crearemo tutte le possibili ricette che puoi cucinare.",
+              "In base alla giacenza del tuo inventario, ti creeremo tutte le possibili ricette che puoi cucinare.",
           "LETSTART": "Inizaimo",
-          "DISCOVERLABEL": "Scopri le altre numerossime funzioni."
+          "DISCOVERLABEL": "Scopri le altre numerossime funzioni.",
+          "EXIT": "Esci"
         },
       };
 }
