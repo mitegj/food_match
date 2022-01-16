@@ -86,7 +86,7 @@ class TimeEatingScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15)),
                 child: Align(
                   alignment: Alignment.center,
-                  child: Text('DONE'.tr,
+                  child: Text(isFirstLogin ? 'NEXT'.tr : 'DONE'.tr,
                       style: GoogleFonts.poppins(
                           color: UIColors.black,
                           fontSize: 20,

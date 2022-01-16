@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,7 +18,7 @@ class Root extends StatelessWidget {
         backgroundColor: theme.backgroundColor,
         resizeToAvoidBottomInset: true,
         body: Center(
-            child: Text("Hi, ✌️",
+            child: Text("HELLO".tr + " ✌️",
                 style: GoogleFonts.poppins(
                     fontSize: 26,
                     fontWeight: FontWeight.w600,

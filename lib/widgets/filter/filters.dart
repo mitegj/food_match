@@ -32,16 +32,6 @@ class FiltersPage extends StatelessWidget {
                               fontSize: 26,
                               fontWeight: FontWeight.w700)),
                     ),
-                    SizedBox(height: 20),
-                    Row(
-                      children: [
-                        Text("SELECTWITHFILTERS".tr + "!",
-                            style: GoogleFonts.poppins(
-                                color: UIColors.grey,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w300)),
-                      ],
-                    ),
                   ],
                 ),
               )),

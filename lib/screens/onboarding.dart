@@ -53,6 +53,7 @@ class OnBoardingPage extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                   child: Text(
                     "SLOGAN".tr,
+                    overflow: TextOverflow.visible,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                         color: Colors.white.withOpacity(0.6),

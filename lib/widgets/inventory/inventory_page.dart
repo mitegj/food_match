@@ -162,8 +162,10 @@ class InventoryScreen extends StatelessWidget {
                                               subtitle: Obx(
                                                 () => Text(
                                                     getStock(ingCtrl, index)
-                                                        ? "presente in cucina"
-                                                        : "non presente in cucina",
+                                                        ? "AVAIBLEINTHEKITCHEN"
+                                                            .tr
+                                                        : "NOTAVAIBLEINTHEKITCHEN"
+                                                            .tr,
                                                     style: GoogleFonts.poppins(
                                                         color: getStock(
                                                                 ingCtrl, index)

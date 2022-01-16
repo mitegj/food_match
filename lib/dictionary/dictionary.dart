@@ -123,7 +123,10 @@ class Messages extends Translations {
           "DISCLAIMER":
               "Remember to cook responsibly, respecting all safety regulations and pay attention to dishes that contain allergens.",
           "ALLERGENS": "Allergens",
-          "ENJOYOURMEAL": "Enjoy your meal "
+          "ENJOYOURMEAL": "Enjoy your meal ",
+          "NEXT": "Next",
+          "AVAIBLEINTHEKITCHEN": "Available in the kitchen",
+          "NOTAVAIBLEINTHEKITCHEN": "Not available in the kitchen"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -246,7 +249,10 @@ class Messages extends Translations {
           "DISCLAIMER":
               "Ricordati di cucinare in modo responsabile rispettando tutte le norme di sicurezza e presta attenzione ai piatti che contengono allergeni.",
           "ALLERGENS": "Allergeni",
-          "ENJOYOURMEAL": "Buon apetito"
+          "ENJOYOURMEAL": "Buon apetito",
+          "NEXT": "Avanti",
+          "AVAIBLEINTHEKITCHEN": "Presente in cucina",
+          "NOTAVAIBLEINTHEKITCHEN": "Non presente in cucina"
         },
       };
 }

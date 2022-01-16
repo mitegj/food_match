@@ -52,6 +52,7 @@ class ConfirmCooked extends StatelessWidget {
         ),
         Text(
           "ENJOYOURMEAL".tr +
+              " " +
               FirebaseAuth.instance.currentUser!.displayName!.split(" ")[0] +
               "!",
           style: GoogleFonts.poppins(
