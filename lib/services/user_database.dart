@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
 import 'package:morning_brief/models/user_model.dart';
-import 'package:morning_brief/screens/onboarding.dart';
 import 'package:morning_brief/utils/conf.dart';
 
 class UserDatabase {

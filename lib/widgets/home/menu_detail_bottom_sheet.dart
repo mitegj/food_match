@@ -228,7 +228,7 @@ class DetailBottomSheet extends StatelessWidget {
                                             color: UIColors.white,
                                             fontSize: 16,
                                             fontWeight: FontWeight.w300)),
-                                    Text(item.qty.toString() + item.unit + " ",
+                                    Text(getItemQty(item.qty) + item.unit + " ",
                                         overflow: TextOverflow.visible,
                                         style: GoogleFonts.poppins(
                                             color: UIColors.white,
@@ -398,5 +398,10 @@ class DetailBottomSheet extends StatelessWidget {
               color: UIColors.white,
             ),
           );
+  }
+
+  String getItemQty(int qty) {
+    if (qty != 0) return qty.toString();
+    return "";
   }
 }
