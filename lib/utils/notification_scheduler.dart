@@ -52,22 +52,24 @@ class Notification {
 
         String sendTime =
             "${DateTime.now().toString().split(' ')[0]} " + dinnerTime;
-        await flutterLocalNotificationsPlugin.zonedSchedule(
-            0,
-            'foodmatch',
-            'NOTIFICATIONBODY'.tr,
-            tz.TZDateTime.parse(tz.local, sendTime),
-            //tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
-            const NotificationDetails(
-                android: AndroidNotificationDetails(
-                    'full screen channel id', 'full screen channel name',
-                    channelDescription: 'full screen channel description',
-                    priority: Priority.high,
-                    importance: Importance.high,
-                    fullScreenIntent: true)),
-            androidAllowWhileIdle: true,
-            uiLocalNotificationDateInterpretation:
-                UILocalNotificationDateInterpretation.absoluteTime);
+        try {
+          flutterLocalNotificationsPlugin.zonedSchedule(
+              0,
+              'foodmatch',
+              'NOTIFICATIONBODY'.tr,
+              tz.TZDateTime.parse(tz.local, sendTime),
+              //tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
+              const NotificationDetails(
+                  android: AndroidNotificationDetails(
+                      'full screen channel id', 'full screen channel name',
+                      channelDescription: 'full screen channel description',
+                      priority: Priority.high,
+                      importance: Importance.high,
+                      fullScreenIntent: true)),
+              androidAllowWhileIdle: true,
+              uiLocalNotificationDateInterpretation:
+                  UILocalNotificationDateInterpretation.absoluteTime);
+        } catch (e) {}
       }
     } catch (e) {}
   }

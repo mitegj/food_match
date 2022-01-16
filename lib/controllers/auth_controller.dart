@@ -17,24 +17,24 @@ import 'package:url_launcher/url_launcher.dart';
 class AuthController extends GetxController {
   final RemoteConfig remoteConfig = RemoteConfig.instance;
   final Conf conf = new Conf();
-  final GoogleSignIn googleSignIn = GoogleSignIn();
+  GoogleSignIn googleSignIn = GoogleSignIn();
   var googleSignInAccount = Rx<GoogleSignInAccount?>(null);
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  late Rx<User?> _user;
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  late Rx<User?> user;
   static AuthController instance = Get.find();
   late UserCredential authResult;
 
   @override
   void onReady() {
     super.onReady();
-    _user = Rx<User?>(_auth.currentUser);
-    _user.bindStream(_auth.userChanges());
 
-    ever(_user, _initialScreen);
+    user = Rx<User?>(auth.currentUser);
+    user.bindStream(auth.userChanges());
+    ever(user, _initialScreen);
   }
 
-  _initialScreen(User? user) {
-    if (user == null) {
+  _initialScreen(User? usr) {
+    if (user.value == null) {
       Get.offAll(() => OnBoardingPage(), transition: Transition.leftToRight);
     } else {
       UserDatabase().saveUserLastLogin();
@@ -44,6 +44,7 @@ class AuthController extends GetxController {
 
   void googleLogin() async {
     try {
+      googleSignIn = GoogleSignIn();
       googleSignInAccount.value = await googleSignIn.signIn();
       final GoogleSignInAuthentication googleSignInAuthentication =
           await googleSignInAccount.value!.authentication;
@@ -52,11 +53,11 @@ class AuthController extends GetxController {
         idToken: googleSignInAuthentication.idToken,
       );
 
-      authResult = await _auth.signInWithCredential(credential);
+      authResult = await auth.signInWithCredential(credential);
 
       final User? user = authResult.user;
       assert(!user!.isAnonymous);
-      final User? currentUser = _auth.currentUser;
+      final User? currentUser = auth.currentUser;
       assert(user!.uid == currentUser!.uid);
 
       if (authResult.additionalUserInfo!.isNewUser) {
@@ -91,10 +92,10 @@ class AuthController extends GetxController {
 
   Future<void> createUser(String uid) async {
     try {
-      UserModel _user = UserModel(
+      UserModel user = UserModel(
           id: uid, allergies: [], lastLogin: DateTime.now(), name: '');
 
-      await UserDatabase().createNewUser(_user);
+      await UserDatabase().createNewUser(user);
     } catch (e) {
       Get.snackbar(
         "Error creating Account",
@@ -123,7 +124,7 @@ class AuthController extends GetxController {
     try {
       await googleSignIn.disconnect();
 
-      await _auth.signOut();
+      await auth.signOut();
     } catch (e) {
       Get.snackbar(
         "Error signing out",
