@@ -74,7 +74,7 @@ class DetailBottomSheet extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 30,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,7 +91,7 @@ class DetailBottomSheet extends StatelessWidget {
                     removeFromLaterButton(context)
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -105,6 +105,18 @@ class DetailBottomSheet extends StatelessWidget {
                             fontSize: 25,
                             fontWeight: FontWeight.bold),
                       ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 5),
+                Row(
+                  children: [
+                    Text(
+                      "IMAGEDISCLAIMER".tr,
+                      style: GoogleFonts.poppins(
+                          color: UIColors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w300),
                     ),
                   ],
                 ),

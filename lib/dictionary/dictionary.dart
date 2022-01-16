@@ -126,7 +126,8 @@ class Messages extends Translations {
           "ENJOYOURMEAL": "Enjoy your meal ",
           "NEXT": "Next",
           "AVAIBLEINTHEKITCHEN": "Available in the kitchen",
-          "NOTAVAIBLEINTHEKITCHEN": "Not available in the kitchen"
+          "NOTAVAIBLEINTHEKITCHEN": "Not available in the kitchen",
+          "IMAGEDISCLAIMER": "The image may not be true to the plate."
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -252,7 +253,8 @@ class Messages extends Translations {
           "ENJOYOURMEAL": "Buon apetito",
           "NEXT": "Avanti",
           "AVAIBLEINTHEKITCHEN": "Presente in cucina",
-          "NOTAVAIBLEINTHEKITCHEN": "Non presente in cucina"
+          "NOTAVAIBLEINTHEKITCHEN": "Non presente in cucina",
+          "IMAGEDISCLAIMER": "L'immagine potrebbe non essere fedele al piatto."
         },
       };
 }

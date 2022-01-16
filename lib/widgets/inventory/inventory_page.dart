@@ -115,12 +115,12 @@ class InventoryScreen extends StatelessWidget {
                         autofocus: false,
                         style: GoogleFonts.poppins(
                             color: UIColors.black,
-                            fontSize: 15,
+                            fontSize: 13,
                             fontWeight: FontWeight.w500),
                         placeholder: "TEXTFIELDLABELINVENTORY".tr,
                         placeholderStyle: GoogleFonts.poppins(
                             color: UIColors.black,
-                            fontSize: 15,
+                            fontSize: 13,
                             fontWeight: FontWeight.w500),
                         decoration: BoxDecoration(
                           color: UIColors.lowTransaprentWhite,

@@ -169,7 +169,7 @@ class SettingsArea extends StatelessWidget {
                   CircleAvatar(
                     backgroundColor: UIColors.black.withOpacity(0.6),
                     child: Icon(
-                      Icons.privacy_tip,
+                      Icons.library_books,
                       color: UIColors.white,
                     ),
                   )
