@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
-import 'package:morning_brief/controllers/saved_menu_controller%20copy.dart';
+import 'package:morning_brief/controllers/saved_menu_controller.dart';
 import 'package:morning_brief/widgets/filter/filters_body.dart';
 
 import 'package:morning_brief/widgets/home/menu_tile.dart';

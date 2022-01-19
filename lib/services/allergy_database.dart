@@ -19,7 +19,8 @@ class DatabaseAllergy {
           .map((QuerySnapshot query) {
         List<AllergyModel> retVal = [];
         for (var element in query.docs) {
-          retVal.add(AllergyModel.fromDocumentSnapshot(element));
+          element['allergies'].forEach(
+              (el) => {retVal.add(AllergyModel.fromListDocumentSnapshot(el))});
         }
         return retVal;
       });

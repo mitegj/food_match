@@ -33,6 +33,12 @@ class UserInventory {
         ? documentSnapshot["stock"]
         : false;
   }
+
+  UserInventory.fromListDocumentSnapshot(
+    var obj,
+  ) {
+    id = obj['id'];
+  }
 }
 
 extension UserInventoryExtensions on QueryDocumentSnapshot {

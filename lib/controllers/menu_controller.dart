@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:morning_brief/controllers/saved_menu_controller%20copy.dart';
+import 'package:morning_brief/controllers/saved_menu_controller.dart';
 import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/models/menu_model.dart';
+import 'package:morning_brief/models/userInventory_model.dart';
 import 'package:morning_brief/services/menu_database.dart';
 import 'package:morning_brief/widgets/home/confirm_cooked.dart';
 import 'package:morning_brief/widgets/home/reminder_menu.dart';
@@ -18,12 +19,6 @@ class MenuController extends GetxController {
   RxBool hasOtherMenu = true.obs;
   set menus(List<MenuModel>? value) {
     menus?.clear();
-  }
-
-  @override
-  void onInit() {
-    super.onInit();
-    // getMenuList();
   }
 
   RxList<int> getAllFilters() {
@@ -47,9 +42,9 @@ class MenuController extends GetxController {
     menuList.bindStream(DatabaseMenu().menuStream(filters, limit * m));
   }
 
-  Future<void> updateStockCtrl(String uid, bool stock) async {
+  Future<void> updateStockCtrl(List<String> userInventory) async {
     try {
-      if (await DatabaseMenu().updateInventory(uid, stock)) {
+      if (await DatabaseMenu().updateInventory(userInventory)) {
         //Get.back();
 
       }

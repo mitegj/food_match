@@ -41,10 +41,8 @@ class DatabaseMenu {
 
   List<String> getUserIngredientsList(IngredientController ingController) {
     List<String> ing = [];
-    ingController.userIngredients?.forEach((UserInventory el) {
-      if (el.stock) {
-        ing.add(el.id);
-      }
+    ingController.userIngredients?.forEach((el) {
+      ing.add(el);
     });
     return ing;
   }
@@ -126,19 +124,21 @@ class DatabaseMenu {
     }
   }
 
-  Stream<List<UserInventory>> userInventoryStream() {
+  Stream<List<String>> userInventoryStream() {
     try {
       String uid = FirebaseAuth.instance.currentUser!.uid.toString();
+
       return _firestore
           .collection(conf.userCollection)
-          .doc(uid)
+          .where('id', isEqualTo: uid)
+          //.doc(uid)
           // prendere solamente quelli a true?
-          .collection(conf.inventoryCollection)
+          //.collection(conf.inventoryCollection)
           .snapshots()
           .map((QuerySnapshot query) {
-        List<UserInventory> retVal = [];
+        List<String> retVal = [];
         for (var element in query.docs) {
-          retVal.add(UserInventory.fromDocumentSnapshot(element));
+          element['ingredients'].forEach((el) => {retVal.add(el.toString())});
         }
         return retVal;
       });
@@ -153,16 +153,14 @@ class DatabaseMenu {
     }
   }
 
-  Future<bool> updateInventory(String idIngredient, bool stock) async {
+  Future<bool> updateInventory(List<String> userInventory) async {
     String uid = FirebaseAuth.instance.currentUser!.uid.toString();
 
     try {
-      await FirebaseFirestore.instance
-          .collection(conf.userCollection)
-          .doc(uid)
-          .collection(conf.inventoryCollection)
-          .doc(idIngredient)
-          .set({"id": idIngredient, "stock": stock});
+      await FirebaseFirestore.instance.collection(conf.userCollection).doc(uid)
+          //.collection(conf.inventoryCollection)
+          //.doc(idIngredient)
+          .update({"ingredients": userInventory});
 
       return true;
     } catch (e) {

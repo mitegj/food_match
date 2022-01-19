@@ -31,6 +31,13 @@ class IngredientModel {
         ? documentSnapshot["name" + conf.lang]
         : "";
   }
+
+  IngredientModel.fromListDocumentSnapshot(
+    var obj,
+  ) {
+    id = obj['id'];
+    name = obj["name" + conf.lang];
+  }
 }
 
 extension UserExtensions on QueryDocumentSnapshot {

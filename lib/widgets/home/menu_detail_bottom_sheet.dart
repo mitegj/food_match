@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
-import 'package:morning_brief/controllers/saved_menu_controller%20copy.dart';
+import 'package:morning_brief/controllers/saved_menu_controller.dart';
 import 'package:morning_brief/enum/dish_difficulty_enum.dart';
 import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/models/ingredient_model.dart';

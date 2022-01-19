@@ -16,7 +16,8 @@ class DatabaseIngredient {
           .map((QuerySnapshot query) {
         List<IngredientModel> retVal = [];
         for (var element in query.docs) {
-          retVal.add(IngredientModel.fromDocumentSnapshot(element));
+          element['ingredients'].forEach((el) =>
+              {retVal.add(IngredientModel.fromListDocumentSnapshot(el))});
         }
         retVal.sort((a, b) => a.name.compareTo(b.name));
         return retVal;

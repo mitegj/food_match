@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
-import 'package:morning_brief/models/userInventory_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/filter/filters_body.dart';
 
@@ -13,45 +12,44 @@ import 'package:morning_brief/widgets/spinner/spinner.dart';
 // ignore: must_be_immutable
 class InventoryScreen extends StatelessWidget {
   bool isValueUpdated = false;
-  RxList<UserInventory> _userInventory = RxList();
+  RxList<String> _userInventory = RxList();
   IngredientController ingController =
       Get.put<IngredientController>(IngredientController());
 
-  updateStock(state, index, stocked) {
+  updateStock(state, index) {
+    /*
     UserInventory inv =
         _userInventory.where((el) => el.id == state.ingSearch[index].id).single;
 
     bool stock = stocked ? inv.stock = true : inv.stock = false;
+    */
+    String id = state.ingredients[index].id;
+    if (!_userInventory.contains(id))
+      _userInventory.add(id);
+    else
+      _userInventory.removeWhere((el) => el == id);
 
-    MenuController().updateStockCtrl(inv.id, stock);
-    _userInventory.refresh();
+    // print(_userInventory);
+    // MenuController().updateStockCtrl(_userInventory);
+    // _userInventory.refresh();
   }
 
-  setUserInventoryCheck(state, index) {
-    if (_userInventory
-        .where((el) => el.id == state.ingSearch[index].id)
-        .isEmpty) {
-      _userInventory.add(UserInventory(
-          id: state.ingSearch[index].id,
-          stock:
-              state.userIngredients != null ? getStock(state, index) : false));
-    }
+  setUserInventoryCheck() {
+    ingController.userIngredients?.forEach((el) {
+      _userInventory.add(el);
+    });
   }
 
   bool getStock(state, index) {
-    bool stock = false;
-    for (var element in state.userIngredients) {
-      if (element.id == state.ingSearch[index].id) {
-        stock = element.stock;
-      }
-    }
-    return stock;
+    if (_userInventory.contains(state.ingSearch[index].id)) return true;
+    return false;
   }
 
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var mediaQuery = MediaQuery.of(context);
+    setUserInventoryCheck();
     ingController.filterIngredients("");
     return Scaffold(
       backgroundColor: theme.backgroundColor,
@@ -79,11 +77,15 @@ class InventoryScreen extends StatelessWidget {
                                   fontWeight: FontWeight.w700)),
                           InkWell(
                             onTap: () {
-                              MenuController.instance
-                                  .getMenuList(FilterBody.listFilters);
+                              if (isValueUpdated) {
+                                MenuController()
+                                    .updateStockCtrl(_userInventory);
+                                MenuController.instance
+                                    .getMenuList(FilterBody.listFilters);
+                              }
                               Get.back();
                             },
-                            child: Text("DONE".tr.toUpperCase(),
+                            child: Text("DONE".tr,
                                 style: GoogleFonts.poppins(
                                     color: UIColors.violet,
                                     fontSize: 16,
@@ -139,46 +141,41 @@ class InventoryScreen extends StatelessWidget {
                                   child: ListView.builder(
                                     itemCount: ingCtrl.ingSearch.length,
                                     itemBuilder: (_, index) {
-                                      setUserInventoryCheck(ingCtrl, index);
-
-                                      return Obx(() => Container(
-                                            margin: EdgeInsets.all(5),
-                                            decoration: BoxDecoration(
-                                                color: UIColors.lightBlack,
-                                                borderRadius:
-                                                    BorderRadius.circular(20)),
-                                            child: CheckboxListTile(
+                                      // setUserInventoryCheck(ingCtrl, index);
+                                      return Container(
+                                          margin: EdgeInsets.all(5),
+                                          decoration: BoxDecoration(
+                                              color: UIColors.lightBlack,
+                                              borderRadius:
+                                                  BorderRadius.circular(20)),
+                                          child: Obx(
+                                            () => CheckboxListTile(
                                               checkColor: UIColors.green,
                                               activeColor: UIColors.green,
                                               title: Text(
                                                 ingCtrl.ingSearch[index].name
-                                                    .toString()
-                                                    .toLowerCase(),
+                                                    .toString(),
                                                 style: GoogleFonts.poppins(
                                                     color: Colors.white,
                                                     fontWeight:
                                                         FontWeight.w500),
                                               ),
-                                              subtitle: Obx(
-                                                () => Text(
-                                                    getStock(ingCtrl, index)
-                                                        ? "AVAIBLEINTHEKITCHEN"
-                                                            .tr
-                                                        : "NOTAVAIBLEINTHEKITCHEN"
-                                                            .tr,
-                                                    style: GoogleFonts.poppins(
-                                                        color: getStock(
-                                                                ingCtrl, index)
-                                                            ? UIColors
-                                                                .lightGreen
-                                                            : UIColors.orange,
-                                                        fontWeight:
-                                                            FontWeight.w300)),
-                                              ),
+                                              subtitle: Text(
+                                                  getStock(ingCtrl, index)
+                                                      ? "AVAIBLEINTHEKITCHEN".tr
+                                                      : "NOTAVAIBLEINTHEKITCHEN"
+                                                          .tr,
+                                                  style: GoogleFonts.poppins(
+                                                      color: getStock(
+                                                              ingCtrl, index)
+                                                          ? UIColors.lightGreen
+                                                          : UIColors.orange,
+                                                      fontWeight:
+                                                          FontWeight.w300)),
+
                                               value: getStock(ingCtrl, index),
                                               onChanged: (bool? value) {
-                                                updateStock(
-                                                    ingCtrl, index, value);
+                                                updateStock(ingCtrl, index);
                                                 isValueUpdated = true;
                                               },
                                               controlAffinity:

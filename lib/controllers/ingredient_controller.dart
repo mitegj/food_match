@@ -5,8 +5,6 @@ import 'package:morning_brief/services/allergy_database.dart';
 import 'package:morning_brief/services/ingredient_databse.dart';
 import 'package:morning_brief/services/menu_database.dart';
 
-import 'menu_controller.dart';
-
 class IngredientController extends GetxController {
   static IngredientController instance = Get.find();
   Rxn<IngredientModel> ingredient = Rxn<IngredientModel>();
@@ -16,9 +14,8 @@ class IngredientController extends GetxController {
 
   RxList ingSearch = RxList().obs();
 
-  Rxn<List<UserInventory>> userIngredientList =
-      Rxn<List<UserInventory>>().obs();
-  List<UserInventory>? get userIngredients => userIngredientList.value.obs();
+  Rxn<List<String>> userIngredientList = Rxn<List<String>>().obs();
+  List<String>? get userIngredients => userIngredientList.value.obs();
 
   Rxn<List<String>> userAllergyList = Rxn<List<String>>().obs();
   List<String>? get userAllergies => userAllergyList.value.obs();
@@ -44,15 +41,17 @@ class IngredientController extends GetxController {
           });
   }
 
+/*
   updateStock(state, index, stocked, _userInventory) {
     UserInventory inv =
         _userInventory.where((el) => el.id == state.ingSearch[index].id).single;
 
     bool stock = stocked ? inv.stock = true : inv.stock = false;
-
+    print(_userInventory);
     MenuController().updateStockCtrl(inv.id, stock);
     _userInventory.refresh();
   }
+  */
 
   setUserInventoryCheck(state, index, _userInventory) {
     if (_userInventory

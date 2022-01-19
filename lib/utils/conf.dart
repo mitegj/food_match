@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Conf {
-  String allergyCollection = "allergies";
+  String allergyCollection = "allergiesList";
   String userCollection = "users";
   String menuCollection = "menu";
   String inventoryCollection = "inventory";
-  String inventoryListCollection = "ingredients";
+  String inventoryListCollection = "ingredientsList";
   String cookedMenuCollection = "cookedMenu";
   String savedMenuCollection = "savedMenu";
 

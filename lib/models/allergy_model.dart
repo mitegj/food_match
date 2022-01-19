@@ -20,6 +20,11 @@ class AllergyModel {
         ? documentSnapshot["name" + conf.lang]
         : '';
   }
+
+  AllergyModel.fromListDocumentSnapshot(var obj) {
+    id = obj['id'];
+    name = obj["name" + conf.lang];
+  }
 }
 
 extension AllergyExtensions on QueryDocumentSnapshot {
