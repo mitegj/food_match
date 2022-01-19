@@ -101,8 +101,8 @@ class EmptyMenu extends StatelessWidget {
                       'VIEWINVENTORY'.tr,
                       style: GoogleFonts.poppins(
                           color: UIColors.detailBlack,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16),
                     ),
                   ),
                 ),

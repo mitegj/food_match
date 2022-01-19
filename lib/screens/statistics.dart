@@ -144,90 +144,82 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                   borderRadius: BorderRadius.circular(15)),
               child: Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20),
-                child: Obx(
-                  () => statisticController.cookedMenus != null
-                      ? Visibility(
-                          visible: visibility.value,
-                          child: ListView.builder(
-                              physics: ScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount:
-                                  statisticController.cookedMenus?.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Padding(
-                                    padding: const EdgeInsets.only(
-                                        bottom: 10.0, top: 20.0),
-                                    child: Column(
-                                      children: <Widget>[
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              bottom: 20.0),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                child: Obx(() => Visibility(
+                      visible: visibility.value,
+                      child: ListView.builder(
+                          physics: ScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: statisticController.cookedMenus?.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                                padding: const EdgeInsets.only(
+                                    bottom: 10.0, top: 20.0),
+                                child: Column(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 20.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
                                             children: [
-                                              Row(
-                                                children: [
-                                                  Expanded(
-                                                    child: Text(
-                                                        statisticController
-                                                            .cookedMenus![index]
-                                                            .name
-                                                            .toString(),
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                          color: UIColors.white,
-                                                          fontSize: 15,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                        )),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Expanded(
-                                                    child: Text(
-                                                        formattedDate.format(
-                                                            statisticController
-                                                                .cookedMenus![
-                                                                    index]
-                                                                .cookedTime
-                                                                .toDate()),
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                          color: UIColors.white,
-                                                          fontSize: 15,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                        )),
-                                                  ),
-                                                ],
+                                              Expanded(
+                                                child: Text(
+                                                    statisticController
+                                                        .cookedMenus![index]
+                                                        .name
+                                                        .toString(),
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: GoogleFonts.poppins(
+                                                      color: UIColors.white,
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    )),
                                               ),
                                             ],
                                           ),
-                                        ),
-                                        if (index !=
-                                            (statisticController
-                                                    .cookedMenus?.length)! -
-                                                1)
-                                          Divider(
-                                            color: UIColors.black,
-                                          )
-                                      ],
-                                    ));
-                              }),
-                        )
-                      : LoadingWidget(),
-                ),
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                child: Text(
+                                                    formattedDate.format(
+                                                        statisticController
+                                                            .cookedMenus![index]
+                                                            .cookedTime
+                                                            .toDate()),
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: GoogleFonts.poppins(
+                                                      color: UIColors.white,
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    )),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    if (index !=
+                                        (statisticController
+                                                .cookedMenus?.length)! -
+                                            1)
+                                      Divider(
+                                        color: UIColors.black,
+                                      )
+                                  ],
+                                ));
+                          }),
+                    )),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.only(top: 20, left: 20.0, right: 20),
               child: Text("SETTINGS".tr,
                   style: GoogleFonts.poppins(
                       color: UIColors.white,

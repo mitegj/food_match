@@ -39,16 +39,9 @@ class UserDatabase {
 
   Future<void> deleteUser(String uid) async {
     try {
-      final FirebaseAuth _auth = AuthController.instance.auth;
-      var googleSignInAccount = Rx<GoogleSignInAccount?>(null);
-      final GoogleSignIn googleSignIn = GoogleSignIn();
-
-      googleSignInAccount.value = await googleSignIn.signIn();
-
-      User? user = _auth.currentUser;
-      user?.delete();
-
       await _firestore.collection(conf.userCollection).doc(uid).delete();
+      FirebaseAuth.instance.currentUser?.delete();
+      await FirebaseAuth.instance.signOut();
     } catch (e) {
       Get.snackbar(
         "Error creating user",

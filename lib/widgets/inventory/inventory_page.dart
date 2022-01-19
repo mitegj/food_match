@@ -105,123 +105,92 @@ class InventoryScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: UIColors.lightBlack.withOpacity(0.5)),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CupertinoTextField(
-                        padding: EdgeInsets.all(20),
-                        onChanged: (text) {
-                          ingController.filterIngredients(text);
-                        },
-                        autofocus: false,
-                        style: GoogleFonts.poppins(
-                            color: UIColors.black,
-                            fontSize: 13,
-                            fontWeight: FontWeight.w500),
-                        placeholder: "TEXTFIELDLABELINVENTORY".tr,
-                        placeholderStyle: GoogleFonts.poppins(
-                            color: UIColors.black,
-                            fontSize: 13,
-                            fontWeight: FontWeight.w500),
-                        decoration: BoxDecoration(
-                          color: UIColors.lowTransaprentWhite,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Obx(() => GetX<IngredientController>(
-                            init: Get.put<IngredientController>(
-                                IngredientController()),
-                            builder: (IngredientController ingCtrl) {
-                              if (ingCtrl.ingSearch.length > 0) {
-                                return Expanded(
-                                  child: ListView.builder(
-                                    itemCount: ingCtrl.ingSearch.length,
-                                    itemBuilder: (_, index) {
-                                      // setUserInventoryCheck(ingCtrl, index);
-                                      return Container(
-                                          margin: EdgeInsets.all(5),
-                                          decoration: BoxDecoration(
-                                              color: UIColors.lightBlack,
-                                              borderRadius:
-                                                  BorderRadius.circular(20)),
-                                          child: Obx(
-                                            () => CheckboxListTile(
-                                              checkColor: UIColors.green,
-                                              activeColor: UIColors.green,
-                                              title: Text(
-                                                ingCtrl.ingSearch[index].name
-                                                    .toString(),
-                                                style: GoogleFonts.poppins(
-                                                    color: Colors.white,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              ),
-                                              subtitle: Text(
-                                                  getStock(ingCtrl, index)
-                                                      ? "AVAIBLEINTHEKITCHEN"
-                                                          .tr
-                                                          .toLowerCase()
-                                                      : "NOTAVAIBLEINTHEKITCHEN"
-                                                          .tr
-                                                          .toLowerCase(),
-                                                  style: GoogleFonts.poppins(
-                                                      color: getStock(
-                                                              ingCtrl, index)
-                                                          ? UIColors.lightGreen
-                                                          : UIColors.orange,
-                                                      fontWeight:
-                                                          FontWeight.w300)),
+                child: ListView(children: <Widget>[
+                  CupertinoTextField(
+                    padding: EdgeInsets.all(20),
+                    onChanged: (text) {
+                      ingController.filterIngredients(text);
+                    },
+                    autofocus: false,
+                    style: GoogleFonts.poppins(
+                        color: UIColors.black,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500),
+                    placeholder: 'TEXTFIELDLABELINVENTORY'.tr,
+                    placeholderStyle: GoogleFonts.poppins(
+                        color: UIColors.black,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500),
+                    decoration: BoxDecoration(
+                      color: UIColors.lowTransaprentWhite,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Obx(() => GetX<IngredientController>(
+                        init: Get.put<IngredientController>(
+                            IngredientController()),
+                        builder: (IngredientController ingCtrl) {
+                          if (ingCtrl.ingSearch.length > 0) {
+                            return ListView.builder(
+                              physics: ScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: ingCtrl.ingSearch.length,
+                              itemBuilder: (_, index) {
+                                // setUserInventoryCheck(ingCtrl, index);
+                                return Container(
+                                    margin: EdgeInsets.all(5),
+                                    decoration: BoxDecoration(
+                                        color: UIColors.lightBlack,
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    child: Obx(
+                                      () => CheckboxListTile(
+                                        checkColor: UIColors.green,
+                                        activeColor: UIColors.green,
+                                        title: Text(
+                                          ingCtrl.ingSearch[index].name
+                                              .toString(),
+                                          style: GoogleFonts.poppins(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        subtitle: Text(
+                                            getStock(ingCtrl, index)
+                                                ? "AVAIBLEINTHEKITCHEN"
+                                                    .tr
+                                                    .toLowerCase()
+                                                : "NOTAVAIBLEINTHEKITCHEN"
+                                                    .tr
+                                                    .toLowerCase(),
+                                            style: GoogleFonts.poppins(
+                                                color: getStock(ingCtrl, index)
+                                                    ? UIColors.lightGreen
+                                                    : UIColors.orange,
+                                                fontWeight: FontWeight.w300)),
 
-                                              value: getStock(ingCtrl, index),
-                                              onChanged: (bool? value) {
-                                                updateStock(ingCtrl, index);
-                                                isValueUpdated = true;
-                                              },
-                                              controlAffinity:
-                                                  ListTileControlAffinity
-                                                      .trailing, //  <-- leading Checkbox
-                                            ),
-                                          ));
-                                    },
-                                  ),
-                                );
-                              } else {
-                                //ingCtrl.filterIngredients("");
-                                return LoadingWidget();
-                              }
-                            },
-                          ))
-                    ]),
+                                        value: getStock(ingCtrl, index),
+                                        onChanged: (bool? value) {
+                                          updateStock(ingCtrl, index);
+                                          isValueUpdated = true;
+                                        },
+                                        controlAffinity: ListTileControlAffinity
+                                            .trailing, //  <-- leading Checkbox
+                                      ),
+                                    ));
+                              },
+                            );
+                          } else {
+                            //ingCtrl.filterIngredients("");
+                            return LoadingWidget();
+                          }
+                        },
+                      )),
+                ]),
               ),
             ),
-            /*if (mediaQuery.viewInsets.bottom == 0)
-              InkWell(
-                onTap: () {
-                  MenuController.instance.getMenuList(FilterBody.listFilters);
-                  Get.back();
-                },
-                child: Container(
-                  width: mediaQuery.size.height * 1,
-                  padding: const EdgeInsets.all(20),
-                  margin:
-                      const EdgeInsets.only(left: 20, right: 20, bottom: 20),
-                  decoration: BoxDecoration(
-                      color: UIColors.white,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text('DONE'.tr,
-                        style: GoogleFonts.poppins(
-                            color: UIColors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600)),
-                  ),
-                ),
-              ),*/
           ],
         ),
       ),

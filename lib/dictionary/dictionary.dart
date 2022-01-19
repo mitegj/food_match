@@ -127,7 +127,10 @@ class Messages extends Translations {
           "NEXT": "Next",
           "AVAIBLEINTHEKITCHEN": "Available in the kitchen",
           "NOTAVAIBLEINTHEKITCHEN": "Not available in the kitchen",
-          "IMAGEDISCLAIMER": "The image may not be true to the plate."
+          "IMAGEDISCLAIMER": "The image may not be true to the plate.",
+          "DONTCANCELACCOUNT": "No, don't cancel",
+          "DELETEACCOUNTLABEL":
+              "Hey, are you sure you want to delete your account?"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -254,7 +257,10 @@ class Messages extends Translations {
           "NEXT": "Avanti",
           "AVAIBLEINTHEKITCHEN": "Presente in cucina",
           "NOTAVAIBLEINTHEKITCHEN": "Non presente in cucina",
-          "IMAGEDISCLAIMER": "L'immagine potrebbe non essere fedele al piatto."
+          "IMAGEDISCLAIMER": "L'immagine potrebbe non essere fedele al piatto.",
+          "DONTCANCELACCOUNT": "No, non cancellare",
+          "DELETEACCOUNTLABEL":
+              "Hey, sei sicuro di voler cancellare il tuo l'account?"
         },
       };
 }

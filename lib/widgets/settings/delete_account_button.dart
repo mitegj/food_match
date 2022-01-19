@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
+import 'package:morning_brief/widgets/settings/delete_account_bottomsheet.dart';
 
 class DeleteAccount extends StatelessWidget {
   const DeleteAccount({
@@ -18,7 +20,8 @@ class DeleteAccount extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        _authController.deleteUser();
+        Get.bottomSheet(DeleteAccountBottomSheet(
+            authController: _authController, theme: theme));
       },
       child: Container(
         alignment: Alignment.center,
