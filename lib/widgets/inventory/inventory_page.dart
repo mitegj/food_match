@@ -85,7 +85,7 @@ class InventoryScreen extends StatelessWidget {
                               }
                               Get.back();
                             },
-                            child: Text("DONE".tr,
+                            child: Text("DONE".tr.toUpperCase(),
                                 style: GoogleFonts.poppins(
                                     color: UIColors.violet,
                                     fontSize: 16,
@@ -162,9 +162,12 @@ class InventoryScreen extends StatelessWidget {
                                               ),
                                               subtitle: Text(
                                                   getStock(ingCtrl, index)
-                                                      ? "AVAIBLEINTHEKITCHEN".tr
+                                                      ? "AVAIBLEINTHEKITCHEN"
+                                                          .tr
+                                                          .toLowerCase()
                                                       : "NOTAVAIBLEINTHEKITCHEN"
-                                                          .tr,
+                                                          .tr
+                                                          .toLowerCase(),
                                                   style: GoogleFonts.poppins(
                                                       color: getStock(
                                                               ingCtrl, index)

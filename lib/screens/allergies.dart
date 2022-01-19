@@ -58,7 +58,9 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                           Get.back();
                                       },
                                       child: Text(
-                                          isFirstLogin ? 'NEXT'.tr : 'DONE'.tr,
+                                          isFirstLogin
+                                              ? 'NEXT'.tr.toUpperCase()
+                                              : 'DONE'.tr.toUpperCase(),
                                           style: GoogleFonts.poppins(
                                               color: UIColors.violet,
                                               fontSize: 16,
