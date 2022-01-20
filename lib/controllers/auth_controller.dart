@@ -108,8 +108,7 @@ class AuthController extends GetxController {
 
   Future<void> deleteUser() async {
     try {
-      String uid = FirebaseAuth.instance.currentUser!.uid.toString();
-      UserDatabase().deleteUser(uid);
+      UserDatabase().deleteUser();
     } catch (e) {
       Get.snackbar(
         "Error creating Account",

@@ -37,8 +37,9 @@ class UserDatabase {
     }
   }
 
-  Future<void> deleteUser(String uid) async {
+  Future<void> deleteUser() async {
     try {
+      String uid = FirebaseAuth.instance.currentUser!.uid.toString();
       await _firestore.collection(conf.userCollection).doc(uid).delete();
       FirebaseAuth.instance.currentUser?.delete();
       await FirebaseAuth.instance.signOut();

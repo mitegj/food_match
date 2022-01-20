@@ -49,7 +49,8 @@ class DatabaseMenu {
 
   Stream<List<MenuModel>> menuStream(List<int> filters, int limit) {
     try {
-      IngredientController ingController = Get.find<IngredientController>();
+      IngredientController ingController =
+          Get.put<IngredientController>(IngredientController());
 
       return _firestore
           .collection(conf.menuCollection)
