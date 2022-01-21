@@ -6,7 +6,6 @@ import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/models/menu_ingredients_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
-import 'package:morning_brief/models/userInventory_model.dart';
 import 'package:morning_brief/utils/conf.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

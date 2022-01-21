@@ -48,7 +48,7 @@ class InventoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    var mediaQuery = MediaQuery.of(context);
+
     setUserInventoryCheck();
     ingController.filterIngredients("");
     return Scaffold(

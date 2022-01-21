@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>800036989609-t1di7vt3gar4s14snhmtn1f1eqsg751a.apps.googleusercontent.com</string>
+	<string>800036989609-q2rvv2oae2smh469sadmiunln62n2k7k.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.800036989609-t1di7vt3gar4s14snhmtn1f1eqsg751a</string>
+	<string>com.googleusercontent.apps.800036989609-q2rvv2oae2smh469sadmiunln62n2k7k</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>800036989609-e03ftq0dcvcn4fhg2vn98jkcv98sa17k.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.foodMatch</string>
+	<string>com.foodMatch</string>
 	<key>PROJECT_ID</key>
 	<string>morningbrief-2442a</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:800036989609:ios:3cab2c33b574e7850e97b8</string>
+	<string>1:800036989609:ios:2c38231acc48ce8f0e97b8</string>
 </dict>
 </plist>

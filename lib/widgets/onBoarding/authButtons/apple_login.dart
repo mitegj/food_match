@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:morning_brief/controllers/auth_controller.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:get/get.dart';
 
-class AppleLogin extends StatelessWidget {
-  AppleLogin({required this.onPressed});
-  final VoidCallback onPressed;
+class AppleLogin extends GetWidget<AuthController> {
+  AppleLogin({Key? key, required this.checked}) : super(key: key);
+  final RxBool checked;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,7 +17,15 @@ class AppleLogin extends StatelessWidget {
       ),
       child: GestureDetector(
         //onTap: () => signInWithGoogle(context),
-        onTap: () => {}, //_authController.signInWithGoogle(),
+        onTap: () => {
+          if (checked.value)
+            {AuthController.instance.signInWithApple()}
+          else
+            {
+              Get.snackbar("ACCEPTTHETERMS".tr + ".", "MUSTACCEPT".tr,
+                  colorText: UIColors.white)
+            }
+        }, //_authController.signInWithGoogle(),
         child: Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
