@@ -53,7 +53,8 @@ class StatisticsScreen extends GetWidget<AllergyController> {
               child: Container(
                   padding: const EdgeInsets.all(20),
                   child: Text(
-                    _settingController.getUserInitial(),
+                    "",
+                    //_settingController.getUserInitial(),
                     style: GoogleFonts.poppins(
                         color: UIColors.white,
                         fontSize: 20,
