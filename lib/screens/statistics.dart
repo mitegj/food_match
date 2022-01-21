@@ -46,7 +46,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
       body: SafeArea(
         child: ListView(
           children: <Widget>[
-            const SizedBox(height: 20),
+            const SizedBox(height: 40),
             CircleAvatar(
               radius: 50,
               backgroundColor: UIColors.blue,
@@ -60,7 +60,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                         fontWeight: FontWeight.w400),
                   )),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Text("WEEKLYCAL".tr,
@@ -94,14 +94,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                     ),
                   ],
                 )),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Text("WEEKLYHISTORY".tr,
-                  style: GoogleFonts.poppins(
-                      color: UIColors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700)),
-            ),
+            const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.only(left: 20.0, right: 20.0),
               child: InkWell(
@@ -126,7 +119,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                           ),
                         ),
                       ),
-                      Text("SHOW".tr,
+                      Text("WEEKLYHISTORY".tr,
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w700,

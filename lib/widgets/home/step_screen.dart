@@ -126,7 +126,8 @@ class StepScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Column(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
                   // onTap: speak(menu.steps[index.value]),
@@ -134,27 +135,31 @@ class StepScreen extends StatelessWidget {
                     stopSpeak();
                     _speak.value = !_speak.value;
                   },
-                  child: Icon(
-                    _speak.value
-                        ? Icons.volume_up_rounded
-                        : Icons.volume_off_rounded,
-                    size: 40,
-                    color: UIColors.black,
+                  child: CircleAvatar(
+                    radius: 28,
+                    backgroundColor: UIColors.black.withOpacity(0.1),
+                    child: Icon(
+                      _speak.value
+                          ? Icons.volume_up_rounded
+                          : Icons.volume_off_rounded,
+                      size: 21,
+                      color: UIColors.black,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 30,
                 ),
                 InkWell(
                   onTap: () {
                     Get.back();
                   },
-                  child: Text("EXIT".tr.toUpperCase(),
-                      style: GoogleFonts.poppins(
-                          color: UIColors.black, fontWeight: FontWeight.w500)),
-                ),
-                SizedBox(
-                  height: 10,
+                  child: CircleAvatar(
+                    radius: 28,
+                    backgroundColor: UIColors.black.withOpacity(0.1),
+                    child: Icon(
+                      Icons.exit_to_app,
+                      size: 21,
+                      color: UIColors.black,
+                    ),
+                  ),
                 ),
               ],
             ),

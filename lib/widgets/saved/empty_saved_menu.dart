@@ -13,69 +13,71 @@ class EmptySavedMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          margin: const EdgeInsets.all(20),
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: UIColors.particularBlack,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: UIColors.particularBlack,
+            ),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                CircleAvatar(
+                  radius: 50,
+                  backgroundColor: UIColors.white,
+                  child: Icon(
+                    Icons.bookmark,
+                    size: 40,
+                    color: UIColors.blue,
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text("TRYADDSOMEBASICPRODUCT".tr,
+                            overflow: TextOverflow.visible,
+                            style: GoogleFonts.poppins(
+                                color: UIColors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600)),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0, right: 20),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text("SAVEDMENULABEL".tr,
+                            overflow: TextOverflow.visible,
+                            style: GoogleFonts.poppins(
+                                color: UIColors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w300)),
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+              ],
+            ),
           ),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              CircleAvatar(
-                radius: 50,
-                backgroundColor: UIColors.white,
-                child: Icon(
-                  Icons.bookmark,
-                  size: 40,
-                  color: UIColors.blue,
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text("TRYADDSOMEBASICPRODUCT".tr,
-                          overflow: TextOverflow.visible,
-                          style: GoogleFonts.poppins(
-                              color: UIColors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600)),
-                    )
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text("SAVEDMENULABEL".tr,
-                          overflow: TextOverflow.visible,
-                          style: GoogleFonts.poppins(
-                              color: UIColors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w300)),
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

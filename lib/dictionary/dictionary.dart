@@ -25,8 +25,8 @@ class Messages extends Translations {
           "HAVEREAD": "I have read",
           "SLOGAN":
               "Embrace a new way to cooking your meals and discover the pleasure of cooking.",
-          "WEEKLYCAL": "Weekly calories",
-          "WEEKLYHISTORY": "Weekly history",
+          "WEEKLYCAL": "Calories consumed",
+          "WEEKLYHISTORY": "Consumed history",
           "SHOW": "Show now",
           "SETTINGS": "Settings",
           "ALLERGIES": "Allergies and intolerances",
@@ -154,8 +154,8 @@ class Messages extends Translations {
           "HAVEREAD": "Ho letto",
           "SLOGAN":
               "Abbraccia un nuovo modo di cucinare i tuoi pasti e scopri il piacere delle cucina.",
-          "WEEKLYCAL": "Calorie settimanale",
-          "WEEKLYHISTORY": "Storico settimanale",
+          "WEEKLYCAL": "Calorie consumate",
+          "WEEKLYHISTORY": "Storico consumato",
           "SHOW": "Visualizza ora",
           "SETTINGS": "Impostazioni",
           "ALLERGIES": "Allergie e intolleranze",
