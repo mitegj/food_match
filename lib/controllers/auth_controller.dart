@@ -57,31 +57,8 @@ class AuthController extends GetxController {
         idToken: googleSignInAuthentication.idToken,
       );
 
-      authResult = await auth.signInWithCredential(credential);
+      afterLoginControl(credential);
 
-      final User? user = authResult.user;
-      assert(!user!.isAnonymous);
-      final User? currentUser = auth.currentUser;
-      assert(user!.uid == currentUser!.uid);
-
-      if (authResult.additionalUserInfo!.isNewUser) {
-        // se utente non esiste quando fa login lo creo con solo l'id
-
-        Get.to(() => AllergiesScreen(
-              isFirstLogin: true,
-            ));
-        if (user != null) {
-          createUser(user.uid.toString()).then((value) => {});
-        } else {
-          Get.snackbar(
-            "Error signing in",
-            "",
-            colorText: Colors.white,
-            snackPosition: SnackPosition.BOTTOM,
-          );
-        }
-      }
-      update();
       //Get.toNamed('/homeView'); // navigate to your wanted page
       return;
     } catch (e) {
@@ -97,7 +74,7 @@ class AuthController extends GetxController {
   Future<void> createUser(String uid) async {
     try {
       UserModel user = UserModel(
-          id: uid, allergies: [], lastLogin: DateTime.now(), name: '');
+          id: uid, allergies: [], ingredients: [], lastLogin: DateTime.now());
 
       await UserDatabase().createNewUser(user);
     } catch (e) {
@@ -201,6 +178,34 @@ class AuthController extends GetxController {
     final bytes = utf8.encode(input);
     final digest = sha256.convert(bytes);
     return digest.toString();
+  }
+
+  void afterLoginControl(AuthCredential credential) async {
+    authResult = await auth.signInWithCredential(credential);
+
+    final User? user = authResult.user;
+    assert(!user!.isAnonymous);
+    final User? currentUser = auth.currentUser;
+    assert(user!.uid == currentUser!.uid);
+
+    if (authResult.additionalUserInfo!.isNewUser) {
+      // se utente non esiste quando fa login lo creo con solo l'id
+
+      Get.to(() => AllergiesScreen(
+            isFirstLogin: true,
+          ));
+      if (user != null) {
+        createUser(user.uid.toString()).then((value) => {});
+      } else {
+        Get.snackbar(
+          "Error signing in",
+          "",
+          colorText: Colors.white,
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      }
+    }
+    update();
   }
 
   Future<UserCredential> signInWithApple() async {

@@ -7,20 +7,19 @@ class UserModel {
   late String id;
   late String name;
   late List<String> allergies;
-
+  late List<String> ingredients;
   late DateTime lastLogin;
   UserModel(
       {required this.id,
-      required this.name,
       required this.allergies,
+      required this.ingredients,
       required this.lastLogin});
 
   Map<String, dynamic> toMap() {
     return {
       "id": id,
-      "name": name,
       "allergies,": allergies,
-
+      "ingredients,": ingredients,
       "lastLogin": lastLogin,
     };
   }
@@ -28,9 +27,8 @@ class UserModel {
   factory UserModel.fromJson(Map<String, dynamic> parsedJson) {
     return UserModel(
       id: parsedJson['id'],
-      name: parsedJson['name'],
       allergies: parsedJson['allergies'],
-
+      ingredients: parsedJson['ingredients'],
       lastLogin: parsedJson['lastLogin'],
     );
   }
@@ -45,7 +43,9 @@ class UserModel {
     allergies = conf.docContains("allergies", documentSnapshot)
         ? documentSnapshot["allergies"].cast<String>()
         : [];
-
+    ingredients = conf.docContains("ingredients", documentSnapshot)
+        ? documentSnapshot["ingredients"].cast<String>()
+        : [];
     lastLogin = conf.docContains("lastLogin", documentSnapshot)
         ? documentSnapshot["lastLogin"].toDate()
         : DateTime.now();
@@ -55,8 +55,8 @@ class UserModel {
 extension UserExtensions on QueryDocumentSnapshot {
   UserModel get touser => UserModel(
         id: this.id,
-        name: this['name'],
         allergies: this['allergies'],
+        ingredients: this['ingredients'],
         lastLogin: this['lastLogin'],
       );
 }

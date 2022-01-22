@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,8 @@ class InventoryScreen extends StatelessWidget {
 
     bool stock = stocked ? inv.stock = true : inv.stock = false;
     */
-    String id = state.ingredients[index].id;
+    String id = state.ingSearch[index].id;
+    print(state.ingSearch[index].name);
     if (!_userInventory.contains(id))
       _userInventory.add(id);
     else
@@ -82,6 +84,8 @@ class InventoryScreen extends StatelessWidget {
                               MenuController.instance
                                   .getMenuList(FilterBody.listFilters);
                             }
+
+                            HapticFeedback.mediumImpact();
                             Get.back();
                           },
                           child: Text("DONE".tr.toUpperCase(),
@@ -169,14 +173,13 @@ class InventoryScreen extends StatelessWidget {
                                                     ? UIColors.lightGreen
                                                     : UIColors.orange,
                                                 fontWeight: FontWeight.w300)),
-
                                         value: getStock(ingCtrl, index),
                                         onChanged: (bool? value) {
                                           updateStock(ingCtrl, index);
                                           isValueUpdated = true;
                                         },
-                                        controlAffinity: ListTileControlAffinity
-                                            .trailing, //  <-- leading Checkbox
+                                        controlAffinity:
+                                            ListTileControlAffinity.trailing,
                                       ),
                                     ));
                               },

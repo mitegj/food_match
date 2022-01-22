@@ -2,14 +2,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:morning_brief/controllers/auth_controller.dart';
-
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/utils/conf.dart';
 import 'package:morning_brief/widgets/onBoarding/authButtons/apple_login.dart';
-
 import 'package:morning_brief/widgets/onBoarding/authButtons/google_login.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 // ignore: must_be_immutable
 class OnBoardingPage extends StatelessWidget {

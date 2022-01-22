@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/instance_manager.dart';
@@ -117,6 +118,7 @@ class Tutorial extends StatelessWidget {
                       fontWeight: FontWeight.w500)),
               InkWell(
                 onTap: () {
+                  HapticFeedback.lightImpact();
                   Get.back();
                 },
                 child: Container(

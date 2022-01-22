@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/allergy_controller.dart';
@@ -50,6 +51,8 @@ class AllergiesScreen extends GetWidget<AllergyController> {
 
                                         MenuController.instance.getMenuList(
                                             FilterBody.listFilters);
+
+                                        HapticFeedback.mediumImpact();
                                         if (isFirstLogin)
                                           Get.to(() => TimeEatingScreen(
                                                 isFirstLogin: isFirstLogin,

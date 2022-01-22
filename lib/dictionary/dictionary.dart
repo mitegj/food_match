@@ -130,7 +130,9 @@ class Messages extends Translations {
           "IMAGEDISCLAIMER": "The image may not be true to the plate.",
           "DONTCANCELACCOUNT": "No, don't cancel",
           "DELETEACCOUNTLABEL":
-              "Hey, are you sure you want to delete your account?"
+              "Hey, are you sure you want to delete your account?",
+          "WILLFINDCOOKEDMENU":
+              "Here you will find all the menus you have cooked in the last week"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -247,7 +249,7 @@ class Messages extends Translations {
               " per aggiungere al tuo inventario tutti gli ingredienti che hai a disposizione nella tua cucina.",
           "LABELCREATEALLRECIPE":
               "In base alla giacenza del tuo inventario, ti creeremo tutte le possibili ricette che puoi cucinare.",
-          "LETSTART": "Inizaimo",
+          "LETSTART": "Iniziamo",
           "DISCOVERLABEL": "Scopri le altre numerossime funzioni.",
           "EXIT": "Esci",
           "DISCLAIMER":
@@ -260,7 +262,9 @@ class Messages extends Translations {
           "IMAGEDISCLAIMER": "L'immagine potrebbe non essere fedele al piatto.",
           "DONTCANCELACCOUNT": "No, non cancellare",
           "DELETEACCOUNTLABEL":
-              "Hey, sei sicuro di voler cancellare il tuo l'account?"
+              "Hey, sei sicuro di voler cancellare il tuo l'account?",
+          "WILLFINDCOOKEDMENU":
+              "Qui troverai tutti i menu che hai cucinato nell'ultima settimana"
         },
       };
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
@@ -19,6 +20,7 @@ class DeleteAccount extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        HapticFeedback.lightImpact();
         Get.bottomSheet(DeleteAccountBottomSheet(
             authController: _authController, theme: theme));
       },

@@ -28,10 +28,18 @@ class SettingController extends GetxController {
   }
 
   String getUserInitial() {
-    return FirebaseAuth.instance.currentUser!.displayName!.split('')[0] +
-        FirebaseAuth.instance.currentUser!.displayName!
-            .split(' ')[1]
-            .substring(0, 1);
+    if (hasUserName())
+      return FirebaseAuth.instance.currentUser!.displayName!.split('')[0] +
+          FirebaseAuth.instance.currentUser!.displayName!
+              .split(' ')[1]
+              .substring(0, 1);
+    return "";
+  }
+
+  bool hasUserName() {
+    return FirebaseAuth.instance.currentUser!.displayName != null
+        ? true
+        : false;
   }
 
   Future<void> getFutureAppCurrentVersion() async {

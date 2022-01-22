@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -72,6 +73,8 @@ class TimeEatingScreen extends StatelessWidget {
             InkWell(
               onTap: () {
                 saveNotificationDinnerTime();
+
+                HapticFeedback.mediumImpact();
                 if (isFirstLogin)
                   Get.offAll(HomePage(isFirstLogin: true));
                 else

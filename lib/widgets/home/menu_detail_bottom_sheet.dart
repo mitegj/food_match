@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
@@ -325,6 +326,7 @@ class DetailBottomSheet extends StatelessWidget {
   Widget startCookingButton() {
     return InkWell(
       onTap: () {
+        HapticFeedback.mediumImpact();
         Get.to(() => StepScreen(menu: menu));
       },
       child: Container(
@@ -349,6 +351,7 @@ class DetailBottomSheet extends StatelessWidget {
   Widget cookedButton() {
     return InkWell(
       onTap: () {
+        HapticFeedback.mediumImpact();
         menuController.checkBeforeSaveMenu(menu, false);
       },
       child: Container(
@@ -390,6 +393,7 @@ class DetailBottomSheet extends StatelessWidget {
     return savedMenu
         ? InkWell(
             onTap: () {
+              HapticFeedback.mediumImpact();
               Get.to(() => RemovedMenu(
                     context: context,
                   ));
@@ -403,6 +407,7 @@ class DetailBottomSheet extends StatelessWidget {
           )
         : InkWell(
             onTap: () {
+              HapticFeedback.mediumImpact();
               menuController.updateSavedMenu(menu);
             },
             child: Icon(

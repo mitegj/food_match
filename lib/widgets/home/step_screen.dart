@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -52,6 +53,8 @@ class StepScreen extends StatelessWidget {
             index.value += 1;
             if (_speak.value) speak(menu.steps[index.value]);
           }
+
+          HapticFeedback.lightImpact();
         }
       },
       child: Scaffold(
@@ -133,6 +136,8 @@ class StepScreen extends StatelessWidget {
                   // onTap: speak(menu.steps[index.value]),
                   onTap: () {
                     stopSpeak();
+
+                    HapticFeedback.heavyImpact();
                     _speak.value = !_speak.value;
                   },
                   child: CircleAvatar(
@@ -149,6 +154,7 @@ class StepScreen extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
+                    HapticFeedback.mediumImpact();
                     Get.back();
                   },
                   child: CircleAvatar(

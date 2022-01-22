@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/screens/saved_menu.dart';
@@ -43,6 +44,7 @@ class HomeHeader extends StatelessWidget {
                       color: UIColors.white,
                     ),
                     onPressed: () {
+                      HapticFeedback.mediumImpact();
                       Get.to(() => StatisticsScreen());
                       //Get.to(() => StatsPage());
                     },
@@ -61,8 +63,7 @@ class HomeHeader extends StatelessWidget {
                       color: UIColors.white,
                     ),
                     onPressed: () {
-                      /*Get.bottomSheet(InventoryBottomSheet(),
-                      isScrollControlled: true);*/
+                      HapticFeedback.mediumImpact();
                       Get.to(
                         () => Scaffold(
                           backgroundColor: theme.backgroundColor,
@@ -87,8 +88,7 @@ class HomeHeader extends StatelessWidget {
                       color: UIColors.white,
                     ),
                     onPressed: () {
-                      /*Get.bottomSheet(InventoryBottomSheet(),
-                      isScrollControlled: true);*/
+                      HapticFeedback.mediumImpact();
                       Get.to(() => InventoryScreen());
                     },
                   ),

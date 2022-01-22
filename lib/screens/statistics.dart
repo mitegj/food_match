@@ -12,7 +12,6 @@ import 'package:morning_brief/widgets/settings/delete_account_button.dart';
 import 'package:morning_brief/widgets/settings/disconnect_account_button.dart';
 import 'package:morning_brief/widgets/settings/info_version.dart';
 import 'package:morning_brief/widgets/settings/settings_area.dart';
-import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 // ignore: must_be_immutable
 class StatisticsScreen extends GetWidget<AllergyController> {
@@ -47,20 +46,21 @@ class StatisticsScreen extends GetWidget<AllergyController> {
         child: ListView(
           children: <Widget>[
             const SizedBox(height: 40),
-            CircleAvatar(
-              radius: 50,
-              backgroundColor: UIColors.blue,
-              child: Container(
-                  padding: const EdgeInsets.all(20),
-                  child: Text(
-                    "",
-                    //_settingController.getUserInitial(),
-                    style: GoogleFonts.poppins(
-                        color: UIColors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400),
-                  )),
-            ),
+            _settingController.hasUserName()
+                ? CircleAvatar(
+                    radius: 50,
+                    backgroundColor: UIColors.blue,
+                    child: Container(
+                        padding: const EdgeInsets.all(20),
+                        child: Text(
+                          _settingController.getUserInitial(),
+                          style: GoogleFonts.poppins(
+                              color: UIColors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w400),
+                        )),
+                  )
+                : SizedBox(),
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.all(20.0),
@@ -70,31 +70,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                       fontSize: 18,
                       fontWeight: FontWeight.w700)),
             ),
-            Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20),
-                child: Stack(
-                  children: <Widget>[
-                    AspectRatio(
-                      aspectRatio: 1,
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(20),
-                            ),
-                            color: Color(0xFF12161C)),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              right: 30.0, left: 5, top: 20, bottom: 10),
-                          child: Obx(
-                            () => LineChart(
-                              mainData(),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                )),
+            chartSection(),
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.only(left: 20.0, right: 20.0),
@@ -139,77 +115,18 @@ class StatisticsScreen extends GetWidget<AllergyController> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20),
                 child: Obx(() => Visibility(
-                      visible: visibility.value,
-                      child: ListView.builder(
-                          physics: ScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: statisticController.cookedMenus?.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Padding(
-                                padding: const EdgeInsets.only(
-                                    bottom: 10.0, top: 20.0),
-                                child: Column(
-                                  children: <Widget>[
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 20.0),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Expanded(
-                                                child: Text(
-                                                    statisticController
-                                                        .cookedMenus![index]
-                                                        .name
-                                                        .toString(),
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: GoogleFonts.poppins(
-                                                      color: UIColors.white,
-                                                      fontSize: 15,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                    )),
-                                              ),
-                                            ],
-                                          ),
-                                          Row(
-                                            children: [
-                                              Expanded(
-                                                child: Text(
-                                                    formattedDate.format(
-                                                        statisticController
-                                                            .cookedMenus![index]
-                                                            .cookedTime
-                                                            .toDate()),
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: GoogleFonts.poppins(
-                                                      color: UIColors.white,
-                                                      fontSize: 15,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                    )),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    if (index !=
-                                        (statisticController
-                                                .cookedMenus?.length)! -
-                                            1)
-                                      Divider(
-                                        color: UIColors.black,
-                                      )
-                                  ],
-                                ));
-                          }),
-                    )),
+                    visible: visibility.value,
+                    child: statisticController.cookedMenus != null &&
+                            statisticController.cookedMenus!.length > 0
+                        ? historyMenuContainer(formattedDate)
+                        : Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text("WILLFINDCOOKEDMENU".tr,
+                                style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 15)),
+                          ))),
               ),
             ),
             Padding(
@@ -233,44 +150,87 @@ class StatisticsScreen extends GetWidget<AllergyController> {
     );
   }
 
-  Widget weeklySummary() {
-    DateFormat formattedDate = DateFormat(Get.deviceLocale.toString() == "en"
-        ? 'kk:mm  yyyy-MM-dd'
-        : "kk:mm  dd-MM-yyyy");
-    return Obx(
-      () => statisticController.cookedMenus != null
-          ? Padding(
-              padding: EdgeInsets.all(20),
-              child: ListView.builder(
-                itemCount: statisticController.cookedMenus?.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Column(
-                    children: [
-                      Card(
-                          color: UIColors.orange,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          child: Column(
-                            children: [
-                              ListTile(
-                                title: Text(
-                                  statisticController.cookedMenus![index].name,
-                                  style: TextStyle(color: UIColors.black),
-                                ),
-                                subtitle: Text(formattedDate.format(
-                                    statisticController
-                                        .cookedMenus![index].cookedTime
-                                        .toDate())),
-                              ),
-                            ],
-                          ))
-                    ],
-                  );
-                },
+  ListView historyMenuContainer(DateFormat formattedDate) {
+    return ListView.builder(
+        physics: ScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: statisticController.cookedMenus?.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Padding(
+              padding: const EdgeInsets.only(bottom: 10.0, top: 20.0),
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                      padding: const EdgeInsets.only(bottom: 20.0),
+                      child: historyMenu(index, formattedDate)),
+                ],
+              ));
+        });
+  }
+
+  Widget chartSection() {
+    return Padding(
+        padding: const EdgeInsets.only(left: 20.0, right: 20),
+        child: Stack(
+          children: <Widget>[
+            AspectRatio(
+              aspectRatio: 1,
+              child: Container(
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
+                    ),
+                    color: Color(0xFF12161C)),
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      right: 30.0, left: 5, top: 20, bottom: 10),
+                  child: Obx(
+                    () => LineChart(
+                      mainData(),
+                    ),
+                  ),
+                ),
               ),
-            )
-          : LoadingWidget(),
+            ),
+          ],
+        ));
+  }
+
+  Widget historyMenu(int index, DateFormat formattedDate) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child:
+                  Text(statisticController.cookedMenus![index].name.toString(),
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.poppins(
+                        color: UIColors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                      )),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: Text(
+                  formattedDate.format(statisticController
+                      .cookedMenus![index].cookedTime
+                      .toDate()),
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.poppins(
+                    color: UIColors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                  )),
+            ),
+          ],
+        ),
+      ],
     );
   }
 

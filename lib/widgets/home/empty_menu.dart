@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:get/get.dart';
@@ -86,6 +87,7 @@ class EmptyMenu extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
+                    HapticFeedback.mediumImpact();
                     Get.to(() => InventoryScreen());
                   },
                   child: Container(
@@ -136,6 +138,7 @@ class EmptyMenu extends StatelessWidget {
   Widget filtersIcon() {
     return InkWell(
       onTap: () {
+        HapticFeedback.mediumImpact();
         Get.to(() => FiltersPage());
       },
       child: Stack(

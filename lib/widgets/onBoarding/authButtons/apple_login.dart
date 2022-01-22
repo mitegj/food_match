@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
@@ -18,6 +19,7 @@ class AppleLogin extends GetWidget<AuthController> {
       child: GestureDetector(
         //onTap: () => signInWithGoogle(context),
         onTap: () => {
+          HapticFeedback.mediumImpact(),
           if (checked.value)
             {AuthController.instance.signInWithApple()}
           else
