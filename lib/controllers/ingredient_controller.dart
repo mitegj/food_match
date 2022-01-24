@@ -41,17 +41,6 @@ class IngredientController extends GetxController {
           });
   }
 
-/*
-  updateStock(state, index, stocked, _userInventory) {
-    UserInventory inv =
-        _userInventory.where((el) => el.id == state.ingSearch[index].id).single;
-
-    bool stock = stocked ? inv.stock = true : inv.stock = false;
-    print(_userInventory);
-    MenuController().updateStockCtrl(inv.id, stock);
-    _userInventory.refresh();
-  }
-  */
 
   setUserInventoryCheck(state, index, _userInventory) {
     if (_userInventory

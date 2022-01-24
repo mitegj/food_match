@@ -6,6 +6,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class SettingController extends GetxController {
   RxString appCurrentVersion = "".obs;
+
+  static SettingController instance = Get.find();
   @override
   void onInit() {
     super.onInit();

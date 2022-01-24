@@ -25,7 +25,6 @@ class InventoryScreen extends StatelessWidget {
     bool stock = stocked ? inv.stock = true : inv.stock = false;
     */
     String id = state.ingSearch[index].id;
-    print(state.ingSearch[index].name);
     if (!_userInventory.contains(id))
       _userInventory.add(id);
     else

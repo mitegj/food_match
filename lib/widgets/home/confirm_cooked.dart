@@ -3,15 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:morning_brief/controllers/setting_controller.dart';
 import 'package:morning_brief/screens/homepage.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 
+// ignore: must_be_immutable
 class ConfirmCooked extends StatelessWidget {
-  const ConfirmCooked(
-      {Key? key, required this.cooked, required this.fromStepsPage})
+  ConfirmCooked({Key? key, required this.cooked, required this.fromStepsPage})
       : super(key: key);
   final bool cooked;
   final bool fromStepsPage;
+
+  SettingController _settingController =
+      Get.put<SettingController>(SettingController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,9 +56,7 @@ class ConfirmCooked extends StatelessWidget {
         ),
         Text(
           "ENJOYOURMEAL".tr +
-              " " +
-              FirebaseAuth.instance.currentUser!.displayName!.split(" ")[0] +
-              "!",
+              " ${_settingController.hasUserName() ? FirebaseAuth.instance.currentUser!.displayName!.split(" ")[0] : ''} !",
           style: GoogleFonts.poppins(
             fontSize: 18,
             fontWeight: FontWeight.w500,

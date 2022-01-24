@@ -19,7 +19,7 @@ class DisconnectAccountButton extends StatelessWidget {
     return InkWell(
       onTap: () {
         HapticFeedback.mediumImpact();
-        _authController.logoutGoogle();
+        _authController.logout();
       },
       child: Container(
         margin: EdgeInsets.only(left: 20, right: 20),

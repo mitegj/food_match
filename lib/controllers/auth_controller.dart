@@ -100,7 +100,8 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<void> logoutGoogle() async {
+  Future<void> logout() async { 
+    // funziona sia con google che con apple
     try {
       await googleSignIn.disconnect();
 
@@ -230,6 +231,9 @@ class AuthController extends GetxController {
       idToken: appleCredential.identityToken,
       rawNonce: rawNonce,
     );
+
+
+      afterLoginControl(oauthCredential);
 
     // Sign in the user with Firebase. If the nonce we generated earlier does
     // not match the nonce in `appleCredential.identityToken`, sign in will fail.

@@ -5,11 +5,14 @@ import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/instance_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:morning_brief/controllers/setting_controller.dart';
 
 import 'package:morning_brief/utils/UIColors.dart';
 
 // ignore: must_be_immutable
 class Tutorial extends StatelessWidget {
+  SettingController _settingController =
+      Get.put<SettingController>(SettingController());
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
@@ -37,7 +40,11 @@ class Tutorial extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              Text("✌️ Hey " + FirebaseAuth.instance.currentUser!.displayName!,
+              Text(
+                  "✌️ Hey " +
+                      (_settingController.hasUserName()
+                          ? FirebaseAuth.instance.currentUser!.displayName!
+                          : ''),
                   style: GoogleFonts.poppins(
                       color: UIColors.white,
                       fontSize: 18,

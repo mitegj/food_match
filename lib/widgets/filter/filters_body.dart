@@ -10,7 +10,7 @@ class FilterBody extends StatelessWidget {
 
   static RxList<int> listFilters = RxList<int>().obs();
   List<Widget> getFilters() {
-    MenuController _menuController = Get.put<MenuController>(MenuController());
+   
     List<Widget> filters = [];
     DishType.values.forEach((el) {
       filters.add(InkWell(
@@ -19,7 +19,7 @@ class FilterBody extends StatelessWidget {
               ? listFilters.add(el.index)
               : listFilters.remove(el.index),
           //if (listFilters.length == 0) listFilters.add(-1),
-          _menuController.getMenuList(listFilters)
+          MenuController.instance.getMenuList(listFilters)
         },
         child: Obx(
           () => Container(

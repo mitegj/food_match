@@ -38,6 +38,7 @@ class StepScreen extends StatelessWidget {
         final RenderBox box = context.findRenderObject() as RenderBox;
         final localOffset = box.globalToLocal(details.globalPosition);
         final x = localOffset.dx;
+        stopSpeak();
         if (x > box.size.width / 2 + 10 || x < box.size.width / 2 - 10) if (x <
             box.size.width / 3) {
           if (index.value != 0) {

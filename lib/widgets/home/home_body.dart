@@ -17,7 +17,7 @@ class HomeBody extends GetWidget<MenuController> {
   IngredientController ingController =
       Get.put<IngredientController>(IngredientController());
 
-  MenuController _menuController = MenuController.instance;
+  MenuController _menuController = Get.put<MenuController>(MenuController());
   @override
   Widget build(BuildContext context) {
     _menuController.getMenuList(FilterBody.listFilters);
