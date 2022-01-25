@@ -1,16 +1,18 @@
-# morning_brief
+# foodmatch
 
-A new Flutter project.
+<img src="./ios/Runner/Assets.xcassets/icon.imageset/App%20icon%203.png" width="100" height="100">
 
-## Getting Started
+## _Simple, easy, portable_
 
-This project is a starting point for a Flutter application.
+✨ Not a regular food app ✨
 
-A few resources to get you started if this is your first Flutter project:
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/mitegj/food_match)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Development
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter
+- Google firestore
+
+## License
+
+BeyondX ©
