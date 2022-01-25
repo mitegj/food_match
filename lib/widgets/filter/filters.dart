@@ -26,11 +26,14 @@ class FiltersPage extends StatelessWidget {
                   children: [
                     Flexible(
                       flex: 1,
-                      child: Text("ANYPREFERENCES".tr + "?",
-                          style: GoogleFonts.poppins(
-                              color: UIColors.white,
-                              fontSize: 26,
-                              fontWeight: FontWeight.w700)),
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 20.0),
+                        child: Text("ANYPREFERENCES".tr + "?",
+                            style: GoogleFonts.poppins(
+                                color: UIColors.white,
+                                fontSize: 26,
+                                fontWeight: FontWeight.w700)),
+                      ),
                     ),
                   ],
                 ),

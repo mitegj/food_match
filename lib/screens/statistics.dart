@@ -82,25 +82,30 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                   decoration: BoxDecoration(
                       color: UIColors.detailBlack,
                       borderRadius: BorderRadius.circular(15)),
-                  child: Row(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20.0),
-                        child: Obx(
-                          () => Icon(
-                            visibility.value
-                                ? Icons.keyboard_arrow_down
-                                : Icons.keyboard_arrow_right,
-                            color: Colors.white,
-                          ),
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("WEEKLYHISTORY".tr,
+                              style: GoogleFonts.poppins(
+                                color: UIColors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                              )),
+                          CircleAvatar(
+                            backgroundColor: UIColors.black.withOpacity(0.6),
+                            child: Obx(
+                              () => Icon(
+                                  visibility.value
+                                      ? Icons.keyboard_arrow_down
+                                      : Icons.keyboard_arrow_right,
+                                  color: UIColors.white),
+                            ),
+                          )
+                        ],
                       ),
-                      Text("WEEKLYHISTORY".tr,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 15)),
                     ],
                   ),
                 ),
@@ -120,11 +125,11 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                             statisticController.cookedMenus!.length > 0
                         ? historyMenuContainer(formattedDate)
                         : Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Text("WILLFINDCOOKEDMENU".tr,
+                            padding: const EdgeInsets.all(20.0),
+                            child: Text("WILLFINDCOOKEDMENU".tr + ".",
                                 style: GoogleFonts.poppins(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w700,
+                                    color: Colors.orange,
+                                    fontWeight: FontWeight.w500,
                                     fontSize: 15)),
                           ))),
               ),
