@@ -37,13 +37,15 @@ class AuthController extends GetxController {
     ever(user, _initialScreen);
   }
 
-  _initialScreen(User? usr) {
-    if (user.value == null) {
-      Get.offAll(() => OnBoardingPage(), transition: Transition.leftToRight);
-    } else {
-      UserDatabase().saveUserLastLogin();
-      Get.offAll(() => HomePage(isFirstLogin: false));
-    }
+  _initialScreen(User? usr) async {
+    await Future.delayed(const Duration(microseconds: 50), () {
+      if (user.value == null) {
+        Get.offAll(() => OnBoardingPage(), transition: Transition.leftToRight);
+      } else {
+        UserDatabase().saveUserLastLogin();
+        Get.to(() => HomePage(isFirstLogin: false));
+      }
+    });
   }
 
   void googleLogin() async {
@@ -58,8 +60,6 @@ class AuthController extends GetxController {
       );
 
       afterLoginControl(credential);
-
-      //Get.toNamed('/homeView'); // navigate to your wanted page
       return;
     } catch (e) {
       Get.snackbar(
@@ -100,7 +100,7 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<void> logout() async { 
+  Future<void> logout() async {
     // funziona sia con google che con apple
     try {
       await googleSignIn.disconnect();
@@ -232,8 +232,7 @@ class AuthController extends GetxController {
       rawNonce: rawNonce,
     );
 
-
-      afterLoginControl(oauthCredential);
+    afterLoginControl(oauthCredential);
 
     // Sign in the user with Firebase. If the nonce we generated earlier does
     // not match the nonce in `appleCredential.identityToken`, sign in will fail.
