@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/filter/filters_body.dart';
+import 'package:morning_brief/widgets/global_input/second_step.dart';
 import 'package:morning_brief/widgets/global_input/time_eating_screen.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
@@ -54,9 +55,7 @@ class AllergiesScreen extends GetWidget<AllergyController> {
 
                                         HapticFeedback.mediumImpact();
                                         if (isFirstLogin)
-                                          Get.to(() => TimeEatingScreen(
-                                                isFirstLogin: isFirstLogin,
-                                              ));
+                                          Get.to(() => SecondStep());
                                         else
                                           Get.back();
                                       },

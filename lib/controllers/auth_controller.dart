@@ -14,6 +14,7 @@ import 'package:morning_brief/screens/onboarding.dart';
 import 'package:morning_brief/services/user_database.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/utils/conf.dart';
+import 'package:morning_brief/widgets/global_input/first_step.dart';
 import 'package:package_info/package_info.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -192,9 +193,7 @@ class AuthController extends GetxController {
     if (authResult.additionalUserInfo!.isNewUser) {
       // se utente non esiste quando fa login lo creo con solo l'id
 
-      Get.to(() => AllergiesScreen(
-            isFirstLogin: true,
-          ));
+      Get.to(() => FirsStep());
       if (user != null) {
         createUser(user.uid.toString()).then((value) => {});
       } else {

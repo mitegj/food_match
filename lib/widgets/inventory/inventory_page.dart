@@ -90,7 +90,7 @@ class InventoryScreen extends StatelessWidget {
                           child: Text("DONE".tr.toUpperCase(),
                               style: GoogleFonts.poppins(
                                   color: UIColors.violet,
-                                  fontSize: 17,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w700)),
                         )
                       ],
