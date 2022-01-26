@@ -26,6 +26,8 @@ class AuthController extends GetxController {
   final FirebaseAuth auth = FirebaseAuth.instance;
   late Rx<User?> user;
   static AuthController instance = Get.find();
+
+  bool newUser = false;
   late UserCredential authResult;
 
   @override
@@ -38,12 +40,17 @@ class AuthController extends GetxController {
   }
 
   _initialScreen(User? usr) async {
-    await Future.delayed(const Duration(microseconds: 50), () {
+    await Future.delayed(const Duration(milliseconds: 500), () {
       if (user.value == null) {
         Get.offAll(() => OnBoardingPage(), transition: Transition.leftToRight);
       } else {
-        UserDatabase().saveUserLastLogin();
-        Get.offAll(() => HomePage(isFirstLogin: false));
+        if (newUser) {
+          newUser = !newUser;
+          Get.to(() => FirsStep());
+        } else {
+          UserDatabase().saveUserLastLogin();
+          Get.offAll(() => HomePage(isFirstLogin: false));
+        }
       }
     });
   }
@@ -194,9 +201,8 @@ class AuthController extends GetxController {
     if (authResult.additionalUserInfo!.isNewUser) {
       // se utente non esiste quando fa login lo creo con solo l'id
 
-      Get.to(() => FirsStep());
       if (user != null) {
-        createUser(user.uid.toString()).then((value) => {});
+        createUser(user.uid.toString()).then((value) => {newUser = !newUser});
       } else {
         Get.snackbar(
           "Error signing in",
@@ -209,7 +215,7 @@ class AuthController extends GetxController {
     update();
   }
 
-  Future<UserCredential> signInWithApple() async {
+  Future<void> signInWithApple() async {
     // To prevent replay attacks with the credential returned from Apple, we
     // include a nonce in the credential request. When signing in with
     // Firebase, the nonce in the id token returned by Apple, is expected to
@@ -236,6 +242,6 @@ class AuthController extends GetxController {
 
     // Sign in the user with Firebase. If the nonce we generated earlier does
     // not match the nonce in `appleCredential.identityToken`, sign in will fail.
-    return await FirebaseAuth.instance.signInWithCredential(oauthCredential);
+    // return await FirebaseAuth.instance.signInWithCredential(oauthCredential);
   }
 }
