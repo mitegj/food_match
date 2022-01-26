@@ -137,7 +137,7 @@ class StepScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InkWell(
+                GestureDetector(
                   // onTap: speak(menu.steps[index.value]),
                   onTap: () {
                     stopSpeak();

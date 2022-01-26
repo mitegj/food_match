@@ -51,23 +51,17 @@ class SecondStep extends StatelessWidget {
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500)),
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       Align(
                         alignment: Alignment.centerLeft,
-                        child: Text(
-                            "Abbiamo quasi finito, ora ti chiederemo di abilitare le notifiche.",
+                        child: Text("STEP2LABEL1".tr,
                             style: GoogleFonts.poppins(
                                 color: UIColors.white,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500)),
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                          "In base all'orario di cena che selezionerai ti avviseremo con una notifica di due ore d'anticipo per iniziare a cucinare il tuo piatto.",
+                      const SizedBox(height: 20),
+                      Text("STEP2LABEL2".tr,
                           style: GoogleFonts.poppins(
                               color: UIColors.white,
                               fontSize: 14,

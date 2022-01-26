@@ -131,7 +131,15 @@ class Messages extends Translations {
           "DELETEACCOUNTLABEL":
               "Hey, are you sure you want to delete your account?",
           "WILLFINDCOOKEDMENU":
-              "Here you will find all the menus you have cooked in the last week"
+              "Here you will find all the menus you have cooked in the last week",
+          "STEP1LABEL1":
+              "Now we will ask you for some little information to make your foodmatch experience better.",
+          "STEP1LABEL2":
+              "If you have any kind of allergy or intolerance, declare, or press forward to continue.",
+          "STEP2LABEL1": "Do you want to enable notifications from foodmatch?",
+          "STEP2LABEL2":
+              "Based on the dinner time you select, we will notify you with a notification to entice you to get in the kitchen!",
+          "WELCOME": "Welcome"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -263,7 +271,15 @@ class Messages extends Translations {
           "DELETEACCOUNTLABEL":
               "Hey, sei sicuro di voler cancellare il tuo l'account?",
           "WILLFINDCOOKEDMENU":
-              "Qui troverai tutti i menu che hai cucinato nell'ultima settimana"
+              "Qui troverai tutti i menu che hai cucinato nell'ultima settimana",
+          "STEP1LABEL1":
+              "Ora ti chiederemo qualche piccola informazione per rendere migliore la tua esperienza su foodmatch.",
+          "STEP1LABEL2":
+              "Se hai qualche tipo di allergia o intolleranza dichiara, oppure premi avanti per continuare.",
+          "STEP2LABEL1": "Vuoi abilitare le notifiche da foodmatch?",
+          "STEP2LABEL2":
+              "In base all'orario di cena che selezionerai, ti avviseremo con una notifica per invogliarti a metterti ai fornelli!",
+          "WELCOME": "Benvenuto"
         },
       };
 }

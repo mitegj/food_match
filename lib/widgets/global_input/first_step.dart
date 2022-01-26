@@ -52,32 +52,23 @@ class FirsStep extends StatelessWidget {
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500)),
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       Align(
                         alignment: Alignment.centerLeft,
-                        child: Text("Benvenuto" + " 😎",
+                        child: Text("WELCOME".tr + " 😎",
                             style: GoogleFonts.poppins(
                                 color: UIColors.white,
                                 fontSize: 18,
                                 fontWeight: FontWeight.w700)),
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                          "Ora ti chiederemo qualche piccola informazione prima di utilizzare foodmatch per rendere migliore la tua esperienza." +
-                              " ✨",
+                      const SizedBox(height: 20),
+                      Text("STEP1LABEL1".tr + " ✨",
                           style: GoogleFonts.poppins(
                               color: UIColors.white,
                               fontSize: 14,
                               fontWeight: FontWeight.w500)),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                          "Se hai qualche tipo di allergia, dichiarala altrimenti premi avanti per continuare.",
+                      const SizedBox(height: 20),
+                      Text("STEP1LABEL2".tr,
                           style: GoogleFonts.poppins(
                               color: UIColors.white,
                               fontSize: 14,
