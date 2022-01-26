@@ -38,25 +38,28 @@ class StepScreen extends StatelessWidget {
         final RenderBox box = context.findRenderObject() as RenderBox;
         final localOffset = box.globalToLocal(details.globalPosition);
         final x = localOffset.dx;
-        stopSpeak();
-        if (x > box.size.width / 2 + 10 || x < box.size.width / 2 - 10) if (x <
-            box.size.width / 3) {
-          if (index.value != 0) {
-            index.value -= 1;
-          }
-        } else {
+        final y = localOffset.dy;
+        if (y < box.size.height * 0.85) {
           stopSpeak();
-          if (index.value + 1 == menu.steps.length) {
-            MenuController menuController = Get.find<MenuController>();
-            menuController.checkBeforeSaveMenu(menu, true);
-            Get.back();
-            Navigator.pop(context);
+          if (x > box.size.width / 2 + 10 ||
+              x < box.size.width / 2 - 10) if (x < box.size.width / 3) {
+            if (index.value != 0) {
+              index.value -= 1;
+            }
           } else {
-            index.value += 1;
-            if (_speak.value) speak(menu.steps[index.value]);
-          }
+            stopSpeak();
+            if (index.value + 1 == menu.steps.length) {
+              MenuController menuController = Get.find<MenuController>();
+              menuController.checkBeforeSaveMenu(menu, true);
+              Get.back();
+              Navigator.pop(context);
+            } else {
+              index.value += 1;
+              if (_speak.value) speak(menu.steps[index.value]);
+            }
 
-          HapticFeedback.lightImpact();
+            HapticFeedback.lightImpact();
+          }
         }
       },
       child: Scaffold(

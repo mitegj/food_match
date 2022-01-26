@@ -63,3 +63,4 @@ lib/generated_plugin_registrant.dart
 .DS_Store
 ios/Podfile.lock
 ios/Podfile.lock
+*.pbxproj
