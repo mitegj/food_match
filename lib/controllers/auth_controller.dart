@@ -60,6 +60,8 @@ class AuthController extends GetxController {
       );
 
       afterLoginControl(credential);
+
+      //Get.toNamed('/homeView'); // navigate to your wanted page
       return;
     } catch (e) {
       Get.snackbar(

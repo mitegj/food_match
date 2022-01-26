@@ -35,7 +35,7 @@ class MenuTile extends StatelessWidget {
                   isScrollControlled: true)
             },
         child: Container(
-          margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
+          margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
           child: Column(
             children: [
               Container(

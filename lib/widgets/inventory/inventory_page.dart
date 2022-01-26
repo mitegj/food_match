@@ -108,7 +108,7 @@ class InventoryScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     color: UIColors.lightBlack.withOpacity(0.5)),
                 child: ListView(children: <Widget>[
-                  CupertinoTextField(
+                  CupertinoSearchTextField(
                     padding: EdgeInsets.all(20),
                     onChanged: (text) {
                       ingController.filterIngredients(text);
@@ -118,18 +118,22 @@ class InventoryScreen extends StatelessWidget {
                         color: UIColors.black,
                         fontSize: 13,
                         fontWeight: FontWeight.w500),
+                    itemSize: 30,
                     placeholder: 'TEXTFIELDLABELINVENTORY'.tr,
+                    prefixInsets: EdgeInsets.only(left: 20),
+                    suffixInsets: EdgeInsets.only(right: 20),
+                    itemColor: UIColors.violet,
                     placeholderStyle: GoogleFonts.poppins(
                         color: UIColors.black,
                         fontSize: 13,
                         fontWeight: FontWeight.w500),
                     decoration: BoxDecoration(
-                      color: UIColors.lowTransaprentWhite,
+                      color: UIColors.white,
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
+                  const SizedBox(
+                    height: 10,
                   ),
                   Obx(() => GetX<IngredientController>(
                         init: Get.put<IngredientController>(

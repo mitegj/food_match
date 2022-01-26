@@ -28,26 +28,23 @@ class DisconnectAccountButton extends StatelessWidget {
           color: UIColors.detailBlack,
           borderRadius: BorderRadius.circular(20),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("DISCONNECTACCOUNT".tr,
-                  style: GoogleFonts.poppins(
-                    color: Colors.white,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w400,
-                  )),
-              CircleAvatar(
-                backgroundColor: UIColors.black.withOpacity(0.6),
-                child: Icon(
-                  Icons.exit_to_app_sharp,
-                  color: Colors.red[500],
-                ),
-              )
-            ],
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text("DISCONNECTACCOUNT".tr,
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                )),
+            CircleAvatar(
+              backgroundColor: UIColors.black.withOpacity(0.6),
+              child: Icon(
+                Icons.exit_to_app_sharp,
+                color: Colors.red[500],
+              ),
+            )
+          ],
         ),
       ),
     );

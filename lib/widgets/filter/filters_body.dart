@@ -10,7 +10,6 @@ class FilterBody extends StatelessWidget {
 
   static RxList<int> listFilters = RxList<int>().obs();
   List<Widget> getFilters() {
-   
     List<Widget> filters = [];
     DishType.values.forEach((el) {
       filters.add(InkWell(
@@ -72,8 +71,8 @@ class FilterBody extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20.0, right: 20),
           child: GridView.count(
             crossAxisCount: 2,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 20,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
             childAspectRatio: 1,
             children: getFilters(),
           ),

@@ -22,7 +22,7 @@ class SettingsArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(20),
+      margin: EdgeInsets.only(bottom: 10, right: 20, left: 20, top: 20),
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: UIColors.detailBlack,
@@ -169,7 +169,7 @@ class SettingsArea extends StatelessWidget {
                   CircleAvatar(
                     backgroundColor: UIColors.black.withOpacity(0.6),
                     child: Icon(
-                      Icons.account_balance_outlined,
+                      Icons.view_agenda,
                       color: UIColors.white,
                     ),
                   )

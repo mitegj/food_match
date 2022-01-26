@@ -63,7 +63,7 @@ class TimeEatingScreen extends StatelessWidget {
                           _dateTime.value.minute.toString().padLeft(2, '0'),
                       style: GoogleFonts.poppins(
                           color: UIColors.grey,
-                          fontSize: 20,
+                          fontSize: 16,
                           fontWeight: FontWeight.w300),
                     ),
                   ],

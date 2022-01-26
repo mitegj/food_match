@@ -98,8 +98,7 @@ class Messages extends Translations {
               "Try updating your inventory by adding new ingredients.",
           "EMPTYSCREENMESSAGE2": "Or check the filters you've applied.",
           "SAVEDMENULABEL": "Save them and then come back to this section.",
-          "NOTIFICATIONBODY":
-              "Hey, dinner time is coming. Take a look at what you can cook.",
+          "NOTIFICATIONBODY": "Hey, take a look at what you can cook.",
           "INVENTORY": "Inventory",
           "TOCOOK": " to cook",
           "TEXTFIELDLABELINVENTORY": "search in your pantry",
@@ -231,7 +230,7 @@ class Messages extends Translations {
           "EMPTYSCREENMESSAGE2": "Oppure controlla i filtri che hai applicato.",
           "SAVEDMENULABEL": "Salvali e poi torna in questa sezione.",
           "NOTIFICATIONBODY":
-              "Hey, l'orario di cena si sta avvicinando. Dai un'occhiata a quello che puoi cucinare.",
+              "Hey, dai un'occhiata a quello che puoi cucinare.",
           "INVENTORY": "Inventario",
           "TOCOOK": " da cucinare",
           "TEXTFIELDLABELINVENTORY": "cerca nella tua dispensa",

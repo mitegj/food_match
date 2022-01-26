@@ -40,6 +40,7 @@ class HomeBody extends GetWidget<MenuController> {
                             ],
                           )),
                         ),
+                        SizedBox(height: 10),
                         ListView.builder(
                             physics: ScrollPhysics(),
                             shrinkWrap: true,

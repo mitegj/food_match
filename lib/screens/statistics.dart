@@ -35,7 +35,6 @@ class StatisticsScreen extends GetWidget<AllergyController> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    var mediaQuery = MediaQuery.of(context);
     DateFormat formattedDate = DateFormat(Get.deviceLocale.toString() == "en"
         ? 'kk:mm  yyyy-MM-dd'
         : "kk:mm  dd-MM-yyyy");
@@ -71,17 +70,16 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                       fontWeight: FontWeight.w700)),
             ),
             chartSection(),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.only(left: 20.0, right: 20.0),
               child: InkWell(
                 onTap: () => {visibility.value = !visibility.value},
                 child: Container(
-                  width: mediaQuery.size.width,
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                       color: UIColors.detailBlack,
-                      borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(20)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
