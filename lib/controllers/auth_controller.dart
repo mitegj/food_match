@@ -7,6 +7,7 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/models/user_model.dart';
 import 'package:morning_brief/screens/homepage.dart';
 import 'package:morning_brief/screens/onboarding.dart';
@@ -46,8 +47,11 @@ class AuthController extends GetxController {
       } else {
         if (newUser) {
           newUser = !newUser;
-          Get.to(() => FirsStep());
+          Get.off(() => FirsStep());
         } else {
+          // ignore: unused_field, unused_local_variable
+          IngredientController _ingredientController =
+              Get.put<IngredientController>(IngredientController());
           UserDatabase().saveUserLastLogin();
           Get.offAll(() => HomePage(isFirstLogin: false));
         }
@@ -202,7 +206,8 @@ class AuthController extends GetxController {
       // se utente non esiste quando fa login lo creo con solo l'id
 
       if (user != null) {
-        createUser(user.uid.toString()).then((value) => {newUser = !newUser});
+        newUser = !newUser;
+        createUser(user.uid.toString());
       } else {
         Get.snackbar(
           "Error signing in",
