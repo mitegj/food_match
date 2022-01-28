@@ -49,11 +49,13 @@ class AuthController extends GetxController {
           newUser = !newUser;
           Get.off(() => FirsStep());
         } else {
-          // ignore: unused_field, unused_local_variable
-          IngredientController _ingredientController =
-              Get.put<IngredientController>(IngredientController());
-          UserDatabase().saveUserLastLogin();
-          Get.offAll(() => HomePage(isFirstLogin: false));
+          if (Get.currentRoute.toString() != "/HomePage") {
+            // ignore: unused_field, unused_local_variable
+            IngredientController _ingredientController =
+                Get.put<IngredientController>(IngredientController());
+            UserDatabase().saveUserLastLogin();
+            Get.offAll(() => HomePage(isFirstLogin: false));
+          }
         }
       }
     });

@@ -14,8 +14,7 @@ import 'package:morning_brief/widgets/spinner/spinner.dart';
 class HomeBody extends GetWidget<MenuController> {
   HomeBody({Key? key}) : super(key: key);
 
-  IngredientController ingController =
-      Get.put<IngredientController>(IngredientController());
+  IngredientController ingController = Get.find<IngredientController>();
 
   MenuController _menuController = MenuController.instance;
   @override
