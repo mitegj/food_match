@@ -109,7 +109,8 @@ class InventoryScreen extends StatelessWidget {
                     color: UIColors.lightBlack.withOpacity(0.5)),
                 child: ListView(children: <Widget>[
                   CupertinoSearchTextField(
-                    padding: EdgeInsets.all(20),
+                    padding: EdgeInsets.only(
+                        top: 20, bottom: 20, right: 20, left: 10),
                     onChanged: (text) {
                       ingController.filterIngredients(text);
                     },
