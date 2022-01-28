@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
@@ -118,6 +119,7 @@ class HomeBody extends GetWidget<MenuController> {
   Widget filtersIcon() {
     return InkWell(
       onTap: () {
+        HapticFeedback.mediumImpact();
         Get.to(() => FiltersPage());
       },
       child: Stack(

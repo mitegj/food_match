@@ -21,12 +21,15 @@ class HomeHeader extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(
-                'foodmatch.',
-                style: GoogleFonts.poppins(
-                    fontSize: 26,
-                    fontWeight: FontWeight.w300,
-                    color: Colors.white),
+              FittedBox(
+                fit: BoxFit.contain,
+                child: Text(
+                  'foodmatch.',
+                  style: GoogleFonts.poppins(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white),
+                ),
               ),
             ],
           ),

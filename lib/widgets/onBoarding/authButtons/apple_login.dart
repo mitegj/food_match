@@ -44,15 +44,24 @@ class AppleLogin extends GetWidget<AuthController> {
                 ),
                 Expanded(
                   child: Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      'CONTINUEWITH'.tr + ' Apple',
-                      style: GoogleFonts.poppins(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 17),
-                    ),
-                  ),
+                      alignment: Alignment.center,
+                      child: RichText(
+                        text: TextSpan(
+                            text: 'CONTINUEWITH'.tr,
+                            style: GoogleFonts.poppins(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 17),
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: " Apple",
+                                style: GoogleFonts.poppins(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 17),
+                              )
+                            ]),
+                      )),
                 )
               ],
             ),
