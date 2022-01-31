@@ -6,7 +6,7 @@ class Messages extends Translations {
         "en_US": {
           "HELLO": "Hi",
           "DAILY_RECEPY": "Recepies of the day",
-          "SCROLLFORMORE": "Scroll for view other recepies",
+          "SCROLLFORMORE": "Scroll to show more recipes",
           "EASY": "Easy",
           "INTERMEDIATE": "Intermediate",
           "HARD": "Hard",
@@ -24,7 +24,7 @@ class Messages extends Translations {
           "YOURAGREEMENT": "Your agreement",
           "HAVEREAD": "I have read",
           "SLOGAN":
-              "Embrace a new way to cooking your meals and discover the pleasure of cooking.",
+              "Embrace a new way to cook dishes and keep trace of your calories.",
           "WEEKLYCAL": "Calories consumed",
           "WEEKLYHISTORY": "Consumed history",
           "SHOW": "Show now",
@@ -162,7 +162,7 @@ class Messages extends Translations {
           "YOURAGREEMENT": "Il tuo contratto",
           "HAVEREAD": "Ho letto",
           "SLOGAN":
-              "Abbraccia un nuovo modo di cucinare i tuoi pasti e scopri il piacere delle cucina.",
+              "Abbraccia un nuovo modo di cucinare i tuoi pasti e tieni traccia delle tue calorie.",
           "WEEKLYCAL": "Calorie consumate",
           "WEEKLYHISTORY": "Storico consumato",
           "SHOW": "Visualizza ora",
