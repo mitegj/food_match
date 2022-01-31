@@ -77,33 +77,28 @@ class InventoryScreen extends StatelessWidget {
                                 color: UIColors.white,
                                 fontSize: 20,
                                 fontWeight: FontWeight.w700)),
-                        InkWell(
-                          onTap: () {
-                            if (isValueUpdated) {
-                              MenuController().updateStockCtrl(_userInventory);
-                              MenuController.instance
-                                  .getMenuList(FilterBody.listFilters);
-                            }
+                        Container(
+                          padding: EdgeInsets.only(left: 8, right: 8),
+                          decoration: BoxDecoration(
+                              color: UIColors.detailBlack,
+                              borderRadius: BorderRadius.circular(15)),
+                          child: TextButton(
+                            child: Text("DONE".tr.toUpperCase(),
+                                style: GoogleFonts.poppins(
+                                    color: UIColors.violet,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700)),
+                            onPressed: () {
+                              if (isValueUpdated) {
+                                MenuController()
+                                    .updateStockCtrl(_userInventory);
+                                MenuController.instance
+                                    .getMenuList(FilterBody.listFilters);
+                              }
 
-                            HapticFeedback.mediumImpact();
-                            Get.back();
-                          },
-                          child: Container(
-                            padding: EdgeInsets.only(left: 8, right: 8),
-                            decoration: BoxDecoration(
-                                color: UIColors.detailBlack,
-                                borderRadius: BorderRadius.circular(15)),
-                            child: TextButton(
-                              child: Text("DONE".tr.toUpperCase(),
-                                  style: GoogleFonts.poppins(
-                                      color: UIColors.violet,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w700)),
-                              onPressed: () {
-                                HapticFeedback.mediumImpact();
-                                Get.to(() => InventoryScreen());
-                              },
-                            ),
+                              HapticFeedback.mediumImpact();
+                              Get.back();
+                            },
                           ),
                         )
                       ],
