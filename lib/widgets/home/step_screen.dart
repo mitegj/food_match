@@ -160,6 +160,7 @@ class StepScreen extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     HapticFeedback.mediumImpact();
+                    stopSpeak();
                     Get.back();
                   },
                   child: CircleAvatar(

@@ -7,24 +7,16 @@ class ArrowHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              child: IconButton(
-                icon: Icon(
-                  Icons.arrow_back_ios_rounded,
-                  color: UIColors.white,
-                ),
-                onPressed: () {
-                  Get.back();
-                },
-              ),
-            ),
-          ),
-        ],
+    return InkWell(
+      onTap: () {
+        Get.back();
+      },
+      child: Container(
+        padding: EdgeInsets.only(right: 10),
+        child: Icon(
+          Icons.arrow_back,
+          color: UIColors.white,
+        ),
       ),
     );
   }
