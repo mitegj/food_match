@@ -92,7 +92,6 @@ class SettingsArea extends StatelessWidget {
           InkWell(
             onTap: () {
               var lng = conf.appAppStroreLink;
-
               conf.launchURL(lng);
             },
             child: Padding(

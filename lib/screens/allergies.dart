@@ -11,7 +11,7 @@ import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 class AllergiesScreen extends GetWidget<AllergyController> {
   AllergiesScreen({Key? key, required this.isFirstLogin}) : super(key: key);
-  final isFirstLogin;
+  final bool isFirstLogin;
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -63,10 +63,9 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                                 fontWeight: FontWeight.w700)),
                                         onPressed: () {
                                           controller.setAllergies(controller);
-
+                                          print(isFirstLogin);
                                           MenuController.instance.getMenuList(
                                               FilterBody.listFilters);
-
                                           HapticFeedback.mediumImpact();
                                           if (isFirstLogin)
                                             Get.to(() => SecondStep());
