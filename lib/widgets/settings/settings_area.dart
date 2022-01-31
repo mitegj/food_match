@@ -91,6 +91,37 @@ class SettingsArea extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
+              var lng = conf.appAppStroreLink;
+
+              conf.launchURL(lng);
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("5STAR".tr,
+                      style: GoogleFonts.poppins(
+                        color: UIColors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                      )),
+                  CircleAvatar(
+                    backgroundColor: UIColors.black.withOpacity(0.6),
+                    child: Icon(
+                      Icons.star,
+                      color: UIColors.white,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          Divider(
+            color: UIColors.black,
+          ),
+          InkWell(
+            onTap: () {
               _settingController.openEmailFeedback();
             },
             child: Padding(

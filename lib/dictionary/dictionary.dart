@@ -139,7 +139,8 @@ class Messages extends Translations {
           "STEP2LABEL1": "Do you want to enable notifications from foodmatch?",
           "STEP2LABEL2":
               "Based on the dinner time you select, we will notify you with a notification to entice you to get in the kitchen!",
-          "WELCOME": "Welcome"
+          "WELCOME": "Welcome",
+          "5STAR": "Support us with 5 Stars",
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -279,7 +280,8 @@ class Messages extends Translations {
           "STEP2LABEL1": "Vuoi abilitare le notifiche da foodmatch?",
           "STEP2LABEL2":
               "In base all'orario di cena che selezionerai, ti avviseremo con una notifica per invogliarti a metterti ai fornelli!",
-          "WELCOME": "Benvenuto"
+          "WELCOME": "Benvenuto",
+          "5STAR": "Supportaci con 5 Stelle"
         },
       };
 }

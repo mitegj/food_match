@@ -14,7 +14,7 @@ class Conf {
   String appPlayStoreLink =
       "https://play.google.com/store/apps/details?id=appPackageName";
   String appAppStroreLink =
-      "https://apps.apple.com/it/app/tiktok-video-live-e-musica/id835599320";
+      "https://apps.apple.com/app/foodmatch-cook-have-fun/id1607696757";
 
   String lang = Get.deviceLocale.toString().split('_')[0].toUpperCase();
   String language = Get.deviceLocale.toString();
