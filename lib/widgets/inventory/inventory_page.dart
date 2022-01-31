@@ -87,14 +87,26 @@ class InventoryScreen extends StatelessWidget {
                             HapticFeedback.mediumImpact();
                             Get.back();
                           },
-                          child: Text("DONE".tr.toUpperCase(),
-                              style: GoogleFonts.poppins(
-                                  color: UIColors.violet,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700)),
+                          child: Container(
+                            padding: EdgeInsets.only(left: 8, right: 8),
+                            decoration: BoxDecoration(
+                                color: UIColors.detailBlack,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: TextButton(
+                              child: Text("DONE".tr.toUpperCase(),
+                                  style: GoogleFonts.poppins(
+                                      color: UIColors.violet,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700)),
+                              onPressed: () {
+                                HapticFeedback.mediumImpact();
+                                Get.to(() => InventoryScreen());
+                              },
+                            ),
+                          ),
                         )
                       ],
-                    ),
+                    )
                   ],
                 ),
               ),

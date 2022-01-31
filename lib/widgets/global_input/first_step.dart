@@ -23,18 +23,24 @@ class FirsStep extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      InkWell(
-                        onTap: () {
-                          HapticFeedback.mediumImpact();
-                          Get.to(() => AllergiesScreen(
-                                isFirstLogin: true,
-                              ));
-                        },
-                        child: Text("NEXT".tr.toUpperCase(),
-                            style: GoogleFonts.poppins(
-                                color: UIColors.violet,
-                                fontSize: 17,
-                                fontWeight: FontWeight.w700)),
+                      Container(
+                        padding: EdgeInsets.only(left: 8, right: 8),
+                        decoration: BoxDecoration(
+                            color: UIColors.detailBlack,
+                            borderRadius: BorderRadius.circular(15)),
+                        child: TextButton(
+                          child: Text("NEXT".tr.toUpperCase(),
+                              style: GoogleFonts.poppins(
+                                  color: UIColors.violet,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700)),
+                          onPressed: () {
+                            HapticFeedback.mediumImpact();
+                            Get.to(() => AllergiesScreen(
+                                  isFirstLogin: true,
+                                ));
+                          },
+                        ),
                       )
                     ],
                   ),

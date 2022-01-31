@@ -45,27 +45,35 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                             color: UIColors.white,
                                             fontSize: 20,
                                             fontWeight: FontWeight.w600)),
-                                    InkWell(
-                                      onTap: () {
-                                        controller.setAllergies(controller);
+                                    Container(
+                                      padding:
+                                          EdgeInsets.only(left: 8, right: 8),
+                                      decoration: BoxDecoration(
+                                          color: UIColors.detailBlack,
+                                          borderRadius:
+                                              BorderRadius.circular(15)),
+                                      child: TextButton(
+                                        child: Text(
+                                            isFirstLogin
+                                                ? 'NEXT'.tr.toUpperCase()
+                                                : 'DONE'.tr.toUpperCase(),
+                                            style: GoogleFonts.poppins(
+                                                color: UIColors.violet,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w700)),
+                                        onPressed: () {
+                                          controller.setAllergies(controller);
 
-                                        MenuController.instance.getMenuList(
-                                            FilterBody.listFilters);
+                                          MenuController.instance.getMenuList(
+                                              FilterBody.listFilters);
 
-                                        HapticFeedback.mediumImpact();
-                                        if (isFirstLogin)
-                                          Get.to(() => SecondStep());
-                                        else
-                                          Get.back();
-                                      },
-                                      child: Text(
-                                          isFirstLogin
-                                              ? 'NEXT'.tr.toUpperCase()
-                                              : 'DONE'.tr.toUpperCase(),
-                                          style: GoogleFonts.poppins(
-                                              color: UIColors.violet,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w700)),
+                                          HapticFeedback.mediumImpact();
+                                          if (isFirstLogin)
+                                            Get.to(() => SecondStep());
+                                          else
+                                            Get.back();
+                                        },
+                                      ),
                                     )
                                   ],
                                 ),
