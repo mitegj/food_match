@@ -37,7 +37,7 @@ class SettingsArea extends StatelessWidget {
                   ));
             },
             child: Padding(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10),
+              padding: const EdgeInsets.only(top: 15.0, bottom: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -65,7 +65,7 @@ class SettingsArea extends StatelessWidget {
                   ));
             },
             child: Padding(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10),
+              padding: const EdgeInsets.only(top: 15.0, bottom: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -95,7 +95,7 @@ class SettingsArea extends StatelessWidget {
               conf.launchURL(lng);
             },
             child: Padding(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10),
+              padding: const EdgeInsets.only(top: 15.0, bottom: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -124,7 +124,7 @@ class SettingsArea extends StatelessWidget {
               _settingController.openEmailFeedback();
             },
             child: Padding(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10),
+              padding: const EdgeInsets.only(top: 15.0, bottom: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -155,7 +155,7 @@ class SettingsArea extends StatelessWidget {
               conf.launchURL(url);
             },
             child: Padding(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10),
+              padding: const EdgeInsets.only(top: 15.0, bottom: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -186,7 +186,7 @@ class SettingsArea extends StatelessWidget {
               conf.launchURL(url);
             },
             child: Padding(
-              padding: const EdgeInsets.only(top: 10.0, bottom: 10),
+              padding: const EdgeInsets.only(top: 15.0, bottom: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
