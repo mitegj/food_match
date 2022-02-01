@@ -37,7 +37,7 @@ class SettingsArea extends StatelessWidget {
                   ));
             },
             child: Padding(
-              padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+              padding: const EdgeInsets.only(top: 10.0, bottom: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -48,8 +48,8 @@ class SettingsArea extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       )),
                   CircleAvatar(
-                    backgroundColor: UIColors.black.withOpacity(0.6),
-                    child: Icon(Icons.sick, color: UIColors.white),
+                    backgroundColor: UIColors.lightblueTile.withOpacity(0.2),
+                    child: Icon(Icons.sick, color: UIColors.lightblueTile),
                   )
                 ],
               ),
@@ -65,7 +65,7 @@ class SettingsArea extends StatelessWidget {
                   ));
             },
             child: Padding(
-              padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+              padding: const EdgeInsets.only(top: 10.0, bottom: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -76,10 +76,10 @@ class SettingsArea extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       )),
                   CircleAvatar(
-                    backgroundColor: UIColors.black.withOpacity(0.6),
+                    backgroundColor: UIColors.blue.withOpacity(0.2),
                     child: Icon(
                       Icons.notifications_on,
-                      color: UIColors.white,
+                      color: UIColors.blue,
                     ),
                   )
                 ],
@@ -95,7 +95,7 @@ class SettingsArea extends StatelessWidget {
               conf.launchURL(lng);
             },
             child: Padding(
-              padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+              padding: const EdgeInsets.only(top: 10.0, bottom: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -106,10 +106,10 @@ class SettingsArea extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       )),
                   CircleAvatar(
-                    backgroundColor: UIColors.black.withOpacity(0.6),
+                    backgroundColor: UIColors.orange.withOpacity(0.2),
                     child: Icon(
                       Icons.star,
-                      color: UIColors.white,
+                      color: UIColors.orange,
                     ),
                   )
                 ],
@@ -124,7 +124,7 @@ class SettingsArea extends StatelessWidget {
               _settingController.openEmailFeedback();
             },
             child: Padding(
-              padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+              padding: const EdgeInsets.only(top: 10.0, bottom: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -135,10 +135,10 @@ class SettingsArea extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       )),
                   CircleAvatar(
-                    backgroundColor: UIColors.black.withOpacity(0.6),
+                    backgroundColor: UIColors.pink.withOpacity(0.2),
                     child: Icon(
                       Icons.help,
-                      color: UIColors.white,
+                      color: UIColors.pink,
                     ),
                   )
                 ],
@@ -155,7 +155,7 @@ class SettingsArea extends StatelessWidget {
               conf.launchURL(url);
             },
             child: Padding(
-              padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+              padding: const EdgeInsets.only(top: 10.0, bottom: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -166,10 +166,10 @@ class SettingsArea extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       )),
                   CircleAvatar(
-                    backgroundColor: UIColors.black.withOpacity(0.6),
+                    backgroundColor: UIColors.azure.withOpacity(0.2),
                     child: Icon(
                       Icons.privacy_tip,
-                      color: UIColors.white,
+                      color: UIColors.azure,
                     ),
                   )
                 ],
@@ -186,7 +186,7 @@ class SettingsArea extends StatelessWidget {
               conf.launchURL(url);
             },
             child: Padding(
-              padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+              padding: const EdgeInsets.only(top: 10.0, bottom: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -197,10 +197,10 @@ class SettingsArea extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       )),
                   CircleAvatar(
-                    backgroundColor: UIColors.black.withOpacity(0.6),
+                    backgroundColor: UIColors.violet.withOpacity(0.2),
                     child: Icon(
                       Icons.tour_rounded,
-                      color: UIColors.white,
+                      color: UIColors.violet,
                     ),
                   )
                 ],

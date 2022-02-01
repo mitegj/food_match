@@ -9,9 +9,11 @@ import 'package:morning_brief/widgets/filter/filters_body.dart';
 import 'package:morning_brief/widgets/global_input/second_step.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
+// ignore: must_be_immutable
 class AllergiesScreen extends GetWidget<AllergyController> {
   AllergiesScreen({Key? key, required this.isFirstLogin}) : super(key: key);
   final bool isFirstLogin;
+  MenuController _menuController = Get.put<MenuController>(MenuController());
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -64,7 +66,7 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                         onPressed: () {
                                           controller.setAllergies(controller);
                                           print(isFirstLogin);
-                                          MenuController.instance.getMenuList(
+                                          _menuController.getMenuList(
                                               FilterBody.listFilters);
                                           HapticFeedback.mediumImpact();
                                           if (isFirstLogin)
