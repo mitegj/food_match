@@ -101,7 +101,8 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                               allergyController, index);
                                           return Obx(
                                             () => Container(
-                                              margin: EdgeInsets.all(5),
+                                              margin: EdgeInsets.only(
+                                                  top: 5, bottom: 5),
                                               padding: EdgeInsets.all(0),
                                               decoration: BoxDecoration(
                                                   color: UIColors.lightBlack,

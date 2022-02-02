@@ -38,7 +38,7 @@ class DisconnectAccountButton extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                 )),
             CircleAvatar(
-              backgroundColor: UIColors.black.withOpacity(0.6),
+              backgroundColor: Colors.red.withOpacity(0.2),
               child: Icon(
                 Icons.exit_to_app_sharp,
                 color: Colors.red[500],
