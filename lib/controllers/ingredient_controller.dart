@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
+import 'package:morning_brief/controllers/menu_controller.dart';
+import 'package:morning_brief/models/ingredientChecked_model.dart';
 import 'package:morning_brief/models/ingredient_model.dart';
-import 'package:morning_brief/models/userInventory_model.dart';
 import 'package:morning_brief/services/allergy_database.dart';
 import 'package:morning_brief/services/ingredient_databse.dart';
 import 'package:morning_brief/services/menu_database.dart';
+import 'package:morning_brief/widgets/filter/filters_body.dart';
 
 class IngredientController extends GetxController {
   static IngredientController instance = Get.find();
@@ -20,6 +22,10 @@ class IngredientController extends GetxController {
   Rxn<List<String>> userAllergyList = Rxn<List<String>>().obs();
   List<String>? get userAllergies => userAllergyList.value.obs();
 
+  bool isValueUpdated = false;
+
+  RxList<IngredientChecked> _isChecked = RxList();
+
   @override
   void onInit() {
     super.onInit();
@@ -31,36 +37,59 @@ class IngredientController extends GetxController {
     userAllergyList.bindStream(DatabaseAllergy().userAllergiesStream());
   }
 
-  void filterIngredients(String src) {
+  void filterIngredients(controller, String src) {
     ingSearch.clear();
-    if (ingredients != null)
-      ingredients!.forEach((el) => {
+    if (controller.ingredients != null)
+      controller.ingredients!.forEach((el) => {
             if (el.name.toLowerCase().contains(src.toLowerCase()) ||
                 src.trim() == "")
               {ingSearch.add(el)}
           });
+    print(ingSearch[0].name);
   }
 
+  getIngredientName(controller, index) {
+    return controller.ingSearch![index].name.toString();
+  }
 
-  setUserInventoryCheck(state, index, _userInventory) {
-    if (_userInventory
+  setIngredients(controller) {
+    MenuController _menuController = MenuController.instance;
+    controller
+        .updateIngredients(_isChecked)
+        .then((value) => {_menuController.getMenuList(FilterBody.listFilters)});
+  }
+
+  Future<bool> updateIngredients(RxList isChecked) async {
+    return DatabaseIngredient().updateIngredients(isChecked);
+  }
+
+  getCheckValue(controller, index) {
+    return _isChecked
+        .where((el) => el.id == controller.ingSearch![index].id)
+        .single
+        .checked;
+  }
+
+  setCheckState(state, index, newValue) {
+    _isChecked
         .where((el) => el.id == state.ingSearch[index].id)
-        .isEmpty) {
-      _userInventory.add(UserInventory(
-          id: state.ingSearch[index].id,
-          stock:
-              state.userIngredients != null ? getStock(state, index) : false));
+        .single
+        .checked = newValue!;
+
+    _isChecked.refresh();
+
+    if (!isValueUpdated) {
+      isValueUpdated = true;
     }
   }
 
-  bool getStock(state, index) {
-    bool stock = false;
-    for (var element in state.userIngredients) {
-      if (element.id == state.ingSearch[index].id) {
-        stock = element.stock;
-      }
+  setIngredientsCheck(state, index) {
+    if (_isChecked.where((el) => el.id == state.ingSearch[index].id).isEmpty) {
+      _isChecked.add(IngredientChecked(
+          id: state.ingSearch[index].id,
+          checked: state.userIngredients != null
+              ? state.userIngredients.contains(state.ingSearch[index].id)
+              : false));
     }
-
-    return stock;
   }
 }

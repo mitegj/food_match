@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
+import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/models/allergyChecked_model.dart';
 import 'package:morning_brief/models/allergy_model.dart';
 import 'package:morning_brief/services/allergy_database.dart';
+import 'package:morning_brief/widgets/filter/filters_body.dart';
 
 class AllergyController extends GetxController {
   Rxn<AllergyModel> allergy = Rxn<AllergyModel>();
@@ -26,7 +28,9 @@ class AllergyController extends GetxController {
   }
 
   setAllergies(allergyController) {
-    allergyController.updateAllergies(_isChecked).then((value) => {});
+
+    MenuController _menuController = MenuController.instance;
+    allergyController.updateAllergies(_isChecked).then((value) => {_menuController.getMenuList(FilterBody.listFilters)});
   }
 
   getAllergyName(allergyController, index) {

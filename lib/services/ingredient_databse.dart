@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:morning_brief/models/ingredient_model.dart';
@@ -31,5 +32,34 @@ class DatabaseIngredient {
       );
       return Stream.empty();
     }
+  }
+
+  Future<bool> updateIngredients(RxList isChecked) async {
+    String uid = FirebaseAuth.instance.currentUser!.uid.toString();
+
+    try {
+      await FirebaseFirestore.instance
+          .collection(conf.userCollection)
+          .doc(uid)
+          .update({"ingredients": getIngredientsId(isChecked)});
+      return true;
+    } catch (e) {
+      Get.snackbar(
+        "Error updating ingredients",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return false;
+    }
+  }
+
+
+    List<String> getIngredientsId(RxList isChecked) {
+    List<String> ingredients = [];
+    isChecked.forEach((el) {
+      if (el.checked) ingredients.add(el.id);
+    });
+    return ingredients;
   }
 }

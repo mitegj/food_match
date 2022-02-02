@@ -3,9 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/allergy_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/utils/UIColors.dart';
-import 'package:morning_brief/widgets/filter/filters_body.dart';
 import 'package:morning_brief/widgets/global_input/second_step.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
@@ -13,7 +11,6 @@ import 'package:morning_brief/widgets/spinner/spinner.dart';
 class AllergiesScreen extends GetWidget<AllergyController> {
   AllergiesScreen({Key? key, required this.isFirstLogin}) : super(key: key);
   final bool isFirstLogin;
-  MenuController _menuController = Get.put<MenuController>(MenuController());
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -65,9 +62,6 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                                 fontWeight: FontWeight.w700)),
                                         onPressed: () {
                                           controller.setAllergies(controller);
-                                          print(isFirstLogin);
-                                          _menuController.getMenuList(
-                                              FilterBody.listFilters);
                                           HapticFeedback.mediumImpact();
                                           if (isFirstLogin)
                                             Get.to(() => SecondStep());
