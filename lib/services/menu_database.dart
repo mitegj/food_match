@@ -58,11 +58,9 @@ class DatabaseMenu {
       IngredientController ingController =
           Get.put<IngredientController>(IngredientController());
 */
-      IngredientController.instance.userIngredientList
-          .bindStream(DatabaseMenu().userInventoryStream());
+      userIngredientList.bindStream(DatabaseMenu().userInventoryStream());
 
-      IngredientController.instance.userAllergyList
-          .bindStream(DatabaseAllergy().userAllergiesStream());
+      userAllergyList.bindStream(DatabaseAllergy().userAllergiesStream());
       return _firestore
           .collection(conf.menuCollection)
           .where("dishType", whereIn: filters)
