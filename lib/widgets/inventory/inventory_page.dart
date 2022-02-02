@@ -99,11 +99,11 @@ class InventoryScreen extends GetWidget<IngredientController> {
                                   fontWeight: FontWeight.w500),
                               decoration: BoxDecoration(
                                 color: UIColors.white,
-                                borderRadius: BorderRadius.circular(20),
+                                borderRadius: BorderRadius.circular(15),
                               ),
                             ),
                             const SizedBox(
-                              height: 10,
+                              height: 5,
                             ),
                             Obx(() => GetX<IngredientController>(
                                   init: Get.put<IngredientController>(
@@ -123,7 +123,8 @@ class InventoryScreen extends GetWidget<IngredientController> {
                                                 ingredientController, index);
                                             return Obx(
                                               () => Container(
-                                                margin: EdgeInsets.all(5),
+                                                margin: EdgeInsets.only(
+                                                    top: 5, bottom: 5),
                                                 padding: EdgeInsets.all(0),
                                                 decoration: BoxDecoration(
                                                     color: UIColors.lightBlack,
