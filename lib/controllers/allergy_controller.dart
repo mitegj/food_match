@@ -27,10 +27,17 @@ class AllergyController extends GetxController {
     return DatabaseAllergy().updateAllergies(isChecked);
   }
 
-  setAllergies(allergyController) {
+  setAllergies(allergyController, isFirstLogin) {
+    MenuController _menuController;
+    try {
+      _menuController = MenuController.instance;
+    } catch (e) {
+      _menuController = Get.put<MenuController>(MenuController());
+    }
 
-    MenuController _menuController = MenuController.instance;
-    allergyController.updateAllergies(_isChecked).then((value) => {_menuController.getMenuList(FilterBody.listFilters)});
+    allergyController.updateAllergies(_isChecked).then((value) => {
+          if (!isFirstLogin) _menuController.getMenuList(FilterBody.listFilters)
+        });
   }
 
   getAllergyName(allergyController, index) {

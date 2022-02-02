@@ -45,7 +45,6 @@ class IngredientController extends GetxController {
                 src.trim() == "")
               {ingSearch.add(el)}
           });
-    print(ingSearch[0].name);
   }
 
   getIngredientName(controller, index) {

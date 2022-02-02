@@ -61,7 +61,7 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.w700)),
                                         onPressed: () {
-                                          controller.setAllergies(controller);
+                                          controller.setAllergies(controller, isFirstLogin);
                                           HapticFeedback.mediumImpact();
                                           if (isFirstLogin)
                                             Get.to(() => SecondStep());

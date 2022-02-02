@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/models/menu_ingredients_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
@@ -40,7 +41,6 @@ class DatabaseMenu {
         break;
       }
     }
-    print("hasIngred" + hasUserIngredients.toString());
     return hasUserIngredients;
   }
 
@@ -58,9 +58,11 @@ class DatabaseMenu {
       IngredientController ingController =
           Get.put<IngredientController>(IngredientController());
 */
-      userIngredientList.bindStream(DatabaseMenu().userInventoryStream());
+      IngredientController.instance.userIngredientList
+          .bindStream(DatabaseMenu().userInventoryStream());
 
-      userAllergyList.bindStream(DatabaseAllergy().userAllergiesStream());
+      IngredientController.instance.userAllergyList
+          .bindStream(DatabaseAllergy().userAllergiesStream());
       return _firestore
           .collection(conf.menuCollection)
           .where("dishType", whereIn: filters)
@@ -78,7 +80,6 @@ class DatabaseMenu {
           }
         }
         hasOtherMenu(retVal.length);
-        print(retVal);
         return retVal;
       });
     } catch (e) {
@@ -126,7 +127,7 @@ class DatabaseMenu {
       });
     } catch (e) {
       Get.snackbar(
-        "Error getting menus",
+        "Error getting saved menus",
         e.toString(),
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
