@@ -16,6 +16,9 @@ class SavedMenuPage extends GetWidget<MenuController> {
   SavedMenuPage({Key? key}) : super(key: key);
 
   IngredientController ingController = IngredientController.instance;
+
+
+  
   @override
   Widget build(BuildContext context) {
     SavedMenuController _menuController =
@@ -25,24 +28,22 @@ class SavedMenuPage extends GetWidget<MenuController> {
       children: [
         SavedHeader(),
         Expanded(
-            child: Obx(() => (ingController.userAllergies != null &&
-                    ingController.ingredients != null)
-                ? (_menuController.menus != null &&
-                        _menuController.menus?.length == 0)
-                    ? EmptySavedMenu()
-                    : ListView.builder(
-                        physics: ScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: _menuController.menus?.length ?? 0,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                              child: Obx(() => MenuTile(
-                                    ingredients: ingController.ingredients,
-                                    menu: _menuController.menus![index],
-                                    savedMenu: true,
-                                  )));
-                        })
-                : LoadingWidget())),
+          child: Obx(() => ((_menuController.menus != null &&
+                  _menuController.menus?.length == 0)
+              ? EmptySavedMenu()
+              : ListView.builder(
+                  physics: ScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: _menuController.menus?.length ?? 0,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                        child: Obx(() => MenuTile(
+                              ingredients: ingController.ingredients,
+                              menu: _menuController.menus![index],
+                              savedMenu: true,
+                            )));
+                  }))),
+        )
       ],
     );
   }

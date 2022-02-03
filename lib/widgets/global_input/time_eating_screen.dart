@@ -35,7 +35,7 @@ class TimeEatingScreen extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          ArrowHeader(),
+                          !isFirstLogin ? ArrowHeader() : SizedBox(),
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text("NOTIFICATION".tr,

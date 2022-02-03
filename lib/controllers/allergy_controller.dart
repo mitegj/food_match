@@ -6,6 +6,7 @@ import 'package:morning_brief/services/allergy_database.dart';
 import 'package:morning_brief/widgets/filter/filters_body.dart';
 
 class AllergyController extends GetxController {
+  static AllergyController instance = Get.find();
   Rxn<AllergyModel> allergy = Rxn<AllergyModel>();
   Rxn<List<AllergyModel>> allergyList = Rxn<List<AllergyModel>>().obs();
   List<AllergyModel>? get allergies => allergyList.value.obs();

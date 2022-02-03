@@ -26,7 +26,7 @@ class DetailBottomSheet extends StatelessWidget {
   final List<IngredientModel>? ingredients;
   final bool savedMenu;
 
-  MenuController menuController = Get.put<MenuController>(MenuController());
+  MenuController menuController =MenuController.instance;
 
   @override
   Widget build(BuildContext context) {

@@ -49,7 +49,12 @@ class StepScreen extends StatelessWidget {
           } else {
             stopSpeak();
             if (index.value + 1 == menu.steps.length) {
-              MenuController menuController = Get.find<MenuController>();
+              MenuController menuController;
+              try {
+                menuController = MenuController.instance;
+              } catch (e) {
+                menuController = Get.put<MenuController>(MenuController());
+              }
               menuController.checkBeforeSaveMenu(menu, true);
               Get.back();
               Navigator.pop(context);

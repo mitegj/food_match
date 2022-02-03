@@ -41,7 +41,7 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                   children: [
                                     Row(
                                       children: [
-                                        ArrowHeader(),
+                                       !isFirstLogin ?  ArrowHeader() : SizedBox(),
                                         Text("ALLERGENS".tr,
                                             overflow: TextOverflow.clip,
                                             style: GoogleFonts.poppins(

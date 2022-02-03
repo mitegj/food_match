@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/models/ingredientChecked_model.dart';
 import 'package:morning_brief/models/ingredient_model.dart';
-import 'package:morning_brief/services/allergy_database.dart';
 import 'package:morning_brief/services/ingredient_databse.dart';
 import 'package:morning_brief/services/menu_database.dart';
 import 'package:morning_brief/widgets/filter/filters_body.dart';
@@ -18,10 +17,11 @@ class IngredientController extends GetxController {
 
   Rxn<List<String>> userIngredientList = Rxn<List<String>>().obs();
   List<String>? get userIngredients => userIngredientList.value.obs();
-
+/*
   Rxn<List<String>> userAllergyList = Rxn<List<String>>().obs();
   List<String>? get userAllergies => userAllergyList.value.obs();
 
+*/
   bool isValueUpdated = false;
 
   RxList<IngredientChecked> _isChecked = RxList();
@@ -34,7 +34,7 @@ class IngredientController extends GetxController {
     userIngredientList.bindStream(DatabaseMenu().userInventoryStream());
     ingSearch.bindStream(DatabaseIngredient().ingredientStream());
 
-    userAllergyList.bindStream(DatabaseAllergy().userAllergiesStream());
+  //  userAllergyList.bindStream(DatabaseAllergy().userAllergiesStream());
   }
 
   void filterIngredients(controller, String src) {
@@ -52,7 +52,13 @@ class IngredientController extends GetxController {
   }
 
   setIngredients(controller) {
-    MenuController _menuController = MenuController.instance;
+       MenuController _menuController;
+      try {
+        _menuController = MenuController.instance;
+      } catch (e) {
+        _menuController = Get.put<MenuController>(MenuController());
+      }
+
     controller
         .updateIngredients(_isChecked)
         .then((value) => {_menuController.getMenuList(FilterBody.listFilters)});

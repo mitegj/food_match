@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:morning_brief/controllers/allergy_controller.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/utils/UIColors.dart';
@@ -17,6 +18,8 @@ class HomeBody extends GetWidget<MenuController> {
 
   IngredientController ingController =
       Get.put<IngredientController>(IngredientController());
+  AllergyController allergyController =
+      Get.put<AllergyController>(AllergyController());
 
   MenuController _menuController = MenuController.instance;
   @override
@@ -24,7 +27,7 @@ class HomeBody extends GetWidget<MenuController> {
     _menuController.getMenuList(FilterBody.listFilters);
     return Expanded(
       child: Container(
-          child: Obx(() => (ingController.userAllergies != null &&
+          child: Obx(() => (allergyController.userAllergies != null &&
                   ingController.ingredients != null)
               ? (_menuController.menus != null &&
                       _menuController.menus?.length == 0)
