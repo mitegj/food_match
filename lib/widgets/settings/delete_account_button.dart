@@ -27,10 +27,10 @@ class DeleteAccount extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         child: Text(
-          'DELETEACCOUNT'.tr,
+          'DELETEACCOUNT'.tr.toUpperCase(),
           style: GoogleFonts.poppins(
             color: theme.secondaryHeaderColor,
-            fontSize: 14,
+            fontSize: 12,
             fontWeight: FontWeight.w400,
           ),
         ),

@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/filter/filters_body.dart';
+import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 
 class FiltersPage extends StatelessWidget {
   FiltersPage({Key? key}) : super(key: key);
@@ -24,6 +25,10 @@ class FiltersPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    ArrowHeader(),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Flexible(
                       flex: 1,
                       child: Padding(

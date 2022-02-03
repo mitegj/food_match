@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/allergy_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:morning_brief/utils/UIColors.dart';
+import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:morning_brief/widgets/global_input/second_step.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
@@ -38,12 +39,17 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text("ALLERGENS".tr,
-                                        overflow: TextOverflow.clip,
-                                        style: GoogleFonts.poppins(
-                                            color: UIColors.white,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w600)),
+                                    Row(
+                                      children: [
+                                        ArrowHeader(),
+                                        Text("ALLERGENS".tr,
+                                            overflow: TextOverflow.clip,
+                                            style: GoogleFonts.poppins(
+                                                color: UIColors.white,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600)),
+                                      ],
+                                    ),
                                     Container(
                                       padding:
                                           EdgeInsets.only(left: 8, right: 8),
@@ -61,7 +67,8 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.w700)),
                                         onPressed: () {
-                                          controller.setAllergies(controller, isFirstLogin);
+                                          controller.setAllergies(
+                                              controller, isFirstLogin);
                                           HapticFeedback.mediumImpact();
                                           if (isFirstLogin)
                                             Get.to(() => SecondStep());

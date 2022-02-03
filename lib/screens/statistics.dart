@@ -8,8 +8,8 @@ import 'package:morning_brief/controllers/setting_controller.dart';
 import 'package:morning_brief/controllers/statistic_controller.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:intl/intl.dart';
+import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:morning_brief/widgets/settings/delete_account_button.dart';
-import 'package:morning_brief/widgets/settings/disconnect_account_button.dart';
 import 'package:morning_brief/widgets/settings/info_version.dart';
 import 'package:morning_brief/widgets/settings/settings_area.dart';
 
@@ -44,7 +44,12 @@ class StatisticsScreen extends GetWidget<AllergyController> {
       body: SafeArea(
         child: ListView(
           children: <Widget>[
-            const SizedBox(height: 40),
+            Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: ArrowHeader(),
+                )),
             _settingController.hasUserName()
                 ? CircleAvatar(
                     radius: 50,
@@ -93,13 +98,13 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                                 fontWeight: FontWeight.w400,
                               )),
                           CircleAvatar(
-                            backgroundColor: UIColors.black.withOpacity(0.6),
+                            backgroundColor: UIColors.blue.withOpacity(0.2),
                             child: Obx(
                               () => Icon(
                                   visibility.value
                                       ? Icons.keyboard_arrow_down
                                       : Icons.keyboard_arrow_right,
-                                  color: UIColors.white),
+                                  color: UIColors.blue),
                             ),
                           )
                         ],
@@ -140,8 +145,9 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                       fontSize: 18,
                       fontWeight: FontWeight.w700)),
             ),
-            SettingsArea(settingController: _settingController),
-            DisconnectAccountButton(authController: _authController),
+            SettingsArea(
+                settingController: _settingController,
+                authController: _authController),
             const SizedBox(height: 40),
             DeleteAccount(authController: _authController, theme: theme),
             const SizedBox(height: 40),

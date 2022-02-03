@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/screens/homepage.dart';
 import 'package:morning_brief/utils/UIColors.dart';
+import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:morning_brief/utils/notification_scheduler.dart' as nt;
 
@@ -32,13 +33,18 @@ class TimeEatingScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
                   child: Column(
                     children: [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text("NOTIFICATION".tr,
-                            style: GoogleFonts.poppins(
-                                color: UIColors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.w700)),
+                      Row(
+                        children: [
+                          ArrowHeader(),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text("NOTIFICATION".tr,
+                                style: GoogleFonts.poppins(
+                                    color: UIColors.white,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w700)),
+                          ),
+                        ],
                       ),
                       SizedBox(height: 20),
                       Text("LABELENABLENOTIFICATION".tr,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 
 class SavedHeader extends StatelessWidget {
   @override
@@ -12,19 +13,18 @@ class SavedHeader extends StatelessWidget {
       alignment: Alignment.topLeft,
       color: theme.backgroundColor,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Expanded(
-            child: Align(
-              alignment: Alignment.center,
-              child: Text(
-                'SAVEDMENU'.tr,
-                overflow: TextOverflow.ellipsis,
-                style: GoogleFonts.poppins(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white),
-              ),
+          ArrowHeader(),
+          Align(
+            alignment: Alignment.center,
+            child: Text(
+              'SAVEDMENU'.tr,
+              overflow: TextOverflow.ellipsis,
+              style: GoogleFonts.poppins(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white),
             ),
           ),
         ],

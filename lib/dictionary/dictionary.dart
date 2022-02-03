@@ -72,7 +72,7 @@ class Messages extends Translations {
           "PERFECT": "Perfect",
           "MENUSAVEDCORRECTLY": "Menu saved correctly",
           "MENUREMOVEDCORRECTLY": "Menu removed correctly",
-          "SAVEDMENU": "Saved Menu",
+          "SAVEDMENU": "Saved menu",
           "SAVED": "Saved",
           "SAVEDFORLATER": "Manu saved for later",
           "TIREDOFCOOKING": "Tired of cooking",

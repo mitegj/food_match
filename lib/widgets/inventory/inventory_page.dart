@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/utils/UIColors.dart';
+import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 // ignore: must_be_immutable
@@ -36,12 +37,17 @@ class InventoryScreen extends GetWidget<IngredientController> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text("INVENTORY".tr,
-                                        overflow: TextOverflow.clip,
-                                        style: GoogleFonts.poppins(
-                                            color: UIColors.white,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w600)),
+                                    Row(
+                                      children: [
+                                        ArrowHeader(),
+                                        Text("INVENTORY".tr,
+                                            overflow: TextOverflow.clip,
+                                            style: GoogleFonts.poppins(
+                                                color: UIColors.white,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600)),
+                                      ],
+                                    ),
                                     Container(
                                       padding:
                                           EdgeInsets.only(left: 8, right: 8),
