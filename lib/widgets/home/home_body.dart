@@ -55,6 +55,7 @@ class HomeBody extends GetWidget<MenuController> {
                                         ingredients: ingController.ingredients,
                                         menu: _menuController.menus![index],
                                         savedMenu: false,
+                                        isCookable: _menuController.userHasIngredients(_menuController.menus![index], ingController.userIngredients ?? [])
                                       )));
                             }),
                         SizedBox(
@@ -76,7 +77,7 @@ class HomeBody extends GetWidget<MenuController> {
   }
 
   Widget showOtherButton() {
-    return Obx(() => MenuController.instance.hasOtherMenu.value
+    return Obx(() => MenuController.instance.hasOtherMenuBool.value
         ? InkWell(
             onTap: () => {
               _menuController.incrementLimitMultiplier(),

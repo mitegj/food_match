@@ -17,8 +17,6 @@ class SavedMenuPage extends GetWidget<MenuController> {
 
   IngredientController ingController = IngredientController.instance;
 
-
-  
   @override
   Widget build(BuildContext context) {
     SavedMenuController _menuController =
@@ -41,6 +39,7 @@ class SavedMenuPage extends GetWidget<MenuController> {
                               ingredients: ingController.ingredients,
                               menu: _menuController.menus![index],
                               savedMenu: true,
+                              isCookable: _menuController.userHasIngredients(_menuController.menus![index], ingController.userIngredients ?? []),
                             )));
                   }))),
         )

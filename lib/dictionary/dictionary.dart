@@ -141,6 +141,8 @@ class Messages extends Translations {
               "Based on the dinner time you select, we will notify you with a notification to entice you to get in the kitchen!",
           "WELCOME": "Welcome",
           "5STAR": "Support us with 5 Stars",
+          "DOYOUWHANTALLMENU":
+              "Do you want to see all the menu even if you don't have the ingredients?"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -281,7 +283,9 @@ class Messages extends Translations {
           "STEP2LABEL2":
               "In base all'orario di cena che selezionerai, ti avviseremo con una notifica per invogliarti a metterti ai fornelli!",
           "WELCOME": "Benvenuto",
-          "5STAR": "Supportaci con 5 Stelle"
+          "5STAR": "Supportaci con 5 Stelle",
+          "DOYOUWHANTALLMENU":
+              "Vuoi vedere tutti i menu anche se non hai gli ingredienti?"
         },
       };
 }

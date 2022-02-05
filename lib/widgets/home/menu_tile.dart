@@ -14,11 +14,13 @@ class MenuTile extends StatelessWidget {
       {Key? key,
       required this.menu,
       required this.ingredients,
-      required this.savedMenu})
+      required this.savedMenu,
+      required this.isCookable})
       : super(key: key);
   final MenuModel menu;
   final List<IngredientModel>? ingredients;
   final bool savedMenu;
+  final bool isCookable;
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +120,7 @@ class MenuTile extends StatelessWidget {
                             style: GoogleFonts.poppins(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400,
-                                color: Colors.black),
+                                color: isCookable ?  Colors.black : Colors.red),
                           ),
                         ),
                       ],

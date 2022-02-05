@@ -8,46 +8,20 @@ import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/models/menu_ingredients_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/conf.dart';
+import 'package:morning_brief/widgets/filter/filters.dart';
+import 'package:morning_brief/widgets/filter/filters_body.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DatabaseMenu {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final Conf conf = new Conf();
 
-  bool isUserAllergic(MenuModel menu, List<String> userAllergies) {
-    bool isUserAllergic = false;
-    menu.allergies.forEach((al) {
-      if (userAllergies.contains(al)) isUserAllergic = true;
-    });
-
-    return isUserAllergic;
-  }
-
-  bool userHasIngredients(MenuModel menu, List<String> userIngredients) {
-    bool hasUserIngredients = false;
-    for (MenuIngredientModel? ing in menu.ingredients) {
-      if (userIngredients.contains(ing?.id)) {
-        hasUserIngredients = true;
-      } else {
-        hasUserIngredients = false;
-        break;
-      }
-    }
-    return hasUserIngredients;
-  }
-
-  List<String> getUserIngredientsList(List<String> userIngredients) {
-    List<String> ing = [];
-    userIngredients.forEach((el) {
-      ing.add(el);
-    });
-    return ing;
-  }
-
   Stream<List<MenuModel>> menuStream(List<int> filters, int limit) {
     try {
       IngredientController _ingController;
       AllergyController _allergyController;
+
+      MenuController _menuController;
       try {
         _ingController = IngredientController.instance;
       } catch (e) {
@@ -58,6 +32,12 @@ class DatabaseMenu {
         _allergyController = AllergyController.instance;
       } catch (e) {
         _allergyController = Get.put<AllergyController>(AllergyController());
+      }
+
+      try {
+        _menuController = MenuController.instance;
+      } catch (e) {
+        _menuController = Get.put<MenuController>(MenuController());
       }
       //userIngredientList.bindStream(DatabaseMenu().userInventoryStream());
 
@@ -72,14 +52,16 @@ class DatabaseMenu {
         List<MenuModel> retVal = [];
         for (var element in query.docs) {
           MenuModel menu = MenuModel.fromDocumentSnapshot(element);
-          if (!isUserAllergic(menu, _allergyController.userAllergies ?? [])) {
-            if (userHasIngredients(
-                menu, _ingController.userIngredients ?? [])) {
+
+          if (!_menuController.isUserAllergic(menu, _allergyController.userAllergies ?? [])) {
+            if (FiltersPage.getAllMenus.value ||
+                _menuController.userHasIngredients(
+                    menu, _ingController.userIngredients ?? [])) {
               retVal.add(menu);
             }
           }
         }
-        hasOtherMenu(retVal.length);
+        _menuController.hasOtherMenu(retVal.length);
         return retVal;
       });
     } catch (e) {
@@ -93,24 +75,6 @@ class DatabaseMenu {
     }
   }
 
-  Future<void> hasOtherMenu(int len) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    int menuLength = prefs.getInt("menuLength") ?? 0;
-
-    MenuController _menuController;
-    try {
-      _menuController = MenuController.instance;
-    } catch (e) {
-      _menuController = Get.put<MenuController>(MenuController());
-    }
-
-    if (len != 0) if (len == menuLength) {
-      _menuController.hasOtherMenu.value = false;
-    } else if (len > menuLength) {
-      _menuController.hasOtherMenu.value = false;
-      prefs.setInt("menuLength", len);
-    }
-  }
 
   Stream<List<MenuModel>> savedMenuStream(int limit) {
     try {

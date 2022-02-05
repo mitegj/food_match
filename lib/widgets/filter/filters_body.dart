@@ -9,6 +9,7 @@ class FilterBody extends StatelessWidget {
   FilterBody({Key? key}) : super(key: key);
 
   static RxList<int> listFilters = RxList<int>().obs();
+
   List<Widget> getFilters() {
     List<Widget> filters = [];
     DishType.values.forEach((el) {

@@ -1,12 +1,16 @@
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/filter/filters_body.dart';
 import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 
 class FiltersPage extends StatelessWidget {
   FiltersPage({Key? key}) : super(key: key);
+
+  static RxBool getAllMenus = false.obs;
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -40,6 +44,28 @@ class FiltersPage extends StatelessWidget {
                                 fontWeight: FontWeight.w700)),
                       ),
                     ),
+                    Obx(
+                      () => CheckboxListTile(
+                        checkColor: UIColors.green,
+                        activeColor: UIColors.green,
+                        title: Text(
+                          "DOYOUWHANTALLMENU".tr,
+                          style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal),
+                        ),
+                        value: getAllMenus.value,
+
+                        onChanged: (newValue) {
+                          getAllMenus.value = !getAllMenus.value;
+
+                          MenuController.instance
+                              .getMenuList(FilterBody.listFilters);
+                        },
+                        controlAffinity: ListTileControlAffinity
+                            .trailing, //  <-- leading Checkbox
+                      ),
+                    )
                   ],
                 ),
               )),
