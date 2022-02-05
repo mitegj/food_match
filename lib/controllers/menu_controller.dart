@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/saved_menu_controller.dart';
 import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/models/menu_ingredients_model.dart';
@@ -132,9 +133,6 @@ class MenuController extends GetxController {
     }
   }
 
-
-
-
   bool isUserAllergic(MenuModel menu, List<String> userAllergies) {
     bool isUserAllergic = false;
     menu.allergies.forEach((al) {
@@ -165,11 +163,9 @@ class MenuController extends GetxController {
     return ing;
   }
 
-
   Future<void> hasOtherMenu(int len) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int menuLength = prefs.getInt("menuLength") ?? 0;
-
 
     if (len != 0) if (len == menuLength) {
       hasOtherMenuBool.value = false;
@@ -177,5 +173,18 @@ class MenuController extends GetxController {
       hasOtherMenuBool.value = false;
       prefs.setInt("menuLength", len);
     }
+  }
+
+  bool hasUserThisIngredient(String ingName) {
+    IngredientController _ingController;
+    try {
+      _ingController = IngredientController.instance;
+    } catch (e) {
+      _ingController = Get.put<IngredientController>(IngredientController());
+    }
+
+    return _ingController.userIngredients?.contains(ingName) ?? false;
+
+    
   }
 }

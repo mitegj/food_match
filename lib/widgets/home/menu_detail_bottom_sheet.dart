@@ -8,6 +8,7 @@ import 'package:morning_brief/controllers/saved_menu_controller.dart';
 import 'package:morning_brief/enum/dish_difficulty_enum.dart';
 import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/models/ingredient_model.dart';
+import 'package:morning_brief/models/menu_ingredients_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/step_circle.dart';
@@ -226,31 +227,7 @@ class DetailBottomSheet extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          for (var item in menu.ingredients)
-                            IntrinsicHeight(
-                              child: Padding(
-                                padding: const EdgeInsets.only(bottom: 20),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                        menuController.getIngredientName(
-                                            item!.id.toString(), ingredients),
-                                        style: GoogleFonts.poppins(
-                                            color: UIColors.white,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w300)),
-                                    Text(getItemQty(item.qty) + item.unit + " ",
-                                        overflow: TextOverflow.visible,
-                                        style: GoogleFonts.poppins(
-                                            color: UIColors.white,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w300)),
-                                  ],
-                                ),
-                              ),
-                            ),
+                          for (var item in menu.ingredients) getSteps(item),
                         ],
                       ),
                     ],
@@ -320,6 +297,34 @@ class DetailBottomSheet extends StatelessWidget {
           ],
         )),
       ]),
+    );
+  }
+
+  Widget getSteps(MenuIngredientModel? item) {
+    String name =
+        menuController.getIngredientName(item!.id.toString(), ingredients);
+    bool hasIng = menuController.hasUserThisIngredient(item.id);
+
+    return IntrinsicHeight(
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(name,
+                style: GoogleFonts.poppins(
+                    color: hasIng ? UIColors.white : UIColors.lightRed, 
+                    fontSize: 16,
+                    fontWeight: FontWeight.w300)),
+            Text(getItemQty(item.qty) + item.unit + " ",
+                overflow: TextOverflow.visible,
+                style: GoogleFonts.poppins(
+                    color: hasIng ? UIColors.white : UIColors.lightRed,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w300)),
+          ],
+        ),
+      ),
     );
   }
 
