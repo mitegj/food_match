@@ -50,7 +50,7 @@ class AuthController extends GetxController {
         } else {
           if (Get.currentRoute.toString() != "/HomePage") {
             // ignore: unused_field, unused_local_variable
-          /*  IngredientController _ingredientController =
+            /*  IngredientController _ingredientController =
                 Get.put<IngredientController>(IngredientController());
                 */
             UserDatabase().saveUserLastLogin();

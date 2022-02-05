@@ -9,7 +9,6 @@ import 'package:morning_brief/widgets/filter/filters_body.dart';
 import 'package:morning_brief/widgets/home/menu_tile.dart';
 import 'package:morning_brief/widgets/saved/empty_saved_menu.dart';
 import 'package:morning_brief/widgets/saved/saved_header.dart';
-import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 // ignore: must_be_immutable
 class SavedMenuPage extends GetWidget<MenuController> {

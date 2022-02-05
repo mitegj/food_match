@@ -37,7 +37,7 @@ class FiltersPage extends StatelessWidget {
                       flex: 1,
                       child: Padding(
                         padding: const EdgeInsets.only(right: 20.0),
-                        child: Text("ANYPREFERENCES".tr + "?",
+                        child: Text("ANYPREFERENCES".tr + " ?",
                             style: GoogleFonts.poppins(
                                 color: UIColors.white,
                                 fontSize: 26,

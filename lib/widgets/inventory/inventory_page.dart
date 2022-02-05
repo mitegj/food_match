@@ -31,12 +31,17 @@ class InventoryScreen extends GetWidget<IngredientController> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("INVENTORY".tr,
-                                overflow: TextOverflow.clip,
-                                style: GoogleFonts.poppins(
-                                    color: UIColors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600)),
+                            Row(
+                              children: [
+                                ArrowHeader(),
+                                Text("INVENTORY".tr,
+                                    overflow: TextOverflow.clip,
+                                    style: GoogleFonts.poppins(
+                                        color: UIColors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600)),
+                              ],
+                            ),
                             Container(
                               padding: EdgeInsets.only(left: 8, right: 8),
                               decoration: BoxDecoration(
@@ -110,7 +115,6 @@ class InventoryScreen extends GetWidget<IngredientController> {
                                 return Obx(
                                   () => Container(
                                     margin: EdgeInsets.only(top: 5, bottom: 5),
-                                    padding: EdgeInsets.all(0),
                                     decoration: BoxDecoration(
                                         color: UIColors.lightBlack,
                                         borderRadius:
