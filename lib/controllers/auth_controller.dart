@@ -7,7 +7,6 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/models/user_model.dart';
 import 'package:morning_brief/screens/homepage.dart';
 import 'package:morning_brief/screens/onboarding.dart';
@@ -51,7 +50,7 @@ class AuthController extends GetxController {
         } else {
           if (Get.currentRoute.toString() != "/HomePage") {
             // ignore: unused_field, unused_local_variable
-          /*  IngredientController _ingredientController =
+            /*  IngredientController _ingredientController =
                 Get.put<IngredientController>(IngredientController());
                 */
             UserDatabase().saveUserLastLogin();
