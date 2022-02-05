@@ -64,7 +64,7 @@ class EmptyMenu extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Padding(
@@ -76,6 +76,24 @@ class EmptyMenu extends StatelessWidget {
                             overflow: TextOverflow.visible,
                             style: GoogleFonts.poppins(
                                 color: UIColors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300)),
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0, right: 20),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text("FILTERENABLELABEL".tr,
+                            overflow: TextOverflow.visible,
+                            style: GoogleFonts.poppins(
+                                color: UIColors.violetMain,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300)),
                       )

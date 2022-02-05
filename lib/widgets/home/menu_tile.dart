@@ -148,7 +148,7 @@ class MenuTile extends StatelessWidget {
                               CircleAvatar(
                                 backgroundColor: Colors.red.withOpacity(0.2),
                                 child: Icon(
-                                  Icons.help,
+                                  Icons.error,
                                   color: Colors.red[500],
                                 ),
                               ),

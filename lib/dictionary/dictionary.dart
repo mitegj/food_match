@@ -143,7 +143,9 @@ class Messages extends Translations {
           "5STAR": "Support us with 5 Stars",
           "DOYOUWHANTALLMENU":
               "Enable viewing of all recipes, even if some ingredients may be missing.",
-          "MISSINGINGREDIENTSLABEL": "Some ingredients are missing!"
+          "MISSINGINGREDIENTSLABEL": "Some ingredients are missing.",
+          "FILTERENABLELABEL":
+              "Instead, for a total view of all the recipes even if you do not have some ingredients, enable it by going to the filters section."
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -287,7 +289,9 @@ class Messages extends Translations {
           "5STAR": "Supportaci con 5 Stelle",
           "DOYOUWHANTALLMENU":
               "Abilita la visualizzazione di tutte le ricette, anche se alcuni ingredienti potrebbero mancare.",
-          "MISSINGINGREDIENTSLABEL": "Mancano alcuni ingredienti!"
+          "MISSINGINGREDIENTSLABEL": "Mancano alcuni ingredienti.",
+          "FILTERENABLELABEL":
+              "Invece per una visualizzazione totale di tutte le ricette anche se non possiedi alcuni ingredienti, abilitalo andando nella sezione filtri."
         },
       };
 }
