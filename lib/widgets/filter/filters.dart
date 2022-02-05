@@ -30,42 +30,40 @@ class FiltersPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ArrowHeader(),
-                    SizedBox(
-                      height: 20,
-                    ),
+                    const SizedBox(height: 20),
                     Flexible(
                       flex: 1,
                       child: Padding(
                         padding: const EdgeInsets.only(right: 20.0),
-                        child: Text("ANYPREFERENCES".tr + " ?",
+                        child: Text("ANYPREFERENCES".tr + "?",
                             style: GoogleFonts.poppins(
                                 color: UIColors.white,
-                                fontSize: 26,
+                                fontSize: 22,
                                 fontWeight: FontWeight.w700)),
                       ),
                     ),
-                    Obx(
-                      () => CheckboxListTile(
-                        checkColor: UIColors.green,
-                        activeColor: UIColors.green,
-                        title: Text(
-                          "DOYOUWHANTALLMENU".tr,
-                          style: GoogleFonts.poppins(
-                              color: Colors.white,
-                              fontWeight: FontWeight.normal),
+                    const SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Expanded(
+                            child: Text("DOYOUWHANTALLMENU".tr,
+                                style: GoogleFonts.poppins(
+                                    color: Colors.white.withOpacity(0.6),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w300))),
+                        Obx(
+                          () => Switch(
+                            activeColor: UIColors.green,
+                            value: getAllMenus.value,
+                            onChanged: (value) {
+                              getAllMenus.toggle();
+                              MenuController.instance
+                                  .getMenuList(FilterBody.listFilters);
+                            },
+                          ),
                         ),
-                        value: getAllMenus.value,
-
-                        onChanged: (newValue) {
-                          getAllMenus.value = !getAllMenus.value;
-
-                          MenuController.instance
-                              .getMenuList(FilterBody.listFilters);
-                        },
-                        controlAffinity: ListTileControlAffinity
-                            .trailing, //  <-- leading Checkbox
-                      ),
-                    )
+                      ],
+                    ),
                   ],
                 ),
               )),

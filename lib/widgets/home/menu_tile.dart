@@ -108,23 +108,54 @@ class MenuTile extends StatelessWidget {
                     Row(
                       children: [
                         Expanded(
-                          child: Text(
-                            menu.name +
-                                " - " +
-                                describeEnum(
-                                        DishDifficulty.values[menu.difficulty])
-                                    .toString()
-                                    .tr +
-                                "TOCOOK".tr,
-                            overflow: TextOverflow.visible,
-                            style: GoogleFonts.poppins(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                color: isCookable ?  Colors.black : Colors.red),
-                          ),
-                        ),
+                            child: RichText(
+                          text: TextSpan(
+                              text: menu.name,
+                              style: GoogleFonts.poppins(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black),
+                              children: [
+                                TextSpan(
+                                  text: " - " +
+                                      describeEnum(DishDifficulty
+                                              .values[menu.difficulty])
+                                          .toString()
+                                          .tr +
+                                      "TOCOOK".tr,
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.black),
+                                ),
+                              ]),
+                        )),
                       ],
                     ),
+                    !isCookable
+                        ? const SizedBox(height: 5)
+                        : const SizedBox(height: 0),
+                    !isCookable
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("MISSINGINGREDIENTSLABEL".tr,
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.red[500])),
+                              CircleAvatar(
+                                backgroundColor: Colors.red.withOpacity(0.2),
+                                child: Icon(
+                                  Icons.help,
+                                  color: Colors.red[500],
+                                ),
+                              ),
+                            ],
+                          )
+                        : SizedBox(
+                            height: 0,
+                          ),
                   ],
                 ),
               )

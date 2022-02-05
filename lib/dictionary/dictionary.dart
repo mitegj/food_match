@@ -142,7 +142,8 @@ class Messages extends Translations {
           "WELCOME": "Welcome",
           "5STAR": "Support us with 5 Stars",
           "DOYOUWHANTALLMENU":
-              "Do you want to see all the menu even if you don't have the ingredients?"
+              "Enable viewing of all recipes, even if some ingredients may be missing.",
+          "MISSINGINGREDIENTSLABEL": "Some ingredients are missing!"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -285,7 +286,8 @@ class Messages extends Translations {
           "WELCOME": "Benvenuto",
           "5STAR": "Supportaci con 5 Stelle",
           "DOYOUWHANTALLMENU":
-              "Vuoi vedere tutti i menu anche se non hai gli ingredienti?"
+              "Abilita la visualizzazione di tutte le ricette, anche se alcuni ingredienti potrebbero mancare.",
+          "MISSINGINGREDIENTSLABEL": "Mancano alcuni ingredienti!"
         },
       };
 }
