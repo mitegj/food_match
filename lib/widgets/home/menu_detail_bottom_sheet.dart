@@ -21,11 +21,13 @@ class DetailBottomSheet extends StatelessWidget {
       {Key? key,
       required this.menu,
       required this.ingredients,
-      required this.savedMenu})
+      required this.savedMenu,
+      required this.isCookable})
       : super(key: key);
   final MenuModel menu;
   final List<IngredientModel>? ingredients;
   final bool savedMenu;
+  final bool isCookable;
 
   MenuController menuController = MenuController.instance;
 
@@ -313,13 +315,13 @@ class DetailBottomSheet extends StatelessWidget {
           children: [
             Text(name,
                 style: GoogleFonts.poppins(
-                    color: hasIng ? UIColors.white : UIColors.lightRed, 
+                    color: hasIng ? UIColors.white : Colors.red[500],
                     fontSize: 16,
                     fontWeight: FontWeight.w300)),
             Text(getItemQty(item.qty) + item.unit + " ",
                 overflow: TextOverflow.visible,
                 style: GoogleFonts.poppins(
-                    color: hasIng ? UIColors.white : UIColors.lightRed,
+                    color: hasIng ? UIColors.white : Colors.red[500],
                     fontSize: 16,
                     fontWeight: FontWeight.w300)),
           ],
@@ -329,47 +331,53 @@ class DetailBottomSheet extends StatelessWidget {
   }
 
   Widget startCookingButton() {
-    return InkWell(
-      onTap: () {
-        HapticFeedback.mediumImpact();
-        Get.to(() => StepScreen(menu: menu));
-      },
-      child: Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.all(20),
-        margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
-        decoration: BoxDecoration(
-          color: UIColors.white,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Text(
-          'STARTCOOKING'.tr,
-          style: GoogleFonts.poppins(
-              color: UIColors.detailBlack,
-              fontWeight: FontWeight.w600,
-              fontSize: 18),
-        ),
-      ),
-    );
+    return isCookable
+        ? InkWell(
+            onTap: () {
+              HapticFeedback.mediumImpact();
+              Get.to(() => StepScreen(menu: menu));
+            },
+            child: Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(20),
+              margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
+              decoration: BoxDecoration(
+                color: UIColors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                'STARTCOOKING'.tr,
+                style: GoogleFonts.poppins(
+                    color: UIColors.detailBlack,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18),
+              ),
+            ),
+          )
+        : const SizedBox();
   }
 
   Widget cookedButton() {
-    return InkWell(
-      onTap: () {
-        HapticFeedback.mediumImpact();
-        menuController.checkBeforeSaveMenu(menu, false);
-      },
-      child: Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.all(20),
-        margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
-        child: Text(
-          'DISHCOOKED'.tr,
-          style: GoogleFonts.poppins(
-              color: UIColors.white, fontWeight: FontWeight.w500, fontSize: 16),
-        ),
-      ),
-    );
+    return isCookable
+        ? InkWell(
+            onTap: () {
+              HapticFeedback.mediumImpact();
+              menuController.checkBeforeSaveMenu(menu, false);
+            },
+            child: Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(20),
+              margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
+              child: Text(
+                'DISHCOOKED'.tr,
+                style: GoogleFonts.poppins(
+                    color: UIColors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16),
+              ),
+            ),
+          )
+        : const SizedBox();
   }
 
   Widget saveForLaterButton() {

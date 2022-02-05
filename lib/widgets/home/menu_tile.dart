@@ -33,6 +33,7 @@ class MenuTile extends StatelessWidget {
                     menu: menu,
                     ingredients: ingredients,
                     savedMenu: savedMenu,
+                    isCookable: isCookable
                   ),
                   isScrollControlled: true)
             },

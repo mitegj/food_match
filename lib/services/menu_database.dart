@@ -5,12 +5,9 @@ import 'package:get/get.dart';
 import 'package:morning_brief/controllers/allergy_controller.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
-import 'package:morning_brief/models/menu_ingredients_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/conf.dart';
 import 'package:morning_brief/widgets/filter/filters.dart';
-import 'package:morning_brief/widgets/filter/filters_body.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class DatabaseMenu {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -53,7 +50,8 @@ class DatabaseMenu {
         for (var element in query.docs) {
           MenuModel menu = MenuModel.fromDocumentSnapshot(element);
 
-          if (!_menuController.isUserAllergic(menu, _allergyController.userAllergies ?? [])) {
+          if (!_menuController.isUserAllergic(
+              menu, _allergyController.userAllergies ?? [])) {
             if (FiltersPage.getAllMenus.value ||
                 _menuController.userHasIngredients(
                     menu, _ingController.userIngredients ?? [])) {
@@ -74,7 +72,6 @@ class DatabaseMenu {
       return Stream.empty();
     }
   }
-
 
   Stream<List<MenuModel>> savedMenuStream(int limit) {
     try {
