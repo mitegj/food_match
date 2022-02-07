@@ -55,7 +55,7 @@ class HomeHeader extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 7.0),
+                padding: const EdgeInsets.only(left: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
                       color: UIColors.detailBlack,
@@ -80,7 +80,7 @@ class HomeHeader extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 7.0),
+                padding: const EdgeInsets.only(left: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
                       color: UIColors.detailBlack,

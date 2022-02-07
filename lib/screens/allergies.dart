@@ -41,7 +41,9 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                   children: [
                                     Row(
                                       children: [
-                                       !isFirstLogin ?  ArrowHeader() : SizedBox(),
+                                        !isFirstLogin
+                                            ? ArrowHeader()
+                                            : SizedBox(),
                                         Text("ALLERGENS".tr,
                                             overflow: TextOverflow.clip,
                                             style: GoogleFonts.poppins(
@@ -108,8 +110,8 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                               allergyController, index);
                                           return Obx(
                                             () => Container(
-                                              margin: EdgeInsets.only(
-                                                  top: 5, bottom: 5),
+                                              margin:
+                                                  EdgeInsets.only(bottom: 5),
                                               padding: EdgeInsets.all(0),
                                               decoration: BoxDecoration(
                                                   color: UIColors.lightBlack,

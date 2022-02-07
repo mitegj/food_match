@@ -87,7 +87,7 @@ class InventoryScreen extends GetWidget<IngredientController> {
                           fontSize: 13,
                           fontWeight: FontWeight.w500),
                       itemSize: 30,
-                      placeholder: 'TEXTFIELDLABELINVENTORY'.tr,
+                      placeholder: 'TEXTFIELDLABELINVENTORY'.tr.capitalizeFirst,
                       prefixInsets: EdgeInsets.only(left: 20),
                       suffixInsets: EdgeInsets.only(right: 20),
                       itemColor: UIColors.violet,
@@ -101,7 +101,7 @@ class InventoryScreen extends GetWidget<IngredientController> {
                       ),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 5,
                     ),
                     Obx(() => (controller.ingredients != null)
                         ? Column(children: [

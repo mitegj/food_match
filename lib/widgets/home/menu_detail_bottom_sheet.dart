@@ -35,7 +35,7 @@ class DetailBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
     return Container(
-      height: mediaQuery.size.height * 0.84,
+      height: mediaQuery.size.height * 0.85,
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(

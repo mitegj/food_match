@@ -43,7 +43,7 @@ class EmptyMenu extends StatelessWidget {
                             overflow: TextOverflow.visible,
                             style: GoogleFonts.poppins(
                                 color: UIColors.white,
-                                fontSize: 22,
+                                fontSize: 18,
                                 fontWeight: FontWeight.w600)),
                       )
                     ],
@@ -93,9 +93,9 @@ class EmptyMenu extends StatelessWidget {
                         child: Text("FILTERENABLELABEL".tr,
                             overflow: TextOverflow.visible,
                             style: GoogleFonts.poppins(
-                                color: UIColors.pink,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500)),
+                                color: UIColors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300)),
                       )
                     ],
                   ),

@@ -203,7 +203,7 @@ class Messages extends Translations {
           "INGREDIENTSINVENTORY": "Inventario casa",
           "INGREDIENTSINVENTORYSUBTITLE": "Dispensa",
           "CONTINUEWITH": "continua con",
-          "ANYPREFERENCES": "Hai qualche tipo di preferenza",
+          "ANYPREFERENCES": "Hai qualche preferenza",
           "NOTIFICATION": "Notifiche smart",
           "LABELENABLENOTIFICATION":
               "Abilita le notifiche per avere un esperienza migliore.",

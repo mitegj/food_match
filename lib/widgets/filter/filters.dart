@@ -33,14 +33,11 @@ class FiltersPage extends StatelessWidget {
                     const SizedBox(height: 20),
                     Flexible(
                       flex: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 20.0),
-                        child: Text("ANYPREFERENCES".tr + "?",
-                            style: GoogleFonts.poppins(
-                                color: UIColors.white,
-                                fontSize: 22,
-                                fontWeight: FontWeight.w700)),
-                      ),
+                      child: Text("ANYPREFERENCES".tr + "?",
+                          style: GoogleFonts.poppins(
+                              color: UIColors.white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.w700)),
                     ),
                     const SizedBox(height: 10),
                     Row(
@@ -49,7 +46,7 @@ class FiltersPage extends StatelessWidget {
                             child: Text("DOYOUWHANTALLMENU".tr,
                                 style: GoogleFonts.poppins(
                                     color: Colors.white.withOpacity(0.6),
-                                    fontSize: 15,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.w300))),
                         Obx(
                           () => Switch(

@@ -30,11 +30,10 @@ class MenuTile extends StatelessWidget {
         onTap: () => {
               Get.bottomSheet(
                   DetailBottomSheet(
-                    menu: menu,
-                    ingredients: ingredients,
-                    savedMenu: savedMenu,
-                    isCookable: isCookable
-                  ),
+                      menu: menu,
+                      ingredients: ingredients,
+                      savedMenu: savedMenu,
+                      isCookable: isCookable),
                   isScrollControlled: true)
             },
         child: Container(
