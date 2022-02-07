@@ -43,7 +43,7 @@ class EmptyMenu extends StatelessWidget {
                             overflow: TextOverflow.visible,
                             style: GoogleFonts.poppins(
                                 color: UIColors.white,
-                                fontSize: 18,
+                                fontSize: 22,
                                 fontWeight: FontWeight.w600)),
                       )
                     ],
@@ -64,10 +64,10 @@ class EmptyMenu extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(
+                /*const SizedBox(
                   height: 20,
-                ),
-                Padding(
+                ),*/
+                /*Padding(
                   padding: const EdgeInsets.only(left: 20.0, right: 20),
                   child: Row(
                     children: [
@@ -81,7 +81,7 @@ class EmptyMenu extends StatelessWidget {
                       )
                     ],
                   ),
-                ),
+                ),*/
                 const SizedBox(
                   height: 20,
                 ),
@@ -93,9 +93,9 @@ class EmptyMenu extends StatelessWidget {
                         child: Text("FILTERENABLELABEL".tr,
                             overflow: TextOverflow.visible,
                             style: GoogleFonts.poppins(
-                                color: UIColors.violetMain,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w300)),
+                                color: UIColors.pink,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500)),
                       )
                     ],
                   ),

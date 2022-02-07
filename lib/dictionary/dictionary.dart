@@ -20,7 +20,7 @@ class Messages extends Translations {
           "DECLAREYOURALLERGIES": "Select your allergies or intolerances",
           "DONE": "Done",
           "TERMSANDCONDITIONS":
-              "By pressing continue you confirm that you have read and accept",
+              "By pressing continue you confirm that you have read and accepted",
           "YOURAGREEMENT": "Your agreement",
           "HAVEREAD": "I have read",
           "SLOGAN":
@@ -44,11 +44,11 @@ class Messages extends Translations {
           "SUN": "Sun",
           "CONTACTUSPLS": "Contact us please",
           "WELLDONE": "Well done",
-          "TAPANYWARE": "Tap anyware to continue",
+          "TAPANYWARE": "Tap anywhere to continue",
           "TOOFAST": "Too fast to have cooked it",
           "NOADVICES": "We have no advices for you",
           "TRYADDSOMEBASICPRODUCT":
-              "Here you will find dishes that you liked but didn't have time to cook.",
+              "Here you will find the dishes that you liked but didn't have time to cook.",
           "SELECTWITHFILTERS": "Select them with the filters",
           "LOADOTHERMENU": "Show other menus",
           "DISHTYPE": "Dish type",
@@ -59,7 +59,7 @@ class Messages extends Translations {
           "INGREDIENTSINVENTORY": "Inventory home",
           "INGREDIENTSINVENTORYSUBTITLE": "Home inventory stock",
           "CONTINUEWITH": "continue with",
-          "ANYPREFERENCES": "Do you have any preferences",
+          "ANYPREFERENCES": "Do you have any kind of preferences",
           "NOTIFICATION": "Smart notification",
           "LABELENABLENOTIFICATION":
               "Enable notifications for a better experience.",
@@ -93,9 +93,9 @@ class Messages extends Translations {
               "By continuing you confirm that you have read and accepted the terms and conditions of the app",
           "YOURSAVEDMENU": "Your menus saved for later.",
           "VIEWINVENTORY": "View inventory",
-          "EMPTYSCREENMESSAGE": "Oops .. we couldn't find anything for you.",
+          "EMPTYSCREENMESSAGE": "Oops..we could not find anything for you.",
           "EMPTYSCREENMESSAGE1":
-              "Try updating your inventory by adding new ingredients.",
+              "Try updating your inventory by adding new ingredients or check the filters you've applied.",
           "EMPTYSCREENMESSAGE2": "Or check the filters you've applied.",
           "SAVEDMENULABEL": "Save them and then come back to this section.",
           "NOTIFICATIONBODY": "Hey, take a look at what you can cook.",
@@ -127,7 +127,7 @@ class Messages extends Translations {
           "AVAIBLEINTHEKITCHEN": "Available in the kitchen",
           "NOTAVAIBLEINTHEKITCHEN": "Not available in the kitchen",
           "IMAGEDISCLAIMER": "The image may not be true to the plate.",
-          "DONTCANCELACCOUNT": "No, don't cancel",
+          "DONTCANCELACCOUNT": "No, go back",
           "DELETEACCOUNTLABEL":
               "Hey, are you sure you want to delete your account?",
           "WILLFINDCOOKEDMENU":
@@ -138,14 +138,14 @@ class Messages extends Translations {
               "If you have any kind of allergy or intolerance, declare, or press forward to continue.",
           "STEP2LABEL1": "Do you want to enable notifications from foodmatch?",
           "STEP2LABEL2":
-              "Based on the dinner time you select, we will notify you with a notification to entice you to get in the kitchen!",
+              "Based on the dinner time you select, we will advise you with a notification to entice you to get in the kitchen!",
           "WELCOME": "Welcome",
           "5STAR": "Support us with 5 Stars",
           "DOYOUWHANTALLMENU":
               "Enable viewing of all recipes, even if some ingredients may be missing.",
           "MISSINGINGREDIENTSLABEL": "Some ingredients are missing.",
           "FILTERENABLELABEL":
-              "Instead, for a total view of all the recipes even if you do not have some ingredients, enable it by going to the filters section."
+              "If you want to view the recipes regardless of the ingredients you have, check the appropriate item on the filter selection page."
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -238,9 +238,9 @@ class Messages extends Translations {
           "YOURSAVEDMENU": "I tuoi menu salvati per dopo",
           "VIEWINVENTORY": "Visualizza inventario",
           "EMPTYSCREENMESSAGE":
-              "Ops.. non siamo riusciti a trovare niente che faccia al caso tuo.",
+              "Ops..non siamo riusciti a trovare niente che faccia al caso tuo.",
           "EMPTYSCREENMESSAGE1":
-              "Prova ad aggiornare il tuo inventario aggiungendo nuovi ingredienti.",
+              "Prova ad aggiornare il tuo inventario aggiungendo nuovi ingredienti oppure controlla i filtri che hai applicato.",
           "EMPTYSCREENMESSAGE2": "Oppure controlla i filtri che hai applicato.",
           "SAVEDMENULABEL": "Salvali e poi torna in questa sezione.",
           "NOTIFICATIONBODY":
@@ -273,7 +273,7 @@ class Messages extends Translations {
           "AVAIBLEINTHEKITCHEN": "Presente in cucina",
           "NOTAVAIBLEINTHEKITCHEN": "Non presente in cucina",
           "IMAGEDISCLAIMER": "L'immagine potrebbe non essere fedele al piatto.",
-          "DONTCANCELACCOUNT": "No, non cancellare",
+          "DONTCANCELACCOUNT": "No, torna indietro",
           "DELETEACCOUNTLABEL":
               "Hey, sei sicuro di voler cancellare il tuo l'account?",
           "WILLFINDCOOKEDMENU":
@@ -291,7 +291,7 @@ class Messages extends Translations {
               "Abilita la visualizzazione di tutte le ricette, anche se alcuni ingredienti potrebbero mancare.",
           "MISSINGINGREDIENTSLABEL": "Mancano alcuni ingredienti.",
           "FILTERENABLELABEL":
-              "Invece per una visualizzazione totale di tutte le ricette anche se non possiedi alcuni ingredienti, abilitalo andando nella sezione filtri."
+              "Se invece vuoi visualizzare le ricette indipendentemente dagli ingredienti che hai, spunta l'apposita voce nella pagina di selezione dei filtri."
         },
       };
 }

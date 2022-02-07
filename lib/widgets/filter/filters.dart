@@ -49,7 +49,7 @@ class FiltersPage extends StatelessWidget {
                             child: Text("DOYOUWHANTALLMENU".tr,
                                 style: GoogleFonts.poppins(
                                     color: Colors.white.withOpacity(0.6),
-                                    fontSize: 12,
+                                    fontSize: 15,
                                     fontWeight: FontWeight.w300))),
                         Obx(
                           () => Switch(
