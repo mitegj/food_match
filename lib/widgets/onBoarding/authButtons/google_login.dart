@@ -20,7 +20,7 @@ class GoogleLogin extends GetWidget<AuthController> {
         onTap: () => {
           HapticFeedback.mediumImpact(),
           if (checked.value)
-            {AuthController.instance.googleLogin()}
+            {AuthController.instance.googleLogin(false)}
           else
             {
               Get.snackbar("ACCEPTTHETERMS".tr + ".", "MUSTACCEPT".tr,

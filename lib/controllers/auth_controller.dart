@@ -61,7 +61,7 @@ class AuthController extends GetxController {
     });
   }
 
-  void googleLogin() async {
+  Future<void> googleLogin(bool isDelte) async {
     try {
       googleSignIn = GoogleSignIn();
       googleSignInAccount.value = await googleSignIn.signIn();
@@ -71,8 +71,7 @@ class AuthController extends GetxController {
         accessToken: googleSignInAuthentication.accessToken,
         idToken: googleSignInAuthentication.idToken,
       );
-
-      afterLoginControl(credential);
+      if (!isDelte) afterLoginControl(credential);
 
       //Get.toNamed('/homeView'); // navigate to your wanted page
       return;
@@ -222,7 +221,7 @@ class AuthController extends GetxController {
     update();
   }
 
-  Future<void> signInWithApple() async {
+  Future<void> signInWithApple(bool isDelte) async {
     // To prevent replay attacks with the credential returned from Apple, we
     // include a nonce in the credential request. When signing in with
     // Firebase, the nonce in the id token returned by Apple, is expected to
@@ -244,7 +243,7 @@ class AuthController extends GetxController {
       idToken: appleCredential.identityToken,
       rawNonce: rawNonce,
     );
-
+  if(!isDelte)
     afterLoginControl(oauthCredential);
 
     // Sign in the user with Firebase. If the nonce we generated earlier does

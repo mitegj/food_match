@@ -82,7 +82,7 @@ class TimeEatingScreen extends StatelessWidget {
 
                 HapticFeedback.mediumImpact();
                 if (isFirstLogin)
-                  Get.offAll(HomePage(isFirstLogin: true));
+                  Get.offAll(() => HomePage(isFirstLogin: true));
                 else
                   Get.back();
               },

@@ -21,7 +21,7 @@ class AppleLogin extends GetWidget<AuthController> {
         onTap: () => {
           HapticFeedback.mediumImpact(),
           if (checked.value)
-            {AuthController.instance.signInWithApple()}
+            {AuthController.instance.signInWithApple(false)}
           else
             {
               Get.snackbar("ACCEPTTHETERMS".tr + ".", "MUSTACCEPT".tr,
