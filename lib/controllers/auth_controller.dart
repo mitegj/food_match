@@ -19,7 +19,7 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AuthController extends GetxController {
-  final RemoteConfig remoteConfig = RemoteConfig.instance;
+  final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
   final Conf conf = new Conf();
   GoogleSignIn googleSignIn = GoogleSignIn();
   var googleSignInAccount = Rx<GoogleSignInAccount?>(null);
@@ -138,6 +138,7 @@ class AuthController extends GetxController {
 
     final String latestBuildNumber =
         removeLastDigit(remoteConfig.getString("version"));
+    print("latestBuildNumber: " + latestBuildNumber);
 
     final String currentBuildNumber = removeLastDigit(packageInfo.version);
 
@@ -243,8 +244,7 @@ class AuthController extends GetxController {
       idToken: appleCredential.identityToken,
       rawNonce: rawNonce,
     );
-  if(!isDelte)
-    afterLoginControl(oauthCredential);
+    if (!isDelte) afterLoginControl(oauthCredential);
 
     // Sign in the user with Firebase. If the nonce we generated earlier does
     // not match the nonce in `appleCredential.identityToken`, sign in will fail.

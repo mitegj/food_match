@@ -12,6 +12,7 @@ import 'package:morning_brief/widgets/spinner/spinner.dart';
 class InventoryScreen extends GetWidget<IngredientController> {
   @override
   Widget build(BuildContext context) {
+    controller.filterIngredients(controller, "");
     var theme = Theme.of(context);
 
     return Scaffold(
