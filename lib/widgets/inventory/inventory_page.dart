@@ -39,20 +39,17 @@ class InventoryScreen extends GetWidget<IngredientController> {
                                     overflow: TextOverflow.clip,
                                     style: GoogleFonts.poppins(
                                         color: UIColors.white,
-                                        fontSize: 20,
+                                        fontSize: 19,
                                         fontWeight: FontWeight.w600)),
                               ],
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: 8, right: 8),
-                              decoration: BoxDecoration(
-                                  color: UIColors.detailBlack,
-                                  borderRadius: BorderRadius.circular(15)),
+                              padding: EdgeInsets.only(left: 8),
                               child: TextButton(
                                 child: Text('DONE'.tr.toUpperCase(),
                                     style: GoogleFonts.poppins(
                                         color: UIColors.violet,
-                                        fontSize: 14,
+                                        fontSize: 16,
                                         fontWeight: FontWeight.w700)),
                                 onPressed: () {
                                   controller.setIngredients(controller);
@@ -78,7 +75,7 @@ class InventoryScreen extends GetWidget<IngredientController> {
                   child: ListView(children: [
                     CupertinoSearchTextField(
                       padding: EdgeInsets.only(
-                          top: 20, bottom: 20, right: 20, left: 10),
+                          top: 20, bottom: 20, right: 20, left: 15),
                       onChanged: (text) {
                         controller.filterIngredients(controller, text);
                       },
@@ -101,9 +98,7 @@ class InventoryScreen extends GetWidget<IngredientController> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                     ),
-                    const SizedBox(
-                      height: 5,
-                    ),
+                    const SizedBox(height: 8),
                     Obx(() => (controller.ingredients != null)
                         ? Column(children: [
                             ListView.builder(
@@ -115,7 +110,7 @@ class InventoryScreen extends GetWidget<IngredientController> {
                                     controller, index);
                                 return Obx(
                                   () => Container(
-                                    margin: EdgeInsets.only(top: 5, bottom: 5),
+                                    margin: EdgeInsets.only(top: 5, bottom: 0),
                                     decoration: BoxDecoration(
                                         color: UIColors.lightBlack,
                                         borderRadius:

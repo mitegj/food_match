@@ -48,17 +48,12 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                             overflow: TextOverflow.clip,
                                             style: GoogleFonts.poppins(
                                                 color: UIColors.white,
-                                                fontSize: 20,
+                                                fontSize: 19,
                                                 fontWeight: FontWeight.w600)),
                                       ],
                                     ),
                                     Container(
-                                      padding:
-                                          EdgeInsets.only(left: 8, right: 8),
-                                      decoration: BoxDecoration(
-                                          color: UIColors.detailBlack,
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
+                                      padding: EdgeInsets.only(left: 8),
                                       child: TextButton(
                                         child: Text(
                                             isFirstLogin
@@ -66,7 +61,7 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                                 : 'DONE'.tr.toUpperCase(),
                                             style: GoogleFonts.poppins(
                                                 color: UIColors.violet,
-                                                fontSize: 14,
+                                                fontSize: 16,
                                                 fontWeight: FontWeight.w700)),
                                         onPressed: () {
                                           controller.setAllergies(

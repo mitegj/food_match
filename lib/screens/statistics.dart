@@ -102,8 +102,8 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                             child: Obx(
                               () => Icon(
                                   visibility.value
-                                      ? Icons.keyboard_arrow_down
-                                      : Icons.keyboard_arrow_right,
+                                      ? Icons.arrow_downward
+                                      : Icons.arrow_forward,
                                   color: UIColors.blue),
                             ),
                           )

@@ -101,7 +101,8 @@ class Tutorial extends StatelessWidget {
                         fontWeight: FontWeight.w500),
                     children: [
                       WidgetSpan(
-                        child: Icon(Icons.receipt_long, color: UIColors.white),
+                        child: Icon(Icons.view_headline,
+                            color: UIColors.violetMain),
                       ),
                       TextSpan(
                           text: "ADDINGREDIENTSLABEL".tr,

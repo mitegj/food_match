@@ -35,7 +35,7 @@ class DetailBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
     return Container(
-      height: mediaQuery.size.height * 0.85,
+      height: mediaQuery.size.height * 0.86,
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
@@ -66,7 +66,7 @@ class DetailBottomSheet extends StatelessWidget {
                         child: Image.network(
                           menu.linkUrl,
                           fit: BoxFit.cover,
-                          height: mediaQuery.size.height * 0.25,
+                          height: mediaQuery.size.height * 0.35,
                           width: mediaQuery.size.width * 1,
                           errorBuilder: (context, error, stackTrace) {
                             return Image.asset(
@@ -88,7 +88,7 @@ class DetailBottomSheet extends StatelessWidget {
                           .toString()
                           .tr,
                       style: GoogleFonts.poppins(
-                          color: UIColors.pink,
+                          color: UIColors.violet,
                           fontSize: 15,
                           fontWeight: FontWeight.bold),
                     ),
@@ -246,7 +246,7 @@ class DetailBottomSheet extends StatelessWidget {
                         Text(
                           menu.note,
                           style: GoogleFonts.poppins(
-                              color: UIColors.pink,
+                              color: UIColors.violet,
                               fontSize: 15,
                               fontWeight: FontWeight.bold),
                         ),

@@ -52,11 +52,14 @@ class HomeBody extends GetWidget<MenuController> {
                             itemBuilder: (BuildContext context, int index) {
                               return Container(
                                   child: Obx(() => MenuTile(
-                                        ingredients: ingController.ingredients,
-                                        menu: _menuController.menus![index],
-                                        savedMenu: false,
-                                        isCookable: _menuController.userHasIngredients(_menuController.menus![index], ingController.userIngredients ?? [])
-                                      )));
+                                      ingredients: ingController.ingredients,
+                                      menu: _menuController.menus![index],
+                                      savedMenu: false,
+                                      isCookable:
+                                          _menuController.userHasIngredients(
+                                              _menuController.menus![index],
+                                              ingController.userIngredients ??
+                                                  []))));
                             }),
                         SizedBox(
                           height: 20,

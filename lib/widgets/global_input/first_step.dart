@@ -24,15 +24,12 @@ class FirsStep extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Container(
-                        padding: EdgeInsets.only(left: 8, right: 8),
-                        decoration: BoxDecoration(
-                            color: UIColors.detailBlack,
-                            borderRadius: BorderRadius.circular(15)),
+                        padding: EdgeInsets.only(left: 8),
                         child: TextButton(
                           child: Text("NEXT".tr.toUpperCase(),
                               style: GoogleFonts.poppins(
                                   color: UIColors.violet,
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w700)),
                           onPressed: () {
                             HapticFeedback.mediumImpact();

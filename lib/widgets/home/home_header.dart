@@ -35,7 +35,53 @@ class HomeHeader extends StatelessWidget {
           ),
           Row(
             children: [
-              Align(
+              InkWell(
+                onTap: () {
+                  HapticFeedback.mediumImpact();
+                  Get.to(() => StatisticsScreen());
+                },
+                child: CircleAvatar(
+                  backgroundColor: UIColors.violetMain.withOpacity(0.2),
+                  child: Icon(
+                    Icons.account_circle,
+                    color: UIColors.white,
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  HapticFeedback.mediumImpact();
+                  Get.to(
+                    () => Scaffold(
+                      backgroundColor: theme.backgroundColor,
+                      body: SafeArea(
+                        child: SavedMenuPage(),
+                      ),
+                    ),
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 7.0),
+                  child: CircleAvatar(
+                    backgroundColor: UIColors.violetMain.withOpacity(0.2),
+                    child: Icon(Icons.bookmark, color: UIColors.white),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  HapticFeedback.mediumImpact();
+                  Get.to(() => InventoryScreen());
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 7.0),
+                  child: CircleAvatar(
+                    backgroundColor: UIColors.violetMain.withOpacity(0.2),
+                    child: Icon(Icons.view_headline, color: UIColors.white),
+                  ),
+                ),
+              )
+              /*Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
                   decoration: BoxDecoration(
@@ -96,7 +142,7 @@ class HomeHeader extends StatelessWidget {
                     },
                   ),
                 ),
-              ),
+              ),*/
             ],
           )
         ],

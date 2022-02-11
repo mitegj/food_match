@@ -37,18 +37,18 @@ class MenuTile extends StatelessWidget {
                   isScrollControlled: true)
             },
         child: Container(
-          margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
+          margin: const EdgeInsets.only(left: 20, right: 20, top: 5),
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.all(1),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: UIColors.lowTransaprentWhite,
                 ),
                 child: Column(
                   children: [
-                    Row(
+                    /* Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
@@ -84,7 +84,121 @@ class MenuTile extends StatelessWidget {
                         )
                       ],
                     ),
+                    SizedBox(height: 20),*/
+
                     SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0, right: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor:
+                                    UIColors.violet.withOpacity(0.2),
+                                child: Icon(
+                                  Icons.access_time_filled_rounded,
+                                  color: UIColors.violet,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 7.0),
+                                child: Text(
+                                  " " +
+                                      menu.preparationTime.toString() +
+                                      " " +
+                                      "ESTIMATEDTIME".tr.toLowerCase(),
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.black),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor:
+                                    UIColors.violet.withOpacity(0.2),
+                                child: Icon(
+                                  Icons.insights_rounded,
+                                  color: UIColors.violet,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 7.0),
+                                child: Text(
+                                    " " + menu.kcal.toString() + " kcal",
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.black)),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Row(
+                        children: [
+                          Expanded(
+                              child: RichText(
+                            text: TextSpan(
+                                text: menu.name,
+                                style: GoogleFonts.poppins(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300,
+                                    color: Colors.grey),
+                                children: [
+                                  TextSpan(
+                                    text: " - " +
+                                        describeEnum(DishDifficulty
+                                                .values[menu.difficulty])
+                                            .toString()
+                                            .tr +
+                                        "TOCOOK".tr,
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w300,
+                                        color: Colors.black),
+                                  ),
+                                ]),
+                          )),
+                        ],
+                      ),
+                    ),
+                    !isCookable
+                        ? const SizedBox(height: 5)
+                        : const SizedBox(height: 0),
+                    !isCookable
+                        ? Padding(
+                            padding: const EdgeInsets.only(
+                                left: 20.0, right: 20, bottom: 20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CircleAvatar(
+                                  backgroundColor: Colors.red.withOpacity(0.2),
+                                  child: Icon(
+                                    Icons.error,
+                                    color: Colors.red[500],
+                                  ),
+                                ),
+                                Text("MISSINGINGREDIENTSLABEL".tr,
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.red[500])),
+                              ],
+                            ),
+                          )
+                        : SizedBox(
+                            height: 0,
+                          ),
                     Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
@@ -94,7 +208,7 @@ class MenuTile extends StatelessWidget {
                           child: Image.network(
                             menu.linkUrl,
                             fit: BoxFit.cover,
-                            height: mediaQuery.size.height * 0.25,
+                            height: mediaQuery.size.height * 0.35,
                             width: mediaQuery.size.height * 1,
                             errorBuilder: (context, error, stackTrace) {
                               return Image.asset(
@@ -102,60 +216,6 @@ class MenuTile extends StatelessWidget {
                             },
                           )),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                            child: RichText(
-                          text: TextSpan(
-                              text: menu.name,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black),
-                              children: [
-                                TextSpan(
-                                  text: " - " +
-                                      describeEnum(DishDifficulty
-                                              .values[menu.difficulty])
-                                          .toString()
-                                          .tr +
-                                      "TOCOOK".tr,
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.black),
-                                ),
-                              ]),
-                        )),
-                      ],
-                    ),
-                    !isCookable
-                        ? const SizedBox(height: 5)
-                        : const SizedBox(height: 0),
-                    !isCookable
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("MISSINGINGREDIENTSLABEL".tr,
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.red[500])),
-                              CircleAvatar(
-                                backgroundColor: Colors.red.withOpacity(0.2),
-                                child: Icon(
-                                  Icons.error,
-                                  color: Colors.red[500],
-                                ),
-                              ),
-                            ],
-                          )
-                        : SizedBox(
-                            height: 0,
-                          ),
                   ],
                 ),
               )

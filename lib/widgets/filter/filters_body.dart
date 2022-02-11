@@ -72,8 +72,8 @@ class FilterBody extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20.0, right: 20),
           child: GridView.count(
             crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
+            crossAxisSpacing: 5,
+            mainAxisSpacing: 5,
             childAspectRatio: 1,
             children: getFilters(),
           ),
