@@ -12,7 +12,7 @@ import 'package:morning_brief/widgets/spinner/spinner.dart';
 class InventoryScreen extends GetWidget<IngredientController> {
   @override
   Widget build(BuildContext context) {
-    controller.filterIngredients(controller, "");
+    // controller.filterIngredients(controller, "");
     var theme = Theme.of(context);
 
     return Scaffold(
@@ -101,65 +101,59 @@ class InventoryScreen extends GetWidget<IngredientController> {
                     const SizedBox(height: 8),
                     Obx(() => (controller.ingredients != null)
                         ? Column(children: [
-                            ListView.builder(
-                              physics: ScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount: controller.ingSearch.length,
-                              itemBuilder: (_, index) {
-                                controller.setIngredientsCheck(
-                                    controller, index);
-                                return Obx(
-                                  () => Container(
-                                    margin: EdgeInsets.only(top: 5, bottom: 0),
-                                    decoration: BoxDecoration(
-                                        color: UIColors.lightBlack,
-                                        borderRadius:
-                                            BorderRadius.circular(15)),
-                                    child: CheckboxListTile(
-                                      checkColor: UIColors.green,
-                                      activeColor: UIColors.green,
-                                      title: Text(
-                                        controller.getIngredientName(
-                                            controller, index),
-                                        style: GoogleFonts.poppins(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.normal),
-                                      ),
-                                      value: controller.getCheckValue(
-                                          controller, index),
-
-                                      subtitle: Text(
-                                          controller.getCheckValue(
-                                                  controller, index)
-                                              ? "AVAIBLEINTHEKITCHEN"
-                                                  .tr
-                                                  .toLowerCase()
-                                              : "NOTAVAIBLEINTHEKITCHEN"
-                                                  .tr
-                                                  .toLowerCase(),
-                                          style: GoogleFonts.poppins(
-                                              color: controller.getCheckValue(
-                                                      controller, index)
-                                                  ? UIColors.lightGreen
-                                                  : UIColors.orange,
-                                              fontWeight: FontWeight.w300)),
-
-                                      onChanged: (newValue) {
-                                        controller.setCheckState(
-                                            controller, index, newValue);
-                                      },
-                                      controlAffinity: ListTileControlAffinity
-                                          .trailing, //  <-- leading Checkbox
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
+                            ingredientList(),
                           ])
                         : LoadingWidget()),
                   ]),
                 ),
               ),
             ])));
+  }
+
+  ListView ingredientList() {
+    return ListView.builder(
+      physics: ScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: controller.ingSearch.length,
+      itemBuilder: (_, index) {
+        controller.setIngredientsCheck(controller, index);
+        return Obx(
+          () => controller.ingredients != null
+              ? Container(
+                  margin: EdgeInsets.only(top: 5, bottom: 0),
+                  decoration: BoxDecoration(
+                      color: UIColors.lightBlack,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: CheckboxListTile(
+                    checkColor: UIColors.green,
+                    activeColor: UIColors.green,
+                    title: Text(
+                      controller.getIngredientName(controller, index),
+                      style: GoogleFonts.poppins(
+                          color: Colors.white, fontWeight: FontWeight.normal),
+                    ),
+                    value:  controller.getCheckValue(controller, index),
+/*
+                    subtitle: Text(
+                        controller.getCheckValue(controller, index)
+                            ? "AVAIBLEINTHEKITCHEN".tr.toLowerCase()
+                            : "NOTAVAIBLEINTHEKITCHEN".tr.toLowerCase(),
+                        style: GoogleFonts.poppins(
+                            color: controller.getCheckValue(controller, index)
+                                ? UIColors.lightGreen
+                                : UIColors.orange,
+                            fontWeight: FontWeight.w300)),
+*/
+                    onChanged: (newValue) {
+                      controller.setCheckState(controller, index, newValue);
+                    },
+                    controlAffinity: ListTileControlAffinity
+                        .trailing, //  <-- leading Checkbox
+                  ),
+                )
+              : LoadingWidget(),
+        );
+      },
+    );
   }
 }

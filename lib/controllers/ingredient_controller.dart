@@ -29,12 +29,14 @@ class IngredientController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    ingredientList.bindStream(DatabaseIngredient().ingredientStream());
+
+    Stream<List<IngredientModel>> ing = DatabaseIngredient().ingredientStream();
+    ingredientList.bindStream(ing);
 
     userIngredientList.bindStream(DatabaseMenu().userInventoryStream());
-    ingSearch.bindStream(DatabaseIngredient().ingredientStream());
+    ingSearch.bindStream(ing);
 
-  //  userAllergyList.bindStream(DatabaseAllergy().userAllergiesStream());
+    //  userAllergyList.bindStream(DatabaseAllergy().userAllergiesStream());
   }
 
   void filterIngredients(controller, String src) {
@@ -52,12 +54,12 @@ class IngredientController extends GetxController {
   }
 
   setIngredients(controller) {
-       MenuController _menuController;
-      try {
-        _menuController = MenuController.instance;
-      } catch (e) {
-        _menuController = Get.put<MenuController>(MenuController());
-      }
+    MenuController _menuController;
+    try {
+      _menuController = MenuController.instance;
+    } catch (e) {
+      _menuController = Get.put<MenuController>(MenuController());
+    }
 
     controller
         .updateIngredients(_isChecked)

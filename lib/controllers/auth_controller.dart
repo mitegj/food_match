@@ -15,6 +15,7 @@ import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/utils/conf.dart';
 import 'package:morning_brief/widgets/global_input/first_step.dart';
 import 'package:package_info/package_info.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -61,7 +62,7 @@ class AuthController extends GetxController {
     });
   }
 
-  Future<void> googleLogin(bool isDelte) async {
+  Future<bool> googleLogin(bool isDelte) async {
     try {
       googleSignIn = GoogleSignIn();
       googleSignInAccount.value = await googleSignIn.signIn();
@@ -71,10 +72,11 @@ class AuthController extends GetxController {
         accessToken: googleSignInAuthentication.accessToken,
         idToken: googleSignInAuthentication.idToken,
       );
+      saveLoginType("google");
       if (!isDelte) afterLoginControl(credential);
 
       //Get.toNamed('/homeView'); // navigate to your wanted page
-      return;
+      return true;
     } catch (e) {
       Get.snackbar(
         "Error signing in",
@@ -82,6 +84,7 @@ class AuthController extends GetxController {
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
       );
+      return false;
     }
   }
 
@@ -138,7 +141,6 @@ class AuthController extends GetxController {
 
     final String latestBuildNumber =
         removeLastDigit(remoteConfig.getString("version"));
-    print("latestBuildNumber: " + latestBuildNumber);
 
     final String currentBuildNumber = removeLastDigit(packageInfo.version);
 
@@ -222,11 +224,12 @@ class AuthController extends GetxController {
     update();
   }
 
-  Future<void> signInWithApple(bool isDelte) async {
+  Future<bool> signInWithApple(bool isDelte) async {
     // To prevent replay attacks with the credential returned from Apple, we
     // include a nonce in the credential request. When signing in with
     // Firebase, the nonce in the id token returned by Apple, is expected to
     // match the sha256 hash of `rawNonce`.
+    try {
     final rawNonce = generateNonce();
     final nonce = sha256ofString(rawNonce);
 
@@ -244,10 +247,31 @@ class AuthController extends GetxController {
       idToken: appleCredential.identityToken,
       rawNonce: rawNonce,
     );
+    saveLoginType("apple");
     if (!isDelte) afterLoginControl(oauthCredential);
+      return true;
+    } catch (e) {
+      Get.snackbar(
+        "Error signing in",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return false;
+    }
 
     // Sign in the user with Firebase. If the nonce we generated earlier does
     // not match the nonce in `appleCredential.identityToken`, sign in will fail.
     // return await FirebaseAuth.instance.signInWithCredential(oauthCredential);
+  }
+
+  saveLoginType(String type) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString("loginType", type.toLowerCase());
+  }
+
+  Future<String> whichLoginType() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString("loginType") ?? '';
   }
 }

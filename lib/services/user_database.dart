@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -40,15 +42,20 @@ class UserDatabase {
 
   Future<void> deleteUser() async {
     try {
-      if (AuthController.instance.googleSignInAccount() != null) 
-      await AuthController.instance.googleLogin(true);
-      else 
-      await AuthController.instance.signInWithApple(true);
-      String uid = FirebaseAuth.instance.currentUser!.uid.toString();
-      await _firestore.collection(conf.userCollection).doc(uid).delete();
-      await FirebaseAuth.instance.currentUser?.delete();
+      bool logged = false;
+      if (await AuthController.instance.whichLoginType() == "google")
+        logged = await AuthController.instance.googleLogin(true);
+      else if (await AuthController.instance.whichLoginType() == "apple")
+        logged = await AuthController.instance.signInWithApple(true);
 
-      await FirebaseAuth.instance.signOut();
+      print(logged);
+      String uid = FirebaseAuth.instance.currentUser!.uid.toString();
+      if (logged) {
+        await _firestore.collection(conf.userCollection).doc(uid).delete();
+        await FirebaseAuth.instance.currentUser?.delete();
+
+        await FirebaseAuth.instance.signOut();
+      }
     } catch (e) {
       Get.snackbar(
         "Error creating user",
