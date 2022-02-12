@@ -132,8 +132,8 @@ class InventoryScreen extends GetWidget<IngredientController> {
                       style: GoogleFonts.poppins(
                           color: Colors.white, fontWeight: FontWeight.normal),
                     ),
-                    value:  controller.getCheckValue(controller, index),
-/*
+                    value: controller.getCheckValue(controller, index),
+
                     subtitle: Text(
                         controller.getCheckValue(controller, index)
                             ? "AVAIBLEINTHEKITCHEN".tr.toLowerCase()
@@ -143,7 +143,7 @@ class InventoryScreen extends GetWidget<IngredientController> {
                                 ? UIColors.lightGreen
                                 : UIColors.orange,
                             fontWeight: FontWeight.w300)),
-*/
+
                     onChanged: (newValue) {
                       controller.setCheckState(controller, index, newValue);
                     },

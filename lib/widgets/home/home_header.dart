@@ -41,7 +41,7 @@ class HomeHeader extends StatelessWidget {
                   Get.to(() => StatisticsScreen());
                 },
                 child: CircleAvatar(
-                  backgroundColor: UIColors.violetMain.withOpacity(0.2),
+                  backgroundColor: UIColors.violetMain.withOpacity(0.25),
                   child: Icon(
                     Icons.account_circle,
                     color: UIColors.white,
@@ -63,7 +63,7 @@ class HomeHeader extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 7.0),
                   child: CircleAvatar(
-                    backgroundColor: UIColors.violetMain.withOpacity(0.2),
+                    backgroundColor: UIColors.violetMain.withOpacity(0.25),
                     child: Icon(Icons.bookmark, color: UIColors.white),
                   ),
                 ),
@@ -76,7 +76,7 @@ class HomeHeader extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 7.0),
                   child: CircleAvatar(
-                    backgroundColor: UIColors.violetMain.withOpacity(0.2),
+                    backgroundColor: UIColors.violetMain.withOpacity(0.25),
                     child: Icon(Icons.view_headline, color: UIColors.white),
                   ),
                 ),
