@@ -99,7 +99,7 @@ class InventoryScreen extends GetWidget<IngredientController> {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Obx(() => (controller.ingredients != null)
+                    Obx(() => (controller.ingSearch.length > 0)
                         ? Column(children: [
                             ingredientList(),
                           ])

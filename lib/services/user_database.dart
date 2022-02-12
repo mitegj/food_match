@@ -42,13 +42,20 @@ class UserDatabase {
 
   Future<void> deleteUser() async {
     try {
+      AuthController authController;
+      try {
+        authController = AuthController.instance;
+      } catch (e) {
+        authController = Get.put<AuthController>(AuthController());
+      }
       bool logged = false;
-      if (await AuthController.instance.whichLoginType() == "google")
-        logged = await AuthController.instance.googleLogin(true);
-      else if (await AuthController.instance.whichLoginType() == "apple")
-        logged = await AuthController.instance.signInWithApple(true);
+      if (await authController.whichLoginType() == "google")
+        logged = await authController.googleLogin(true);
+      else if (await authController.whichLoginType() == "apple")
+        logged = await authController.signInWithApple(true);
+      else
+        authController.logout();
 
-      print(logged);
       String uid = FirebaseAuth.instance.currentUser!.uid.toString();
       if (logged) {
         await _firestore.collection(conf.userCollection).doc(uid).delete();
