@@ -114,7 +114,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                 ),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 5),
             Container(
               margin: EdgeInsets.only(left: 20, right: 20),
               decoration: BoxDecoration(

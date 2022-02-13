@@ -52,8 +52,8 @@ class SettingsArea extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       )),
                   CircleAvatar(
-                    backgroundColor: UIColors.pink.withOpacity(0.2),
-                    child: Icon(Icons.sick, color: UIColors.pink),
+                    backgroundColor: UIColors.metallic.withOpacity(0.2),
+                    child: Icon(Icons.sick, color: UIColors.metallic),
                   )
                 ],
               ),

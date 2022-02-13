@@ -8,6 +8,8 @@ import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/home/menu_detail_bottom_sheet.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 class MenuTile extends StatelessWidget {
   MenuTile(
@@ -48,44 +50,6 @@ class MenuTile extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    /* Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.access_time_filled_rounded,
-                              color: UIColors.black,
-                            ),
-                            Text(
-                              " " +
-                                  menu.preparationTime.toString() +
-                                  " " +
-                                  "ESTIMATEDTIME".tr,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.insights_rounded,
-                              color: Colors.black,
-                            ),
-                            Text(" " + menu.kcal.toString() + " kcal",
-                                style: GoogleFonts.poppins(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black))
-                          ],
-                        )
-                      ],
-                    ),
-                    SizedBox(height: 20),*/
-
                     SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.only(left: 20.0, right: 20),
@@ -199,7 +163,24 @@ class MenuTile extends StatelessWidget {
                         : SizedBox(
                             height: 0,
                           ),
-                    Container(
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: CachedNetworkImage(
+                        height: mediaQuery.size.height * 0.35,
+                        width: mediaQuery.size.height * 1,
+                        imageUrl: menu.linkUrl,
+                        imageBuilder: (context, imageProvider) => Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: imageProvider, fit: BoxFit.cover),
+                          ),
+                        ),
+                        placeholder: (context, url) => LoadingWidget(),
+                        errorWidget: (context, url, error) =>
+                            Image.asset("assets/images/defaultMenu.jpeg"),
+                      ),
+                    ),
+                    /*Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: UIColors.grey.withOpacity(0.3)),
@@ -215,7 +196,7 @@ class MenuTile extends StatelessWidget {
                                   "assets/images/defaultMenu.jpeg");
                             },
                           )),
-                    ),
+                    ),*/
                   ],
                 ),
               )

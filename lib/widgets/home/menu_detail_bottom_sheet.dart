@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,6 +15,7 @@ import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/global_input/step_circle.dart';
 import 'package:morning_brief/widgets/home/removed_menu.dart';
 import 'package:morning_brief/widgets/home/step_screen.dart';
+import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 // ignore: must_be_immutable
 class DetailBottomSheet extends StatelessWidget {
@@ -55,27 +57,22 @@ class DetailBottomSheet extends StatelessWidget {
           children: [
             Column(
               children: [
-                Stack(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: UIColors.black,
-                        ),
-                        child: Image.network(
-                          menu.linkUrl,
-                          fit: BoxFit.cover,
-                          height: mediaQuery.size.height * 0.35,
-                          width: mediaQuery.size.width * 1,
-                          errorBuilder: (context, error, stackTrace) {
-                            return Image.asset(
-                                "assets/images/defaultMenu.jpeg");
-                          },
-                        ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: CachedNetworkImage(
+                    height: mediaQuery.size.height * 0.35,
+                    width: mediaQuery.size.height * 1,
+                    imageUrl: menu.linkUrl,
+                    imageBuilder: (context, imageProvider) => Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: imageProvider, fit: BoxFit.cover),
                       ),
                     ),
-                  ],
+                    placeholder: (context, url) => LoadingWidget(),
+                    errorWidget: (context, url, error) =>
+                        Image.asset("assets/images/defaultMenu.jpeg"),
+                  ),
                 ),
                 SizedBox(
                   height: 30,
