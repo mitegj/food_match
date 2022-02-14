@@ -115,8 +115,18 @@ class DatabaseMenu {
           //.collection(conf.inventoryCollection)
           .snapshots()
           .map((QuerySnapshot query) {
+        IngredientController _ingController;
+        try {
+          _ingController = IngredientController.instance;
+        } catch (e) {
+          _ingController =
+              Get.put<IngredientController>(IngredientController());
+        }
         List<String> retVal = [];
+
         for (var element in query.docs) {
+          _ingController.lastInventoryUpd =
+              convertLastInventoryUpdDate(element);
           element['ingredients'].forEach((el) => {retVal.add(el.toString())});
         }
         return retVal;
@@ -130,6 +140,33 @@ class DatabaseMenu {
       );
       return Stream.empty();
     }
+  }
+
+  String convertLastInventoryUpdDate(var element) {
+    Timestamp t;
+    try {
+      t = element['lastInventoryUpd'];
+    } catch (e) {
+      return "NEVER".tr;
+    }
+    List<String> months = [
+      "JANUARY",
+      "FEBRUARY",
+      "MARCH",
+      "APRIL",
+      "MAY",
+      "JUNE",
+      "JULY",
+      "AUGUST",
+      "SEPTEMBER",
+      "OCTOBER",
+      "NOVEMBER",
+      "DECEMBER"
+    ];
+
+    DateTime d = t.toDate();
+    String date = '${d.day} ' + months[d.month].tr + ' ${d.year}';
+    return date;
   }
 
   Future<bool> updateInventory(List<String> userInventory) async {

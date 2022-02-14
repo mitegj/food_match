@@ -4,6 +4,7 @@ import 'package:morning_brief/models/ingredientChecked_model.dart';
 import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/services/ingredient_databse.dart';
 import 'package:morning_brief/services/menu_database.dart';
+import 'package:morning_brief/services/user_database.dart';
 import 'package:morning_brief/widgets/filter/filters_body.dart';
 
 class IngredientController extends GetxController {
@@ -17,11 +18,14 @@ class IngredientController extends GetxController {
 
   Rxn<List<String>> userIngredientList = Rxn<List<String>>().obs();
   List<String>? get userIngredients => userIngredientList.value.obs();
+
 /*
   Rxn<List<String>> userAllergyList = Rxn<List<String>>().obs();
   List<String>? get userAllergies => userAllergyList.value.obs();
 
 */
+
+  String lastInventoryUpd = '';
   bool isValueUpdated = false;
 
   RxList<IngredientChecked> _isChecked = RxList();
@@ -67,6 +71,7 @@ class IngredientController extends GetxController {
   }
 
   Future<bool> updateIngredients(RxList isChecked) async {
+    UserDatabase().saveUserLastInventoryUpdate();
     return DatabaseIngredient().updateIngredients(isChecked);
   }
 

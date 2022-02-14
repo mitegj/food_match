@@ -61,7 +61,7 @@ class InventoryScreen extends GetWidget<IngredientController> {
                             )
                           ],
                         ),
-                        Text("ultimo aggiornamento, 6 febbraio 2022",
+                        Text("LASTUPDATE".tr + " " + controller.lastInventoryUpd,
                             overflow: TextOverflow.visible,
                             style: GoogleFonts.poppins(
                                 color: Colors.white.withOpacity(0.6),

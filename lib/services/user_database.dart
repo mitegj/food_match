@@ -98,4 +98,14 @@ class UserDatabase {
       return Stream.empty();
     }
   }
+
+  Future<void> saveUserLastInventoryUpdate() async {
+    try {
+      String uid = FirebaseAuth.instance.currentUser!.uid.toString();
+      await FirebaseFirestore.instance
+          .collection(conf.userCollection)
+          .doc(uid)
+          .update({"lastInventoryUpd": new DateTime.now()});
+    } catch (e) {}
+  }
 }

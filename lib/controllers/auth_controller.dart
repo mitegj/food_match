@@ -91,7 +91,7 @@ class AuthController extends GetxController {
   Future<void> createUser(String uid) async {
     try {
       UserModel user = UserModel(
-          id: uid, allergies: [], ingredients: [], lastLogin: DateTime.now());
+          id: uid, allergies: [], ingredients: [], lastLogin: DateTime.now(), lastInventoryUpd: DateTime.now());
 
       await UserDatabase().createNewUser(user);
     } catch (e) {

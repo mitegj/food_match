@@ -7,6 +7,7 @@ class UserController extends GetxController {
     allergies: [],
     ingredients: [],
     lastLogin: DateTime.now(),
+    lastInventoryUpd: DateTime.now()
   ).obs;
 
   UserModel get user => _userModel.value;

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:morning_brief/services/allergy_database.dart';
 import 'package:morning_brief/utils/conf.dart';
 
 final Conf conf = new Conf();
@@ -9,11 +10,13 @@ class UserModel {
   late List<String> allergies;
   late List<String> ingredients;
   late DateTime lastLogin;
+  late DateTime lastInventoryUpd;
   UserModel(
       {required this.id,
       required this.allergies,
       required this.ingredients,
-      required this.lastLogin});
+      required this.lastLogin,
+      required this.lastInventoryUpd});
 
   Map<String, dynamic> toMap() {
     return {
@@ -21,6 +24,7 @@ class UserModel {
       "allergies,": allergies,
       "ingredients,": ingredients,
       "lastLogin": lastLogin,
+      "lastInventoryUpd":lastInventoryUpd
     };
   }
 
@@ -30,6 +34,7 @@ class UserModel {
       allergies: parsedJson['allergies'],
       ingredients: parsedJson['ingredients'],
       lastLogin: parsedJson['lastLogin'],
+      lastInventoryUpd: parsedJson['lastInventoryUpd']
     );
   }
 
@@ -49,6 +54,10 @@ class UserModel {
     lastLogin = conf.docContains("lastLogin", documentSnapshot)
         ? documentSnapshot["lastLogin"].toDate()
         : DateTime.now();
+
+    lastInventoryUpd= conf.docContains("lastInventoryUpd", documentSnapshot)
+        ? documentSnapshot["lastInventoryUpd"].toDate()
+        : DateTime.now();
   }
 }
 
@@ -58,5 +67,6 @@ extension UserExtensions on QueryDocumentSnapshot {
         allergies: this['allergies'],
         ingredients: this['ingredients'],
         lastLogin: this['lastLogin'],
+        lastInventoryUpd: this['lastInventoryUpd']
       );
 }

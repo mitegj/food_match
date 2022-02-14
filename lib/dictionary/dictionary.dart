@@ -42,6 +42,18 @@ class Messages extends Translations {
           "FRI": "Fri",
           "SAT": "Sat",
           "SUN": "Sun",
+          "JANUARY": "January",
+          "FEBRUARY": "February",
+          "MARCH": "March",
+          "APRIL": "April",
+          "MAY": "May",
+          "JUNE": "June",
+          "JULY": "July",
+          "AUGUST": "August",
+          "SEPTEMBER": "September",
+          "OCTOBER": "October",
+          "NOVEMBER": "November",
+          "DECEMBER": "December",
           "CONTACTUSPLS": "Contact us please",
           "WELLDONE": "Well done",
           "TAPANYWARE": "Tap anywhere to continue",
@@ -145,7 +157,9 @@ class Messages extends Translations {
               "Enable viewing of all recipes, even if some ingredients may be missing.",
           "MISSINGINGREDIENTSLABEL": "Some ingredients are missing.",
           "FILTERENABLELABEL":
-              "If you want to view the recipes regardless of the ingredients you have, check the appropriate item on the filter selection page."
+              "If you want to view the recipes regardless of the ingredients you have, check the appropriate item on the filter selection page.",
+          "LASTUPDATE": "Last update",
+          "NEVER": "Never"
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -186,6 +200,18 @@ class Messages extends Translations {
           "FRI": "Ven",
           "SAT": "Sab",
           "SUN": "Dom",
+          "JANUARY": "Gennaio",
+          "FEBRUARY": "Febbraio",
+          "MARCH": "Marzo",
+          "APRIL": "Aprile",
+          "MAY": "Maggio",
+          "JUNE": "Giugno",
+          "JULY": "Luglio",
+          "AUGUST": "Agosto",
+          "SEPTEMBER": "Settembre",
+          "OCTOBER": "Ottobre",
+          "NOVEMBER": "Novembre",
+          "DECEMBER": "Dicembre",
           "CONTACTUSPLS": "Contattaci",
           "WELLDONE": "Ottimo lavoro",
           "TAPANYWARE": "Tap ovunque per continuare",
@@ -291,7 +317,9 @@ class Messages extends Translations {
               "Abilita la visualizzazione di tutte le ricette, anche se alcuni ingredienti potrebbero mancare.",
           "MISSINGINGREDIENTSLABEL": "Mancano alcuni ingredienti.",
           "FILTERENABLELABEL":
-              "Se invece vuoi visualizzare le ricette indipendentemente dagli ingredienti che hai, spunta l'apposita voce nella pagina di selezione dei filtri."
+              "Se invece vuoi visualizzare le ricette indipendentemente dagli ingredienti che hai, spunta l'apposita voce nella pagina di selezione dei filtri.",
+          "LASTUPDATE": "Ultimo aggiornamento",
+          "NEVER": "Mai"
         },
       };
 }
