@@ -27,7 +27,8 @@ class InventoryScreen extends GetWidget<IngredientController> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0, right: 20),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,6 +61,12 @@ class InventoryScreen extends GetWidget<IngredientController> {
                             )
                           ],
                         ),
+                        Text("ultimo aggiornamento, 6 febbraio 2022",
+                            overflow: TextOverflow.visible,
+                            style: GoogleFonts.poppins(
+                                color: Colors.white.withOpacity(0.6),
+                                fontWeight: FontWeight.w300,
+                                fontSize: 12))
                       ],
                     ),
                   )),
@@ -98,7 +105,7 @@ class InventoryScreen extends GetWidget<IngredientController> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    // const SizedBox(height: 8),
                     Obx(() => (controller.ingSearch.length > 0)
                         ? Column(children: [
                             ingredientList(),

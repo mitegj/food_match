@@ -59,7 +59,7 @@ class Messages extends Translations {
           "INGREDIENTSINVENTORY": "Inventory home",
           "INGREDIENTSINVENTORYSUBTITLE": "Home inventory stock",
           "CONTINUEWITH": "continue with",
-          "ANYPREFERENCES": "Do you have any kind of preferences",
+          "ANYPREFERENCES": "Do you have any preferences",
           "NOTIFICATION": "Smart notification",
           "LABELENABLENOTIFICATION":
               "Enable notifications for a better experience.",
