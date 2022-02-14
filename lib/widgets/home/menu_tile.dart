@@ -175,7 +175,8 @@ class MenuTile extends StatelessWidget {
                                 image: imageProvider, fit: BoxFit.cover),
                           ),
                         ),
-                        placeholder: (context, url) => LoadingWidget(),
+                        placeholder: (context, url) =>
+                            LoadingWidgetSquareCircle(),
                         errorWidget: (context, url, error) =>
                             Image.asset("assets/images/defaultMenu.jpeg"),
                       ),

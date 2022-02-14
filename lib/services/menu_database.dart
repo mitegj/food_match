@@ -165,7 +165,7 @@ class DatabaseMenu {
     ];
 
     DateTime d = t.toDate();
-    String date = '${d.day} ' + months[d.month].tr + ' ${d.year}';
+    String date = '${d.day} ' + months[d.month - 1].tr + ' ${d.year}';
     return date;
   }
 

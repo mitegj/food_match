@@ -61,7 +61,10 @@ class InventoryScreen extends GetWidget<IngredientController> {
                             )
                           ],
                         ),
-                        Text("LASTUPDATE".tr + " " + controller.lastInventoryUpd,
+                        Text(
+                            "LASTUPDATE".tr.toLowerCase() +
+                                ", " +
+                                controller.lastInventoryUpd.toLowerCase(),
                             overflow: TextOverflow.visible,
                             style: GoogleFonts.poppins(
                                 color: Colors.white.withOpacity(0.6),
