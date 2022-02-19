@@ -3,19 +3,16 @@ import 'package:get/get.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/services/menu_database.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SavedMenuController extends MenuController {
   static SavedMenuController instance = Get.find();
 
   getMenuList(RxList<int> filters) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    int m = prefs.getInt("limitMultiplier") ?? 1;
     if (filters.length == 0) {
       filters = getAllFilters();
     }
 
-    menuList.bindStream(DatabaseMenu().savedMenuStream(limit * m));
+    menuList.bindStream(DatabaseMenu().savedMenuStream(100));
   }
 
   Future<void> removeSavedMenu(MenuModel menu) async {

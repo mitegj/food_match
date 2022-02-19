@@ -10,6 +10,7 @@ class Conf {
   String inventoryListCollection = "ingredientsList";
   String cookedMenuCollection = "cookedMenu";
   String savedMenuCollection = "savedMenu";
+  String confCollection = "conf";
 
   String appPlayStoreLink =
       "https://play.google.com/store/apps/details?id=appPackageName";

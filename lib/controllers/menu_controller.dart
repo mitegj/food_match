@@ -18,6 +18,7 @@ class MenuController extends GetxController {
   List<MenuModel>? get menus => menuList.value.obs();
   int limit = 30;
   RxBool hasOtherMenuBool = true.obs;
+  static int limitMultiplier = 1;
   set menus(List<MenuModel>? value) {
     menus?.clear();
   }
@@ -34,13 +35,12 @@ class MenuController extends GetxController {
   }
 
   getMenuList(RxList<int> filters) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    int m = prefs.getInt("limitMultiplier") ?? 1;
     if (filters.length == 0) {
       filters = getAllFilters();
     }
 
-    menuList.bindStream(DatabaseMenu().menuStream(filters, limit * m));
+    menuList.bindStream(
+        DatabaseMenu().menuStream(filters, limit * limitMultiplier));
   }
 
   Future<void> updateStockCtrl(List<String> userInventory) async {
@@ -107,9 +107,7 @@ class MenuController extends GetxController {
   }
 
   incrementLimitMultiplier() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    int m = prefs.getInt("limitMultiplier") ?? 1;
-    prefs.setInt("limitMultiplier", ++m);
+    limitMultiplier = limitMultiplier + 1;
   }
 
   String getIngredientName(String id, ingredients) {
@@ -167,10 +165,11 @@ class MenuController extends GetxController {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int menuLength = prefs.getInt("menuLength") ?? 0;
 
-    if (len != 0) if (len == menuLength) {
+    int tot = await DatabaseMenu().getTotMenu();
+    if (len != 0) if (len == tot) {
       hasOtherMenuBool.value = false;
-    } else if (len > menuLength) {
-      hasOtherMenuBool.value = false;
+    } else if (len < tot) {
+      hasOtherMenuBool.value = true;
       prefs.setInt("menuLength", len);
     }
   }
@@ -184,7 +183,5 @@ class MenuController extends GetxController {
     }
 
     return _ingController.userIngredients?.contains(ingName) ?? false;
-
-    
   }
 }

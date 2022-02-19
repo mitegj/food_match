@@ -59,7 +59,7 @@ class DatabaseMenu {
             }
           }
         }
-        _menuController.hasOtherMenu(retVal.length);
+        _menuController.hasOtherMenu(query.docs.length);
         return retVal;
       });
     } catch (e) {
@@ -252,5 +252,26 @@ class DatabaseMenu {
         snackPosition: SnackPosition.BOTTOM,
       );
     }
+  }
+
+  Future<int> getTotMenu() async {
+    int i = 0;
+
+    try {
+      var result = await FirebaseFirestore.instance
+          .collection(conf.confCollection)
+          .get();
+      if (result.docs.isNotEmpty) {
+        i = result.docs[0].data()["menuLength"];
+      }
+    } catch (e) {
+      Get.snackbar(
+        "Error getting tot menu",
+        e.toString(),
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+    return i;
   }
 }
