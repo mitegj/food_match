@@ -14,6 +14,7 @@ class InventoryScreen extends GetWidget<IngredientController> {
   Widget build(BuildContext context) {
     controller.filterIngredients(controller, "");
     var theme = Theme.of(context);
+    var mediaQuery = MediaQuery.of(context);
 
     return Scaffold(
         backgroundColor: theme.backgroundColor,
@@ -22,57 +23,49 @@ class InventoryScreen extends GetWidget<IngredientController> {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-              Flexible(
-                  flex: 1,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0, right: 20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                ArrowHeader(),
-                                Text("INVENTORY".tr,
-                                    overflow: TextOverflow.clip,
-                                    style: GoogleFonts.poppins(
-                                        color: UIColors.white,
-                                        fontSize: 19,
-                                        fontWeight: FontWeight.w600)),
-                              ],
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(left: 8),
-                              child: TextButton(
-                                child: Text('DONE'.tr.toUpperCase(),
-                                    style: GoogleFonts.poppins(
-                                        color: UIColors.violet,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w700)),
-                                onPressed: () {
+              if (mediaQuery.viewInsets.bottom == 0)
+                Flexible(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0, right: 20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  ArrowHeader(),
+                                  Text("INVENTORY".tr,
+                                      overflow: TextOverflow.clip,
+                                      style: GoogleFonts.poppins(
+                                          color: UIColors.white,
+                                          fontSize: 19,
+                                          fontWeight: FontWeight.w600)),
+                                ],
+                              ),
+                              InkWell(
+                                onTap: () {
                                   controller.setIngredients(controller);
                                   HapticFeedback.mediumImpact();
                                   Get.back();
                                 },
-                              ),
-                            )
-                          ],
-                        ),
-                        Text(
-                            "LASTUPDATE".tr.toLowerCase() +
-                                ", " +
-                                controller.lastInventoryUpd.toLowerCase(),
-                            overflow: TextOverflow.visible,
-                            style: GoogleFonts.poppins(
-                                color: Colors.white.withOpacity(0.6),
-                                fontWeight: FontWeight.w300,
-                                fontSize: 12))
-                      ],
-                    ),
-                  )),
+                                child: Container(
+                                  padding: EdgeInsets.only(left: 8),
+                                  child: Text('DONE'.tr.toUpperCase(),
+                                      style: GoogleFonts.poppins(
+                                          color: UIColors.violet,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w700)),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    )),
               Expanded(
                 flex: 6,
                 child: Container(
@@ -108,12 +101,12 @@ class InventoryScreen extends GetWidget<IngredientController> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                     ),
-                    // const SizedBox(height: 8),
-                    Obx(() => (controller.ingSearch.length > 0)
+                    const SizedBox(height: 8),
+                    Obx(() => (controller.ingSearch.isNotEmpty)
                         ? Column(children: [
                             ingredientList(),
                           ])
-                        : LoadingWidget()),
+                        : LoadingWidgetSquareCircle()),
                   ]),
                 ),
               ),
@@ -134,34 +127,39 @@ class InventoryScreen extends GetWidget<IngredientController> {
                   decoration: BoxDecoration(
                       color: UIColors.lightBlack,
                       borderRadius: BorderRadius.circular(15)),
-                  child: CheckboxListTile(
-                    checkColor: UIColors.green,
-                    activeColor: UIColors.green,
-                    title: Text(
-                      controller.getIngredientName(controller, index),
-                      style: GoogleFonts.poppins(
-                          color: Colors.white, fontWeight: FontWeight.normal),
-                    ),
-                    value: controller.getCheckValue(controller, index),
+                  child: Theme(
+                    data: ThemeData(
+                        unselectedWidgetColor: Colors.white.withOpacity(0.6)),
+                    child: CheckboxListTile(
+                      checkColor: UIColors.green,
+                      activeColor: UIColors.green,
 
-                    subtitle: Text(
-                        controller.getCheckValue(controller, index)
-                            ? "AVAIBLEINTHEKITCHEN".tr.toLowerCase()
-                            : "NOTAVAIBLEINTHEKITCHEN".tr.toLowerCase(),
+                      title: Text(
+                        controller.getIngredientName(controller, index),
                         style: GoogleFonts.poppins(
-                            color: controller.getCheckValue(controller, index)
-                                ? UIColors.lightGreen
-                                : UIColors.orange,
-                            fontWeight: FontWeight.w300)),
+                            color: Colors.white, fontWeight: FontWeight.normal),
+                      ),
+                      value: controller.getCheckValue(controller, index),
 
-                    onChanged: (newValue) {
-                      controller.setCheckState(controller, index, newValue);
-                    },
-                    controlAffinity: ListTileControlAffinity
-                        .trailing, //  <-- leading Checkbox
+                      subtitle: Text(
+                          controller.getCheckValue(controller, index)
+                              ? "AVAIBLEINTHEKITCHEN".tr.toLowerCase()
+                              : "NOTAVAIBLEINTHEKITCHEN".tr.toLowerCase(),
+                          style: GoogleFonts.poppins(
+                              color: controller.getCheckValue(controller, index)
+                                  ? UIColors.lightGreen
+                                  : UIColors.orange,
+                              fontWeight: FontWeight.w300)),
+
+                      onChanged: (newValue) {
+                        controller.setCheckState(controller, index, newValue);
+                      },
+                      controlAffinity: ListTileControlAffinity
+                          .trailing, //  <-- leading Checkbox
+                    ),
                   ),
                 )
-              : LoadingWidget(),
+              : LoadingWidgetSquareCircle(),
         );
       },
     );

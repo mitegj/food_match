@@ -159,7 +159,10 @@ class Messages extends Translations {
           "FILTERENABLELABEL":
               "If you want to view the recipes regardless of the ingredients you have, check the appropriate item on the filter selection page.",
           "LASTUPDATE": "Last update",
-          "NEVER": "Never"
+          "NEVER": "Never",
+          "VIEWINVENTARY": "View inventory.",
+          "DAILYUPDATE":
+              "We update your catalog every day to offer you a richer experience every day."
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -319,7 +322,10 @@ class Messages extends Translations {
           "FILTERENABLELABEL":
               "Se invece vuoi visualizzare le ricette indipendentemente dagli ingredienti che hai, spunta l'apposita voce nella pagina di selezione dei filtri.",
           "LASTUPDATE": "Ultimo aggiornamento",
-          "NEVER": "Mai"
+          "NEVER": "Mai",
+          "VIEWINVENTARY": "Visualizza inventario.",
+          "DAILYUPDATE":
+              "Aggiorniamo quatidianamento il tuo catalogo per offrirti ogni giorno un esperienzas sempre più ricca."
         },
       };
 }

@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:morning_brief/services/allergy_database.dart';
 import 'package:morning_brief/utils/conf.dart';
 
 final Conf conf = new Conf();
@@ -24,18 +23,17 @@ class UserModel {
       "allergies,": allergies,
       "ingredients,": ingredients,
       "lastLogin": lastLogin,
-      "lastInventoryUpd":lastInventoryUpd
+      "lastInventoryUpd": lastInventoryUpd
     };
   }
 
   factory UserModel.fromJson(Map<String, dynamic> parsedJson) {
     return UserModel(
-      id: parsedJson['id'],
-      allergies: parsedJson['allergies'],
-      ingredients: parsedJson['ingredients'],
-      lastLogin: parsedJson['lastLogin'],
-      lastInventoryUpd: parsedJson['lastInventoryUpd']
-    );
+        id: parsedJson['id'],
+        allergies: parsedJson['allergies'],
+        ingredients: parsedJson['ingredients'],
+        lastLogin: parsedJson['lastLogin'],
+        lastInventoryUpd: parsedJson['lastInventoryUpd']);
   }
 
   UserModel.fromDocumentSnapshot(
@@ -55,7 +53,7 @@ class UserModel {
         ? documentSnapshot["lastLogin"].toDate()
         : DateTime.now();
 
-    lastInventoryUpd= conf.docContains("lastInventoryUpd", documentSnapshot)
+    lastInventoryUpd = conf.docContains("lastInventoryUpd", documentSnapshot)
         ? documentSnapshot["lastInventoryUpd"].toDate()
         : DateTime.now();
   }
@@ -63,10 +61,9 @@ class UserModel {
 
 extension UserExtensions on QueryDocumentSnapshot {
   UserModel get touser => UserModel(
-        id: this.id,
-        allergies: this['allergies'],
-        ingredients: this['ingredients'],
-        lastLogin: this['lastLogin'],
-        lastInventoryUpd: this['lastInventoryUpd']
-      );
+      id: this.id,
+      allergies: this['allergies'],
+      ingredients: this['ingredients'],
+      lastLogin: this['lastLogin'],
+      lastInventoryUpd: this['lastInventoryUpd']);
 }

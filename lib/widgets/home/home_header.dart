@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/screens/saved_menu.dart';
 import 'package:morning_brief/screens/statistics.dart';
 import 'package:morning_brief/utils/UIColors.dart';
-import 'package:morning_brief/widgets/inventory/inventory_page.dart';
 
 class HomeHeader extends StatelessWidget {
   @override
@@ -68,7 +67,7 @@ class HomeHeader extends StatelessWidget {
                   ),
                 ),
               ),
-              InkWell(
+              /*InkWell(
                 onTap: () {
                   HapticFeedback.mediumImpact();
                   Get.to(() => InventoryScreen());
@@ -81,7 +80,7 @@ class HomeHeader extends StatelessWidget {
                   ),
                 ),
               )
-              /*Align(
+              Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
                   decoration: BoxDecoration(

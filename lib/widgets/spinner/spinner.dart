@@ -5,6 +5,15 @@ import 'package:morning_brief/utils/UIColors.dart';
 class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return SpinKitSquareCircle(
+      color: UIColors.violet,
+    );
+  }
+}
+
+class LoadingWidgetSquareCircle extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return SpinKitDoubleBounce(
       color: UIColors.violet,
     );

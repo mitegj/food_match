@@ -32,6 +32,7 @@ class StatisticsScreen extends GetWidget<AllergyController> {
   SettingController _settingController =
       Get.put<SettingController>(SettingController());
   AuthController _authController = Get.put<AuthController>(AuthController());
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);

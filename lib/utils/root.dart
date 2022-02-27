@@ -4,7 +4,6 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/auth_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:morning_brief/utils/notification_scheduler.dart' as nt;
 
@@ -29,7 +28,6 @@ class Root extends StatelessWidget {
   }
 
   resetLimitMultiplier() async {
-
     MenuController.limitMultiplier = 1;
   }
 }

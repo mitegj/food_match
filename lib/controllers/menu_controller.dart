@@ -6,6 +6,7 @@ import 'package:morning_brief/enum/dish_type_enum.dart';
 import 'package:morning_brief/models/menu_ingredients_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/services/menu_database.dart';
+import 'package:morning_brief/widgets/filter/filters_body.dart';
 import 'package:morning_brief/widgets/home/confirm_cooked.dart';
 import 'package:morning_brief/widgets/home/reminder_menu.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,6 +22,33 @@ class MenuController extends GetxController {
   static int limitMultiplier = 1;
   set menus(List<MenuModel>? value) {
     menus?.clear();
+  }
+
+  ScrollController scrollController = ScrollController();
+
+  void onInit() {
+    addItems();
+    super.onInit();
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  void addItems() async {
+    print("ciaooo testina");
+    scrollController
+      ..addListener(() {
+        if (scrollController.position.pixels >=
+            scrollController.position.maxScrollExtent) {
+          // ... call method to load more repositories
+          incrementLimitMultiplier();
+          getMenuList(FilterBody.listFilters);
+          print("ciaooo testina bbb");
+        }
+      });
   }
 
   RxList<int> getAllFilters() {
@@ -163,7 +191,7 @@ class MenuController extends GetxController {
 
   Future<void> hasOtherMenu(int len) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    int menuLength = prefs.getInt("menuLength") ?? 0;
+    //int menuLength = prefs.getInt("menuLength") ?? 0;
 
     int tot = await DatabaseMenu().getTotMenu();
     if (len != 0) if (len == tot) {

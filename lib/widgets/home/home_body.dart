@@ -8,7 +8,9 @@ import 'package:morning_brief/controllers/menu_controller.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/filter/filters.dart';
 import 'package:morning_brief/widgets/filter/filters_body.dart';
+import 'package:morning_brief/widgets/home/Inventory_button_widget.dart';
 import 'package:morning_brief/widgets/home/empty_menu.dart';
+import 'package:morning_brief/widgets/home/label_info.dart';
 import 'package:morning_brief/widgets/home/menu_tile.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
@@ -21,10 +23,13 @@ class HomeBody extends GetWidget<MenuController> {
   AllergyController allergyController =
       Get.put<AllergyController>(AllergyController());
 
+  RxBool visibility = true.obs;
+
   MenuController _menuController = MenuController.instance;
   @override
   Widget build(BuildContext context) {
     _menuController.getMenuList(FilterBody.listFilters);
+
     return Expanded(
       child: Container(
           child: Obx(() => (allergyController.userAllergies != null &&
@@ -33,13 +38,18 @@ class HomeBody extends GetWidget<MenuController> {
                       _menuController.menus?.length == 0)
                   ? EmptyMenu()
                   : ListView(
+                      controller: controller.scrollController,
                       children: <Widget>[
                         Container(
                           // height: 250,
-                          margin: EdgeInsets.only(top: 20),
+                          margin: EdgeInsets.only(top: 0),
                           child: Center(
                               child: Column(
                             children: [
+                              Inventory_button_widget(),
+                              SizedBox(height: 5),
+                              labelInfo(visibility: visibility),
+                              SizedBox(height: 30),
                               headerBeforeCard(),
                             ],
                           )),
@@ -64,6 +74,7 @@ class HomeBody extends GetWidget<MenuController> {
                         SizedBox(
                           height: 20,
                         ),
+                        /*
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -72,7 +83,7 @@ class HomeBody extends GetWidget<MenuController> {
                         ),
                         SizedBox(
                           height: 20,
-                        )
+                        )*/
                       ],
                     )
               : LoadingWidget())),
