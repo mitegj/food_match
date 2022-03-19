@@ -9,7 +9,7 @@ import 'package:morning_brief/widgets/global_input/arrow_header.dart';
 class FiltersPage extends StatelessWidget {
   FiltersPage({Key? key}) : super(key: key);
 
-  static RxBool getAllMenus = false.obs;
+  static RxBool getAllMenus = true.obs;
 
   @override
   Widget build(BuildContext context) {

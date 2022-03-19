@@ -22,20 +22,27 @@ class SecondStep extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Container(
-                        padding: EdgeInsets.only(left: 8),
-                        child: TextButton(
+                      InkWell(
+                        onTap: () {
+                          HapticFeedback.mediumImpact();
+                          Get.to(() => TimeEatingScreen(
+                                isFirstLogin: true,
+                              ));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(
+                                width: 1,
+                                color: UIColors.lightBlack.withOpacity(0.6)),
+                          ),
+                          padding: EdgeInsets.only(
+                              left: 20, right: 20, top: 10, bottom: 10),
                           child: Text("NEXT".tr.toUpperCase(),
                               style: GoogleFonts.poppins(
                                   color: UIColors.violet,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700)),
-                          onPressed: () {
-                            HapticFeedback.mediumImpact();
-                            Get.to(() => TimeEatingScreen(
-                                  isFirstLogin: true,
-                                ));
-                          },
                         ),
                       )
                     ],

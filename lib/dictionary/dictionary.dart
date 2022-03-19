@@ -62,11 +62,11 @@ class Messages extends Translations {
           "TRYADDSOMEBASICPRODUCT":
               "Here you will find the dishes that you liked but didn't have time to cook.",
           "SELECTWITHFILTERS": "Select them with the filters",
-          "LOADOTHERMENU": "Show other menus",
+          "LOADOTHERMENU": "Scroll up for more recipes",
           "DISHTYPE": "Dish type",
           "INGREDIENTSLIST": "Ingredients list",
           "METHOD": "Method",
-          "DISHCOOKED": "Dish cooked",
+          "DISHCOOKED": "I've cooked the dish!",
           "ESTIMATEDTIME": "time",
           "INGREDIENTSINVENTORY": "Inventory home",
           "INGREDIENTSINVENTORYSUBTITLE": "Home inventory stock",
@@ -155,14 +155,18 @@ class Messages extends Translations {
           "5STAR": "Support us with 5 Stars",
           "DOYOUWHANTALLMENU":
               "Enable viewing of all recipes, even if some ingredients may be missing.",
-          "MISSINGINGREDIENTSLABEL": "Some ingredients are missing.",
+          "MISSINGINGREDIENTSLABEL": "Some ingredients are missing",
           "FILTERENABLELABEL":
               "If you want to view the recipes regardless of the ingredients you have, check the appropriate item on the filter selection page.",
           "LASTUPDATE": "Last update",
           "NEVER": "Never",
           "VIEWINVENTARY": "View inventory.",
           "DAILYUPDATE":
-              "We update your catalog every day to offer you a richer experience every day."
+              "We update your catalog every day to give you a richer experience day after day.",
+          "DAILYUPDATEINVENTORY":
+              "We advise you to keep your inventory up to date with the stock you have available.",
+          "TEXTINFOMISSINGINGREDIENTS":
+              "To cook this recipe, we recommend that you add all the necessary ingredients to your inventory."
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -223,11 +227,11 @@ class Messages extends Translations {
           "TRYADDSOMEBASICPRODUCT":
               "Qui troverai i piatti che ti sono piaciuti ma che non hai avuto il tempo di cucinare.",
           "SELECTWITHFILTERS": "Seleziona con uno o più filtri",
-          "LOADOTHERMENU": "Visualizza altri menu",
+          "LOADOTHERMENU": "Scorri verso l'alto per altre ricette",
           "DISHTYPE": "Tipo di piatto",
           "INGREDIENTSLIST": "Lista di ingredienti",
           "METHOD": "Procedimento",
-          "DISHCOOKED": "Piatto cucinato",
+          "DISHCOOKED": "Ho cucinato il piatto!",
           "ESTIMATEDTIME": " minuti",
           "INGREDIENTSINVENTORY": "Inventario casa",
           "INGREDIENTSINVENTORYSUBTITLE": "Dispensa",
@@ -318,14 +322,18 @@ class Messages extends Translations {
           "5STAR": "Supportaci con 5 Stelle",
           "DOYOUWHANTALLMENU":
               "Abilita la visualizzazione di tutte le ricette, anche se alcuni ingredienti potrebbero mancare.",
-          "MISSINGINGREDIENTSLABEL": "Mancano alcuni ingredienti.",
+          "MISSINGINGREDIENTSLABEL": "Mancano alcuni ingredienti",
           "FILTERENABLELABEL":
               "Se invece vuoi visualizzare le ricette indipendentemente dagli ingredienti che hai, spunta l'apposita voce nella pagina di selezione dei filtri.",
           "LASTUPDATE": "Ultimo aggiornamento",
           "NEVER": "Mai",
           "VIEWINVENTARY": "Visualizza inventario.",
           "DAILYUPDATE":
-              "Aggiorniamo quatidianamento il tuo catalogo per offrirti ogni giorno un esperienzas sempre più ricca."
+              "Aggiorniamo il tuo catalogo ogni giorno per offrirti un'esperienza più ricca giorno dopo giorno.",
+          "DAILYUPDATEINVENTORY":
+              "Ti consigliamo di tenere sempre aggiornato il tuo inventario in base alla giacenza che hai a disposizione.",
+          "TEXTINFOMISSINGINGREDIENTS":
+              "Per cucinare questa ricetta, ti consigliamo di aggiungere al tuo inventario tutti gli ingredienti necessari per la preparazione."
         },
       };
 }

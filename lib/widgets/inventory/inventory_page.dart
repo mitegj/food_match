@@ -53,7 +53,15 @@ class InventoryScreen extends GetWidget<IngredientController> {
                                   Get.back();
                                 },
                                 child: Container(
-                                  padding: EdgeInsets.only(left: 8),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    border: Border.all(
+                                        width: 1,
+                                        color: UIColors.lightBlack
+                                            .withOpacity(0.6)),
+                                  ),
+                                  padding: EdgeInsets.only(
+                                      left: 20, right: 20, top: 10, bottom: 10),
                                   child: Text('DONE'.tr.toUpperCase(),
                                       style: GoogleFonts.poppins(
                                           color: UIColors.violet,
@@ -129,6 +137,8 @@ class InventoryScreen extends GetWidget<IngredientController> {
                       borderRadius: BorderRadius.circular(15)),
                   child: Theme(
                     data: ThemeData(
+                        splashColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         unselectedWidgetColor: Colors.white.withOpacity(0.6)),
                     child: CheckboxListTile(
                       checkColor: UIColors.green,

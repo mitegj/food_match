@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/saved_menu_controller.dart';
@@ -19,6 +20,10 @@ class MenuController extends GetxController {
   List<MenuModel>? get menus => menuList.value.obs();
   int limit = 30;
   RxBool hasOtherMenuBool = true.obs;
+  RxBool isloading = false.obs;
+  int max = 0;
+  RxInt start = 1.obs;
+  RxInt maxLimit = 0.obs;
   static int limitMultiplier = 1;
   set menus(List<MenuModel>? value) {
     menus?.clear();
@@ -38,15 +43,25 @@ class MenuController extends GetxController {
   }
 
   void addItems() async {
-    print("ciaooo testina");
+    max = await DatabaseMenu().getTotMenu();
+    start.value = 1;
+    maxLimit.value = (max / limit).ceil();
     scrollController
-      ..addListener(() {
-        if (scrollController.position.pixels >=
+      ..addListener(() async {
+        if (scrollController.position.pixels ==
             scrollController.position.maxScrollExtent) {
           // ... call method to load more repositories
-          incrementLimitMultiplier();
-          getMenuList(FilterBody.listFilters);
-          print("ciaooo testina bbb");
+          print(limitMultiplier);
+          if (start.value != maxLimit.value) {
+            if (start.value != maxLimit.value) {
+              incrementLimitMultiplier();
+              start++;
+            }
+            isloading.value = true;
+            HapticFeedback.lightImpact();
+            await Future.delayed(const Duration(seconds: 2, microseconds: 2));
+            getMenuList(FilterBody.listFilters);
+          }
         }
       });
   }
@@ -69,6 +84,8 @@ class MenuController extends GetxController {
 
     menuList.bindStream(
         DatabaseMenu().menuStream(filters, limit * limitMultiplier));
+
+    isloading.value = false;
   }
 
   Future<void> updateStockCtrl(List<String> userInventory) async {

@@ -58,7 +58,7 @@ class EmptyMenu extends StatelessWidget {
                             overflow: TextOverflow.visible,
                             style: GoogleFonts.poppins(
                                 color: UIColors.white,
-                                fontSize: 16,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w300)),
                       )
                     ],
@@ -94,7 +94,7 @@ class EmptyMenu extends StatelessWidget {
                             overflow: TextOverflow.visible,
                             style: GoogleFonts.poppins(
                                 color: UIColors.white,
-                                fontSize: 16,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w300)),
                       )
                     ],

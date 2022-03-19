@@ -92,27 +92,6 @@ class Tutorial extends StatelessWidget {
                       fontSize: 16,
                       fontWeight: FontWeight.w500)),
               const SizedBox(height: 10),
-              RichText(
-                text: TextSpan(
-                    text: "PRESSTHEBUTTON".tr,
-                    style: GoogleFonts.poppins(
-                        color: UIColors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500),
-                    children: [
-                      WidgetSpan(
-                        child: Icon(Icons.view_headline,
-                            color: UIColors.violetMain),
-                      ),
-                      TextSpan(
-                          text: "ADDINGREDIENTSLABEL".tr,
-                          style: GoogleFonts.poppins(
-                              color: UIColors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500)),
-                    ]),
-              ),
-              const SizedBox(height: 10),
               Text("LABELCREATEALLRECIPE".tr,
                   style: GoogleFonts.poppins(
                       color: UIColors.white,

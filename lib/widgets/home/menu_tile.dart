@@ -116,7 +116,7 @@ class MenuTile extends StatelessWidget {
                                 style: GoogleFonts.poppins(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w300,
-                                    color: Colors.grey),
+                                    color: Colors.black),
                                 children: [
                                   TextSpan(
                                     text: " - " +
@@ -128,7 +128,7 @@ class MenuTile extends StatelessWidget {
                                     style: GoogleFonts.poppins(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w300,
-                                        color: Colors.black),
+                                        color: Colors.grey),
                                   ),
                                 ]),
                           )),
@@ -142,22 +142,38 @@ class MenuTile extends StatelessWidget {
                         ? Padding(
                             padding: const EdgeInsets.only(
                                 left: 20.0, right: 20, bottom: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                CircleAvatar(
-                                  backgroundColor: Colors.red.withOpacity(0.2),
-                                  child: Icon(
-                                    Icons.error,
-                                    color: Colors.red[500],
+                            child: Container(
+                              padding: EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                  color: Colors.red.withOpacity(0.1),
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 7.0),
+                                    child: CircleAvatar(
+                                      backgroundColor:
+                                          Colors.red.withOpacity(0.1),
+                                      child: Icon(
+                                        Icons.error,
+                                        color: Colors.red[500],
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                Text("MISSINGINGREDIENTSLABEL".tr,
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w400,
-                                        color: Colors.red[500])),
-                              ],
+                                  Expanded(
+                                    child: Text(
+                                        "MISSINGINGREDIENTSLABEL"
+                                            .tr
+                                            .toLowerCase(),
+                                        overflow: TextOverflow.ellipsis,
+                                        style: GoogleFonts.poppins(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.black)),
+                                  ),
+                                ],
+                              ),
                             ),
                           )
                         : SizedBox(
@@ -181,23 +197,6 @@ class MenuTile extends StatelessWidget {
                             Image.asset("assets/images/defaultMenu.jpeg"),
                       ),
                     ),
-                    /*Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: UIColors.grey.withOpacity(0.3)),
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.network(
-                            menu.linkUrl,
-                            fit: BoxFit.cover,
-                            height: mediaQuery.size.height * 0.35,
-                            width: mediaQuery.size.height * 1,
-                            errorBuilder: (context, error, stackTrace) {
-                              return Image.asset(
-                                  "assets/images/defaultMenu.jpeg");
-                            },
-                          )),
-                    ),*/
                   ],
                 ),
               )

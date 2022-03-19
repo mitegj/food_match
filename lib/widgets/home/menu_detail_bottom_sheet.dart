@@ -339,7 +339,7 @@ class DetailBottomSheet extends StatelessWidget {
               padding: const EdgeInsets.all(20),
               margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
               decoration: BoxDecoration(
-                color: UIColors.white,
+                color: UIColors.lightGreen,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text(
@@ -351,7 +351,14 @@ class DetailBottomSheet extends StatelessWidget {
               ),
             ),
           )
-        : const SizedBox();
+        : Padding(
+            padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+            child: Text("TEXTINFOMISSINGINGREDIENTS".tr,
+                style: GoogleFonts.poppins(
+                    color: UIColors.violet,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 13)),
+          );
   }
 
   Widget cookedButton() {
@@ -365,12 +372,25 @@ class DetailBottomSheet extends StatelessWidget {
               alignment: Alignment.center,
               padding: const EdgeInsets.all(20),
               margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
-              child: Text(
-                'DISHCOOKED'.tr,
-                style: GoogleFonts.poppins(
-                    color: UIColors.white,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 7.0),
+                    child: Icon(
+                      Icons.add_task_rounded,
+                      color: UIColors.violet,
+                      size: 28,
+                    ),
+                  ),
+                  Text(
+                    'DISHCOOKED'.tr,
+                    style: GoogleFonts.poppins(
+                        color: UIColors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16),
+                  ),
+                ],
               ),
             ),
           )

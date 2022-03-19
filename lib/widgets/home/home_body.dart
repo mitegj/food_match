@@ -23,8 +23,8 @@ class HomeBody extends GetWidget<MenuController> {
   AllergyController allergyController =
       Get.put<AllergyController>(AllergyController());
 
+  RxBool visibilityInventary = true.obs;
   RxBool visibility = true.obs;
-
   MenuController _menuController = MenuController.instance;
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class HomeBody extends GetWidget<MenuController> {
                   ingController.ingredients != null)
               ? (_menuController.menus != null &&
                       _menuController.menus?.length == 0)
-                  ? EmptyMenu()
+                  ? SingleChildScrollView(child: EmptyMenu())
                   : ListView(
                       controller: controller.scrollController,
                       children: <Widget>[
@@ -47,6 +47,9 @@ class HomeBody extends GetWidget<MenuController> {
                               child: Column(
                             children: [
                               Inventory_button_widget(),
+                              SizedBox(height: 5),
+                              labelInfoInventory(
+                                  visibilityInventary: visibilityInventary),
                               SizedBox(height: 5),
                               labelInfo(visibility: visibility),
                               SizedBox(height: 30),
@@ -74,16 +77,42 @@ class HomeBody extends GetWidget<MenuController> {
                         SizedBox(
                           height: 20,
                         ),
-                        /*
-                        Row(
+                        Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            showOtherButton(),
+                            RichText(
+                              text: TextSpan(
+                                  text: "LOADOTHERMENU".tr + ". ",
+                                  style: GoogleFonts.poppins(
+                                      color: UIColors.white.withOpacity(0.6),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400),
+                                  children: [
+                                    TextSpan(
+                                        text:
+                                            controller.start.value.toString() +
+                                                " / " +
+                                                controller.maxLimit.toString(),
+                                        style: GoogleFonts.poppins(
+                                            color: UIColors.violet,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w300)),
+                                  ]),
+                            ),
                           ],
                         ),
                         SizedBox(
                           height: 20,
-                        )*/
+                        ),
+                        controller.isloading.value
+                            ? LoadingWidgetSquareCircle()
+                            : SizedBox(),
+                        /*Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            showOtherButton(),
+                          ],
+                        ),*/
                       ],
                     )
               : LoadingWidget())),
@@ -95,7 +124,8 @@ class HomeBody extends GetWidget<MenuController> {
         ? InkWell(
             onTap: () => {
               _menuController.incrementLimitMultiplier(),
-              _menuController.getMenuList(FilterBody.listFilters)
+              _menuController.getMenuList(FilterBody.listFilters),
+              HapticFeedback.lightImpact(),
             },
             child: Container(
               padding: const EdgeInsets.only(left: 20, right: 20),
@@ -107,9 +137,9 @@ class HomeBody extends GetWidget<MenuController> {
                 onPressed: null,
                 child: Text("LOADOTHERMENU".tr,
                     style: GoogleFonts.poppins(
-                        color: UIColors.white,
+                        color: UIColors.white.withOpacity(0.6),
                         fontWeight: FontWeight.w400,
-                        fontSize: 16)),
+                        fontSize: 12)),
               ),
             ),
           )

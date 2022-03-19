@@ -52,9 +52,30 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                                 fontWeight: FontWeight.w600)),
                                       ],
                                     ),
-                                    Container(
-                                      padding: EdgeInsets.only(left: 8),
-                                      child: TextButton(
+                                    InkWell(
+                                      onTap: () {
+                                        controller.setAllergies(
+                                            controller, isFirstLogin);
+                                        HapticFeedback.mediumImpact();
+                                        if (isFirstLogin)
+                                          Get.to(() => SecondStep());
+                                        else
+                                          Get.back();
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          border: Border.all(
+                                              width: 1,
+                                              color: UIColors.lightBlack
+                                                  .withOpacity(0.6)),
+                                        ),
+                                        padding: EdgeInsets.only(
+                                            left: 20,
+                                            right: 20,
+                                            top: 10,
+                                            bottom: 10),
                                         child: Text(
                                             isFirstLogin
                                                 ? 'NEXT'.tr.toUpperCase()
@@ -63,15 +84,6 @@ class AllergiesScreen extends GetWidget<AllergyController> {
                                                 color: UIColors.violet,
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w700)),
-                                        onPressed: () {
-                                          controller.setAllergies(
-                                              controller, isFirstLogin);
-                                          HapticFeedback.mediumImpact();
-                                          if (isFirstLogin)
-                                            Get.to(() => SecondStep());
-                                          else
-                                            Get.back();
-                                        },
                                       ),
                                     )
                                   ],
