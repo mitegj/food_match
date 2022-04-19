@@ -12,7 +12,6 @@ import 'package:morning_brief/models/ingredient_model.dart';
 import 'package:morning_brief/models/menu_ingredients_model.dart';
 import 'package:morning_brief/models/menu_model.dart';
 import 'package:morning_brief/utils/UIColors.dart';
-import 'package:morning_brief/widgets/global_input/step_circle.dart';
 import 'package:morning_brief/widgets/home/removed_menu.dart';
 import 'package:morning_brief/widgets/home/step_screen.dart';
 import 'package:morning_brief/widgets/spinner/spinner.dart';
@@ -37,7 +36,7 @@ class DetailBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
     return Container(
-      height: mediaQuery.size.height * 0.86,
+      height: mediaQuery.size.height * 0.92,
       padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
@@ -56,6 +55,7 @@ class DetailBottomSheet extends StatelessWidget {
             child: ListView(
           children: [
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20),
@@ -127,10 +127,10 @@ class DetailBottomSheet extends StatelessWidget {
                 Container(
                   width: mediaQuery.size.width,
                   padding: const EdgeInsets.all(20),
-                  margin: EdgeInsets.only(bottom: 20),
+                  margin: EdgeInsets.only(bottom: 5),
                   decoration: BoxDecoration(
                       color: UIColors.black,
-                      borderRadius: new BorderRadius.circular(15.0)),
+                      borderRadius: new BorderRadius.circular(20.0)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -193,42 +193,23 @@ class DetailBottomSheet extends StatelessWidget {
                     ],
                   ),
                 ),
+
                 Container(
-                  width: mediaQuery.size.width,
-                  padding: const EdgeInsets.all(20),
+                  padding: EdgeInsets.only(left: 20, right: 20, top: 20),
                   decoration: BoxDecoration(
                       color: UIColors.black,
-                      borderRadius: new BorderRadius.only(
-                          topLeft: const Radius.circular(15.0),
-                          topRight: const Radius.circular(15.0))),
-                  child: Row(
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("INGREDIENTSLIST".tr,
                           style: TextStyle(
                               color: Colors.white,
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.bold,
                               fontSize: 18)),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  width: mediaQuery.size.width,
-                  padding: const EdgeInsets.only(
-                      left: 20, right: 20, top: 10, bottom: 0),
-                  decoration: BoxDecoration(
-                      color: UIColors.black,
-                      borderRadius: new BorderRadius.only(
-                          bottomLeft: const Radius.circular(15.0),
-                          bottomRight: const Radius.circular(15.0))),
-                  child: Column(
-                    children: [
-                      Column(
-                        children: [
-                          for (var item in menu.ingredients) getSteps(item),
-                        ],
-                      ),
+                      const SizedBox(height: 20),
+                      for (var item in menu.ingredients) getSteps(item),
                     ],
                   ),
                 ),
@@ -240,6 +221,12 @@ class DetailBottomSheet extends StatelessWidget {
                     ),
                     Row(
                       children: [
+                        menu.note.isEmpty
+                            ? SizedBox()
+                            : Icon(
+                                Icons.person_outline,
+                                color: UIColors.violet,
+                              ),
                         Text(
                           menu.note,
                           style: GoogleFonts.poppins(
@@ -267,22 +254,28 @@ class DetailBottomSheet extends StatelessWidget {
                       height: 10,
                     ),
                     for (var item in menu.steps)
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            StepCircle(indice: menu.steps.indexOf(item) + 1),
-                            Expanded(
-                              child: Text(item,
-                                  textAlign: TextAlign.start,
-                                  overflow: TextOverflow.visible,
-                                  style: GoogleFonts.poppins(
-                                      color: UIColors.white,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w300)),
-                            ),
-                          ],
+                      IntrinsicHeight(
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              VerticalDivider(
+                                color: UIColors.violet,
+                                thickness: 4,
+                              ),
+                              //StepCircle(indice: menu.steps.indexOf(item) + 1),
+                              Expanded(
+                                child: Text(item,
+                                    textAlign: TextAlign.start,
+                                    overflow: TextOverflow.visible,
+                                    style: GoogleFonts.poppins(
+                                        color: UIColors.white,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w300)),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                   ],
@@ -304,25 +297,46 @@ class DetailBottomSheet extends StatelessWidget {
         menuController.getIngredientName(item!.id.toString(), ingredients);
     bool hasIng = menuController.hasUserThisIngredient(item.id);
 
-    return IntrinsicHeight(
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(name,
-                style: GoogleFonts.poppins(
-                    color: hasIng ? UIColors.white : Colors.red[500],
-                    fontSize: 16,
-                    fontWeight: FontWeight.w300)),
-            Text(getItemQty(item.qty) + item.unit + " ",
-                overflow: TextOverflow.visible,
-                style: GoogleFonts.poppins(
-                    color: hasIng ? UIColors.white : Colors.red[500],
-                    fontSize: 16,
-                    fontWeight: FontWeight.w300)),
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20.0),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              hasIng
+                  ? Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Icon(
+                        Icons.done,
+                        color: UIColors.white.withOpacity(0.2),
+                      ),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Icon(
+                        Icons.error_outline,
+                        color: UIColors.white.withOpacity(0.2),
+                      ),
+                    ),
+              Text(name,
+                  style: GoogleFonts.poppins(
+                      color: hasIng ? UIColors.white : Colors.red[500],
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400)),
+              Icon(
+                Icons.arrow_right,
+                color: UIColors.white.withOpacity(0.2),
+              ),
+              Text(getItemQty(item.qty) + item.unit + " ",
+                  overflow: TextOverflow.visible,
+                  style: GoogleFonts.poppins(
+                      color: hasIng ? UIColors.white : Colors.red[500],
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400)),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -342,12 +356,18 @@ class DetailBottomSheet extends StatelessWidget {
                 color: UIColors.lightGreen,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Text(
-                'STARTCOOKING'.tr,
-                style: GoogleFonts.poppins(
-                    color: UIColors.detailBlack,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.play_circle_outline_rounded),
+                  Text(
+                    'STARTCOOKING'.tr,
+                    style: GoogleFonts.poppins(
+                        color: UIColors.detailBlack,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18),
+                  ),
+                ],
               ),
             ),
           )

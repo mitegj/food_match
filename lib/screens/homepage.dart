@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
-
 import 'package:morning_brief/widgets/global_input/tutorial.dart';
 import 'package:morning_brief/widgets/home/home_body.dart';
-import 'package:morning_brief/widgets/home/home_header.dart';
 import 'package:package_info/package_info.dart';
 
 // ignore: must_be_immutable
@@ -30,13 +28,9 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: theme.backgroundColor,
       body: SafeArea(
-          child: Column(children: [
-        HomeHeader(),
-        //SizedBox(height: 10),
-        HomeBody(
-            // ingController: ingController,
-            ),
-      ])),
+          child: HomeBody(
+              // ingController: ingController,
+              )),
     );
   }
 }

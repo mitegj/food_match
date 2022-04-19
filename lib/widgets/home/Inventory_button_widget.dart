@@ -38,17 +38,31 @@ class Inventory_button_widget extends GetWidget<IngredientController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 120,
+                height: 130,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "VIEWINVENTARY".tr,
-                    style: GoogleFonts.poppins(
-                        color: UIColors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "VIEWINVENTARY".tr,
+                        style: GoogleFonts.poppins(
+                            color: UIColors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      Text(
+                        "LASTUPDATE".tr.toLowerCase() +
+                            ", " +
+                            controller.lastInventoryUpd.toUpperCase(),
+                        style: GoogleFonts.poppins(
+                            color: UIColors.white.withOpacity(0.6),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w300),
+                      ),
+                    ],
                   ),
                   CircleAvatar(
                     backgroundColor: UIColors.white.withOpacity(0.2),
@@ -56,14 +70,8 @@ class Inventory_button_widget extends GetWidget<IngredientController> {
                   ),
                 ],
               ),
-              Text(
-                "LASTUPDATE".tr.toLowerCase() +
-                    ", " +
-                    controller.lastInventoryUpd.toLowerCase(),
-                style: GoogleFonts.poppins(
-                    color: UIColors.white.withOpacity(0.6),
-                    fontSize: 12,
-                    fontWeight: FontWeight.w300),
+              SizedBox(
+                height: 5,
               ),
             ],
           )),

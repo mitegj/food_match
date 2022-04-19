@@ -51,21 +51,19 @@ class StatisticsScreen extends GetWidget<AllergyController> {
                   padding: const EdgeInsets.all(20.0),
                   child: ArrowHeader(),
                 )),
-            _settingController.hasUserName()
-                ? CircleAvatar(
-                    radius: 50,
-                    backgroundColor: UIColors.blue,
-                    child: Container(
-                        padding: const EdgeInsets.all(20),
-                        child: Text(
-                          _settingController.getUserInitial().toLowerCase(),
-                          style: GoogleFonts.poppins(
-                              color: UIColors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w400),
-                        )),
-                  )
-                : SizedBox(),
+            CircleAvatar(
+              radius: 50,
+              backgroundColor: UIColors.blue,
+              child: Container(
+                  padding: const EdgeInsets.all(20),
+                  child: Text(
+                    "Hey!".toUpperCase(),
+                    style: GoogleFonts.poppins(
+                        color: UIColors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400),
+                  )),
+            ),
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.all(20.0),
@@ -140,11 +138,15 @@ class StatisticsScreen extends GetWidget<AllergyController> {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20, left: 20.0, right: 20),
-              child: Text("SETTINGS".tr,
-                  style: GoogleFonts.poppins(
-                      color: UIColors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700)),
+              child: Row(
+                children: [
+                  Text("SETTINGS".tr,
+                      style: GoogleFonts.poppins(
+                          color: UIColors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700)),
+                ],
+              ),
             ),
             SettingsArea(
                 settingController: _settingController,

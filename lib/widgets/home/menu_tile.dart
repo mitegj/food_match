@@ -36,6 +36,7 @@ class MenuTile extends StatelessWidget {
                       ingredients: ingredients,
                       savedMenu: savedMenu,
                       isCookable: isCookable),
+                  barrierColor: UIColors.black,
                   isScrollControlled: true)
             },
         child: Container(
@@ -130,55 +131,20 @@ class MenuTile extends StatelessWidget {
                                         fontWeight: FontWeight.w300,
                                         color: Colors.grey),
                                   ),
+                                  TextSpan(
+                                    text: !isCookable
+                                        ? " - " + "MISSINGINGREDIENTSLABEL".tr
+                                        : "",
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w300,
+                                        color: Colors.grey),
+                                  ),
                                 ]),
                           )),
                         ],
                       ),
                     ),
-                    !isCookable
-                        ? const SizedBox(height: 5)
-                        : const SizedBox(height: 0),
-                    !isCookable
-                        ? Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20.0, right: 20, bottom: 20),
-                            child: Container(
-                              padding: EdgeInsets.all(20),
-                              decoration: BoxDecoration(
-                                  color: Colors.red.withOpacity(0.1),
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 7.0),
-                                    child: CircleAvatar(
-                                      backgroundColor:
-                                          Colors.red.withOpacity(0.1),
-                                      child: Icon(
-                                        Icons.error,
-                                        color: Colors.red[500],
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                        "MISSINGINGREDIENTSLABEL"
-                                            .tr
-                                            .toLowerCase(),
-                                        overflow: TextOverflow.ellipsis,
-                                        style: GoogleFonts.poppins(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.black)),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          )
-                        : SizedBox(
-                            height: 0,
-                          ),
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: CachedNetworkImage(
@@ -193,8 +159,10 @@ class MenuTile extends StatelessWidget {
                         ),
                         placeholder: (context, url) =>
                             LoadingWidgetSquareCircle(),
-                        errorWidget: (context, url, error) =>
-                            Image.asset("assets/images/defaultMenu.jpeg"),
+                        errorWidget: (context, url, error) => Center(
+                          child: Icon(Icons.image_not_supported,
+                              size: 30, color: UIColors.lightRed),
+                        ),
                       ),
                     ),
                   ],

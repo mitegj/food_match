@@ -1,131 +1,129 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:get/instance_manager.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:morning_brief/controllers/setting_controller.dart';
-
 import 'package:morning_brief/utils/UIColors.dart';
 
 // ignore: must_be_immutable
 class Tutorial extends StatelessWidget {
-  SettingController _settingController =
-      Get.put<SettingController>(SettingController());
+  @override
+  Widget build(BuildContext context) {
+    return StepScreen();
+  }
+}
+
+// ignore: must_be_immutable
+class StepScreen extends StatelessWidget {
+  StepScreen({Key? key}) : super(key: key);
+
+  RxInt index = 0.obs;
+  FlutterTts tts = FlutterTts();
+  var indextex = 5;
+  var lisdescription = [
+    "TUTORIALLABEL1",
+    "DISCLAIMER",
+    "TUTORIAL2",
+    "LABELCREATEALLRECIPE",
+    "LETSTART"
+  ];
+
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
-    return Container(
-      height: mediaQuery.size.height * 0.85,
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: const Radius.circular(20),
-            topRight: const Radius.circular(20),
+    return GestureDetector(
+      onTapDown: (TapDownDetails details) {
+        final RenderBox box = context.findRenderObject() as RenderBox;
+        final localOffset = box.globalToLocal(details.globalPosition);
+        final x = localOffset.dx;
+        final y = localOffset.dy;
+        if (y < box.size.height * 0.85) {
+          if (x > box.size.width / 2 + 10 ||
+              x < box.size.width / 2 - 10) if (x < box.size.width / 3) {
+            if (index.value != 0) {
+              index.value -= 1;
+            }
+          } else {
+            if (index.value + 1 == indextex) {
+              try {} catch (e) {}
+
+              Get.back();
+            } else {
+              index.value += 1;
+            }
+
+            HapticFeedback.lightImpact();
+          }
+        }
+      },
+      child: Container(
+        height: mediaQuery.size.height * 0.92,
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: const Radius.circular(20),
+              topRight: const Radius.circular(20),
+            ),
+            color: UIColors.white),
+        child: cookedTrue(),
+      ),
+    );
+  }
+
+  Widget cookedTrue() {
+    return Obx(
+      () => Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+                width: 60,
+                child: Divider(height: 5, color: UIColors.black, thickness: 4)),
           ),
-          color: UIColors.detailBlack),
-      child: SingleChildScrollView(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: Container(
-                    width: 60,
-                    child: Divider(
-                        height: 5, color: UIColors.black, thickness: 4)),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Text(
-                  "✌️ Hey " +
-                      (_settingController.hasUserName()
-                          ? FirebaseAuth.instance.currentUser!.displayName!
-                          : ''),
-                  style: GoogleFonts.poppins(
-                      color: UIColors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700)),
-              Text("WELCOMETEST".tr,
-                  style: GoogleFonts.poppins(
-                      color: UIColors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500)),
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                children: [
-                  Icon(Icons.help, color: UIColors.lightRed),
-                  Text(" Disclaimer:",
-                      style: GoogleFonts.poppins(
-                          color: UIColors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700)),
-                ],
-              ),
-              Text("DISCLAIMER".tr,
-                  style: GoogleFonts.poppins(
-                      color: UIColors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500)),
-              const SizedBox(height: 30),
-              Row(
-                children: [
-                  Icon(
-                    Icons.assistant,
-                    color: UIColors.violet,
-                  ),
-                  Text("HOWTOUSEFOODMATCH".tr,
-                      style: GoogleFonts.poppins(
-                          color: UIColors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700)),
-                ],
-              ),
-              Text("HOWTHEAPPWORKS".tr,
-                  style: GoogleFonts.poppins(
-                      color: UIColors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500)),
-              const SizedBox(height: 10),
-              Text("LABELCREATEALLRECIPE".tr,
-                  style: GoogleFonts.poppins(
-                      color: UIColors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500)),
-              const SizedBox(height: 10),
-              Text("DISCOVERLABEL".tr + " 💪",
-                  style: GoogleFonts.poppins(
-                      color: UIColors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500)),
-              InkWell(
-                onTap: () {
-                  HapticFeedback.lightImpact();
-                  Get.back();
-                },
-                child: Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(20),
-                  margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
-                  decoration: BoxDecoration(
-                    color: UIColors.white,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
+          const SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
                   child: Text(
-                    'LETSTART'.tr,
+                    (index.value + 1).toString() + " / 5",
                     style: GoogleFonts.poppins(
-                        color: UIColors.detailBlack,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18),
+                        color: UIColors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w300),
                   ),
                 ),
-              )
-            ]),
+                Text(
+                  "TAPANYWARE".tr,
+                  style: GoogleFonts.poppins(
+                      color: UIColors.black,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w300),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 50,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(
+              lisdescription[index.value].tr,
+              overflow: TextOverflow.visible,
+              style: GoogleFonts.poppins(
+                  color: UIColors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
       ),
     );
   }

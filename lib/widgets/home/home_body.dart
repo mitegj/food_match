@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:morning_brief/controllers/allergy_controller.dart';
 import 'package:morning_brief/controllers/ingredient_controller.dart';
 import 'package:morning_brief/controllers/menu_controller.dart';
+import 'package:morning_brief/screens/saved_menu.dart';
+import 'package:morning_brief/screens/statistics.dart';
 import 'package:morning_brief/utils/UIColors.dart';
 import 'package:morning_brief/widgets/filter/filters.dart';
 import 'package:morning_brief/widgets/filter/filters_body.dart';
@@ -12,6 +14,8 @@ import 'package:morning_brief/widgets/home/Inventory_button_widget.dart';
 import 'package:morning_brief/widgets/home/empty_menu.dart';
 import 'package:morning_brief/widgets/home/label_info.dart';
 import 'package:morning_brief/widgets/home/menu_tile.dart';
+import 'package:morning_brief/widgets/inventory/inventory_page.dart';
+
 import 'package:morning_brief/widgets/spinner/spinner.dart';
 
 // ignore: must_be_immutable
@@ -30,16 +34,27 @@ class HomeBody extends GetWidget<MenuController> {
   Widget build(BuildContext context) {
     _menuController.getMenuList(FilterBody.listFilters);
 
-    return Expanded(
-      child: Container(
-          child: Obx(() => (allergyController.userAllergies != null &&
-                  ingController.ingredients != null)
-              ? (_menuController.menus != null &&
-                      _menuController.menus?.length == 0)
-                  ? SingleChildScrollView(child: EmptyMenu())
-                  : ListView(
+    return Container(
+        child: Obx(() => (allergyController.userAllergies != null &&
+                ingController.ingredients != null)
+            ? (_menuController.menus != null &&
+                    _menuController.menus?.length == 0)
+                ? SingleChildScrollView(child: EmptyMenu())
+                : Stack(fit: StackFit.expand, children: <Widget>[
+                    ListView(
                       controller: controller.scrollController,
                       children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: 20.0, left: 20, right: 20, bottom: 15),
+                          child: Text(
+                            'WELCOME'.tr,
+                            style: GoogleFonts.poppins(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white),
+                          ),
+                        ),
                         Container(
                           // height: 250,
                           margin: EdgeInsets.only(top: 0),
@@ -50,8 +65,9 @@ class HomeBody extends GetWidget<MenuController> {
                               SizedBox(height: 5),
                               labelInfoInventory(
                                   visibilityInventary: visibilityInventary),
-                              SizedBox(height: 5),
-                              labelInfo(visibility: visibility),
+                              //SizedBox(height: 5),
+
+                              //labelInfo(visibility: visibility),
                               SizedBox(height: 30),
                               headerBeforeCard(),
                             ],
@@ -107,6 +123,9 @@ class HomeBody extends GetWidget<MenuController> {
                         controller.isloading.value
                             ? LoadingWidgetSquareCircle()
                             : SizedBox(),
+                        SizedBox(
+                          height: 180,
+                        ),
                         /*Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -114,9 +133,78 @@ class HomeBody extends GetWidget<MenuController> {
                           ],
                         ),*/
                       ],
-                    )
-              : LoadingWidget())),
-    );
+                    ),
+                    Positioned(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Color(0xffE8C547).withOpacity(0.9)),
+                        padding: EdgeInsets.all(20),
+                        margin:
+                            EdgeInsets.only(left: 70, right: 70, bottom: 10),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                  onTap: () => {
+                                    HapticFeedback.mediumImpact(),
+                                    Get.to(() => StatisticsScreen())
+                                  },
+                                  child: CircleAvatar(
+                                    backgroundColor:
+                                        UIColors.black.withOpacity(0.2),
+                                    child: Icon(Icons.account_circle,
+                                        color: UIColors.black),
+                                  ),
+                                ),
+                                Spacer(),
+                                InkWell(
+                                  onTap: () => {
+                                    HapticFeedback.mediumImpact(),
+                                    Get.to(() => InventoryScreen())
+                                  },
+                                  child: CircleAvatar(
+                                    backgroundColor:
+                                        UIColors.black.withOpacity(0.2),
+                                    child: Icon(Icons.kitchen,
+                                        color: UIColors.black),
+                                  ),
+                                ),
+                                Spacer(),
+                                InkWell(
+                                  onTap: () => {
+                                    HapticFeedback.mediumImpact(),
+                                    Get.to(
+                                      () => Scaffold(
+                                        backgroundColor: UIColors.black,
+                                        body: SafeArea(
+                                          child: SavedMenuPage(),
+                                        ),
+                                      ),
+                                    )
+                                  },
+                                  child: CircleAvatar(
+                                    backgroundColor:
+                                        UIColors.black.withOpacity(0.2),
+                                    child: Icon(Icons.bookmark,
+                                        color: UIColors.black),
+                                  ),
+                                ),
+                                Spacer(),
+                                filtersIcon(),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      bottom: 0,
+                      right: 0,
+                      left: 0,
+                    ),
+                  ])
+            : LoadingWidget()));
   }
 
   Widget showOtherButton() {
@@ -153,13 +241,12 @@ class HomeBody extends GetWidget<MenuController> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            'SCROLLFORMORE'.tr,
+            'OURRECOMMENDATIONSFORYOU'.tr,
             style: GoogleFonts.poppins(
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
                 color: Colors.white.withOpacity(0.6)),
           ),
-          filtersIcon(),
         ],
       ),
     );
@@ -174,9 +261,9 @@ class HomeBody extends GetWidget<MenuController> {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          Icon(
-            Icons.filter_alt_outlined,
-            color: UIColors.white,
+          CircleAvatar(
+            backgroundColor: UIColors.black.withOpacity(0.2),
+            child: Icon(Icons.filter_alt_outlined, color: UIColors.black),
           ),
           FilterBody.listFilters.length > 0
               ? Positioned(
@@ -184,8 +271,8 @@ class HomeBody extends GetWidget<MenuController> {
                     radius: 6,
                     backgroundColor: UIColors.violetMain,
                   ),
-                  top: -5,
-                  right: -10,
+                  top: -2,
+                  right: -2,
                 )
               : SizedBox()
         ],

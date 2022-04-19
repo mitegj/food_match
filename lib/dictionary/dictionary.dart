@@ -23,8 +23,10 @@ class Messages extends Translations {
               "By pressing continue you confirm that you have read and accepted",
           "YOURAGREEMENT": "Your agreement",
           "HAVEREAD": "I have read",
-          "SLOGAN":
-              "Embrace a new way to cook dishes and keep trace of your calories.",
+          "SLOGAN1": "Organize",
+          "SLOGAN2": "your meals",
+          "SLOGAN3": "effectly",
+          "SLOGAN4": "with foodmatch",
           "WEEKLYCAL": "Calories consumed",
           "WEEKLYHISTORY": "Consumed history",
           "SHOW": "Show now",
@@ -160,13 +162,21 @@ class Messages extends Translations {
               "If you want to view the recipes regardless of the ingredients you have, check the appropriate item on the filter selection page.",
           "LASTUPDATE": "Last update",
           "NEVER": "Never",
-          "VIEWINVENTARY": "View inventory.",
+          "VIEWINVENTARY": "View inventory",
           "DAILYUPDATE":
               "We update your catalog every day to give you a richer experience day after day.",
           "DAILYUPDATEINVENTORY":
               "We advise you to keep your inventory up to date with the stock you have available.",
           "TEXTINFOMISSINGINGREDIENTS":
-              "To cook this recipe, we recommend that you add all the necessary ingredients to your inventory."
+              "To cook this recipe, we recommend that you add all the necessary ingredients to your inventory.",
+          "INVITEYOURFRIENDS": "invite your friends",
+          "YOURPLANNER": "Your planner",
+          "OURRECOMMENDATIONSFORYOU": "Our recommendations for you",
+          "LABELINVENTORY": "Each ingredient you add unlocks more recipes.",
+          "TUTORIALLABEL1":
+              "Are you ready to discover a unique cooking experience? We will recommend meals that you can cook with all the ingredients you have at home.",
+          "TUTORIAL2":
+              "To start, add your ingredients to your inventory. Each ingredient you add unlocks more recipes."
         },
         "it_IT": {
           "HELLO": "Ciao",
@@ -188,8 +198,10 @@ class Messages extends Translations {
               "Premendo continua confermi di aver letto e accetto",
           "YOURAGREEMENT": "Il tuo contratto",
           "HAVEREAD": "Ho letto",
-          "SLOGAN":
-              "Abbraccia un nuovo modo di cucinare i tuoi pasti e tieni traccia delle tue calorie.",
+          "SLOGAN1": "Organizza",
+          "SLOGAN2": "i tuoi pasti",
+          "SLOGAN3": "efficacemente",
+          "SLOGAN4": "con foodmatch",
           "WEEKLYCAL": "Calorie consumate",
           "WEEKLYHISTORY": "Storico consumato",
           "SHOW": "Visualizza ora",
@@ -229,7 +241,7 @@ class Messages extends Translations {
           "SELECTWITHFILTERS": "Seleziona con uno o più filtri",
           "LOADOTHERMENU": "Scorri verso l'alto per altre ricette",
           "DISHTYPE": "Tipo di piatto",
-          "INGREDIENTSLIST": "Lista di ingredienti",
+          "INGREDIENTSLIST": "Elenco ingredienti",
           "METHOD": "Procedimento",
           "DISHCOOKED": "Ho cucinato il piatto!",
           "ESTIMATEDTIME": " minuti",
@@ -303,8 +315,8 @@ class Messages extends Translations {
           "ALLERGENS": "Allergeni",
           "ENJOYOURMEAL": "Buon apetito",
           "NEXT": "Avanti",
-          "AVAIBLEINTHEKITCHEN": "Presente in cucina",
-          "NOTAVAIBLEINTHEKITCHEN": "Non presente in cucina",
+          "AVAIBLEINTHEKITCHEN": "Presente nella tua cucina",
+          "NOTAVAIBLEINTHEKITCHEN": "Non presente nella tu cucina",
           "IMAGEDISCLAIMER": "L'immagine potrebbe non essere fedele al piatto.",
           "DONTCANCELACCOUNT": "No, torna indietro",
           "DELETEACCOUNTLABEL":
@@ -327,13 +339,22 @@ class Messages extends Translations {
               "Se invece vuoi visualizzare le ricette indipendentemente dagli ingredienti che hai, spunta l'apposita voce nella pagina di selezione dei filtri.",
           "LASTUPDATE": "Ultimo aggiornamento",
           "NEVER": "Mai",
-          "VIEWINVENTARY": "Visualizza inventario.",
+          "VIEWINVENTARY": "Visualizza inventario",
           "DAILYUPDATE":
               "Aggiorniamo il tuo catalogo ogni giorno per offrirti un'esperienza più ricca giorno dopo giorno.",
           "DAILYUPDATEINVENTORY":
               "Ti consigliamo di tenere sempre aggiornato il tuo inventario in base alla giacenza che hai a disposizione.",
           "TEXTINFOMISSINGINGREDIENTS":
-              "Per cucinare questa ricetta, ti consigliamo di aggiungere al tuo inventario tutti gli ingredienti necessari per la preparazione."
+              "Per cucinare questa ricetta, ti consigliamo di aggiungere al tuo inventario tutti gli ingredienti necessari per la preparazione.",
+          "INVITEYOURFRIENDS": "invita gli amici",
+          "YOURPLANNER": "Il tuo pianificatore",
+          "OURRECOMMENDATIONSFORYOU": "I nostri consigliati per te",
+          "LABELINVENTORY":
+              "Ogni ingrediente che aggiungi sblocca più ricette.",
+          "TUTORIALLABEL1":
+              "Sei pronto a scoprire un esperienza unica di cucina? Ti Consiglieremo i pasti che puoi cucinare con tutti gli ingredienti che hai a disposizione in casa.",
+          "TUTORIAL2":
+              "Per iniziare aggiungi i tuoi ingredienti all'inventario. Ogni ingrediente che aggiungi sblocca più ricette."
         },
       };
 }

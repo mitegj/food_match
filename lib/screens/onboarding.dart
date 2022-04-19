@@ -20,43 +20,37 @@ class OnBoardingPage extends StatelessWidget {
         resizeToAvoidBottomInset: true,
         body: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Expanded(
-                flex: 3,
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Image.asset(
-                    "assets/images/hamburger.png",
-                  ),
-                ),
-              ),
               Flexible(
-                flex: 2,
+                flex: 4,
                 child: Padding(
                   padding: const EdgeInsets.only(
                       left: 20.0, right: 20.0, top: 10.0, bottom: 0),
-                  child: Text(
-                    "foodmatch.",
-                    style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                  child: Text(
-                    "SLOGAN".tr,
-                    overflow: TextOverflow.visible,
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
-                        color: Colors.white.withOpacity(0.6),
-                        fontWeight: FontWeight.w300,
-                        fontSize: 16),
+                  child: RichText(
+                    text: TextSpan(
+                        text: "SLOGAN1".tr +
+                            "\n" +
+                            "SLOGAN2".tr +
+                            "\n" +
+                            "SLOGAN3".tr +
+                            ",",
+                        style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontSize: 40,
+                            fontWeight: FontWeight.w500),
+                        children: [
+                          TextSpan(
+                              text: "\n" + "SLOGAN4".tr,
+                              style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: 40,
+                                  decoration: TextDecoration.underline,
+                                  decorationStyle: TextDecorationStyle.wavy,
+                                  decorationColor: UIColors.violet,
+                                  fontWeight: FontWeight.w500)),
+                        ]),
                   ),
                 ),
               ),
@@ -70,19 +64,26 @@ class OnBoardingPage extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.all(15),
                     decoration: BoxDecoration(
-                      color: UIColors.lightBlack,
+                      color: UIColors.detailBlack.withOpacity(0.4),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Row(
                       children: [
                         Obx(
-                          () => Checkbox(
-                            checkColor: UIColors.green,
-                            activeColor: UIColors.green,
-                            value: checked.value,
-                            onChanged: (bool? value) {
-                              checked.value = value!;
-                            },
+                          () => Theme(
+                            data: ThemeData(
+                                splashColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                unselectedWidgetColor:
+                                    Colors.white.withOpacity(0.6)),
+                            child: Checkbox(
+                              checkColor: UIColors.green,
+                              activeColor: UIColors.green,
+                              value: checked.value,
+                              onChanged: (bool? value) {
+                                checked.value = value!;
+                              },
+                            ),
                           ),
                         ),
                         Expanded(
@@ -128,7 +129,7 @@ class OnBoardingPage extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 4,
+                flex: 3,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

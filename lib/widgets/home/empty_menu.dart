@@ -138,15 +138,8 @@ class EmptyMenu extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Text(
-            'SCROLLFORMORE'.tr,
-            style: GoogleFonts.poppins(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: Colors.white.withOpacity(0.6)),
-          ),
           filtersIcon(),
         ],
       ),
