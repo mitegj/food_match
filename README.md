@@ -10,10 +10,10 @@ foodmatch is a mobile application that introduces even the less experienced to t
 Below some presentation images.
 
 <p align="center">
-  <img width="110" src="./assets/preview/home.png" alt="Home page" hspace="10"/>
-  <img width="110" src="./assets/preview/detail.png" alt="Detail page" hspace="10"/>
-  <img width="110" src="./assets/preview/inventory.png" alt="Detail page" hspace="10"/>
-  <img width="110" src="./assets/preview/user.png" alt="Detail page" hspace="10"/>
+  <img width="150" src="./assets/preview/home.png" alt="Home page" hspace="10"/>
+  <img width="150" src="./assets/preview/detail.png" alt="Detail page" hspace="10"/>
+  <img width="150" src="./assets/preview/inventory.png" alt="Detail page" hspace="10"/>
+  <img width="150" src="./assets/preview/user.png" alt="Detail page" hspace="10"/>
 </p>
 
 ### Development
